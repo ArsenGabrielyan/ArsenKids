@@ -8,7 +8,7 @@ export default function PageLayout({children}: PageLayoutProps){
      return (
           <>
                <Header/>
-                    {children}
+               {children}
                <Footer/>
           </>
      )

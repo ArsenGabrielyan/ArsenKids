@@ -1,9 +1,11 @@
 "use client"
-import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { Button } from "../ui/button";
+import { Menu, X } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const links = [
      {url: "/#banner", name: "Գլխավոր"},
@@ -15,7 +17,7 @@ const links = [
 ]
 
 export default function Header(){
-     const isMobile = useIsMobile()
+     const isMobile = useIsMobile();
      const [isOpen, setIsOpen] = useState(false);
      const [isSticky, setIsSticky] = useState(false);
      const [hovered, setHovered] = useState(false);
@@ -33,14 +35,19 @@ export default function Header(){
           }
      },[])
      return (
-          <header className={cn("fixed top-0 left-0 flex justify-between items-center w-full py-10 px-20 z-10 transition-all",isSticky && "bg-white py-5 shadow-sm")}>
+          <header className={cn("fixed top-0 left-0 flex justify-between items-center w-full px-6 lg:px-15 z-10 transition-all",isSticky && "bg-white shadow-sm gap-2", isSticky ? "py-5" : "py-5 lg:py-10")}>
                <Link href="/" title="Գլխավոր" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-                    <Image src={hovered ? "/arsenkids-colorful.svg" : logo} alt="logo" width={250} height={60}/>
+                    <Image src={hovered ? "/arsenkids-colorful.svg" : logo} alt="logo" width={isMobile ? 210 : 250} height={isMobile ? 20 : 60}/>
                </Link>
-               <ul className="relative flex gap-5">
+               {isMobile && (
+                    <Button variant="ghost" className="relative size-10" onClick={()=>setIsOpen(!isOpen)}>
+                         {isOpen ? <X className={cn("size-8",!isSticky ? "text-white" : "text-black")}/> : <Menu className={cn("size-8",!isSticky ? "text-white" : "text-black")}/>}
+                    </Button>
+               )}
+               <ul className={cn("w-full lg:w-fit h-[calc(100%_-_85px)] lg:h-fit fixed lg:relative top-[85px] lg:top-auto left-0 lg:left-auto gap-7 lg:gap-5 flex-col lg:flex-row items-center justify-center bg-white lg:bg-transparent",isOpen ? "flex" : "hidden lg:flex")}>
                     {links.map(link => (
-                         <li key={link.url}>
-                              <Link href={link.url} className={cn("transition-all font-heading text-lg",isSticky ? "text-black hover:text-link" : "text-white  hover:text-rainbow-green")}>{link.name}</Link>
+                         <li key={link.url} className="font-medium lg:font-[350]">
+                              <Link href={link.url} className={cn("text-3xl lg:text-base xl:text-lg text-center transition-all font-heading",isSticky ? "text-black hover:text-link" : "text-black lg:text-white  hover:text-link lg:hover:text-rainbow-green")}>{link.name}</Link>
                          </li>
                     ))}
                </ul>
