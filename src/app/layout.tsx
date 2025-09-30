@@ -3,6 +3,7 @@ import { Raleway } from "next/font/google";
 import localFont from "next/font/local"
 import "./globals.css";
 import { KEYWORDS } from "@/lib/constants";
+import { absoluteURL } from "@/lib/utils";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -17,19 +18,23 @@ const kamar = localFont({
   preload: true
 })
 
-// TODO: Add base URL, OG, Twitter, and alternates (languages, canonical) metadata
+// TODO: Add OG, Twitter, and alternates (languages) metadata
 export const metadata: Metadata = {
+  metadataBase: new URL(absoluteURL()),
   title: {
     absolute: "Բարի Գալուստ ArsenKids!",
     template: "%s | ArsenKids"
   },
-  description: "ArsenKids-ը նախատեսված է երեխաներին, փոքրիկներին և ընտանիքներին ներգրավելու համար կրթական տեսանյութերի միջոցով (օրինակ՝ Սովորենք հաշվել, սովորենք այբուբենը, սովորենք գույներ) և ստոպ կադր կրթական անիմացիաների միջոցով: Այն մշակվել է երեխաների համար, բայց նաև սիրում են ծնողները:",
+  description: "Ամենալավ կրթությունը տանում է դեպի ամենալավ ապագա։",
   keywords: KEYWORDS,
   authors: {
     name: "ArsenKids",
     url: "https://youtube.com/@ArsenKids"
   },
   applicationName: "ArsenKids",
+  alternates: {
+    canonical: absoluteURL(),
+  },
   icons: {
     icon: "/favicon.ico",
     apple: "/public/apple-icon.png"
