@@ -1,5 +1,5 @@
 type ServiceType = 'about' | "downloads" | "learn" | "alphabet" | "colors" | "games"
-type CardType = "service" | "download"
+export type CardType = "service" | "download"
 export type DownloadItemType = "others" | "fruit-veggies" | "animals"
 export type DownloadFilters = DownloadItemType | "all"
 

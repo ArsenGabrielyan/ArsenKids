@@ -1,14 +1,13 @@
 "use client"
-import Image from "next/image"
 import SiteSection from "../ui/site-section"
 import { DOWNLOADS } from "@/lib/constants/card-data"
 import { Button } from "../ui/button"
-import Link from "next/link"
 import { DownloadFilters } from "@/lib/types"
 import { useMemo, useState } from "react"
 import { cn } from "@/lib/utils"
 import { Input } from "../ui/input"
 import { X } from "lucide-react"
+import Card from "../ui/card"
 
 const filters: Record<DownloadFilters, string> = {
      all: "Բոլորը",
@@ -52,17 +51,16 @@ export default function DownloadsSection(){
                     </ul>
                     <div className="flex justify-center flex-row-reverse flex-wrap mt-10 gap-2.5 lg:gap-5">
                          {allDownloads.map(item=>(
-                              <div key={item.downloadName} className="w-80 border shadow-lg bg-card text-card-foreground px-4 py-2 flex flex-col justify-between">
-                                   <div className="h-[440px]">
-                                        <Image src={`/downloads/${item.imageName}`} alt={item.downloadName} width={720} height={1020} className="object-cover"/>
-                                   </div>
-                                   <div className="py-2 lg:py-4 space-y-4">
-                                        <h3 id="title" className="text-lg font-semibold">{item.title}</h3>
-                                        <Button variant="primary" asChild className="text-base w-full">
-                                             <Link href={item.fileName}>Ներբեռնել</Link>
-                                        </Button>
-                                   </div>
-                              </div>
+                              <Card
+                                   key={item.downloadName}
+                                   title={item.title}
+                                   imageSrc={`/downloads/${item.imageName}`}
+                                   imageAlt={item.downloadName}
+                                   buttonText="Ներբեռնել"
+                                   buttonLink={item.fileName}
+                                   variant="download"
+                                   imageHeight={440}
+                              />
                          ))}
                     </div>
                </div>
