@@ -9,7 +9,7 @@ export function isChristmas(){
 
 export function getBackgroundImage(variant: BgImageVariant): {
      jpg: string,
-     webp: string    
+     webp: string
 }{
      const bgImage = BG_IMAGE_MAP[variant]
      return {
