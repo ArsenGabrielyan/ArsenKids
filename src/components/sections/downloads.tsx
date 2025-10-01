@@ -7,6 +7,8 @@ import Link from "next/link"
 import { DownloadFilters } from "@/lib/types"
 import { useMemo, useState } from "react"
 import { cn } from "@/lib/utils"
+import { Input } from "../ui/input"
+import { X } from "lucide-react"
 
 const filters: Record<DownloadFilters, string> = {
      all: "Բոլորը",
@@ -17,11 +19,26 @@ const filters: Record<DownloadFilters, string> = {
 
 export default function DownloadsSection(){
      const [currSelection, setCurrSelection] = useState<DownloadFilters>("all")
-     const allDownloads = useMemo(()=>currSelection==='all' ? DOWNLOADS : DOWNLOADS.filter(item=>item.itemType===currSelection),[currSelection])
+     const [search, setSearch] = useState("");
+     const allDownloads = useMemo(()=>{
+          const array = currSelection==='all' ? DOWNLOADS : DOWNLOADS.filter(item=>item.itemType===currSelection);
+          return search==="" ? array : array.filter(item=>item.title.toLowerCase().includes(search.toLowerCase()))
+     },[currSelection, search])
      return (
           <SiteSection id="downloads">
                <div className="relative w-full flex items-center justify-center flex-col">
                     <h2 className="text-blue-700 font-bold text-2xl sm:text-3xl lg:text-4xl pb-2 mb-5 border-b border-blue-700 w-fit text-center">Ներբեռնումներ</h2>
+                    <div className="mb-5 flex justify-center items-center gap-2 w-full">
+                         <Input
+                              value={search}
+                              onChange={e=>setSearch(e.target.value)}
+                              className="w-full max-w-lg"
+                              placeholder="Որոնում․․․"
+                         />
+                         <Button variant="ghost" size="icon" onClick={()=>setSearch("")}>
+                              <X className="size-6"/>
+                         </Button>
+                    </div>
                     <ul className="flex justify-center flex-wrap gap-2">
                          {Object.entries(filters).map(([key, value])=>(
                               <li
