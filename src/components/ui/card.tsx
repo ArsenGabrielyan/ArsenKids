@@ -37,7 +37,7 @@ export default function Card({
                     />
                </div>
                <div className="py-2 lg:py-4 space-y-4 w-full h-full">
-                    <h3 id="title" className={`font-semibold ${variant === "download" ? "text-lg" : "text-2xl text-center"}`}>
+                    <h3 id="title" className={`font-semibold ${variant === "download" ? "text-lg" : variant==="game" ? "text-xl text-center" : "text-2xl text-center"}`}>
                          {title}
                     </h3>
                     {description && <p>{description}</p>}

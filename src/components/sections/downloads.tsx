@@ -2,12 +2,14 @@
 import SiteSection from "../ui/site-section"
 import { DOWNLOADS } from "@/lib/constants/card-data"
 import { Button } from "../ui/button"
-import { DownloadFilters } from "@/lib/types"
+import { DownloadItemType, SearchFilterType } from "@/lib/types"
 import { useMemo, useState } from "react"
 import { cn } from "@/lib/utils"
 import { Input } from "../ui/input"
 import { X } from "lucide-react"
 import Card from "../ui/card"
+
+type DownloadFilters = SearchFilterType<DownloadItemType>
 
 const filters: Record<DownloadFilters, string> = {
      all: "Բոլորը",
@@ -19,10 +21,11 @@ const filters: Record<DownloadFilters, string> = {
 export default function DownloadsSection(){
      const [currSelection, setCurrSelection] = useState<DownloadFilters>("all")
      const [search, setSearch] = useState("");
-     const allDownloads = useMemo(()=>{
-          const array = currSelection==='all' ? DOWNLOADS : DOWNLOADS.filter(item=>item.itemType===currSelection);
-          return search==="" ? array : array.filter(item=>item.title.toLowerCase().includes(search.toLowerCase()))
-     },[currSelection, search])
+     const allDownloads = useMemo(()=>
+          DOWNLOADS
+               .filter(item=>currSelection==="all" || item.itemType===currSelection)
+               .filter(item=>item.title.toLowerCase().includes(search.toLowerCase()))
+     ,[currSelection, search])
      return (
           <SiteSection id="downloads">
                <div className="relative w-full flex items-center justify-center flex-col">
@@ -50,7 +53,7 @@ export default function DownloadsSection(){
                          ))}
                     </ul>
                     <div className="flex justify-center flex-row-reverse flex-wrap mt-10 gap-2.5 lg:gap-5">
-                         {allDownloads.map(item=>(
+                         {allDownloads.length>0 ? allDownloads.map(item=>(
                               <Card
                                    key={item.downloadName}
                                    title={item.title}
@@ -61,7 +64,9 @@ export default function DownloadsSection(){
                                    variant="download"
                                    imageHeight={440}
                               />
-                         ))}
+                         )) : (
+                              <p className="text-xl text-muted-foreground font-heading">Որոնման արդյունքներ չեն գտնվել</p>
+                         )}
                     </div>
                </div>
           </SiteSection>
