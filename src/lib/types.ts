@@ -16,3 +16,5 @@ export type ICard<T extends CardType> = T extends "service" ? {
      imageName: string
      downloadName: string,
 }
+
+export type BgImageVariant = "banner" | "contact"

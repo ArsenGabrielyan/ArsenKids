@@ -35,7 +35,7 @@ export default function Header(){
           }
      },[])
      return (
-          <header className={cn("fixed top-0 left-0 flex justify-between items-center w-full px-6 lg:px-15 z-10 transition-all",isSticky && "bg-white shadow-sm gap-2", isSticky ? "py-5" : "py-5 lg:py-10")}>
+          <header className={cn("fixed top-0 left-0 flex justify-between items-center w-full px-6 lg:px-15 z-10 transition-all",isSticky && "bg-white shadow-sm gap-2", isSticky ? "py-4" : "py-4 lg:py-10")}>
                <Link href="/" title="Գլխավոր" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
                     <Image src={hovered ? "/arsenkids-colorful.svg" : logo} alt="logo" width={isMobile ? 210 : 250} height={isMobile ? 20 : 60}/>
                </Link>
@@ -44,7 +44,7 @@ export default function Header(){
                          {isOpen ? <X className={cn("size-8",!isSticky ? "text-white" : "text-black")}/> : <Menu className={cn("size-8",!isSticky ? "text-white" : "text-black")}/>}
                     </Button>
                )}
-               <ul className={cn("w-full lg:w-fit h-[calc(100%_-_85px)] lg:h-fit fixed lg:relative top-[85px] lg:top-auto left-0 lg:left-auto gap-7 lg:gap-5 flex-col lg:flex-row items-center justify-center bg-white lg:bg-transparent",isOpen ? "flex" : "hidden lg:flex")}>
+               <ul className={cn("w-full lg:w-fit h-[calc(100%_-_84px)] lg:h-fit fixed lg:relative top-[84px] lg:top-auto left-0 lg:left-auto gap-7 lg:gap-5 flex-col lg:flex-row items-center justify-center bg-white lg:bg-transparent",isOpen ? "flex" : "hidden lg:flex")}>
                     {links.map(link => (
                          <li key={link.url} className="font-medium lg:font-[350]">
                               <Link

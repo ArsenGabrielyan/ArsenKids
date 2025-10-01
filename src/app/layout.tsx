@@ -4,6 +4,7 @@ import localFont from "next/font/local"
 import "./globals.css";
 import { KEYWORDS } from "@/lib/constants";
 import { absoluteURL } from "@/lib/utils";
+import { Toaster } from "@/components/shadcn-ui/sonner";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -56,6 +57,10 @@ export default function RootLayout({
         className={`${kamar.variable} ${raleway.variable} antialiased`}
       >
         {children}
+        <Toaster
+          position="bottom-center"
+          richColors
+        />
       </body>
     </html>
   );

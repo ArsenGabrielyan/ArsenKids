@@ -9,6 +9,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-rainbow-green hover:tracking-[6px]",
+        defaultAlt: "bg-rainbow-green hover:bg-rainbow-yellow",
         primary: "bg-rainbow-yellow hover:bg-rainbow-red hover:text-primary-foreground",
         primaryAlt: "bg-rainbow-yellow hover:bg-rainbow-blue",
         outline: "bg-rainbow-blue/15 text-rainbow-blue border-rainbow-blue border-2 hover:bg-rainbow-blue/30",
