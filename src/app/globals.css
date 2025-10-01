@@ -48,7 +48,6 @@
   --color-rainbow-yellow: var(--rainbow-yellow);
   --color-rainbow-green: var(--rainbow-green);
   --color-rainbow-blue: var(--rainbow-blue);
-  --color-link: var(--link)
 }
 
 :root {
@@ -95,7 +94,6 @@
   --rainbow-yellow: #edff8f;
   --rainbow-green: #84ff9f;
   --rainbow-blue: #82b6ff;
-  --link: #0092ff
 }
 
 .dark {

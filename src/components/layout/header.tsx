@@ -47,7 +47,13 @@ export default function Header(){
                <ul className={cn("w-full lg:w-fit h-[calc(100%_-_85px)] lg:h-fit fixed lg:relative top-[85px] lg:top-auto left-0 lg:left-auto gap-7 lg:gap-5 flex-col lg:flex-row items-center justify-center bg-white lg:bg-transparent",isOpen ? "flex" : "hidden lg:flex")}>
                     {links.map(link => (
                          <li key={link.url} className="font-medium lg:font-[350]">
-                              <Link href={link.url} className={cn("text-3xl lg:text-base xl:text-lg text-center transition-all font-heading",isSticky ? "text-black hover:text-link" : "text-black lg:text-white  hover:text-link lg:hover:text-rainbow-green")}>{link.name}</Link>
+                              <Link
+                                   href={link.url}
+                                   className={cn("text-3xl lg:text-base xl:text-lg text-center transition-all font-heading",isSticky ? "text-black hover:text-blue-500" : "text-black lg:text-white  hover:text-blue-500 lg:hover:text-rainbow-green")}
+                                   onClick={()=>setIsOpen(false)}
+                              >
+                                   {link.name}
+                              </Link>
                          </li>
                     ))}
                </ul>
