@@ -1,12 +1,41 @@
+import { OPERATORS } from "./constants/maps";
+
+// General Types
 type ServiceType = 'about' | "downloads" | "learn" | "alphabet" | "colors" | "games"
 export type CardType = "service" | "download" | "game"
 export type DownloadItemType = "others" | "fruit-veggies" | "animals"
+export type SearchFilterType<T> = T | "all"
+export type BgImageVariant = "banner" | "contact";
+export type OperatorType = keyof typeof OPERATORS
+export interface IPosition{ 
+     x: number;
+     y: number;
+};
+export interface IMatrixPosition{
+     row: number;
+     col: number;
+}
+export type AmazingMathOperator = "+" | "-" | "*";
 
+// Game Types
 export type GameType = "puzzle" | "entertainment" | "math" | "christmas-game";
 export type GameDifficulty = "" | "easy" | "medium" | "hard" | "mixed";
+export interface IGameType{
+     type: GameType,
+     name: string
+}
+export interface IGameDifficulty{
+     id: number,
+     name: GameDifficulty,
+     title: string
+}
+export interface IGameTitles{
+     puzzles: Record<string,string>,
+     pairs: Record<string,string>,
+     christmas: Record<string,string>
+}
 
-export type SearchFilterType<T> = T | "all"
-
+// Card
 export type ICard<T extends CardType> = T extends "service" ? {
      title: string,
      desc: string,
@@ -26,5 +55,3 @@ export type ICard<T extends CardType> = T extends "service" ? {
      link: string,
      type: GameType
 }
-
-export type BgImageVariant = "banner" | "contact";

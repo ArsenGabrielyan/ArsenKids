@@ -1,11 +1,11 @@
 "use client"
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "../ui/button";
 import { Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import Logo from "../logo";
 
 const links = [
      {url: "/#banner", name: "Գլխավոր"},
@@ -20,7 +20,6 @@ export default function Header(){
      const isMobile = useIsMobile();
      const [isOpen, setIsOpen] = useState(false);
      const [isSticky, setIsSticky] = useState(false);
-     const [hovered, setHovered] = useState(false);
      const logo = useMemo(() => {
           if (!isSticky) return "/arsenkids.svg";
           return "/arsenkids-black.svg"
@@ -36,8 +35,8 @@ export default function Header(){
      },[])
      return (
           <header className={cn("fixed top-0 left-0 flex justify-between items-center w-full px-6 lg:px-15 z-10 transition-all",isSticky && "bg-white shadow-sm gap-2", isSticky ? "py-4" : "py-4 lg:py-10")}>
-               <Link href="/" title="Գլխավոր" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-                    <Image src={hovered ? "/arsenkids-colorful.svg" : logo} alt="logo" width={isMobile ? 210 : 250} height={isMobile ? 20 : 60}/>
+               <Link href="/" title="Գլխավոր">
+                    <Logo src={logo} width={isMobile ? 210 : 250} height={isMobile ? 20 : 60}/>
                </Link>
                {isMobile && (
                     <Button variant="ghost" className="relative size-10" onClick={()=>setIsOpen(!isOpen)}>
