@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 import { toast } from "sonner"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-lg font-semibold transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive uppercase font-heading tracking-[2px] hover:cursor-pointer active:scale-[0.96]",
+  "inline-flex items-center justify-center gap-2.5 whitespace-nowrap text-lg font-semibold transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive uppercase font-heading tracking-[2px] hover:cursor-pointer active:scale-[0.96]",
   {
     variants: {
       variant: {
@@ -37,7 +37,8 @@ const buttonVariants = cva(
 
 type ButtonProps = React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
+    asChild?: boolean,
+    shareUrl?: string
   }
 
 function Button({
@@ -45,32 +46,25 @@ function Button({
   variant,
   size,
   asChild = false,
+  shareUrl,
+  onClick,
   ...props
 }: ButtonProps) {
   const Comp = asChild ? Slot : "button"
-
-  return (
-    <Comp
-      data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
-  )
-}
-
-function ShareButton({url, ...props}: ButtonProps & {url: string}){
   const handleShareLink = async() => {
+    if(!shareUrl) return;
     const shareData = {
       title: "ArsenKids Խաղեր",
       text: 'Եկեք խաղացեք այս խաղը',
-      url
+      url: shareUrl
     }
     try{
+      console.log(navigator.canShare(shareData))
       if(navigator.canShare && navigator.canShare(shareData)){
-          await navigator.share(shareData)
+        await navigator.share(shareData)
       } else{
-          await navigator.clipboard.writeText(`Եկեք խաղացեք այս խաղը՝ ${url}`)
-          toast.success("Հղումը պատճենված է")
+        await navigator.clipboard.writeText(`Եկեք խաղացեք այս խաղը՝ ${shareUrl}`)
+        toast.success("Հղումը պատճենված է")
       }
     } catch(error){
       console.error("Sharing Failed:",error);
@@ -78,8 +72,13 @@ function ShareButton({url, ...props}: ButtonProps & {url: string}){
     }
   }
   return (
-    <Button {...props} onClick={handleShareLink}/>
+    <Comp
+      data-slot="button"
+      className={cn(buttonVariants({ variant, size, className }))}
+      onClick={!shareUrl ? onClick : handleShareLink}
+      {...props}
+    />
   )
 }
 
-export { Button, ShareButton, buttonVariants }
+export { Button, buttonVariants }
