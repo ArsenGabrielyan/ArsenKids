@@ -4,7 +4,7 @@ This branch (`static-resources`) is used exclusively for hosting public assets v
 - Sounds
 - Educational PDFs
 - Images for Games
-- Christmas Music from Christmas Games (Mostly from YouTube Audio Library)
+- Christmas Music for Christmas Games (Mostly from YouTube Audio Library)
 - Other non-code resources
 
 > [!WARNING]
