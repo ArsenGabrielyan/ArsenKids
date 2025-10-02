@@ -60,7 +60,7 @@ export default function DownloadsSection(){
                                    imageSrc={`/downloads/${item.imageName}`}
                                    imageAlt={item.downloadName}
                                    buttonText="Ներբեռնել"
-                                   buttonLink={item.fileName}
+                                   buttonLink={`https://arsengabrielyan.github.io/ArsenKids/pdf/${item.fileName}`}
                                    variant="download"
                                    imageHeight={440}
                               />

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CardType } from "@/lib/types";
+import { Download } from "lucide-react";
 
 interface CardProps {
      title: string;
@@ -43,9 +44,15 @@ export default function Card({
                     {description && <p>{description}</p>}
                </div>
                <div className="pb-2 w-full">
-                    <Button variant="primary" asChild className="text-base w-full">
-                         <Link href={buttonLink}>{buttonText}</Link>
-                    </Button>
+                    {variant==="download" ? (
+                         <Button variant="primary" asChild className="text-base w-full">
+                              <Link href={buttonLink} download={imageAlt}><Download/> {buttonText}</Link>
+                         </Button>
+                    ) : (
+                         <Button variant="primary" asChild className="text-base w-full">
+                              <Link href={buttonLink}>{buttonText}</Link>
+                         </Button>
+                    )}
                </div>
           </div>
      );

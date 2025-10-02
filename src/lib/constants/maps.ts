@@ -12,18 +12,20 @@ export enum OPERATORS {
      "Բազմապատկում" = "×",
      "Բաժանում" = "÷",
 }
+
+const audioBaseUrl = `https://arsengabrielyan.github.io/ArsenKids/sounds`
 export enum AUDIO {
-     correct = "correct.mp3",
-     wrong = "wrong.mp3",
-     sparkle = "winner.mp3",
-     tick = "tick.mp3",
-     start = "start.mp3",
-     bubblePop = "bubbles.mp3"
+     correct = `${audioBaseUrl}/correct.mp3`,
+     wrong = `${audioBaseUrl}/wrong.mp3`,
+     sparkle = `${audioBaseUrl}/winner.mp3`,
+     tick = `${audioBaseUrl}/tick.mp3`,
+     start = `${audioBaseUrl}/start.mp3`,
+     bubblePop = `${audioBaseUrl}/bubbles.mp3`
 }
 
 export enum MESSAGE_CLASSNAMES {
-     correct = "bg-rainbow-green/90 text-black",
-     wrong = "bg-destructive/90 text-white"
+     correct = "bg-rainbow-green/95 text-black",
+     wrong = "bg-destructive/95 text-white"
 }
 export enum Message {
      Correct = "Ճիշտ է",
