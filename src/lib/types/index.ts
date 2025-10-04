@@ -1,4 +1,4 @@
-import { OPERATORS } from "./constants/maps";
+import { OPERATORS } from "../constants/maps";
 
 // General Types
 type ServiceType = 'about' | "downloads" | "learn" | "alphabet" | "colors" | "games"
@@ -54,4 +54,21 @@ export type ICard<T extends CardType> = T extends "service" ? {
      gameName: string,
      link: string,
      type: GameType
+}
+
+// Tic Tac Toe
+export enum TicTacToeState{
+     Ongoing = "ongoing",
+     Win = "win",
+     Draw = "draw"
+}
+export type TicTacToeMode = "" | "2-players" | "player-vs-pc"
+export type TicTacToeDifficulty = Exclude<GameDifficulty,"mixed">
+export interface ITicTacToeDifficulty{
+     name: string,
+     difficulty: TicTacToeDifficulty
+}
+export interface IMinimaxReturnType{
+     index: number,
+     score: number
 }

@@ -4,7 +4,7 @@ import { DOWNLOADS } from "@/lib/constants/card-data"
 import { Button } from "../ui/button"
 import { DownloadItemType, SearchFilterType } from "@/lib/types"
 import { useMemo, useState } from "react"
-import { cn } from "@/lib/utils"
+import { absoluteCDN, cn } from "@/lib/utils"
 import { Input } from "../ui/input"
 import { X } from "lucide-react"
 import Card from "../ui/card"
@@ -60,7 +60,7 @@ export default function DownloadsSection(){
                                    imageSrc={`/downloads/${item.imageName}`}
                                    imageAlt={item.downloadName}
                                    buttonText="Ներբեռնել"
-                                   buttonLink={`https://arsengabrielyan.github.io/ArsenKids/pdf/${item.fileName}`}
+                                   buttonLink={absoluteCDN("pdf",`/${item.fileName}`)}
                                    variant="download"
                                    imageHeight={440}
                               />

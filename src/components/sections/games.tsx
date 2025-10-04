@@ -34,7 +34,7 @@ export default function GamesSection(){
           return <p className="text-xl text-muted-foreground font-heading">{isSearchingChristmasGame ? "Ամանորյա խաղերը հասանելի են միայն Նոր Տարվա և Սուրբ Ծննդյան սեզոնին։" : "Որոնման արդյունքներ չեն գտնվել:"}</p> 
      }
      return (
-          <SiteSection id="games">
+          <SiteSection id="main-games">
                <div className="relative w-full flex items-center justify-center flex-col">
                     <h2 className="text-blue-700 font-bold text-2xl sm:text-3xl lg:text-4xl pb-2 mb-5 border-b border-blue-700 w-fit text-center">Բոլոր խաղերը</h2>
                     <div className="mb-5 flex justify-center items-center gap-2 w-full">

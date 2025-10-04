@@ -1,5 +1,6 @@
 import { isChristmas } from "../helpers";
 import { BgImageVariant, IGameTitles } from "../types";
+import { absoluteCDN } from "../utils";
 
 export const BG_IMAGE_MAP: Record<BgImageVariant, string> = {
      banner: isChristmas() ? "christmas" : "clouds",
@@ -12,17 +13,6 @@ export enum OPERATORS {
      "Բազմապատկում" = "×",
      "Բաժանում" = "÷",
 }
-
-const audioBaseUrl = `https://arsengabrielyan.github.io/ArsenKids/sounds`
-export enum AUDIO {
-     correct = `${audioBaseUrl}/correct.mp3`,
-     wrong = `${audioBaseUrl}/wrong.mp3`,
-     sparkle = `${audioBaseUrl}/winner.mp3`,
-     tick = `${audioBaseUrl}/tick.mp3`,
-     start = `${audioBaseUrl}/start.mp3`,
-     bubblePop = `${audioBaseUrl}/bubbles.mp3`
-}
-
 export enum MESSAGE_CLASSNAMES {
      correct = "bg-rainbow-green/95 text-black",
      wrong = "bg-destructive/95 text-white"
@@ -83,3 +73,11 @@ export const MATH_OPTIONS: [string, string, string] = [
      "bg-[#604080] hover:text-[#604080]",
      "bg-[#166528] hover:text-[#166528]",
 ]
+export const AUDIO = {
+     correct: absoluteCDN("sounds","/correct.mp3"),
+     wrong: absoluteCDN("sounds","/wrong.mp3"),
+     sparkle: absoluteCDN("sounds","/winner.mp3"),
+     tick: absoluteCDN("sounds","/tick.mp3"),
+     start: absoluteCDN("sounds","/start.mp3"),
+     bubblePop: absoluteCDN("sounds","/bubbles.mp3")
+}

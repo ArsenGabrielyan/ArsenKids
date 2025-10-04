@@ -94,6 +94,10 @@
   --rainbow-yellow: #edff8f;
   --rainbow-green: #84ff9f;
   --rainbow-blue: #82b6ff;
+
+  --tic-tac-toe-grid: repeat(3,minmax(auto,150px));
+  --tic-tac-toe-grid-sm: repeat(3,minmax(auto,100px));
+  --tic-tac-toe-grid-xs: repeat(3,minmax(auto,90px));
 }
 
 .dark {
