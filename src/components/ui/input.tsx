@@ -8,7 +8,7 @@ const inputVariants = cva(
           variants: {
                variant: {
                     default: "border-input bg-transparent focus-visible:border-ring focus-visible:ring-ring/50",
-                    wordGuesser: "border-2 border-rainbow-blue bg-transparent focus-visible:border-blue-500 focus-visible:ring-blue-500/50",
+                    guesser: "border-2 border-rainbow-blue bg-transparent focus-visible:border-blue-500 focus-visible:ring-blue-500/50",
                }
           },
           defaultVariants: {

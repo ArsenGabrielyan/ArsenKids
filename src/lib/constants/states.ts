@@ -19,7 +19,6 @@ export const INITIAL_GUESS_NUMBER_STATE: IGuessNumberState = {
      num:"",
      msgType: "",
      difficulty:"",
-     numInput:"",
      timeLeft: null,
      timerCount: 6
 }

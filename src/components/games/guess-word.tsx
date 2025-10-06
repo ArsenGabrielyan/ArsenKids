@@ -13,29 +13,28 @@ import { Button } from "../ui/button";
 import GameWrapper from "../game-wrapper";
 import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
-import { GuesserType } from "@/schemas/types";
+import { WordGuesserType } from "@/schemas/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { GuesserSchema } from "@/schemas";
-import { Form, FormControl, FormField, FormItem } from "../shadcn-ui/form";
+import { WordGuesserSchema } from "@/schemas";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "../shadcn-ui/form";
 import { toast } from "sonner";
 import { Badge } from "../ui/badge";
 
 export default function GuessWordGame(){
      const [gameState,setGameState] = useState<IGuessWordState>(INITIAL_GUESS_WORD_STATE);
-     const updateState = (overrides: Partial<IGuessWordState>) => {
+     const updateState = (overrides: Partial<IGuessWordState>) => 
           setGameState(prev=>({...prev,...overrides}));
-     }
-     const form = useForm<GuesserType>({
-          resolver: zodResolver(GuesserSchema),
+     const form = useForm<WordGuesserType>({
+          resolver: zodResolver(WordGuesserSchema),
           defaultValues: {guess: ""}
      })
-     const handleEnter = (values: GuesserType) => {
-          const validatedFields = GuesserSchema.safeParse(values);
+     const handleEnter = (values: WordGuesserType) => {
+          const validatedFields = WordGuesserSchema.safeParse(values);
           if(!validatedFields.success){
                toast.error("Դաշտը վավերացված չէ");
                return;
           }
-          if(!validatedFields.data) return;
+          if(!validatedFields.data || validatedFields.data.guess==="") return;
           const {guess} = validatedFields.data
           const isCorrect = gameState.correct.toLowerCase() === guess.toLowerCase();
           new Audio(isCorrect ? AUDIO.correct : AUDIO.wrong).play();
@@ -116,7 +115,7 @@ export default function GuessWordGame(){
                                                        <FormItem className="w-full md:w-fit">
                                                             <FormControl>
                                                                  <Input
-                                                                      variant="wordGuesser"
+                                                                      variant="guesser"
                                                                       {...field}
                                                                       autoFocus
                                                                       className="w-full md:w-fit"
@@ -128,6 +127,7 @@ export default function GuessWordGame(){
                                                                       maxLength={correct.split("").length}
                                                                  />
                                                             </FormControl>
+                                                            <FormMessage/>
                                                        </FormItem>
                                                   )}
                                              />

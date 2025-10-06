@@ -18,7 +18,6 @@ export interface IGuessNumberState{
      num: string,
      msgType: GameMessageType;
      difficulty: GameDifficulty,
-     numInput: string,
      timeLeft: number | null,
      timerCount: number
 }

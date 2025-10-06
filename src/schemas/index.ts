@@ -7,6 +7,12 @@ export const ContactSchema = z.object({
      message: z.string().min(5, "Հաղորդագրությունը պետք է լինի առնվազն 5 տառ").max(500,"Հաղորդագրությունը շատ երկար է").trim()
 })
 
-export const GuesserSchema = z.object({
-     guess: z.string().min(1,"Այն շատ կարճ է").max(150,"Գուշակածը շատ երկար է").trim()
+export const WordGuesserSchema = z.object({
+     guess: z.string().min(1,"Այն շատ կարճ է").max(150,"Այն շատ երկար է").trim()
+})
+export const NumberGuesserSchema = z.object({
+     guess: z.string()
+    .regex(/^\d+$/, "Պետք է պարունակի միայն թվեր")
+    .min(1,"Այն շատ կարճ է").max(150,"Այն շատ երկար է").trim()
+    .refine(val=>!Number.isInteger(val),"Այն պետք է լինի ամբողջ թիվ")
 })
