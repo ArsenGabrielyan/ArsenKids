@@ -52,7 +52,7 @@ export default function DownloadsSection(){
                               </li>
                          ))}
                     </ul>
-                    <div className="flex justify-center flex-row-reverse flex-wrap mt-10 gap-2.5 lg:gap-5">
+                    <div className="flex justify-center flex-row-reverse flex-wrap mt-10 gap-3 lg:gap-5 p-3">
                          {allDownloads.length>0 ? allDownloads.map(item=>(
                               <Card
                                    key={item.downloadName}
@@ -62,7 +62,6 @@ export default function DownloadsSection(){
                                    buttonText="Ներբեռնել"
                                    buttonLink={absoluteCDN("pdf",`/${item.fileName}`)}
                                    variant="download"
-                                   imageHeight={440}
                               />
                          )) : (
                               <p className="text-xl text-muted-foreground font-heading">Որոնման արդյունքներ չեն գտնվել</p>

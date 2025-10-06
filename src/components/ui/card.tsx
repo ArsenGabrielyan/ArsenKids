@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CardType } from "@/lib/types";
 import { Download } from "lucide-react";
+import { IMAGE_SIZES } from "@/lib/constants/card-data";
+import { cn } from "@/lib/utils";
 
 interface CardProps {
      title: string;
@@ -12,8 +14,7 @@ interface CardProps {
      buttonText: string;
      buttonLink: string;
      description?: string;
-     variant?: CardType;
-     imageHeight?: number;
+     variant: CardType;
 }
 
 export default function Card({
@@ -24,17 +25,16 @@ export default function Card({
      buttonLink,
      description,
      variant = "service",
-     imageHeight,
 }: CardProps) {
      return (
-          <div className="w-80 border rounded-md shadow-lg bg-card text-card-foreground p-2 flex flex-col justify-between">
-               <div className={`relative ${imageHeight ? `h-[${imageHeight}px]` : "h-[250px]"}`}>
+          <div className="min-w-66 w-full max-w-80 border rounded-md shadow-lg bg-card text-card-foreground p-2 flex flex-col justify-between">
+               <div className={cn("relative",variant==="game" ? "w-full" : variant==="download" ? "min-h-[440px]" : "h-[250px]")}>
                     <Image
                          src={imageSrc}
                          alt={imageAlt}
-                         width={720}
-                         height={1020}
-                         className="object-cover w-full h-full"
+                         width={IMAGE_SIZES[variant].width}
+                         height={IMAGE_SIZES[variant].height}
+                         className="object-cover w-full h-full aspect-square"
                     />
                </div>
                <div className="py-2 lg:py-4 space-y-4 w-full h-full">

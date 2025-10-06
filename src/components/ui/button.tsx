@@ -61,7 +61,6 @@ function Button({
       url: shareUrl
     }
     try{
-      console.log(navigator.canShare(shareData))
       if(navigator.canShare && navigator.canShare(shareData)){
         await navigator.share(shareData)
       } else{

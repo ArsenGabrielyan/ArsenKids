@@ -17,7 +17,7 @@ export const GAME_MESSAGES: Record<Exclude<GameMessageType,"">,IGameMessage> = {
           className: "bg-rainbow-green/95 text-black"
      },
      wrong: {
-          messages: ["Սխալ է", "Ոչ", "Չէ", "Չէ չէ չէ", "Հը ըն", "Նորից փորձիր", "Կրկին փորձիր", "Իհարկե ոչ","Ոչ ոչ ոչ","Ճիշտ չէ","Սխալ պատասխան",],
+          messages: ["Սխալ է", "Ոչ", "Չէ", "Չէ չէ չէ", "Հը ըն", "Նորից փորձիր", "Կրկին փորձիր", "Իհարկե ոչ","Ոչ ոչ ոչ","Ճիշտ չէ","Սխալ պատասխան","Պետք է մտածել","Այն սովորելու մաս է"],
           className: "bg-destructive/95 text-white"
      }
 }

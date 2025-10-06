@@ -59,7 +59,7 @@ export default function GamesSection(){
                               </li>
                          ))}
                     </ul>
-                    <div className="flex justify-center flex-row-reverse flex-wrap mt-10 gap-2.5 lg:gap-5">
+                    <div className="flex justify-center flex-row-reverse flex-wrap mt-10 gap-3 lg:gap-5 p-3">
                          {allGames.length>0 ? allGames.map(game=>(
                               <Card
                                    key={game.gameName}
@@ -69,7 +69,6 @@ export default function GamesSection(){
                                    buttonLink={`/games${game.link}`}
                                    buttonText="Խաղալ"
                                    variant="game"
-                                   imageHeight={240}
                               />
                          )) : renderNoGamesMessage()}
                     </div>

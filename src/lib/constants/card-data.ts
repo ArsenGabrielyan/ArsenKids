@@ -1,4 +1,4 @@
-import { ICard } from "../types"
+import { CardType, ICard } from "../types"
 
 export const SERVICES: ICard<"service">[] = [
      {
@@ -219,4 +219,18 @@ export const CHRISTMAS_GAME: ICard<"game"> = {
      title: "Ամանորյա խաղեր",
      link: "/christmas",
      type: "entertainment"
+}
+export const IMAGE_SIZES: Record<CardType,{width: number, height: number}> = {
+     game: {
+          width: 300,
+          height: 300
+     },
+     service: {
+          width: 495,
+          height: 385
+     },
+     download: {
+          width: 720,
+          height: 1020
+     }
 }

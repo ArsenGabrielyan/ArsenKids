@@ -43,7 +43,7 @@ export default function GuessWordGame(){
           const prev = Object.assign({},gameState)
           updateState({
                msgType: isCorrect ? "correct" : "wrong",
-               correctCount: isCorrect && prev.hintCount !== 3 ? prev.correctCount + 1 : prev.correctCount
+               correctCount: isCorrect && prev.hintCount <= 2 ? prev.correctCount + 1 : prev.correctCount
           })
      }
      const start = useCallback((difficulty: GameDifficulty)=>{
@@ -91,12 +91,12 @@ export default function GuessWordGame(){
      const {isPlay,difficulty,correct,hintCount,showHint,msgType,scrambled} = gameState
      return (
           <>
-          <div className="flex justify-center items-center flex-col min-h-screen bg-rainbow-yellow">
+          <div className="flex justify-center items-center flex-col min-h-screen bg-rainbow-yellow p-2.5">
                <GameWrapper title="Գուշակիր բառը">
                     {isPlay && (
                          difficulty!=="" ? (
                               <>
-                                   <div className="w-full h-full flex justify-center items-center gap-1">
+                                   <div className="w-full h-full flex justify-center items-center gap-1 flex-wrap">
                                         {correct.split("").map((el,i)=>(
                                              <span
                                                   key={`${el}_${i}`} className="bg-[#3C254D]/70 size-10 text-white flex justify-center items-center text-2xl rounded-sm"
@@ -108,17 +108,18 @@ export default function GuessWordGame(){
                                         <p className="text-3xl absolute -top-18 bg-card shadow-md border rounded-md p-3 text-blue-600">{correct}</p>
                                    )}
                                    <Form {...form}>
-                                        <form onSubmit={form.handleSubmit(handleEnter)} className="flex items-center justify-between gap-3">
+                                        <form onSubmit={form.handleSubmit(handleEnter)} className="flex items-center justify-between gap-3 w-full flex-col md:flex-row">
                                              <FormField
                                                   control={form.control}
                                                   name="guess"
                                                   render={({field})=>(
-                                                       <FormItem>
+                                                       <FormItem className="w-full md:w-fit">
                                                             <FormControl>
                                                                  <Input
                                                                       variant="wordGuesser"
                                                                       {...field}
                                                                       autoFocus
+                                                                      className="w-full md:w-fit"
                                                                       onChange={e=>{
                                                                            const regex = /[\u0561-\u0587\u0531-\u0556]+/;
                                                                            if(e.target.value==="" || regex.test(e.target.value))
@@ -130,7 +131,7 @@ export default function GuessWordGame(){
                                                        </FormItem>
                                                   )}
                                              />
-                                             <Button variant="primaryAlt" type="submit" size="sm">Ստուգել</Button>
+                                             <Button variant="primaryAlt" className="w-full md:w-fit" type="submit" size="sm">Ստուգել</Button>
                                         </form>
                                    </Form>
                               </>
