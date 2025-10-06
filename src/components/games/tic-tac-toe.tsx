@@ -9,10 +9,10 @@ import { ITicTacToeState } from "@/lib/types/states";
 import { absoluteURL, cn, playSound } from "@/lib/utils";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import Logo from "../logo";
 import { Button } from "../ui/button";
 import { SquareXO } from "../ui/game";
 import { Menu, RotateCcw, Share2 } from "lucide-react";
+import GameWrapper from "../game-wrapper";
 
 export default function GameXO(){
      const [board,setBoard] = useState(BASE_ARR);
@@ -89,10 +89,7 @@ export default function GameXO(){
      const stateTxt = state===TicTacToeState.Draw ? "Ոչ ոքի": winner==="X" ? "Իքսիկը հաղթեց" : "Նոլիկը հաղթեց"
      return (
           <div className="w-full h-screen flex justify-center items-center relative flex-col bg-rainbow-blue z-20">
-               <div className="flex justify-center items-center flex-col gap-0.5 p-2.5 rounded-md shadow border bg-card text-card-foreground mb-3">
-                    <Link href="/game" className="mb-1" title="Վերադառնալ" aria-label="ArsenKids">
-                         <Logo src="/arsenkids-black.svg" width={250} height={60}/>
-                    </Link>
+               <GameWrapper>
                     <h1 className="text-[36.5px] relative drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] font-bold">
                          <span className="text-[#0da2b3]">Իքսիկ</span>{" "}
                          <span className="text-[#FF5645]">Նոլիկ</span>
@@ -117,7 +114,7 @@ export default function GameXO(){
                               )}
                          </div>
                     )}
-               </div>
+               </GameWrapper>
                {isStarted ? (
                     (mode==="2-players" || difficulty!=="") ? (
                          <>

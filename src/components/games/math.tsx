@@ -7,30 +7,30 @@ import { useState, useEffect } from "react";
 import { absoluteURL, cn } from "@/lib/utils"
 import { MessageBox } from "../ui/game-msg";
 import { Button } from "../ui/button";
-import { OperatorType } from "@/lib/types";
+import { GameMessageType, OperatorType } from "@/lib/types";
 import Logo from "../logo";
 import { Share2 } from "lucide-react";
 
 export default function MathGame(){
      const [mode,setMode] = useState<OperatorType>("Գումարում");
      const [state,setState] = useState({q1:0,q2:0,answers:[0,0,0]});
-     const [msg,setMsg] = useState("");
+     const [msgType, setMsgType] = useState<GameMessageType>("");
      useEffect(()=>{
           setState(generateEquation("Գումարում"))
      },[])
      const handleChangeMode = (newMode: OperatorType) => {
           setMode(newMode);
           setState(generateEquation(newMode));
-          setMsg("");
+          setMsgType("");
      }
      const handleAnswerClick = (selected: number) => {
           const {q1,q2} = state;
           const isCorrect = checkAnswer(mode,q1,q2,selected);
-          setMsg(isCorrect ? "Ճիշտ է" : "Սխալ է");
+          setMsgType(isCorrect ? "correct" : "wrong");
           new Audio(isCorrect ? AUDIO.correct : AUDIO.wrong).play();
           setTimeout(()=>{
                if(isCorrect) setState(generateEquation(mode));
-               setMsg("")
+               setMsgType("");
           },800)
      }
      useEffect(()=>{
@@ -73,6 +73,6 @@ export default function MathGame(){
                <Button variant="tertiary" className="w-full" shareUrl={absoluteURL("/games/math")}><Share2/> Կիսվել</Button>
           </div>
      </div>
-     <MessageBox message={msg}/>
+     <MessageBox type={msgType}/>
      </>
 }

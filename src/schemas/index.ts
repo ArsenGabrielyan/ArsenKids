@@ -6,3 +6,7 @@ export const ContactSchema = z.object({
      subject: z.string().min(1,"Մուտքագրեք հաղորդագրության թեմայի անունը").max(100, "Թեման շատ երկար է").trim(),
      message: z.string().min(5, "Հաղորդագրությունը պետք է լինի առնվազն 5 տառ").max(500,"Հաղորդագրությունը շատ երկար է").trim()
 })
+
+export const GuesserSchema = z.object({
+     guess: z.string().min(1,"Այն շատ կարճ է").max(150,"Գուշակածը շատ երկար է").trim()
+})

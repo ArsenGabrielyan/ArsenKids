@@ -2,23 +2,22 @@ import { TicTacToeState } from "../types"
 import { IGuessNumberState, IGuessWordState, IMemoryGameState, ITicTacToeState } from "../types/states"
 
 export const INITIAL_GUESS_WORD_STATE: IGuessWordState = {
-     val:"",
      correct:"",
      scrambled:"",
      isPlay: false,
      isOver: false,
      showHint: false,
-     msg:"",
+     msgType: "",
      hintCount: 3,
      correctCount: 0,
-     choseDifficulty: true
+     difficulty: ""
 }
 export const INITIAL_GUESS_NUMBER_STATE: IGuessNumberState = {
      isStarted:false,
      showNum:false,
      showSquare:false,
      num:"",
-     msg:"",
+     msgType: "",
      difficulty:"",
      numInput:"",
      timeLeft: null,

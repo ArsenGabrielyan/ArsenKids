@@ -48,6 +48,7 @@
   --color-rainbow-yellow: var(--rainbow-yellow);
   --color-rainbow-green: var(--rainbow-green);
   --color-rainbow-blue: var(--rainbow-blue);
+  --color-rainbow-purple: var(--rainbow-purple);
 }
 
 :root {
@@ -94,6 +95,7 @@
   --rainbow-yellow: #edff8f;
   --rainbow-green: #84ff9f;
   --rainbow-blue: #82b6ff;
+  --rainbow-purple: #C186CA;
 
   --tic-tac-toe-grid: repeat(3,minmax(auto,150px));
   --tic-tac-toe-grid-sm: repeat(3,minmax(auto,100px));

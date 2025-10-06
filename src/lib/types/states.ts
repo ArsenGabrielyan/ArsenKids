@@ -1,23 +1,22 @@
-import { GameDifficulty, TicTacToeDifficulty, TicTacToeMode, TicTacToeState } from ".";
+import { GameDifficulty, GameMessageType, TicTacToeDifficulty, TicTacToeMode, TicTacToeState } from ".";
 
 export interface IGuessWordState{
-     val: string;
      correct: string;
      scrambled: string;
      isPlay: boolean;
      isOver: boolean;
      showHint: boolean;
-     msg: string;
+     msgType: GameMessageType;
      hintCount: number;
      correctCount: number;
-     choseDifficulty: boolean;
+     difficulty: GameDifficulty
 }
 export interface IGuessNumberState{
      isStarted: boolean,
      showNum: boolean,
      showSquare: boolean,
      num: string,
-     msg: string,
+     msgType: GameMessageType;
      difficulty: GameDifficulty,
      numInput: string,
      timeLeft: number | null,

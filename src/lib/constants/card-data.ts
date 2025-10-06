@@ -5,14 +5,14 @@ export const SERVICES: ICard<"service">[] = [
           title: "Մեր Մասին",
           desc: "Ի՞նչ է ArsenKids-ը։ Իմանալ Ավելին սեղմելով այս կոճակը",
           linkText: "Իմանալ Ավելին",
-          link: "#about",
+          link: "/#about",
           type: "about"
      },
      {
           title: "Ներբեռնումներ",
           desc: "Ներբեռնեք ArsenKids-ի ուսուցողական թերթերը: Ուսուցողական և զվարճալի ներբեռնումներ երեխաների համար: ",
           linkText: "Ներբեռնումներ",
-          link: "#downloads",
+          link: "/#downloads",
           type: "downloads"
      },
      {
@@ -40,7 +40,7 @@ export const SERVICES: ICard<"service">[] = [
           title: "Խաղեր ArsenKids-ից",
           desc: "Ինտելեկտուալ, ժամանցային և հետաքրքիր խաղեր ArsenKids-ից երեխաների համար :-)",
           linkText: "Խաղալ",
-          link: "https://arsenkids-games.web.app/",
+          link: "/games",
           type: "games"
      },
 ]

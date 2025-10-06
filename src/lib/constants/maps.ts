@@ -13,14 +13,6 @@ export enum OPERATORS {
      "Բազմապատկում" = "×",
      "Բաժանում" = "÷",
 }
-export enum MESSAGE_CLASSNAMES {
-     correct = "bg-rainbow-green/95 text-black",
-     wrong = "bg-destructive/95 text-white"
-}
-export enum Message {
-     Correct = "Ճիշտ է",
-     Wrong = "Սխալ է"
-}
 
 // Constants
 export const GAME_TITLES: IGameTitles = {
