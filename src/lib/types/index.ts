@@ -35,6 +35,10 @@ export interface IGameTitles{
      christmas: Record<string,string>
 }
 export type GameMessageType = "" | "correct" | "wrong"
+export interface IGameMessage {
+     messages: string[],
+     className: string
+}
 
 // Card
 export type ICard<T extends CardType> = T extends "service" ? {
