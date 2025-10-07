@@ -1,5 +1,5 @@
-import { BG_IMAGE_MAP, WORDS_BY_DIFFICULTY } from "../constants/maps";
-import { BgImageVariant, GameDifficulty } from "../types";
+import { BG_IMAGE_MAP, GAME_TITLES, WORDS_BY_DIFFICULTY } from "../constants/maps";
+import { BgImageVariant, GameDifficulty, IGameTitles } from "../types";
 
 export function isChristmas(){
      const today = new Date();
@@ -31,3 +31,4 @@ export function getBackgroundImage(variant: BgImageVariant): {
           webp: `/backgrounds/${bgImage}.webp`
      }
 }
+export const getGameTitle = (category: keyof IGameTitles,key:string): string => GAME_TITLES[category]?.[key] || ""

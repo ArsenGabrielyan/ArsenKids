@@ -13,6 +13,7 @@ import { IInteractiveMathState } from "@/lib/types/states";
 import { INITIAL_MATH_STATE } from "@/lib/constants/states";
 import { InteractiveMathType } from "@/schemas/types";
 import { AUDIO } from "@/lib/constants/maps";
+import { RotateCcw, Share2 } from "lucide-react";
 
 export default function InteractiveMathGame(){
      const [gameState, setGameState] = useState<IInteractiveMathState>(INITIAL_MATH_STATE);
@@ -71,21 +72,27 @@ export default function InteractiveMathGame(){
      return (
           <div className="flex justify-center items-center flex-col min-h-screen relative bg-linear-to-tl from-rainbow-blue to-rainbow-purple p-2.5">
                <GameWrapper title="Հրաշագործ Մաթեմատիկա">
-                    {isStarted ? <>
-                    <InteractiveMathForm
-                         num1={num1}
-                         num2={num2}
-                         operator={operator}
-                         solution={solution}
-                         index={elemIdx}
-                         onSubmit={checkAnswer}
-                         inputRef={inputRef}
-                    />
-                    <div className="flex items-center justify-center gap-2 flex-wrap">
-                         <Button type="button" className="flex-1" variant="tertiary" onClick={startGame}>Վերսկսել</Button>
-                    </div>
-                    </> : <Button onClick={startGame}>Սկսել</Button>}
-                    <Button variant="tertiary" shareUrl={absoluteURL("/games/amazing-math")}>Կիսվել</Button>
+                    {isStarted ? (
+                         <>
+                              <InteractiveMathForm
+                                   num1={num1}
+                                   num2={num2}
+                                   operator={operator}
+                                   solution={solution}
+                                   index={elemIdx}
+                                   onSubmit={checkAnswer}
+                                   inputRef={inputRef}
+                              />
+                              <div className="flex items-center justify-center gap-2 flex-wrap w-full">
+                                   <Button type="button" className="flex-1" variant="outline" onClick={startGame} title="Վերսկսել">
+                                        <RotateCcw className="size-6"/>
+                                   </Button>
+                                   <Button type="button" className="flex-1" variant="outline" shareUrl={absoluteURL("/games/amazing-math")} title="Կիսվել">
+                                        <Share2 className="size-6"/>
+                                   </Button>
+                              </div>
+                         </>
+                    ) : <Button onClick={startGame}>Սկսել</Button>}
                </GameWrapper>
                <MessageBox type={msgType} />
           </div>

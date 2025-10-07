@@ -39,6 +39,14 @@ export interface IGameMessage {
      messages: string[],
      className: string
 }
+export interface IPuzzleType{
+     txt: string,
+     img: string
+}
+export interface IGameParamLink{
+     name: string,
+     title: string
+}
 
 // Card
 export type ICard<T extends CardType> = T extends "service" ? {
@@ -76,4 +84,36 @@ export interface ITicTacToeDifficulty{
 export interface IMinimaxReturnType{
      index: number,
      score: number
+}
+
+// Memory Game Types
+export interface IMemoryGameCards{
+     birds: IMemoryGameCard[]
+     domesticAnimals: IMemoryGameCard[]
+     wildAnimals: IMemoryGameCard[]
+     fruit: IMemoryGameCard[]
+     vegetables: IMemoryGameCard[]
+     colors: IMemoryGameCard[]
+     transportation: IMemoryGameCard[]
+     insects: IMemoryGameCard[]
+     forestAnimals: IMemoryGameCard[]
+     solarSystem: IMemoryGameCard[]
+     christmas: IMemoryGameCard[]
+}
+export type MemoryCardParams = keyof IMemoryGameCards
+export interface IMemoryGameCard{
+     img: string,
+     matched: false
+}
+export interface IMemoryCard extends IMemoryGameCard{
+     id: number
+}
+export interface IChoiceState {
+     first: IMemoryCard | null,
+     second: IMemoryCard | null
+}
+export interface IMemoryGameDetails{
+     type: MemoryCardParams;
+     theme: string;
+     btn: string;
 }

@@ -10,6 +10,6 @@ interface LogoProps{
 export default function Logo({width, height, src}: LogoProps){
      const [hovered, setHovered] = useState(false);
      return (
-          <Image src={hovered ? "/arsenkids-colorful.svg" : src} alt="logo" width={width} height={height} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}/>
+          <Image className="hover:cursor-pointer" src={hovered ? "/arsenkids-colorful.svg" : src} alt="logo" width={width} height={height} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}/>
      )
 }

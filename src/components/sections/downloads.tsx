@@ -36,10 +36,13 @@ export default function DownloadsSection(){
                               onChange={e=>setSearch(e.target.value)}
                               className="w-full max-w-lg"
                               placeholder="Որոնում․․․"
+                              aria-label="search"
                          />
-                         <Button variant="ghost" size="icon" onClick={()=>setSearch("")}>
-                              <X className="size-6"/>
-                         </Button>
+                         {search!=="" && (
+                              <Button variant="ghost" size="icon" onClick={()=>setSearch("")}>
+                                   <X className="size-6"/>
+                              </Button>
+                         )}
                     </div>
                     <ul className="flex justify-center flex-wrap gap-2">
                          {Object.entries(filters).map(([key, value])=>(

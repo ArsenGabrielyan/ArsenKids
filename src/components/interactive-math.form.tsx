@@ -111,7 +111,7 @@ export default function InteractiveMathForm({index, num1, num2, operator, soluti
                               )
                          }}
                     />
-                    <Button type="submit" variant="tertiary">Ստուգել</Button>
+                    <Button className="w-full" type="submit" variant="tertiary">Ստուգել</Button>
                </form>
           </Form>
      )
