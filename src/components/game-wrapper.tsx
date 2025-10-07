@@ -16,7 +16,7 @@ export default function GameWrapper({children,title,className}: GameWrapperProps
                     <Logo src="/arsenkids-black.svg" width={250} height={60}/>
                </Link>
                {!!title && (
-                    <h1 className="text-[21px] font-semibold">{title}</h1>
+                    <h1 className="text-lg md:text-[21px] font-semibold text-center">{title}</h1>
                )}
                {children}
           </div>

@@ -139,13 +139,13 @@ export default function GuessNumber(){
                                              <div className="flex justify-center items-center gap-2 flex-wrap w-full">
                                                   <Button className="flex-1" variant="outline" title="Վերսկսել" type="button" onClick={()=>startGame(gameState.difficulty)}><RotateCcw className="size-6"/></Button>
                                                   <Button className="flex-1" variant="outline" title="Վերադառնալ մենյու" type="button" onClick={goBackToMenu}><Menu className="size-6"/></Button>
+                                                  <Button className="flex-1" variant="outline" title="Կիսվել" type="button" shareUrl={absoluteURL("/games/guess-number")}><Share2/></Button>
                                              </div>
                                         </div>
                                    </form>
                               </Form>
                          </> : <span className="tracking-[1.5px] text-6xl text-blue-500 mt-3">{num}</span>}
                     </>}
-                    <Button variant="tertiary" shareUrl={absoluteURL("/games/guess-number")}><Share2/> Կիսվել</Button>
                </GameWrapper>
                <MessageBox type={msgType}/>
           </div>

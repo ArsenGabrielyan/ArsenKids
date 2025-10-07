@@ -1,4 +1,4 @@
-import { GameMessageType, IGameDifficulty, IGameMessage, OperatorType } from "../types";
+import { AmazingMathOperator, GameMessageType, IGameDifficulty, IGameMessage, OperatorType } from "../types";
 
 export const DIFFICULTIES: IGameDifficulty[] = [
      {id: 1, name: "easy", title: "Հեշտ"},
@@ -9,6 +9,7 @@ export const DIFFICULTIES: IGameDifficulty[] = [
 export const BASE_ARR: string[] = new Array(9).fill("");
 export const SUCCESS_WORDS = ["Ապրե՛ս", "Կեցցե՛ս", "Սու՛պեր", "Բրա՛վո", "Ընտիր է", "Գերազանց", "Կատարյալ է","Հիանալի է","Տպավորիչ է", "Շատ լավ է", "Ֆանտաստիկ է", "Դու հրաշալի ես"];
 export const MATH_LINKS: OperatorType[] = ["Գումարում", "Հանում", "Բազմապատկում", "Բաժանում" ];
+export const MATH_OPERATORS: AmazingMathOperator[] = ["+","-","*"];
 export const TILE_COUNT = 9, GRID_SIZE = 3, BOARD_SIZE = 320;
 export const BUBBLE_CREATION_INTERVAL = 1200;
 export const GAME_MESSAGES: Record<Exclude<GameMessageType,"">,IGameMessage> = {

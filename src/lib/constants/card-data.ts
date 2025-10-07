@@ -176,10 +176,10 @@ export const GAMES_LIST: ICard<"game">[] = [
           type: "puzzle"
      },
      {
-          imageName: "amazing-math.webp",
-          gameName: "amazing-math",
+          imageName: "interactive-math.webp",
+          gameName: "interactive-math",
           title: "Հրաշագործ Մաթեմատիկա",
-          link: "/amazing-math",
+          link: "/interactive-math",
           type: "math"
      },
      {

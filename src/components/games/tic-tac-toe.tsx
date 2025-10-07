@@ -105,7 +105,7 @@ export default function GameXO(){
                                              )}
                                         </div>
                                         <div className="flex flex-wrap justify-center items-center gap-2">
-                                             <Button variant="primary" className="flex-1" title="Կիսվել" shareUrl={absoluteURL("/tic-tac-toe")} size="icon"><Share2/></Button>
+                                             <Button variant="primary" className="flex-1" title="Կիսվել" shareUrl={absoluteURL("/games/tic-tac-toe")} size="icon"><Share2/></Button>
                                              <Button variant="primary" className="flex-1" title="Վերադառնալ մենյու" onClick={goBackToMenu} size="icon"><Menu/></Button>
                                         </div>
                                    </>

@@ -189,7 +189,7 @@ export default function GuessWordGame(){
                                         )}
                                    </div>
                                    <Button
-                                        shareUrl={absoluteURL("/guess-word")}
+                                        shareUrl={absoluteURL("/games/guess-word")}
                                         title="Կիսվել"
                                         variant="tertiary"
                                         size="iconMd"

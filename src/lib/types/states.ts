@@ -1,4 +1,4 @@
-import { GameDifficulty, GameMessageType, TicTacToeDifficulty, TicTacToeMode, TicTacToeState } from ".";
+import { AmazingMathOperator, GameDifficulty, GameMessageType, TicTacToeDifficulty, TicTacToeMode, TicTacToeState } from ".";
 
 export interface IGuessWordState{
      correct: string;
@@ -31,4 +31,13 @@ export interface ITicTacToeState{
      mode: TicTacToeMode,
      pattern: number[],
      difficulty: TicTacToeDifficulty
+}
+export interface IInteractiveMathState{
+     num1: number,
+     num2: number,
+     operator: AmazingMathOperator | "",
+     solution: number,
+     elemIdx: number,
+     answer: string,
+     operatorQuestion: boolean
 }

@@ -3,9 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CardType } from "@/lib/types";
-import { Download } from "lucide-react";
+import { Download, Share2 } from "lucide-react";
 import { IMAGE_SIZES } from "@/lib/constants/card-data";
-import { cn } from "@/lib/utils";
+import { absoluteURL, cn } from "@/lib/utils";
 
 interface CardProps {
      title: string;
@@ -43,11 +43,20 @@ export default function Card({
                     </h3>
                     {description && <p>{description}</p>}
                </div>
-               <div className="pb-2 w-full">
+               <div className={cn("pb-2 w-full",variant==="game" && "flex items-center justify-center gap-2 flex-wrap")}>
                     {variant==="download" ? (
                          <Button variant="primary" asChild className="text-base w-full">
                               <Link href={buttonLink} download={imageAlt}><Download/> {buttonText}</Link>
                          </Button>
+                    ) : variant==="game" ? (
+                         <>
+                         <Button variant="primary" asChild className="text-base flex-1">
+                              <Link href={buttonLink}>{buttonText}</Link>
+                         </Button>
+                         <Button variant="primary" title={`Կիսվել «${title}» խաղը`} size="icon" shareUrl={absoluteURL(buttonLink)}>
+                              <Share2/>
+                         </Button>
+                         </>
                     ) : (
                          <Button variant="primary" asChild className="text-base w-full">
                               <Link href={buttonLink}>{buttonText}</Link>

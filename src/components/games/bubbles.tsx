@@ -67,7 +67,7 @@ export default function BubblesGame(){
                          <Button variant="tertiary" className="flex-1" asChild>
                               <Link href="/games">Վերադառնալ</Link>
                          </Button>
-                         <Button variant="tertiary" className="flex-1" shareUrl={absoluteURL("/bubbles")} size="iconMd"><Share2/></Button>
+                         <Button variant="tertiary" className="flex-1" shareUrl={absoluteURL("/games/bubbles")} size="iconMd"><Share2/></Button>
                     </div>
                </div>}
           </div>

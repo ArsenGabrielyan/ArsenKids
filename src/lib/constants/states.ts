@@ -1,5 +1,5 @@
 import { TicTacToeState } from "../types"
-import { IGuessNumberState, IGuessWordState, IMemoryGameState, ITicTacToeState } from "../types/states"
+import { IGuessNumberState, IGuessWordState, IInteractiveMathState, IMemoryGameState, ITicTacToeState } from "../types/states"
 
 export const INITIAL_GUESS_WORD_STATE: IGuessWordState = {
      correct:"",
@@ -22,6 +22,15 @@ export const INITIAL_GUESS_NUMBER_STATE: IGuessNumberState = {
      timeLeft: null,
      timerCount: 6
 }
+export const INITIAL_MATH_STATE: IInteractiveMathState = {
+     num1: 0,
+     num2: 0,
+     operator: "",
+     solution: 0,
+     elemIdx: 0,
+     answer: "",
+     operatorQuestion: false
+} 
 export const INITIAL_PAIRS_STATE: IMemoryGameState = {
      turns: 0,
      score: 0,
