@@ -25,7 +25,7 @@ export const CHRISTMAS_PUZZLE_LINKS: IGameParamLink[] = [
      {title: "Ձնեմարդ", name: "snowman"},
      {title: "Գուլպա", name: "stocking"},
 ];
-export const pairsLinks: IGameParamLink[] = [
+export const PAIRS_LINKS: IGameParamLink[] = [
      {title: "Թռչուններ", name: "birds"},
      {title: "Ընտանի կենդանիներ", name: "domesticAnimals"},
      {title: "Վայրի կենդանիներ", name: "wildAnimals"},

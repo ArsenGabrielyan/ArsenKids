@@ -41,4 +41,8 @@ export const INITIAL_TIC_TAC_TOE_STATE: ITicTacToeState = {
 export const INITIAL_PAIRS_STATE: IMemoryGameState = {
      turns: 0,
      score: 0,
+     firstChoice: null,
+     secondChoice: null,
+     disabled: false,
+     isStarted: false
 }

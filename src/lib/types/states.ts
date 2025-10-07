@@ -1,4 +1,4 @@
-import { AmazingMathOperator, GameDifficulty, GameMessageType, TicTacToeDifficulty, TicTacToeMode, TicTacToeState } from ".";
+import { AmazingMathOperator, GameDifficulty, GameMessageType, IMemoryCard, TicTacToeDifficulty, TicTacToeMode, TicTacToeState } from ".";
 
 export interface IGuessWordState{
      correct: string;
@@ -24,6 +24,10 @@ export interface IGuessNumberState{
 export interface IMemoryGameState{
      turns: number,
      score: number,
+     firstChoice: IMemoryCard | null,
+     secondChoice: IMemoryCard | null,
+     disabled: boolean,
+     isStarted: boolean
 }
 export interface ITicTacToeState{
      winner: string,

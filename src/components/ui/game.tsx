@@ -1,5 +1,7 @@
 import { GRID_SIZE, TILE_COUNT } from "@/lib/constants/games";
+import { BACK_FACE_IMAGES } from "@/lib/constants/pairs.game";
 import { getMatrixPosition, getVisualPosition } from "@/lib/helpers/puzzle.game";
+import { IMemoryCard } from "@/lib/types";
 import { absoluteCDN, cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -82,4 +84,22 @@ export function PuzzleTile({index,tile,size,tileClick,checkIsSolved,imgSrc,board
                )}
           </li>
      )
+}
+
+interface MemoryCardProps{
+     card: IMemoryCard,
+     choice: (card: IMemoryCard) => void
+     flipped: boolean,
+     disabled: boolean,
+     isChristmas?: boolean
+}
+export function MemoryCard({card,choice,flipped,disabled,isChristmas=false}: MemoryCardProps){
+     const backfaceSrc = isChristmas ? BACK_FACE_IMAGES.christmas : BACK_FACE_IMAGES.default;
+     const handleClick = () => {
+          if(!disabled) choice(card)
+     }
+     return <div className={cn("w-[calc(32%_-_10px)] sm:w-[calc(25%_-_10px)] md:w-[calc(16.5%_-_10px)] aspect-square relative scale-[1] transform-3d transition-[transform] cursor-pointer shadow-md shadow-blue-900/35 active:scale[0.97]",flipped && "rotate-y-180")} key={card.id}>
+          <Image width={110} height={110} className="w-full h-full p-3 absolute bg-rainbow-blue backface-hidden rotate-y-180" src={card.img} alt="Front" priority/>
+          <Image width={110} height={110} className="w-full h-full p-3 absolute bg-rainbow-blue backface-hidden" src={backfaceSrc} alt="Back" onClick={handleClick} priority/>
+     </div>
 }

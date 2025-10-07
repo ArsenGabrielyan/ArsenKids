@@ -108,12 +108,3 @@ export interface IMemoryGameCard{
 export interface IMemoryCard extends IMemoryGameCard{
      id: number
 }
-export interface IChoiceState {
-     first: IMemoryCard | null,
-     second: IMemoryCard | null
-}
-export interface IMemoryGameDetails{
-     type: MemoryCardParams;
-     theme: string;
-     btn: string;
-}
