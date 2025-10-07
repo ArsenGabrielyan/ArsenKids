@@ -90,7 +90,7 @@ export default function GuessWordGame(){
      const {isPlay,difficulty,correct,hintCount,showHint,msgType,scrambled} = gameState
      return (
           <>
-          <div className="flex justify-center items-center flex-col min-h-screen bg-rainbow-yellow p-2.5">
+          <div className="flex justify-center items-center flex-col min-h-screen bg-rainbow-yellow p-4 md:p-5">
                <GameWrapper title="Գուշակիր բառը">
                     {isPlay && (
                          difficulty!=="" ? (

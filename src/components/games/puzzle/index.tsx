@@ -18,9 +18,9 @@ export default function PuzzleGame({title, shape}: PuzzleGameProps){
           img: shape
      })
      return (
-          <section className="flex justify-center items-center flex-col min-h-screen bg-rainbow-blue gap-4">
+          <section className="flex justify-center items-center flex-col min-h-screen bg-rainbow-blue gap-4 p-4 md:p-5">
                <GameWrapper title="Փազլ «Պատկերներ»">
-                    <h2 className="text-lg md:text-xl font-semibold text-blue-800">{title}</h2>
+                    <h2 className="text-lg md:text-xl font-semibold text-blue-800 text-center">{title}</h2>
                     {isSolvedPuzzle && opt.isStarted ? (
                          <h2 className="text-emerald-700 text-[27px] font-semibold">{rand}</h2>
                     ) : (

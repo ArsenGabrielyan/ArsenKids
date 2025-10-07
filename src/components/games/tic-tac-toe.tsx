@@ -88,7 +88,7 @@ export default function GameXO(){
      const {state,pattern,winner,mode,difficulty} = gameState
      const stateTxt = state===TicTacToeState.Draw ? "Ոչ ոքի": winner==="X" ? "Իքսիկը հաղթեց" : "Նոլիկը հաղթեց"
      return (
-          <div className="w-full h-screen flex justify-center items-center relative flex-col bg-rainbow-blue z-20">
+          <div className="w-full h-screen flex justify-center items-center relative flex-col bg-rainbow-blue z-20 p-4 md:p-5">
                <GameWrapper className="mb-3">
                     <h1 className="text-[36.5px] relative drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] font-bold">
                          <span className="text-[#0da2b3]">Իքսիկ</span>{" "}

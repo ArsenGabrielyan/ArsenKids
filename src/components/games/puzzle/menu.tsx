@@ -13,7 +13,7 @@ export default function PuzzleGameMenu(){
      const [search,setSearch] = useState("");
      const allLinks = useMemo(()=>PUZZLE_LINKS.filter(val=>val.title.toLowerCase().includes(search.toLowerCase())),[search])
      return (
-          <section className="min-h-screen flex justify-start items-center flex-col p-4 relative bg-linear-to-tr from-rainbow-green to-rainbow-blue gap-2">
+          <section className="min-h-screen flex justify-start items-center flex-col p-4 md:p-5 relative bg-linear-to-tr from-rainbow-green to-rainbow-blue gap-2">
                <Link href="/games"  title="Վերադառնալ" aria-label="ArsenKids">
                     <Logo src="/arsenkids-black.svg" width={250} height={60}/>
                </Link>

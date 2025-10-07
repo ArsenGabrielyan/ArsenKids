@@ -16,20 +16,20 @@ export default function MemoryGame({type, title}: MemoryGameProps){
      const {shuffle,handleChoice,cards,gameState} = useMemoryGame(type)
      const {score,turns,isStarted,disabled,firstChoice,secondChoice} = gameState
      return (
-          <div className={cn("grid place-items-center relative bg-linear-to-tr from-rainbow-green to-rainbow-blue p-5 gap-2 min-h-screen",isStarted ? "grid-cols-1 md:grid-cols-[1fr_2fr]" : "grid-cols-1")}>
+          <div className={cn("grid place-items-center relative bg-linear-to-tr from-rainbow-green to-rainbow-blue p-4 md:p-5 gap-2 min-h-screen",isStarted ? "grid-cols-1 md:grid-cols-[1fr_2fr]" : "grid-cols-1")}>
                <GameWrapper title="Զույգեր" className="w-full max-w-lg">
-                    <h2 className="text-lg font-semibold text-blue-800">Թեմա՝ {title}</h2>
+                    <h2 className="text-lg font-semibold text-blue-800 text-center">Թեմա՝ {title}</h2>
                     {!isStarted ? (
                          <Button onClick={shuffle}>
                               Սկսել
                          </Button>
                     ) : (
                          <>
-                         <div className="flex justify-between items-center text-2xl w-full gap-2">
+                         <div className="flex flex-col md:flex-row justify-between items-center text-2xl w-full gap-2">
                               <span>Միավոր՝ {score}</span>
                               <span>Պտույտներ՝ {turns}</span>
                          </div>
-                         <span className="flex justify-between items-center w-full gap-2">
+                         <span className="flex flex-col md:flex-row justify-between items-center w-full gap-2">
                               <div className="flex items-center gap-2">
                                    <Button title="Վերսկսել" variant="outline" size="iconMd" onClick={shuffle}>
                                         <RotateCcw className="size-6"/>

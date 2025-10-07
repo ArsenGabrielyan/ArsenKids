@@ -58,7 +58,7 @@ export default function BubblesGame(){
           setIsStarted(true)
      }
      return (
-          <div className="flex justify-center items-center flex-col min-h-screen bg-linear-to-tr from-blue-600 to-rainbow-blue overflow-hidden relative" ref={bubblesRef}>
+          <div className="flex justify-center items-center flex-col min-h-screen bg-linear-to-tr from-blue-600 to-rainbow-blue overflow-hidden relative p-4 md:p-5" ref={bubblesRef}>
                {!isStarted ? <GameWrapper title="Պղպջակներ">
                     <Button variant="tertiary" onClick={startGame}>Սկսել</Button>
                </GameWrapper> : <div className="fixed bottom-0 left-0 text-2xl p-3.5 z-20 w-full bg-card/90 text-card-foreground text-center flex justify-center items-center flex-col gap-2.5 font-heading">

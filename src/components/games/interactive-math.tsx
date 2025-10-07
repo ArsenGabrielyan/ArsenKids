@@ -70,7 +70,7 @@ export default function InteractiveMathGame(){
      },[gameState.num1, gameState.num2, isStarted])
      const {num1,num2,operator,solution, elemIdx} = gameState
      return (
-          <div className="flex justify-center items-center flex-col min-h-screen relative bg-linear-to-tl from-rainbow-blue to-rainbow-purple p-2.5">
+          <div className="flex justify-center items-center flex-col min-h-screen relative bg-linear-to-tl from-rainbow-blue to-rainbow-purple p-4 md:p-5">
                <GameWrapper title="Հրաշագործ Մաթեմատիկա">
                     {isStarted ? (
                          <>

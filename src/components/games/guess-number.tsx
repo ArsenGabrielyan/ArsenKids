@@ -85,7 +85,7 @@ export default function GuessNumber(){
      const numInput = form.watch("guess")
      const {isStarted,difficulty,showNum,showSquare,timeLeft,timerCount,num,msgType} = gameState
      return (
-          <div className="min-h-screen flex justify-center items-center bg-linear-to-tr from-rainbow-red via-rainbow-orange to-rainbow-yellow text-center">
+          <div className="min-h-screen flex justify-center items-center bg-linear-to-tr from-rainbow-red via-rainbow-orange to-rainbow-yellow text-center p-4 md:p-5">
                <GameWrapper title="Հիշիր թվանշանները">
                     {!isStarted ? <Button onClick={()=>updateState({isStarted:true})}>Սկսել</Button> : difficulty==="" ? <>
                          <p>Ընտրել բարդությունը</p>
