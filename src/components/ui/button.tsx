@@ -69,7 +69,7 @@ function Button({
       }
     } catch(error){
       console.error("Sharing Failed:",error);
-      toast.error("Չհաջողվեց կիսվել։ Խնդրում ենք կրկին փորձել ավելի ուշ։")
+      toast.error("Չհաջողվեց կիսվել։ Խնդրում ենք փորձել ավելի ուշ։")
     }
   }
   return (

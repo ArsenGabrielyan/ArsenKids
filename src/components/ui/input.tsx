@@ -9,7 +9,7 @@ const inputVariants = cva(
                variant: {
                     default: "h-9 border-input bg-transparent focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] w-full min-w-0 md:text-sm",
                     guesser: "h-9 border-2 border-rainbow-blue bg-transparent focus-visible:border-blue-500 focus-visible:ring-blue-500/50 focus-visible:ring-[3px] w-full min-w-0 md:text-sm",
-                    interactiveMath: "text-[23px] sm:text-[30px] lg:text-[40px] !w-[4em] md:!w-[4.2em] text-center border-0 border-b-2 rounded-none focus-visible:border-b-rainbow-green"
+                    interactiveMath: "text-[23px] sm:text-[30px] lg:text-[40px] !w-[4.15em] text-center border-0 border-b-2 rounded-none focus-visible:border-b-rainbow-green"
                }
           },
           defaultVariants: {

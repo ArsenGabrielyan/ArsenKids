@@ -15,6 +15,7 @@ import {
 
 import { cn } from "@/lib/utils"
 import { Label } from "@/components/shadcn-ui/label"
+import { toast } from "sonner"
 
 const Form = FormProvider
 
@@ -135,13 +136,22 @@ function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
   )
 }
 
-function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
+function FormMessage({ className, toastMessage, ...props }: React.ComponentProps<"p"> & {
+  toastMessage?: boolean
+}) {
   const { error, formMessageId } = useFormField()
   const body = error ? String(error?.message ?? "") : props.children
 
-  if (!body) {
-    return null
-  }
+  const lastMessageRef = React.useRef("");
+
+  React.useEffect(() => {
+    if (toastMessage && typeof body === "string" && body && lastMessageRef.current !== body) {
+      toast.error(body);
+      lastMessageRef.current = body;
+    }
+  }, [body, toastMessage]);
+
+  if (!body || toastMessage) return null;
 
   return (
     <p
