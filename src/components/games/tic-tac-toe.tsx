@@ -95,7 +95,7 @@ export default function GameXO(){
                          <span className="text-[#FF5645]">Նոլիկ</span>
                     </h1>
                     {isStarted && (
-                         <div className="flex justify-between items-center gap-4 text-center">
+                         <div className="flex justify-between items-center gap-4 text-center w-full">
                               {(mode==="2-players" || difficulty!=="") ? (
                                    <>
                                         <div className="space-y-0.5">
@@ -105,8 +105,12 @@ export default function GameXO(){
                                              )}
                                         </div>
                                         <div className="flex flex-wrap justify-center items-center gap-2">
-                                             <Button variant="primary" className="flex-1" title="Կիսվել" shareUrl={absoluteURL("/games/tic-tac-toe")} size="icon"><Share2/></Button>
-                                             <Button variant="primary" className="flex-1" title="Վերադառնալ մենյու" onClick={goBackToMenu} size="icon"><Menu/></Button>
+                                             <Button variant="outline" className="flex-1" title="Կիսվել" shareUrl={absoluteURL("/games/tic-tac-toe")} size="iconMd">
+                                                  <Share2 className="size-6"/>
+                                             </Button>
+                                             <Button variant="outline" className="flex-1" title="Վերադառնալ մենյու" onClick={goBackToMenu} size="iconMd">
+                                                  <Menu className="size-6"/>
+                                             </Button>
                                         </div>
                                    </>
                               ) : (
@@ -136,14 +140,14 @@ export default function GameXO(){
                               </div>
                               {state!==TicTacToeState.Ongoing && (
                                    <div className="absolute top-0 left-0 w-full h-screen flex justify-center items-center flex-col bg-linear-to-tl from-rainbow-blue/80 to-rainbow-green/80">
-                                        <div className="p-2.5 rounded-md shadow border bg-card text-card-foreground max-w-sm space-y-2">
-                                             <h2 className={cn("text-[40px] drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] font-bold relative text-center",state===TicTacToeState.Draw ? "text-black": winner==="X" ? "text-[#00A8BB]" : "text-[#FF5645]")}>{stateTxt}</h2>
+                                        <div className="p-2.5 max-w-sm space-y-2">
+                                             <h2 className={cn("py-2 rounded-md shadow-md px-4 text-[40px] text-black font-bold relative text-center",state===TicTacToeState.Draw ? "bg-white": winner==="X" ? "bg-[#1dc5d8]" : "bg-[#ff6759]")}>{stateTxt}</h2>
                                              <div className="flex flex-col gap-2">
                                                   <div className="flex justify-center items-center flex-wrap gap-2">
-                                                       <Button className="flex-1" variant="tertiary" onClick={restart} title="Վերսկսել"><RotateCcw className="size-6"/></Button>
-                                                       <Button className="flex-1" variant="tertiary" onClick={goBackToMenu} title="Վերադառնալ մենյու"><Menu className="size-6"/></Button>
+                                                       <Button className="flex-1 shadow-md" variant="primary" onClick={restart} title="Վերսկսել"><RotateCcw className="size-6"/></Button>
+                                                       <Button className="flex-1 shadow-md" variant="primary" onClick={goBackToMenu} title="Վերադառնալ մենյու"><Menu className="size-6"/></Button>
                                                   </div>
-                                                  <Button variant="tertiary" asChild>
+                                                  <Button variant="primary" className="shadow-md" asChild>
                                                        <Link href="/games">Վերադառնալ</Link>
                                                   </Button>
                                              </div>
