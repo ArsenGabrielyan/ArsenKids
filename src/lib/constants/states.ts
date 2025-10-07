@@ -31,14 +31,14 @@ export const INITIAL_MATH_STATE: IInteractiveMathState = {
      answer: "",
      operatorQuestion: false
 } 
-export const INITIAL_PAIRS_STATE: IMemoryGameState = {
-     turns: 0,
-     score: 0,
-}
 export const INITIAL_TIC_TAC_TOE_STATE: ITicTacToeState = {
      winner: "",
      state: TicTacToeState.Ongoing,
      mode: "",
      pattern: [],
      difficulty: ""
+}
+export const INITIAL_PAIRS_STATE: IMemoryGameState = {
+     turns: 0,
+     score: 0,
 }

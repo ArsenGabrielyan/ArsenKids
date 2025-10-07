@@ -1,11 +1,11 @@
 "use client"
 import { AmazingMathOperator } from "@/lib/types";
 import { Input } from "./ui/input";
-import { useForm, UseFormReturn } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { InteractiveMathType } from "@/schemas/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { InteractiveMathSchema } from "@/schemas";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./shadcn-ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "./shadcn-ui/form";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
 
@@ -58,8 +58,6 @@ interface InteractiveMathFormProps{
      inputRef?: React.Ref<HTMLInputElement>
 }
 export default function InteractiveMathForm({index, num1, num2, operator, solution, onSubmit, inputRef}: InteractiveMathFormProps){
-     if(operator==="") return null;
-     const FormElement = elements[index] ?? defaultElem
      const form = useForm<InteractiveMathType>({
           resolver: zodResolver(InteractiveMathSchema),
           defaultValues: {
@@ -78,6 +76,8 @@ export default function InteractiveMathForm({index, num1, num2, operator, soluti
           onSubmit(fields);
           form.reset();
      }
+     if(operator==="") return null;
+     const FormElement = elements[index] ?? defaultElem
      return (
           <Form {...form}>
                <form onSubmit={form.handleSubmit(handleSubmit)} className="flex flex-col items-center gap-2">
