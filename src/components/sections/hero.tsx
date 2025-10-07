@@ -17,14 +17,12 @@ export default function HeroSection({
      link = "/#about",
      linkText = "Իմանալ Ավելին"
 }: HeroSectionProps){
-     const bg = getBackgroundImage("banner")
+     const bgStyle = getBackgroundImage("banner")
      return (
-          <SiteSection className="flex justify-center items-center relative min-h-screen bg-cover bg-fixed" style={{
-               backgroundImage: `url(${bg.webp}), url(${bg.jpg})`
-          }} id="banner">
-               <div className={cn("max-w-7xl text-center space-y-1", isChristmas() ? "text-white" : "text-black")}>
-                    <h1 className="text-5xl md:text-6xl lg:text-8xl font-semibold">{title}</h1>
-                    {!!description && <p className="text-xl lg:text-2xl">{description}</p>}
+          <SiteSection className="flex justify-center items-center relative min-h-screen" style={bgStyle} id="banner">
+               <div className="max-w-7xl text-center space-y-1">
+                    <h1 className={cn("text-5xl md:text-6xl lg:text-8xl font-semibold",isChristmas() ? "text-white" : "text-black")}>{title}</h1>
+                    {!!description && <p className={cn("text-xl lg:text-2xl",isChristmas() ? "text-white" : "text-black")}>{description}</p>}
                     {(!!link || !!linkText) && (
                          <Button asChild className="mt-3">
                               <Link href={link}>{linkText}</Link>

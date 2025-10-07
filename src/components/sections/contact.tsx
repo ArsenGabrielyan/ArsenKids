@@ -22,7 +22,6 @@ import { sendMessage } from "@/actions/contact";
 import { Loader2 } from "lucide-react";
 
 export default function ContactSection(){
-     const bg = getBackgroundImage("contact")
      const [isPending, startTransition] = useTransition();
      const form = useForm<ContactType>({
           resolver: zodResolver(ContactSchema),
@@ -47,10 +46,9 @@ export default function ContactSection(){
                }
           })
      }
+     const bgStyle = getBackgroundImage("contact")
      return (
-          <SiteSection id="contact" className="bg-cover bg-fixed bg-center" style={{
-               backgroundImage: `url(${bg.webp}), url(${bg.jpg})`
-          }}>
+          <SiteSection id="contact" style={bgStyle}>
                <div className="relative w-full flex items-center justify-center flex-col">
                     <h2 className="text-blue-700 font-bold text-2xl sm:text-3xl lg:text-4xl pb-2 mb-4 border-b border-blue-700 w-fit text-center">Կապ մեզ հետ</h2>
                     <div className="self-start p-8 lg:p-10 bg-card text-card-foreground rounded-md shadow-sm border w-full max-w-lg">

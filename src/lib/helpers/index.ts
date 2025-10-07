@@ -21,14 +21,22 @@ export const getDifficultyLength = (diff: GameDifficulty) => {
      return diff === "easy" ? 2 : diff === "medium" ? 3 : diff === "hard" ? 4 : randomLength;
 }
 
-export function getBackgroundImage(variant: BgImageVariant): {
-     jpg: string,
-     webp: string
-}{
+export function getBackgroundImage(variant: BgImageVariant): React.CSSProperties{
      const bgImage = BG_IMAGE_MAP[variant]
+     const jpg = `/backgrounds/${bgImage}.jpg`;
+     const webp = `/backgrounds/${bgImage}.webp`;
      return {
-          jpg: `/backgrounds/${bgImage}.jpg`,
-          webp: `/backgrounds/${bgImage}.webp`
+          background: `url(${webp}), url(${jpg})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          ...(variant==="banner" ? {
+               backgroundAttachment: "fixed"
+          } : null),
+          ...(variant==="contact" ? {
+               backgroundPosition: "center"
+          } : isChristmas() ? {
+               backgroundPosition: "right"
+          } : null)
      }
 }
 export const getGameTitle = (category: keyof IGameTitles,key:string): string => GAME_TITLES[category]?.[key] || ""
