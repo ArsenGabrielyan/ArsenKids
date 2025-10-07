@@ -19,7 +19,7 @@ const kamar = localFont({
   preload: true
 })
 
-// TODO: Add OG, Twitter, and alternates (languages) metadata
+// TODO: Add OG, Twitter, and alternates (languages) metadata on here and on every page
 export const metadata: Metadata = {
   metadataBase: new URL(absoluteURL()),
   title: {
