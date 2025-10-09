@@ -45,3 +45,10 @@ export interface IInteractiveMathState{
      answer: string,
      operatorQuestion: boolean
 }
+export interface IPuzzleState{
+     isStarted: boolean,
+     showNum: boolean,
+     randomWinText: string,
+     tiles: number[],
+     boardSize: number
+}

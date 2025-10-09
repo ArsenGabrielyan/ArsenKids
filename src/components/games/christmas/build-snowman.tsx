@@ -8,7 +8,7 @@ import { snowmanSidebarItems } from "@/lib/constants/snowman.game";
 import { getBackgroundImage } from "@/lib/helpers";
 import { ISnowman, ISnowmanItem, SnowmanType } from "@/lib/types";
 import { absoluteURL, cn } from "@/lib/utils";
-import { Download, MoreHorizontalIcon, Music, Pause, Play, Share2 } from "lucide-react";
+import { Download, MoreHorizontalIcon, Pause, Play, Share2 } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
@@ -22,15 +22,17 @@ export default function GameBuildSnowman(){
      const [isChangingMusic, setIsChangingMusic] = useState(false);
      const [isPending, startTransition] = useTransition();
      const [snowMan, setSnowman] = useState<ISnowman>({eye: 0,nose: 0,mouth: 0,hat: 0,hand: 0,button: 0})
+     const updateSnowman = (overrides: Partial<ISnowman>) =>
+          setSnowman(prev=>({...prev,...overrides}))
      const {togglePlayPause,isMusicOn,setMusic: changeMusic} = useAudio(isStarted);
      const snowmanRef = useRef<HTMLDivElement>(null)
      const handleNextItem = (arr: ISnowmanItem[], type: SnowmanType) => {
           const index = snowMan[type];
-          setSnowman({...snowMan,[type]: (index+1)%arr.length})
+          updateSnowman({ [type]: (index+1) % arr.length })
      }
      const handlePrevItem = (arr: ISnowmanItem[], type: SnowmanType) => {
           const index = snowMan[type];
-          setSnowman({...snowMan,[type]: (index-1+arr.length) % arr.length})
+          updateSnowman({[type]: (index-1+arr.length) % arr.length})
      }
      const handleDownload = () => {
           startTransition(async()=>{

@@ -47,16 +47,19 @@ export default function BubblesGame(){
           bubblesRef.current?.append(bubble)
           animateBubble(bubble);
      },[animateBubble,createBubbleElement,popBubble])
+     const startGame = () => {
+          setBubblesPopped(0);
+          setIsStarted(true)
+     }
      useEffect(()=>{
           if(isStarted){
                const interval = setInterval(createBubble,BUBBLE_CREATION_INTERVAL);
                return () => clearInterval(interval);
           }
      },[isStarted,createBubble])
-     const startGame = () => {
-          setBubblesPopped(0);
-          setIsStarted(true)
-     }
+     useEffect(()=>{
+          Object.values(AUDIO).forEach(src => new Audio(src).load());
+     },[])
      return (
           <div className="flex justify-center items-center flex-col min-h-screen bg-linear-to-tr from-blue-600 to-rainbow-blue overflow-hidden relative p-4 md:p-5" ref={bubblesRef}>
                {!isStarted ? <GameWrapper title="Պղպջակներ">

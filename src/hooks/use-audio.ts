@@ -12,6 +12,7 @@ export default function useAudio(isStarted: boolean){
           if(audioRef.current){
                setCurrMusic(`${currMusic.artist} - ${currMusic.title}`)
                audioRef.current.src = absoluteCDN("music",`/${encodeURI(`${currMusic.title.toLowerCase()}.mp3`)}`);
+               audioRef.current.load();
                audioRef.current.play();
                setIsMusicOn(true);
           }

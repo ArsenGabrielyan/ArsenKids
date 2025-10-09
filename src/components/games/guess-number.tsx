@@ -17,7 +17,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "../shadcn-u
 import GameWrapper from "../game-wrapper";
 import { Input } from "../ui/input";
 import { Menu, RotateCcw, Share2 } from "lucide-react";
-import { getDifficultyLength, generateRandomNumber } from "@/lib/helpers";
+import { generateRandomNumber, getDifficultyLength } from "@/lib/helpers/guesser.game";
 
 export default function GuessNumber(){
      const [gameState, setGameState] = useState<IGuessNumberState>(INITIAL_GUESS_NUMBER_STATE)
@@ -82,6 +82,9 @@ export default function GuessNumber(){
                return () => clearTimeout(timer);
           }
      },[gameState.difficulty, gameState.msgType, startGame]);
+     useEffect(()=>{
+          Object.values(AUDIO).forEach(src => new Audio(src).load());
+     },[])
      const numInput = form.watch("guess")
      const {isStarted,difficulty,showNum,showSquare,timeLeft,timerCount,num,msgType} = gameState
      return (

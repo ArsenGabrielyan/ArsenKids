@@ -15,9 +15,6 @@ export default function MathGame(){
      const [mode,setMode] = useState<OperatorType>("Գումարում");
      const [state,setState] = useState({q1:0,q2:0,answers:[0,0,0]});
      const [msgType, setMsgType] = useState<GameMessageType>("");
-     useEffect(()=>{
-          setState(generateEquation("Գումարում"))
-     },[])
      const handleChangeMode = (newMode: OperatorType) => {
           setMode(newMode);
           setState(generateEquation(newMode));
@@ -35,6 +32,7 @@ export default function MathGame(){
      }
      useEffect(()=>{
           setState(generateEquation("Գումարում"))
+          Object.values(AUDIO).forEach(src => new Audio(src).load());
      },[])
      const {q1,q2,answers} = state;
      const operator = OPERATORS[mode];

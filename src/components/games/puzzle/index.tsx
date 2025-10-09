@@ -3,11 +3,17 @@ import GameWrapper from "@/components/game-wrapper"
 import { Switch } from "@/components/ui/switch"
 import { Button } from "@/components/ui/button"
 import { PuzzleTile } from "@/components/ui/game"
-import usePuzzle from "@/hooks/use-puzzle"
 import { absoluteCDN, absoluteURL } from "@/lib/utils"
 import Link from "next/link"
 import { RotateCcw, Share2 } from "lucide-react"
 import { getBackgroundImage } from "@/lib/helpers"
+import { useIsMobile } from "@/hooks/use-mobile"
+import { GRID_SIZE, SUCCESS_WORDS, BOARD_SIZE } from "@/lib/constants/games"
+import { AUDIO } from "@/lib/constants/maps"
+import { INITIAL_PUZZLE_STATE } from "@/lib/constants/states"
+import { isSolved, shuffle, canSwap, swap } from "@/lib/helpers/puzzle.game"
+import { IPuzzleState } from "@/lib/types/states"
+import { useState, useEffect } from "react"
 
 interface PuzzleGameProps{
      title: string,
@@ -15,10 +21,42 @@ interface PuzzleGameProps{
      christmas?: boolean
 }
 export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
-     const {isSolvedPuzzle,opt,handleCheckChange,boardSize,tiles,pieceSize,swapTiles,rand,handleStart,shuffleTiles} = usePuzzle({
-          txt: title,
-          img: shape
-     })
+     const isMobile = useIsMobile("mobile");
+     const [gameState, setGameState] = useState(INITIAL_PUZZLE_STATE);
+     const updateState = (overrides: Partial<IPuzzleState>) =>
+          setGameState(prev=>({...prev,...overrides}))
+     const pieceSize = Math.round(gameState.boardSize/GRID_SIZE);
+     const isSolvedPuzzle = isSolved(gameState.tiles);
+     const shuffleTiles = () => {
+          const prev = Object.assign({},gameState)
+          updateState({
+               tiles: shuffle(prev.tiles),
+               randomWinText: SUCCESS_WORDS[Math.floor(Math.random()*SUCCESS_WORDS.length)]
+          })
+     }
+     const swapTiles= (tileI: number) => {
+          if(canSwap(tileI,gameState.tiles.indexOf(gameState.tiles.length-1))){
+               const prev = Object.assign({},gameState)
+               updateState({
+                    tiles: swap(prev.tiles,tileI,prev.tiles.indexOf(prev.tiles.length-1))
+               })
+          }
+     }
+     const handleStart=()=>{
+          shuffleTiles();
+          updateState({isStarted:true})
+     };
+     const handleCheckChange = (checked: boolean) => updateState({showNum: checked})
+     useEffect(()=>{
+          const sparkle = new Audio(AUDIO.sparkle);
+          if(isSolvedPuzzle && gameState.isStarted) sparkle.play();
+     },[gameState.isStarted,isSolvedPuzzle])
+     useEffect(() => updateState({
+          boardSize: isMobile ? 250 : BOARD_SIZE
+     }),[shape, isMobile]);
+     useEffect(()=>{
+          Object.values(AUDIO).forEach(src => new Audio(src).load());
+     },[])
      const bgStyle = getBackgroundImage("christmas");
      const wrapper = (elem: React.JSX.Element) => christmas ? (
           <section style={bgStyle}>
@@ -32,16 +70,17 @@ export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
                {elem}
           </section>
      )
+     const {isStarted, showNum, randomWinText, boardSize, tiles} = gameState
      return wrapper(
           <>
                <GameWrapper title={`Փազլ «${christmas ? "Ամանոր" : "Պատկերներ"}»`}>
                     <h2 className="text-lg md:text-xl font-semibold text-blue-800 text-center">{title}</h2>
-                    {isSolvedPuzzle && opt.isStarted ? (
-                         <h2 className="text-emerald-700 text-[27px] font-semibold">{rand}</h2>
+                    {isSolvedPuzzle && isStarted ? (
+                         <h2 className="text-emerald-700 text-[27px] font-semibold">{randomWinText}</h2>
                     ) : (
                          <div className="flex items-center justify-center gap-3">
                               <Switch
-                                   checked={opt.showNum}
+                                   checked={showNum}
                                    onCheckedChange={handleCheckChange}
                                    isChristmas={christmas}
                               />
@@ -49,7 +88,7 @@ export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
                          </div>
                     )}
                     <div className="w-full flex justify-center items-center gap-2 flex-wrap">
-                         {!opt.isStarted || (isSolvedPuzzle && opt.isStarted) ? (
+                         {!isStarted || (isSolvedPuzzle && isStarted) ? (
                               <Button className="flex-1" variant="tertiary" onClick={handleStart}>Սկսել</Button>
                          ) : (
                               <Button className="flex-1" variant="tertiary" onClick={shuffleTiles}>
@@ -69,10 +108,10 @@ export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
                               tile={t}
                               size={pieceSize}
                               tileClick={()=>swapTiles(i)}
-                              checkIsSolved={isSolvedPuzzle && opt.isStarted}
+                              checkIsSolved={isSolvedPuzzle && isStarted}
                               imgSrc={absoluteCDN("images",`/puzzle-card-bg/${shape}.jpg`)}
                               boardSize={boardSize}
-                              opt={opt}
+                              opt={{isStarted, showNum}}
                          />
                     ))}
                </ul>

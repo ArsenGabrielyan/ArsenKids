@@ -6,7 +6,6 @@ import { GameDifficulty } from "@/lib/types";
 import { IGuessWordState } from "@/lib/types/states";
 import { useState, useEffect, useCallback } from "react";
 import { MessageBox } from "../ui/game-msg";
-import { getWords, makeScrambled } from "@/lib/helpers";
 import { Lightbulb, RotateCcw, Share2 } from "lucide-react";
 import { absoluteURL, cn } from "@/lib/utils";
 import { Button } from "../ui/button";
@@ -19,6 +18,7 @@ import { WordGuesserSchema } from "@/schemas";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "../shadcn-ui/form";
 import { toast } from "sonner";
 import { Badge } from "../ui/badge";
+import { getWords, makeScrambled } from "@/lib/helpers/guesser.game";
 
 export default function GuessWordGame(){
      const [gameState,setGameState] = useState<IGuessWordState>(INITIAL_GUESS_WORD_STATE);
@@ -86,6 +86,9 @@ export default function GuessWordGame(){
                return () => clearTimeout(timer)
           }
      },[gameState.difficulty, gameState.msgType, start])
+     useEffect(()=>{
+          Object.values(AUDIO).forEach(src => new Audio(src).load());
+     },[])
      const val = form.watch("guess")
      const {isPlay,difficulty,correct,hintCount,showHint,msgType,scrambled} = gameState
      return (

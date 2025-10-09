@@ -8,7 +8,7 @@ import { TicTacToeState, TicTacToeMode, TicTacToeDifficulty } from "@/lib/types"
 import { ITicTacToeState } from "@/lib/types/states";
 import { absoluteURL, cn, playSound } from "@/lib/utils";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "../ui/button";
 import { SquareXO } from "../ui/game";
 import { Menu, RotateCcw, Share2 } from "lucide-react";
@@ -24,11 +24,11 @@ export default function GameXO(){
           setBoard(prev=>prev.map((value,i)=>(i===index ? player : value)));
           setPlayer(prev=>prev==="X" ? "O" : "X");
      }
-     const pcMove = () => {
+     const pcMove = useCallback(() => {
           const move = gameState.difficulty==="easy" ? getRandomMove(board) : gameState.difficulty==="medium" ? getMediumMove(board) : getBestMove(board,player);
           setBoard(prev=>prev.map((val,i)=>i===move ? "O" : val));
           setPlayer(prev=>prev==="O" ? "X" : "O")
-     }
+     },[board,player,gameState.difficulty])
      const resetGameState = (overrides: Partial<ITicTacToeState> = {}) => {
           setBoard(BASE_ARR)
           setPlayer("X");
@@ -83,8 +83,10 @@ export default function GameXO(){
                const timer = setTimeout(pcMove,500);
                return () => clearTimeout(timer)
           }
-          // eslint-disable-next-line
-     },[gameState,player])
+     },[gameState, pcMove, player])
+     useEffect(() => {
+          Object.values(AUDIO).forEach(src => new Audio(src).load());
+     }, []);
      const {state,pattern,winner,mode,difficulty} = gameState
      const stateTxt = state===TicTacToeState.Draw ? "Ոչ ոքի": winner==="X" ? "Իքսիկը հաղթեց" : "Նոլիկը հաղթեց"
      return (
