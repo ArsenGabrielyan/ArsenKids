@@ -1,5 +1,6 @@
 import { BG_IMAGE_MAP, GAME_TITLES, WORDS_BY_DIFFICULTY } from "../constants/maps";
-import { BgImageVariant, GameDifficulty, IGameTitles } from "../types";
+import { snowmanItems } from "../constants/snowman.game";
+import { BgImageVariant, GameDifficulty, IGameTitles, SnowmanType } from "../types";
 
 export function isChristmas(){
      const today = new Date();
@@ -29,10 +30,10 @@ export function getBackgroundImage(variant: BgImageVariant): React.CSSProperties
           background: `url(${webp}), url(${jpg})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          ...(variant==="banner" ? {
+          ...((variant==="banner" || variant==="christmas") ? {
                backgroundAttachment: "fixed"
           } : null),
-          ...(variant==="contact" ? {
+          ...((variant==="contact" || variant==="christmas") ? {
                backgroundPosition: "center"
           } : isChristmas() ? {
                backgroundPosition: "right"
@@ -40,3 +41,4 @@ export function getBackgroundImage(variant: BgImageVariant): React.CSSProperties
      }
 }
 export const getGameTitle = (category: keyof IGameTitles,key:string): string => GAME_TITLES[category]?.[key] || ""
+export const getSnowmanItems = (type: SnowmanType) => snowmanItems.filter(val=>val.type===type);

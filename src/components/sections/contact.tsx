@@ -19,7 +19,7 @@ import { ContactSchema } from "@/schemas";
 import { toast } from "sonner";
 import { useTransition } from "react";
 import { sendMessage } from "@/actions/contact";
-import { Loader2 } from "lucide-react";
+import { Spinner } from "../shadcn-ui/spinner";
 
 export default function ContactSection(){
      const [isPending, startTransition] = useTransition();
@@ -127,7 +127,7 @@ export default function ContactSection(){
                                              </FormItem>
                                         )}
                                    />
-                                   <Button type="submit" variant="defaultAlt" disabled={isPending}>{isPending ? <><Loader2 className="animate-spin"/> Ուղարկվում է․․․</> : "Ուղարկել"}</Button>
+                                   <Button type="submit" variant="defaultAlt" disabled={isPending}>{isPending ? <><Spinner/> Ուղարկվում է․․․</> : "Ուղարկել"}</Button>
                               </form>
                          </Form>
                     </div>

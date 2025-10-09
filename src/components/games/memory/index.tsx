@@ -16,7 +16,7 @@ export default function MemoryGame({type, title}: MemoryGameProps){
      const {shuffle,handleChoice,cards,gameState} = useMemoryGame(type)
      const {score,turns,isStarted,disabled,firstChoice,secondChoice} = gameState
      return (
-          <div className={cn("grid place-items-center relative bg-linear-to-tr from-rainbow-green to-rainbow-blue p-4 md:p-5 gap-2 min-h-screen",isStarted ? "grid-cols-1 md:grid-cols-[1fr_2fr]" : "grid-cols-1")}>
+          <div className={cn("grid place-items-center relative p-4 md:p-5 gap-2 min-h-screen bg-linear-to-tr from-rainbow-green",isStarted ? "grid-cols-1 md:grid-cols-[1fr_2fr]" : "grid-cols-1",type==="christmas" ? "to-destructive/70" : "to-rainbow-blue")}>
                <GameWrapper title="Զույգեր" className="w-full max-w-lg">
                     <h2 className="text-lg font-semibold text-blue-800 text-center">Թեմա՝ {title}</h2>
                     {!isStarted ? (
@@ -39,7 +39,7 @@ export default function MemoryGame({type, title}: MemoryGameProps){
                                    </Button>
                               </div>
                               <Button variant="tertiary" asChild>
-                                   <Link href="/games/memory">Վերադառնալ</Link>
+                                   <Link href={type==="christmas" ? "/games/christmas" : "/games/memory"}>Վերադառնալ</Link>
                               </Button>
                          </span>
                         </> 
@@ -58,6 +58,7 @@ export default function MemoryGame({type, title}: MemoryGameProps){
                                         card.matched
                                    }
                                    disabled={disabled}
+                                   isChristmas={type==="christmas"}
                               />
                          ))}
                     </section>

@@ -7,19 +7,34 @@ import usePuzzle from "@/hooks/use-puzzle"
 import { absoluteCDN, absoluteURL } from "@/lib/utils"
 import Link from "next/link"
 import { RotateCcw, Share2 } from "lucide-react"
+import { getBackgroundImage } from "@/lib/helpers"
 
 interface PuzzleGameProps{
      title: string,
-     shape: string
+     shape: string,
+     christmas?: boolean
 }
-export default function PuzzleGame({title, shape}: PuzzleGameProps){
+export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
      const {isSolvedPuzzle,opt,handleCheckChange,boardSize,tiles,pieceSize,swapTiles,rand,handleStart,shuffleTiles} = usePuzzle({
           txt: title,
           img: shape
      })
-     return (
-          <section className="flex justify-center items-center flex-col min-h-screen bg-rainbow-blue gap-4 p-4 md:p-5">
-               <GameWrapper title="Փազլ «Պատկերներ»">
+     const bgStyle = getBackgroundImage("christmas");
+     const wrapper = (elem: React.JSX.Element) => christmas ? (
+          <section style={bgStyle}>
+               <div className="absolute inset-0 bg-linear-to-b from-transparent to-white to-70% opacity-70 -z-00"/>
+               <div className="relative z-10 text-foreground flex justify-center items-center flex-col min-h-screen gap-4 p-4 md:p-5">
+                    {elem}
+               </div>
+          </section>
+     ) : (
+          <section className="flex justify-center items-center flex-col min-h-screen gap-4 p-4 md:p-5 bg-rainbow-blue">
+               {elem}
+          </section>
+     )
+     return wrapper(
+          <>
+               <GameWrapper title={`Փազլ «${christmas ? "Ամանոր" : "Պատկերներ"}»`}>
                     <h2 className="text-lg md:text-xl font-semibold text-blue-800 text-center">{title}</h2>
                     {isSolvedPuzzle && opt.isStarted ? (
                          <h2 className="text-emerald-700 text-[27px] font-semibold">{rand}</h2>
@@ -28,6 +43,7 @@ export default function PuzzleGame({title, shape}: PuzzleGameProps){
                               <Switch
                                    checked={opt.showNum}
                                    onCheckedChange={handleCheckChange}
+                                   isChristmas={christmas}
                               />
                               <p>Ցույց տալ թվերը</p>
                          </div>
@@ -60,9 +76,9 @@ export default function PuzzleGame({title, shape}: PuzzleGameProps){
                          />
                     ))}
                </ul>
-               <Button variant="primary" asChild>
-                    <Link href="/games/puzzle">Վերադառնալ</Link>
+               <Button variant={christmas ? "tertiary" : "primary"} asChild>
+                    <Link href={`/games/${christmas ? "christmas/" : ""}puzzle`}>Վերադառնալ</Link>
                </Button>
-          </section>
+          </>
      )
 }

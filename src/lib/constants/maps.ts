@@ -1,10 +1,11 @@
 import { isChristmas } from "../helpers";
-import { BgImageVariant, IGameTitles } from "../types";
+import { IGameTitles, IMusicData } from "../types";
 import { absoluteCDN } from "../utils";
 
-export const BG_IMAGE_MAP: Record<BgImageVariant, string> = {
+export const BG_IMAGE_MAP = {
      banner: isChristmas() ? "christmas" : "clouds",
-     contact: isChristmas() ? "gifts" : "toys"
+     contact: isChristmas() ? "gifts" : "toys",
+     christmas: "christmas-background"
 }
 // Enums
 export enum OPERATORS {
@@ -73,3 +74,11 @@ export const AUDIO = {
      start: absoluteCDN("sounds","/start.mp3"),
      bubblePop: absoluteCDN("sounds","/bubbles.mp3")
 }
+export const CHRISTMAS_MUSIC: IMusicData[] = [
+     {title: "12 Days Of Christmas", artist: "Jingle Punks"},
+     {title: "Christmas Village", artist: "Aaron Kenny"},
+     {title: "Deck The Halls", artist: "Jingle Punks"},
+     {title: "Jingle Bells", artist: "Jingle Punks"},
+     {title: "O Christmas Tree", artist: "Jingle Punks"},
+     {title: "We Wish You a Merry Christmas", artist: "Jingle Punks"}
+]
