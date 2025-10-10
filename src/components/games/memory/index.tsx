@@ -77,9 +77,14 @@ export default function MemoryGame({type, title}: MemoryGameProps){
                <GameWrapper title="Զույգեր" className="w-full max-w-lg">
                     <h2 className="text-lg font-semibold text-blue-800 text-center">Թեմա՝ {title}</h2>
                     {!isStarted ? (
-                         <Button onClick={shuffle}>
-                              Սկսել
-                         </Button>
+                         <div className="flex items-center gap-2">
+                              <Button onClick={shuffle}>
+                                   Սկսել
+                              </Button>
+                              <Button variant="tertiary" asChild>
+                                   <Link href={type==="christmas" ? "/games/christmas" : "/games/memory"}>Վերադառնալ</Link>
+                              </Button>
+                         </div>
                     ) : (
                          <>
                          <div className="flex flex-col md:flex-row justify-between items-center text-2xl w-full gap-2">
