@@ -7,7 +7,7 @@ import { getRandomMove, getMediumMove, getBestMove, checkWinner, isDraw } from "
 import { TicTacToeState, TicTacToeMode, TicTacToeDifficulty } from "@/lib/types";
 import { ITicTacToeState } from "@/lib/types/states";
 import { absoluteURL, cn, playSound } from "@/lib/utils";
-import Link from "next/link";
+import {Link} from "@/i18n/navigation";
 import { useState, useEffect, useCallback } from "react";
 import { Button } from "../ui/button";
 import { SquareXO } from "../ui/game";

@@ -1,7 +1,7 @@
 "use client"
 import { BUBBLE_CREATION_INTERVAL } from "@/lib/constants/games";
 import { AUDIO } from "@/lib/constants/maps";
-import Link from "next/link";
+import {Link} from "@/i18n/navigation";
 import { useState, useRef, useCallback, useEffect } from "react";
 import GameWrapper from "../game-wrapper";
 import { absoluteURL, cn } from "@/lib/utils";

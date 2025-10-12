@@ -1,6 +1,6 @@
 "use client"
 import { useMemo, useState } from "react";
-import Link from "next/link";
+import {Link} from "@/i18n/navigation";
 import Image from "next/image";
 import { X } from "lucide-react";
 import { CHRISTMAS_PUZZLE_LINKS, PUZZLE_LINKS } from "@/lib/constants/links";

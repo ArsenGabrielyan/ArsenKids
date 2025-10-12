@@ -1,18 +1,18 @@
 "use server"
-import { ContactSchema } from "@/schemas";
+import { getContactSchema } from "@/schemas";
 import { ContactType } from "@/schemas/types";
 
-export async function sendMessage(values: ContactType): Promise<{
-     success?: string,
-     error?: string
+export async function sendMessage(values: ContactType, t: (key: string) => string): Promise<{
+     success?: `messages.${string}`,
+     error?: `messages.${string}`
 }>{
-     const validatedFields = ContactSchema.safeParse(values);
+     const validatedFields = getContactSchema(t).safeParse(values);
      if(!validatedFields.success)
-          return { error: "Բոլոր դաշտերը անվավեր են" }
+          return { error: "messages.invalidFields" }
      const res = await fetch("https://formspree.io/f/myybakel", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(validatedFields.data),
      });
-     return res.ok ? { success: "Հաղորդագրությունը հաջողությամբ ուղարկվեց!" } : { error: "Չհաջողվեց ուղարկել հաղորդագրությունը" }
+     return res.ok ? { success: "messages.success" } : { error: "messages.sendError" }
 }

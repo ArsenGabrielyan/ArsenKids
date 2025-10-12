@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import SiteSection from "@/components/ui/site-section";
 import { getBackgroundImage, isChristmas } from "@/lib/helpers";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+import {Link} from "@/i18n/navigation";
 
 interface HeroSectionProps{
      title?: string,
@@ -13,9 +13,9 @@ interface HeroSectionProps{
 }
 export default function HeroSection({
      title = "ArsenKids",
-     description = "Ամենալավ կրթությունը տանում է դեպի ամենալավ ապագա",
+     description,
      link = "/#about",
-     linkText = "Իմանալ Ավելին"
+     linkText
 }: HeroSectionProps){
      const bgStyle = getBackgroundImage("banner")
      return (

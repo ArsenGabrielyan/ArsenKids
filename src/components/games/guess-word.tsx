@@ -14,22 +14,24 @@ import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
 import { WordGuesserType } from "@/schemas/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { WordGuesserSchema } from "@/schemas";
+import { getWordGuesserSchema } from "@/schemas";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "../shadcn-ui/form";
 import { toast } from "sonner";
 import { Badge } from "../ui/badge";
 import { getWords, makeScrambled } from "@/lib/helpers/guesser.game";
+import { useTranslations } from "next-intl";
 
 export default function GuessWordGame(){
      const [gameState,setGameState] = useState<IGuessWordState>(INITIAL_GUESS_WORD_STATE);
+     const validationMessages = useTranslations("validation")
      const updateState = (overrides: Partial<IGuessWordState>) => 
           setGameState(prev=>({...prev,...overrides}));
      const form = useForm<WordGuesserType>({
-          resolver: zodResolver(WordGuesserSchema),
+          resolver: zodResolver(getWordGuesserSchema(validationMessages)),
           defaultValues: {guess: ""}
      })
      const handleEnter = (values: WordGuesserType) => {
-          const validatedFields = WordGuesserSchema.safeParse(values);
+          const validatedFields = getWordGuesserSchema(validationMessages).safeParse(values);
           if(!validatedFields.success){
                toast.error("Դաշտը վավերացված չէ");
                return;

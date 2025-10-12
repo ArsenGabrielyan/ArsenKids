@@ -1,7 +1,15 @@
 import * as z from "zod"
-import { ContactSchema, InteractiveMathSchema, NumberGuesserSchema, WordGuesserSchema } from "."
+import { getContactSchema, getInteractiveMathSchema, getNumberGuesserSchema, getWordGuesserSchema } from "."
 
-export type ContactType = z.infer<typeof ContactSchema>
-export type WordGuesserType = z.infer<typeof WordGuesserSchema>
-export type NumberGuesserType = z.infer<typeof NumberGuesserSchema>
-export type InteractiveMathType = z.infer<typeof InteractiveMathSchema>
+export type ContactType = z.infer<
+     Awaited<ReturnType<typeof getContactSchema>>
+>
+export type WordGuesserType = z.infer<
+     Awaited<ReturnType<typeof getWordGuesserSchema>>
+>
+export type NumberGuesserType = z.infer<
+     Awaited<ReturnType<typeof getNumberGuesserSchema>>
+>
+export type InteractiveMathType = z.infer<
+     Awaited<ReturnType<typeof getInteractiveMathSchema>>
+>

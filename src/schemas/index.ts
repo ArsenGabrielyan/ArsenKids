@@ -1,26 +1,26 @@
 import * as z from "zod"
 
-export const ContactSchema = z.object({
-     name: z.string().min(2,"Անունը և ազգանունը շատ կարճ է").max(100,"Անունը և ազգանունը շատ երկար է").trim(),
-     email:  z.email("Մուտքագրեք վավերական էլ․ հասցե").max(254, "Էլ․ հասցեն շատ երկար է").trim().transform(email => email.toLowerCase()),
-     subject: z.string().min(1,"Մուտքագրեք հաղորդագրության թեմայի անունը").max(100, "Թեման շատ երկար է").trim(),
-     message: z.string().min(5, "Հաղորդագրությունը պետք է լինի առնվազն 5 տառ").max(500,"Հաղորդագրությունը շատ երկար է").trim()
+export const getContactSchema = (t: (key: string) => string) => z.object({
+     name: z.string().min(2,t("name.isShort")).max(100,t("name.isLong")).trim(),
+     email:  z.email(t("email.isInvalid")).max(254,t("email.isLong")).trim().transform(email => email.toLowerCase()),
+     subject: z.string().min(1,t("subject.required")).max(100, t("subject.isLong")).trim(),
+     message: z.string().min(5,t("message.atLeast5Chars")).max(550,t("message.isLong")).trim()
 })
 
-export const WordGuesserSchema = z.object({
-     guess: z.string().min(1,"Այն շատ կարճ է").max(150,"Այն շատ երկար է").trim()
+export const getWordGuesserSchema = (t: (key: string) => string) => z.object({
+     guess: z.string().min(1,t("answer.isShort")).max(150,t("answer.isLong")).trim()
 })
 
-export const NumberGuesserSchema = z.object({
+export const getNumberGuesserSchema = (t: (key: string) => string) => z.object({
      guess: z.string()
-     .regex(/^\d+$/, "Պետք է պարունակի միայն թվեր")
-     .min(1,"Այն շատ կարճ է").max(150,"Այն շատ երկար է").trim()
-     .refine(val=>!Number.isInteger(val),"Այն պետք է լինի ամբողջ թիվ")
+     .regex(/^\d+$/, t("answer.onlyNumbers"))
+     .min(1,t("answer.isShort")).max(150,t("answer.isLong")).trim()
+     .refine(val=>!Number.isInteger(val),t("answer.isInt"))
 })
 
-export const InteractiveMathSchema = z.object({
+export const getInteractiveMathSchema = (t: (key: string) => string) => z.object({
   type: z.enum(["number", "text"]),
-  answer: z.string().trim().min(1, "Խնդրում ենք լրացնել պատասխանը"),
+  answer: z.string().trim().min(1, t("answer.required")),
 })
 .refine((data) => {
      if (data.type === "number") {
@@ -30,7 +30,7 @@ export const InteractiveMathSchema = z.object({
      }
      return true;
 }, {
-     message: "Խնդրում ենք գրել ցանկացած թիվ որպես պատասխան",
+     message: t("answer.requiredNum"),
      path: ["answer"],
 })
 .refine((data) => {
@@ -39,6 +39,6 @@ export const InteractiveMathSchema = z.object({
      }
      return true;
 }, {
-     message: "Խնդրում ենք գրել ցանկացած օպերատոր որպես պատասխան",
+     message: t("answer.requiredOperator"),
      path: ["answer"],
 });

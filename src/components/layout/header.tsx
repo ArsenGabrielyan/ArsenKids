@@ -1,19 +1,21 @@
 "use client"
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+import {Link} from "@/i18n/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "../ui/button";
 import { Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import Logo from "../logo";
+import { useTranslations } from "next-intl";
+import LanguageSwitcher from "../language-switcher";
 
 const links = [
-     {url: "/#banner", name: "Գլխավոր"},
-     {url: "/#about", name: "Մեր Մասին"},
-     {url: "/#services", name: "Ծառայություններ"},
-     {url: "/#downloads", name: "Ներբեռնումներ"},
-     {url: "/#contact", name: "Կապ"},
-     {url: "/games", name: "Խաղեր"},
+     {url: "/#banner", name: "home"},
+     {url: "/#about", name: "about"},
+     {url: "/#services", name: "services"},
+     {url: "/#downloads", name: "downloads"},
+     {url: "/#contact", name: "contact"},
+     {url: "/games", name: "games"},
 ]
 
 export default function Header(){
@@ -33,9 +35,10 @@ export default function Header(){
                window.removeEventListener("scroll",handleScroll)
           }
      },[])
+     const t = useTranslations("nav-links")
      return (
           <header className={cn("fixed top-0 left-0 flex justify-between items-center w-full px-6 lg:px-15 z-10 transition-all",isSticky && "bg-white shadow-sm gap-2", isSticky ? "py-4" : "py-4 lg:py-10")}>
-               <Link href="/" title="Գլխավոր">
+               <Link href="/" title={t("home")}>
                     <Logo src={logo} width={isMobile ? 210 : 250} height={isMobile ? 20 : 60}/>
                </Link>
                {isMobile && (
@@ -51,11 +54,17 @@ export default function Header(){
                                    className={cn("text-3xl lg:text-base xl:text-lg text-center transition-all font-heading",isSticky ? "text-black hover:text-blue-500" : "text-black lg:text-white  hover:text-blue-500 lg:hover:text-rainbow-green")}
                                    onClick={()=>setIsOpen(false)}
                               >
-                                   {link.name}
+                                   {t(link.name)}
                               </Link>
                          </li>
                     ))}
+                    {isMobile && (
+                         <li className="font-medium lg:font-[350]">
+                              <LanguageSwitcher/>
+                         </li>
+                    )}
                </ul>
+               {!isMobile && <LanguageSwitcher/>}
           </header>
      )
 }

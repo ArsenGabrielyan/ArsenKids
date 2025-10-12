@@ -3,17 +3,25 @@ import Image from "next/image"
 import SiteSection from "../ui/site-section"
 import { isChristmas } from "@/lib/helpers"
 import { useIsMobile } from "@/hooks/use-mobile"
+import { useTranslations } from "next-intl"
 
 export default function AboutSection(){
-     const isMobile = useIsMobile()
+     const isMobile = useIsMobile();
+     const t = useTranslations("about")
      return (
           <SiteSection id="about">
                <div className="relative w-full flex justify-between items-center flex-col lg:flex-row">
                     <div className="relative w-full lg:w-1/2 space-y-2.5">
-                         <h2 className="text-blue-700 font-bold text-2xl sm:text-3xl lg:text-4xl pb-2 mb-2 border-b border-blue-700 w-fit">Մեր Մասին</h2>
-                         <p><span className="font-medium">ArsenKids</span>-ը նախատեսված է երեխաներին, փոքրիկներին և ընտանիքներին ներգրավելու համար <span className="font-medium">կրթական տեսանյութերի միջոցով</span> (օրինակ՝ Սովորենք հաշվել, այբուբենը, գույներ) և <span className="font-medium">ստոպ կադր կրթական անիմացիաների միջոցով</span>: Այն մշակվել է երեխաների համար, բայց նաև սիրում են ծնողները:</p>
-                         <p><span className="font-medium">ArsenKids</span>-ը ուսուցանում է <span className="font-medium">սոցիալական հմտություններ</span>, ուսուցողական վիդեոների միջոցով ամրացնում է <span className="font-medium">կապը ծնողների հետ</span>, հարստացնում <span className="font-medium">բառապաշարն ու հիշողությունը</span>: Մեր տեսանյութերը երեխաներին սովորեցնում են <span className="font-medium">բարոյական արժեքներ</span>, և այս տեսանյութերը և՛ զվարճալի են, և՛ ուսուցողական: Հուսով ենք, որ այս տեսանյութերը <span className="font-medium">մեծ ուրախություն կբերեն</span> ձեր երեխաներին, փոքրիկներին և ընտանիքին:</p>
-                         <p>Մեր ստոպ կադր անիմացիոն տեսանյութերը հիանալի հարմարեցված են <span className="font-medium">իրենց զարգացման համար</span>, և երեխաները հաճույքով <span className="font-medium">նոր բաներ են սովորում</span>` դիտելով տեսանյութերն ու մեր խնամքով ընտրված փլեյլիստները: <span className="font-medium">ArsenKids</span>-ը առայժմ հասանելի է հայերենով:</p>
+                         <h2 className="text-blue-700 font-bold text-2xl sm:text-3xl lg:text-4xl pb-2 mb-2 border-b border-blue-700 w-fit">{t("title")}</h2>
+                         <p>{t.rich("description.line1",{
+                              bold: (chunks) => <span className="font-medium">{chunks}</span>
+                         })}</p>
+                         <p>{t.rich("description.line2",{
+                              bold: (chunks) => <span className="font-medium">{chunks}</span>
+                         })}</p>
+                         <p>{t.rich("description.line3",{
+                              bold: (chunks) => <span className="font-medium">{chunks}</span>
+                         })}</p>
                     </div>
                     <div className="relative w-full lg:w-1/2">
                          <div className="relative w-full flex justify-center items-center min-h-80">

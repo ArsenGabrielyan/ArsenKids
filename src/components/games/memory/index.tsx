@@ -11,7 +11,7 @@ import { playSound } from "@/lib/utils";
 import { useCallback, useEffect, useState } from "react";
 import { absoluteURL, cn } from "@/lib/utils";
 import { RotateCcw, Share2 } from "lucide-react";
-import Link from "next/link";
+import {Link} from "@/i18n/navigation";
 
 interface MemoryGameProps{
      type: MemoryCardParams;

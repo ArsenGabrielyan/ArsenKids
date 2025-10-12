@@ -16,7 +16,7 @@ export const playSound = (audio: HTMLAudioElement, src: string) => {
   }
 }
 export function absoluteURL(path?: string){
-  const baseURL = process.env.NODE_ENV === "production" ? "https://arsenkids.vercel.app" : "localhost:3000"
+  const baseURL = process.env.NODE_ENV === "production" ? "https://arsenkids.vercel.app" : "http://localhost:3000"
   return !path ? baseURL : `${baseURL}${path}`
 }
 export function absoluteCDN(type: "sounds" | "pdf" | "images" | "music", path: `/${string}`){

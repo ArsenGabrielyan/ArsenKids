@@ -1,0 +1,152 @@
+{
+     "index": {
+          "mainTitle": "Welcome to ArsenKids!",
+          "mainDesc": "The best education leads to the best future!",
+          "mainDescChristmas": "Merry Christmas and Happy New Year",
+          "langSwitcherLabel": "Change Language",
+          "learnMore": "Learn More"
+     },
+     "nav-links": {
+          "home": "Home",
+          "about": "About us",
+          "services": "Services",
+          "downloads": "Downloads",
+          "contact": "Contact us",
+          "games": "Games"
+     },
+     "footer": {
+          "allRightsReserved": "All Rights Reserved",
+          "yt-link": "Subscribe on YouTube",
+          "github-link": "View on Github",
+          "toTop": "Scroll to top"
+     },
+     "about": {
+          "title": "About us",
+          "description": {
+               "line1": "<bold>ArsenKids</bold> is designed to engage Children, Toddlers, and families through <bold>educational videos</bold> (Such as Learn Numbers, Learn Alphabet, Learn Colors) and <bold>stop-motion educational animations</bold>. It is developed for Kids, but also loved by parents alike.",
+               "line2": "<bold>ArsenKids</bold> teaches <bold>social skills</bold>, strengthens the <bold>bond with parents</bold> through educational videos, and stimulates <bold>vocabulary and memory</bold>. Our Videos teach children <bold>moral values</bold>, and these videos are both entertaining and educational. We hope these videos will bring your children, toddlers, and family <bold>much joy</bold>.",
+               "line3": "Our stop-motion animated videos are perfectly adapted for <bold>their development</bold>, and kids enjoy <bold>learning new things</bold> while watching the videos and our carefully selected playlists. <bold>ArsenKids</bold> is available in Armenian."
+          }
+     },
+     "services": {
+          "title": "Our Services",
+          "about": {
+               "title": "About us",
+               "desc": "What's ArsenKids? Learn more by clicking this button",
+               "linkText": "Learn More"
+          },
+          "downloads": {
+               "title": "Downloads",
+               "desc": "Download ArsenKids' learning and activity sheets. Educational and fun activities for kids.",
+               "linkText": "Downloads"
+          },
+          "learn": {
+               "title": "Let's Learn",
+               "desc": "Let's Learn to Count Numbers, Alphabet, Shapes, Animals and Others",
+               "linkText": "Watch"
+          },
+          "alphabet": {
+               "title": "Learn the alphabet",
+               "desc": "Let's Learn the Alphabet (Eastern & Western Armenian)",
+               "linkText": "Watch"
+          },
+          "colors": {
+               "title": "Learn Colors",
+               "desc": "Learn Colors with ArsenKids together!",
+               "linkText": "Watch"
+          },
+          "games": {
+               "title": "Games from ArsenKids",
+               "desc": "Intellectual, Entertaining and Interesting Games From ArsenKids For Children",
+               "linkText": "Let's Play"
+          }
+     },
+     "downloads": {
+          "title": "Downloads",
+          "filters": {
+               "all": "All",
+               "animals": "Animals",
+               "fruit-veggies": "Fruit and Vegetables",
+               "others": "Others"
+          },
+          "search": "Search...",
+          "downloadTitle": "Learning sheet \"{itemName}\" (Armenian)",
+          "downloads": {
+               "colors": "Colors",
+               "shapes": "Shapes",
+               "fruit": "Fruit",
+               "vegetables": "Vegetables",
+               "domestic-animals": "Domestic Animals",
+               "transportation": "Vehicles",
+               "wild-animals": "Wild Animals",
+               "numbers": "Numbers",
+               "birds": "Birds",
+               "insects": "Insects",
+               "forest-animals": "Forest Animals",
+               "solar-system": "Solar System"
+          },
+          "downloadBtn": "Download",
+          "notFound": "No search results found."
+     },
+     "contact": {
+          "title": "Contact us",
+          "form": {
+               "title": "Send a message",
+               "nameInput": {
+                    "title": "Full Name",
+                    "placeholder": "e.g.: Poghos Petrosyan"
+               },
+               "emailInput": {
+                    "title": "Email address",
+                    "placeholder": "e.g.: name@example.com"
+               },
+               "subjectInput": {
+                    "title": "Subject",
+                    "placeholder": "Specify the subject name"
+               },
+               "messageInput": {
+                    "title": "Message",
+                    "placeholder": "Write your message here"
+               }
+          },
+          "sendBtn": {
+               "loading": "Sending...",
+               "original": "Send"
+          },
+          "messages": {
+               "error": "Oops, something went wrong"
+          }
+     },
+     "notFound": {
+          "title": "Oops, page not found",
+          "description": "The page you are looking for wasn't found. You may have entered the address incorrectly, the page has moved, or it doesn't exist.",
+          "returnHome": "Return to Home Page"
+     },
+     "validation": {
+          "name": {
+               "isShort": "Full Name is too short",
+               "isLong": "Full Name is too long"
+          },
+          "email": {
+               "isInvalid": "Please enter a valid email",
+               "isLong": "Email address is too long"
+          },
+          "subject": {
+               "required": "Enter the subject name",
+               "isLong": "Subject name is too long"
+          },
+          "message": {
+               "atLeast5Chars": "Message must be at least 5 characters long",
+               "isLong": "Message is too long"
+          },
+          "answer": {
+               "isShort": "The answer is too short",
+               "isLong": "The answer is too long",
+               "onlyNumbers": "Must contain only numbers",
+               "isInt": "The answer must be a whole number",
+               "required": "Please fill in the answer",
+               "requiredNum": "Please write any number as the answer",
+               "requiredOperator": "Please write any operator as the answer"
+          }
+     }
+}

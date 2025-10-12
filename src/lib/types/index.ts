@@ -54,13 +54,9 @@ export interface IGameParamLink{
 
 // Card
 export type ICard<T extends CardType> = T extends "service" ? {
-     title: string,
-     desc: string,
-     linkText: string,
      link: string,
      type: ServiceType
 } : T extends "download" ? {
-     title: string,
      itemType: DownloadItemType
      fileName: string,
      imageName: string
@@ -131,3 +127,12 @@ export interface ISnowmanSidebar{
 }
 export type SnowmanType = keyof ISnowman
 export type SnowmanItemsType = `${SnowmanType}s`
+
+// I18N Types
+export type LangCodeType = 'en' | 'hy' | 'ru';
+export type CountryCodeType = 'us' | 'am' | 'ru';
+export interface ILanguage{
+     code: LangCodeType,
+     countryCode: CountryCodeType,
+     label: string
+}

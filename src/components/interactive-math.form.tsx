@@ -4,10 +4,11 @@ import { Input } from "./ui/input";
 import { useForm } from "react-hook-form";
 import { InteractiveMathType } from "@/schemas/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { InteractiveMathSchema } from "@/schemas";
+import { getInteractiveMathSchema } from "@/schemas";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "./shadcn-ui/form";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
+import { useTranslations } from "next-intl";
 
 interface FormProps {renderInput: (type: "number" | "text") => React.JSX.Element, num1?: number, num2?: number, randomOperator?: AmazingMathOperator, solution?: number}
 const elements: [React.FC<FormProps>, React.FC<FormProps>, React.FC<FormProps>] = [
@@ -58,15 +59,16 @@ interface InteractiveMathFormProps{
      inputRef?: React.Ref<HTMLInputElement>
 }
 export default function InteractiveMathForm({index, num1, num2, operator, solution, onSubmit, inputRef}: InteractiveMathFormProps){
+     const validationMessages = useTranslations("validation")
      const form = useForm<InteractiveMathType>({
-          resolver: zodResolver(InteractiveMathSchema),
+          resolver: zodResolver(getInteractiveMathSchema(validationMessages)),
           defaultValues: {
                answer: "",
                type: index===2 ? "text" : "number"
           }
      })
      const handleSubmit = (values: InteractiveMathType) => {
-          const validatedFields = InteractiveMathSchema.safeParse(values);
+          const validatedFields = getInteractiveMathSchema(validationMessages).safeParse(values);
           if(!validatedFields.success){
                toast.error("Բոլոր դաշտերը անվավեր են");
                return;

@@ -9,7 +9,7 @@ import { getBackgroundImage } from "@/lib/helpers";
 import { ISnowman, ISnowmanItem, SnowmanType } from "@/lib/types";
 import { absoluteURL, cn } from "@/lib/utils";
 import { Download, MoreHorizontalIcon, Pause, Play, Share2 } from "lucide-react";
-import Link from "next/link";
+import {Link} from "@/i18n/navigation";
 import { useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
 import html2canvas from "html2canvas-pro"

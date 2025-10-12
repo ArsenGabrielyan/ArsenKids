@@ -11,20 +11,22 @@ import { Button } from "../ui/button";
 import { useForm } from "react-hook-form";
 import { NumberGuesserType } from "@/schemas/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { NumberGuesserSchema } from "@/schemas";
+import { getNumberGuesserSchema } from "@/schemas";
 import { toast } from "sonner";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "../shadcn-ui/form";
 import GameWrapper from "../game-wrapper";
 import { Input } from "../ui/input";
 import { Menu, RotateCcw, Share2 } from "lucide-react";
 import { generateRandomNumber, getDifficultyLength } from "@/lib/helpers/guesser.game";
+import { useTranslations } from "next-intl";
 
 export default function GuessNumber(){
      const [gameState, setGameState] = useState<IGuessNumberState>(INITIAL_GUESS_NUMBER_STATE)
+     const validationMessages = useTranslations("validation")
      const updateState = (overrides: Partial<IGuessNumberState>) => 
           setGameState(prev=>({...prev,...overrides}));
      const form = useForm<NumberGuesserType>({
-          resolver: zodResolver(NumberGuesserSchema),
+          resolver: zodResolver(getNumberGuesserSchema(validationMessages)),
           defaultValues: {guess: ""}
      })
      const startGame = useCallback((diff: GameDifficulty) =>{
@@ -38,7 +40,7 @@ export default function GuessNumber(){
           })
      },[])
      const handleEnter = (values: NumberGuesserType) =>{
-          const validatedFields = NumberGuesserSchema.safeParse(values);
+          const validatedFields = getNumberGuesserSchema(validationMessages).safeParse(values);
           if(!validatedFields.success){
                toast.error("Դաշտը վավերացված չէ");
                return;
