@@ -22,7 +22,7 @@ export const SERVICES: ICard<"service">[] = [
           type: "colors"
      },
      {
-          link: "/games",
+          link: "/games#main-games",
           type: "games"
      },
 ]
