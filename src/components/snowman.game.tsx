@@ -8,6 +8,7 @@ import { absoluteCDN, cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "./shadcn-ui/drawer";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "./shadcn-ui/dialog";
+import { useTranslations } from "next-intl";
 
 interface SnowmanSidebarItemProps{
      handlePrev: (arr: ISnowmanItem[],type:SnowmanType) => void;
@@ -131,6 +132,8 @@ export function SnowmanMusicList({children, isChangingMusic, setIsChangingMusic,
                ))}
           </ul>
      )
+     const t = useTranslations("build-snowman")
+     const buttonText = useTranslations("buttons")
      return isTablet ? (
           <Drawer open={isChangingMusic} onOpenChange={setIsChangingMusic}>
                <DrawerTrigger asChild>
@@ -138,14 +141,14 @@ export function SnowmanMusicList({children, isChangingMusic, setIsChangingMusic,
                </DrawerTrigger>
                <DrawerContent>
                     <DrawerHeader>
-                         <DrawerTitle>Երաժշտություն</DrawerTitle>
-                         <DrawerDescription>Երաժշտությունը YouTube Audio Library-ից</DrawerDescription>
+                         <DrawerTitle>{t("music.title")}</DrawerTitle>
+                         <DrawerDescription>{t("music.desc")}</DrawerDescription>
                     </DrawerHeader>
                     {listElem}
                     <DrawerFooter>
                          <DrawerClose asChild>
                               <Button variant="outlineSecondary">
-                                   Փակել
+                                   {buttonText("close")}
                               </Button>
                          </DrawerClose>
                     </DrawerFooter>
@@ -158,14 +161,14 @@ export function SnowmanMusicList({children, isChangingMusic, setIsChangingMusic,
                </DialogTrigger>
                <DialogContent>
                     <DialogHeader>
-                         <DialogTitle>Երաժշտություն</DialogTitle>
-                         <DialogDescription>Երաժշտությունը YouTube Audio Library-ից</DialogDescription>
+                         <DialogTitle>{t("music.title")}</DialogTitle>
+                         <DialogDescription>{t("music.desc")}</DialogDescription>
                     </DialogHeader>
                     {listElem}
                     <DialogFooter>
                          <DialogClose asChild>
                               <Button variant="outlineSecondary">
-                                   Փակել
+                                   {buttonText("close")}
                               </Button>
                          </DialogClose>
                     </DialogFooter>

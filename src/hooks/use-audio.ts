@@ -1,11 +1,13 @@
 import { CHRISTMAS_MUSIC } from "@/lib/constants/maps";
 import { absoluteCDN } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
 export default function useAudio(isStarted: boolean){
      const [isMusicOn, setIsMusicOn] = useState(false);
-     const [currMusic, setCurrMusic] = useState("")
+     const [currMusic, setCurrMusic] = useState("");
+     const t = useTranslations("build-snowman")
      const audioRef = useRef<HTMLAudioElement | null>(null);
      const setMusic = (i: number) => {
           const currMusic = CHRISTMAS_MUSIC[i];
@@ -35,8 +37,8 @@ export default function useAudio(isStarted: boolean){
           };
      },[isStarted]);
      useEffect(()=>{
-          if(currMusic!=="") toast.info(`Երաժշտություն՝ ${currMusic}`);
-     },[currMusic])
+          if(currMusic!=="") toast.info(t("music.indicator",{musicDetails: currMusic}));
+     },[currMusic,t])
      const togglePlayPause = () => {
           if(audioRef.current){
                if(isMusicOn){

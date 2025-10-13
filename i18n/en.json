@@ -15,7 +15,10 @@
           "send": {
                "loading": "Sending...",
                "original": "Send"
-          }
+          },
+          "check": "Check",
+          "close": "Close",
+          "start": "Start"
      },
      "nav-links": {
           "home": "Home",
@@ -112,12 +115,6 @@
                     "title": "Message",
                     "placeholder": "Write your message here"
                }
-          },
-          "messages": {
-               "error": "Oops, something went wrong",
-               "success": "The message was sent successfully!",
-               "sendError": "Failed to send message",
-               "invalidFields": "All fields are invalid"
           }
      },
      "notFound": {
@@ -126,6 +123,7 @@
           "returnHome": "Return to Home Page"
      },
      "validation": {
+          "invalidFields": "All fields are invalid",
           "name": {
                "isShort": "Full Name is too short",
                "isLong": "Full Name is too long"
@@ -140,7 +138,9 @@
           },
           "message": {
                "atLeast5Chars": "Message must be at least 5 characters long",
-               "isLong": "Message is too long"
+               "isLong": "Message is too long",
+               "success": "The message was sent successfully!",
+               "sendError": "Failed to send message"
           },
           "answer": {
                "isShort": "The answer is too short",
@@ -150,7 +150,8 @@
                "required": "Please fill in the answer",
                "requiredNum": "Please write any number as the answer",
                "requiredOperator": "Please write any operator as the answer"
-          }
+          },
+          "miscError": "Oops, something went wrong"
      },
      "games": {
           "metaTitle": "Games",
@@ -192,10 +193,16 @@
           }
      },
      "bubbles": {
-          "title": "Bubbles"
+          "title": "Bubbles",
+          "bubblesPopped": "You have popped {popCount} bubbles"
      },
      "build-snowman": {
-          "title": "Build the Snowman"
+          "title": "Build the Snowman",
+          "music": {
+               "title": "Music",
+               "desc": "Music from YouTube Audio Library",
+               "indicator": "Music: {musicDetails}"
+          }
      },
      "guess-number": {
           "title": "Memorize the numbers"

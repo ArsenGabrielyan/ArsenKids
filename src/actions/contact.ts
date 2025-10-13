@@ -1,18 +1,17 @@
 "use server"
-import { getContactSchema } from "@/schemas";
 import { ContactType } from "@/schemas/types";
+import { ZodSafeParseResult } from "zod";
 
-export async function sendMessage(values: ContactType, t: (key: string) => string): Promise<{
-     success?: `messages.${string}`,
-     error?: `messages.${string}`
+export async function sendMessage(validatedFields: ZodSafeParseResult<ContactType>): Promise<{
+     success?: string,
+     error?: string
 }>{
-     const validatedFields = getContactSchema(t).safeParse(values);
      if(!validatedFields.success)
-          return { error: "messages.invalidFields" }
+          return { error: "invalidFields" }
      const res = await fetch("https://formspree.io/f/myybakel", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(validatedFields.data),
      });
-     return res.ok ? { success: "messages.success" } : { error: "messages.sendError" }
+     return res.ok ? { success: "message.success" } : { error: "message.sendError" }
 }

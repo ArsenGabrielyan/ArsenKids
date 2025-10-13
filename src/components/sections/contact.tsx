@@ -38,14 +38,15 @@ export default function ContactSection(){
      const onSubmit = async(values: ContactType) => {
           startTransition(async()=>{
                try{
-                    const response = await sendMessage(values,validationMessages);
+                    const validatedFields = getContactSchema(t).safeParse(values);
+                    const response = await sendMessage(validatedFields);
                     if(response.success)
-                         toast.success(t(response.success))
+                         toast.success(validationMessages(response.success))
                     if(response.error)
-                         toast.error(t(response.error))
+                         toast.error(validationMessages(response.error))
                } catch (err: unknown) {
                     console.error(err);
-                    toast.error(t("messages.error"))
+                    toast.error(validationMessages("miscError"))
                }
           })
      }

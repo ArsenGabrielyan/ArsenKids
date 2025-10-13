@@ -70,7 +70,7 @@ export default function InteractiveMathForm({index, num1, num2, operator, soluti
      const handleSubmit = (values: InteractiveMathType) => {
           const validatedFields = getInteractiveMathSchema(validationMessages).safeParse(values);
           if(!validatedFields.success){
-               toast.error("Բոլոր դաշտերը անվավեր են");
+               toast.error(validationMessages("invalidFields"));
                return;
           }
           if(!validatedFields.data) return;
@@ -78,8 +78,9 @@ export default function InteractiveMathForm({index, num1, num2, operator, soluti
           onSubmit(fields);
           form.reset();
      }
+     const buttonsText = useTranslations("buttons")
      if(operator==="") return null;
-     const FormElement = elements[index] ?? defaultElem
+     const FormElement = elements[index] ?? defaultElem;
      return (
           <Form {...form}>
                <form onSubmit={form.handleSubmit(handleSubmit)} className="flex flex-col items-center gap-2">
@@ -113,7 +114,7 @@ export default function InteractiveMathForm({index, num1, num2, operator, soluti
                               )
                          }}
                     />
-                    <Button className="w-full" type="submit" variant="tertiary">Ստուգել</Button>
+                    <Button className="w-full" type="submit" variant="tertiary">{buttonsText("check")}</Button>
                </form>
           </Form>
      )

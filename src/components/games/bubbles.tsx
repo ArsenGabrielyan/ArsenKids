@@ -7,6 +7,7 @@ import GameWrapper from "../game-wrapper";
 import { absoluteURL, cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { Share2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function BubblesGame(){
      const [isStarted, setIsStarted] = useState(false);
@@ -60,15 +61,17 @@ export default function BubblesGame(){
      useEffect(()=>{
           Object.values(AUDIO).forEach(src => new Audio(src).load());
      },[])
+     const t = useTranslations("bubbles");
+     const buttonText = useTranslations("buttons")
      return (
           <div className="flex justify-center items-center flex-col min-h-screen bg-linear-to-tr from-blue-600 to-rainbow-blue overflow-hidden relative p-4 md:p-5" ref={bubblesRef}>
-               {!isStarted ? <GameWrapper title="Պղպջակներ">
-                    <Button variant="tertiary" onClick={startGame}>Սկսել</Button>
+               {!isStarted ? <GameWrapper title={t("title")}>
+                    <Button variant="tertiary" onClick={startGame}>{buttonText("start")}</Button>
                </GameWrapper> : <div className="fixed bottom-0 left-0 text-2xl p-3.5 z-20 w-full bg-card/90 text-card-foreground text-center flex justify-center items-center flex-col gap-2.5 font-heading">
-                    <p>Դուք պայթեցրել եք {bubblesPopped} պղպջակ</p>
+                    <p>{t("bubblesPopped",{popCount: bubblesPopped})}</p>
                     <div className="flex text-lg justify-center items-center gap-2 flex-wrap">
                          <Button variant="tertiary" className="flex-1" asChild>
-                              <Link href="/games">Վերադառնալ</Link>
+                              <Link href="/games">{buttonText("goBack")}</Link>
                          </Button>
                          <Button variant="tertiary" className="flex-1" shareUrl={absoluteURL("/games/bubbles")} size="iconMd"><Share2/></Button>
                     </div>
