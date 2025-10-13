@@ -114,7 +114,10 @@
                "original": "Send"
           },
           "messages": {
-               "error": "Oops, something went wrong"
+               "error": "Oops, something went wrong",
+               "success": "The message was sent successfully!",
+               "sendError": "Failed to send message",
+               "invalidFields": "All fields are invalid"
           }
      },
      "notFound": {
