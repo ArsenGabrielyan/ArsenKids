@@ -49,7 +49,8 @@ export default function ContactSection(){
                }
           })
      }
-     const bgStyle = getBackgroundImage("contact")
+     const bgStyle = getBackgroundImage("contact");
+     const buttonText = useTranslations("buttons")
      return (
           <SiteSection id="contact" style={bgStyle}>
                <div className="relative w-full flex items-center justify-center flex-col">
@@ -130,7 +131,10 @@ export default function ContactSection(){
                                              </FormItem>
                                         )}
                                    />
-                                   <Button type="submit" variant="defaultAlt" disabled={isPending}>{isPending ? <><Spinner/> {t("sendBtn.loading")}</> : t("sendBtn.original")}</Button>
+                                   <Button type="submit" variant="defaultAlt" disabled={isPending}>
+                                        {isPending && <Spinner/>}
+                                        {buttonText(`send.${isPending ? "loading" : "original"}`)}
+                                   </Button>
                               </form>
                          </Form>
                     </div>

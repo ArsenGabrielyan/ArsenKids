@@ -31,6 +31,7 @@ export default function GamesSection(){
           const isSearchingChristmasGame = !isChristmas() && getGameTitle('christmas').toLowerCase().includes(search.toLowerCase())
           return <p className="text-xl text-muted-foreground font-heading">{isSearchingChristmasGame ? t("notFound.christmas") : t("notFound.original")}</p> 
      }
+     const buttonText = useTranslations("buttons")
      return (
           <SiteSection id="main-games">
                <div className="relative w-full flex items-center justify-center flex-col">
@@ -67,7 +68,7 @@ export default function GamesSection(){
                                    imageSrc={`/games/${game.imageName}`}
                                    imageAlt={game.gameName}
                                    buttonLink={`/games${game.link}`}
-                                   buttonText={t("playBtn")}
+                                   buttonText={buttonText("playGame")}
                                    variant="game"
                               />
                          )) : renderNoGamesMessage()}

@@ -3,6 +3,7 @@ import {Link} from "@/i18n/navigation";
 import Logo from "./logo";
 import React from "react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface GameWrapperProps{
      children: React.ReactNode,
@@ -10,9 +11,10 @@ interface GameWrapperProps{
      className?: string
 }
 export default function GameWrapper({children,title,className}: GameWrapperProps){
+     const buttonText = useTranslations("buttons")
      return (
           <div className={cn("flex justify-center items-center flex-col gap-2.5 p-3 rounded-md shadow-lg border bg-card text-card-foreground font-heading relative",className)}>
-               <Link href="/games" title="Վերադառնալ" aria-label="ArsenKids">
+               <Link href="/games" title={buttonText("goBack")} aria-label="ArsenKids">
                     <Logo src="/arsenkids-black.svg" width={250} height={60}/>
                </Link>
                {!!title && (

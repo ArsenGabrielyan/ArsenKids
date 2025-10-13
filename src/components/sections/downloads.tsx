@@ -17,7 +17,8 @@ const filters: DownloadFilters[] = ["all", "animals", "fruit-veggies", "others"]
 export default function DownloadsSection(){
      const [currSelection, setCurrSelection] = useState<DownloadFilters>("all")
      const [search, setSearch] = useState("");
-     const t = useTranslations("downloads")
+     const t = useTranslations("downloads");
+     const buttonText = useTranslations("buttons")
      const getDownloadsTranslation = useCallback((downloadName: string) =>
           t("downloadTitle",{itemName: t(`downloads-list.${downloadName}`)}),[t])
      const allDownloads = useMemo(()=>
@@ -61,7 +62,7 @@ export default function DownloadsSection(){
                                    title={getDownloadsTranslation(item.downloadName)}
                                    imageSrc={`/downloads/${item.imageName}`}
                                    imageAlt={item.downloadName}
-                                   buttonText={t("downloadBtn")}
+                                   buttonText={buttonText("download")}
                                    buttonLink={absoluteCDN("pdf",`/${item.fileName}`)}
                                    variant="download"
                               />

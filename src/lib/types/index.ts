@@ -1,7 +1,7 @@
 import { BG_IMAGE_MAP, OPERATORS } from "../constants/maps";
 
 // General Types
-type ServiceType = 'about' | "downloads" | "learn" | "alphabet" | "colors" | "games"
+export type ServiceType = 'about' | "downloads" | "learn" | "alphabet" | "colors" | "games"
 export type CardType = "service" | "download" | "game"
 export type DownloadItemType = "others" | "fruit-veggies" | "animals"
 export type SearchFilterType<T> = T | "all"

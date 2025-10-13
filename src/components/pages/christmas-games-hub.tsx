@@ -8,7 +8,8 @@ import { useCallback } from "react";
 export default function ChristmasGamesHub(){
      const bgStyle = getBackgroundImage("christmas");
      const t = useTranslations("christmas-games")
-     const getGameTitle = useCallback((gameName: string) => t(`games-list.${gameName}`),[t])
+     const getGameTitle = useCallback((gameName: string) => t(`games-list.${gameName}`),[t]);
+     const buttonText = useTranslations("buttons")
      return (
           <div className="min-h-screen p-4 relative flex justify-center items-center flex-col w-full" style={bgStyle}>
                <div className="absolute inset-0 bg-linear-to-b from-transparent to-white to-70% opacity-70 -z-00"/>
@@ -24,7 +25,7 @@ export default function ChristmasGamesHub(){
                                    imageSrc={`/games/${game.imageName}`}
                                    imageAlt={game.gameName}
                                    buttonLink={`/games${game.link}`}
-                                   buttonText={t("playBtn")}
+                                   buttonText={buttonText("playGame")}
                                    variant="game"
                               />
                          ))}

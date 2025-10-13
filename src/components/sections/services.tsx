@@ -3,9 +3,17 @@ import SiteSection from "../ui/site-section"
 import { SERVICES } from "@/lib/constants/card-data"
 import Card from "../ui/card"
 import { useTranslations } from "next-intl"
+import { useCallback } from "react"
+import { ServiceType } from "@/lib/types"
 
 export default function ServicesSection(){
-     const t = useTranslations("services")
+     const t = useTranslations("services");
+     const buttonText = useTranslations("buttons")
+     const cardButtonText = useCallback((serviceType: ServiceType)=>
+          serviceType==="about" ? buttonText("learnMore") :
+          serviceType==="downloads" ? t("downloads.title"):
+          serviceType==="games" ? buttonText("playGameAlt") : buttonText("watch")
+     ,[buttonText,t])
      return (
           <SiteSection id="services">
                <div className="relative w-full flex items-center justify-center flex-col">
@@ -17,7 +25,7 @@ export default function ServicesSection(){
                                    title={t(`${service.type}.title`)}
                                    imageSrc={`/cols/col-${service.type}.webp`}
                                    imageAlt={service.type}
-                                   buttonText={t(`${service.type}.linkText`)}
+                                   buttonText={cardButtonText(service.type)}
                                    buttonLink={service.link}
                                    description={t(`${service.type}.desc`)}
                                    variant="service"

@@ -3,8 +3,19 @@
           "mainTitle": "Welcome to ArsenKids!",
           "mainDesc": "The best education leads to the best future!",
           "mainDescChristmas": "Merry Christmas and Happy New Year",
-          "langSwitcherLabel": "Change Language",
-          "learnMore": "Learn More"
+          "langSwitcherLabel": "Change Language"
+     },
+     "buttons": {
+          "goBack": "Go Back",
+          "learnMore": "Learn More",
+          "watch": "Watch",
+          "download": "Download",
+          "playGame": "Play",
+          "playGameAlt": "Let's Play",
+          "send": {
+               "loading": "Sending...",
+               "original": "Send"
+          }
      },
      "nav-links": {
           "home": "Home",
@@ -32,33 +43,27 @@
           "title": "Our Services",
           "about": {
                "title": "About us",
-               "desc": "What's ArsenKids? Learn more by clicking this button",
-               "linkText": "Learn More"
+               "desc": "What's ArsenKids? Learn more by clicking this button"
           },
           "downloads": {
                "title": "Downloads",
-               "desc": "Download ArsenKids' learning and activity sheets. Educational and fun activities for kids.",
-               "linkText": "Downloads"
+               "desc": "Download ArsenKids' learning and activity sheets. Educational and fun activities for kids."
           },
           "learn": {
                "title": "Let's Learn",
-               "desc": "Let's Learn to Count Numbers, Alphabet, Shapes, Animals and Others",
-               "linkText": "Watch"
+               "desc": "Let's Learn to Count Numbers, Alphabet, Shapes, Animals and Others"
           },
           "alphabet": {
                "title": "Learn the alphabet",
-               "desc": "Let's Learn the Alphabet (Eastern & Western Armenian)",
-               "linkText": "Watch"
+               "desc": "Let's Learn the Alphabet (Eastern & Western Armenian)"
           },
           "colors": {
                "title": "Learn Colors",
-               "desc": "Learn Colors with ArsenKids together!",
-               "linkText": "Watch"
+               "desc": "Learn Colors with ArsenKids together!"
           },
           "games": {
                "title": "Games from ArsenKids",
-               "desc": "Intellectual, Entertaining and Interesting Games From ArsenKids For Children",
-               "linkText": "Let's Play"
+               "desc": "Intellectual, Entertaining and Interesting Games From ArsenKids For Children"
           }
      },
      "downloads": {
@@ -85,7 +90,6 @@
                "forest-animals": "Forest Animals",
                "solar-system": "Solar System"
           },
-          "downloadBtn": "Download",
           "notFound": "No search results found."
      },
      "contact": {
@@ -108,10 +112,6 @@
                     "title": "Message",
                     "placeholder": "Write your message here"
                }
-          },
-          "sendBtn": {
-               "loading": "Sending...",
-               "original": "Send"
           },
           "messages": {
                "error": "Oops, something went wrong",
@@ -166,7 +166,6 @@
           },
           "allGames": "All Games",
           "search": "Search...",
-          "playBtn": "Play",
           "notFound": {
                "original": "No search results found.",
                "christmas": "Christmas games are only available during the New Year and Christmas season."
@@ -190,8 +189,7 @@
                "memory-christmas": "Match the Pairs",
                "puzzle-christmas": "Puzzle \"Christmas\"",
                "build-snowman": "Build the Snowman"
-          },
-          "playBtn": "Play"
+          }
      },
      "bubbles": {
           "title": "Bubbles"

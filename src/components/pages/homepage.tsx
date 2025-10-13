@@ -9,12 +9,13 @@ import { isChristmas } from "@/lib/helpers";
 import { useTranslations } from "next-intl";
 
 export default function HomePage(){
-     const t = useTranslations("index")
+     const t = useTranslations("index");
+     const buttonText = useTranslations("buttons")
      return (
           <PageLayout>
                <HeroSection
                     description={t(isChristmas() ? "mainDescChristmas" : "mainDesc")}
-                    linkText={t("learnMore")}
+                    linkText={buttonText("learnMore")}
                />
                <AboutSection/>
                <ServicesSection/>
