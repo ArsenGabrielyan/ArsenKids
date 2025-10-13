@@ -1,8 +1,11 @@
 import PuzzleGameMenu from "@/components/games/puzzle/menu"
-import { Metadata } from "next"
+import { getTranslations } from "next-intl/server"
 
-export const metadata: Metadata = {
-     title: "Փազլ «Պատկերներ»"
+export const generateMetadata = async() => {
+     const t = await getTranslations("puzzle");
+     return {
+          title: t("title")
+     }
 }
 
 export default function PuzzleMenu(){

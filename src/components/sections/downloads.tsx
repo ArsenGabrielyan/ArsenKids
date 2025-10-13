@@ -19,7 +19,7 @@ export default function DownloadsSection(){
      const [search, setSearch] = useState("");
      const t = useTranslations("downloads")
      const getDownloadsTranslation = useCallback((downloadName: string) =>
-          t("downloadTitle",{itemName: t(`downloads.${downloadName}`)}),[t])
+          t("downloadTitle",{itemName: t(`downloads-list.${downloadName}`)}),[t])
      const allDownloads = useMemo(()=>
           DOWNLOADS
                .filter(item=>currSelection==="all" || item.itemType===currSelection)

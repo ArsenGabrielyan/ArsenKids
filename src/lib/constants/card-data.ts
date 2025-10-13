@@ -106,56 +106,48 @@ export const GAMES_LIST: ICard<"game">[] = [
      {
           imageName: "pairs.webp",
           gameName: "memory",
-          title: "Զույգեր",
           link: "/memory",
           type: "puzzle"
      },
      {
           imageName: "xo.webp",
           gameName: "tic-tac-toe",
-          title: "Իքսիկ Նոլիկ",
           link: "/tic-tac-toe",
           type: "entertainment"
      },
      {
           imageName: "words.webp",
           gameName: "words",
-          title: "Գուշակիր բառը",
           link: "/guess-word",
           type: "puzzle"
      },
      {
           imageName: "math.webp",
           gameName: "math",
-          title:"Մաթեմատիկա",
           link: "/math",
           type: "math"
      },
      {
           imageName: "numbers.webp",
           gameName: "number",
-          title:"Հիշիր թվանշանները",
           link: "/guess-number",
           type: "math"
      },
      {
           imageName: "puzzle.webp",
           gameName: "puzzle",
-          title:"Փազլ «Պատկերներ»",
           link: "/puzzle",
           type: "puzzle"
      },
      {
           imageName: "interactive-math.webp",
           gameName: "interactive-math",
-          title: "Հրաշագործ Մաթեմատիկա",
           link: "/interactive-math",
           type: "math"
      },
      {
           imageName: "bubbles.webp",
           gameName: "bubbles",
-          title: "Պղպջակներ",
           link: "/bubbles",
           type: "entertainment"
      },
@@ -164,21 +156,18 @@ export const CHRISTMAS_GAMES_LIST: ICard<"game">[] = [
      {
           imageName: "christmas-pairs.webp",
           gameName: "memory-christmas",
-          title: "Զույգեր",
           link: "/christmas/memory-game",
           type: "christmas-game"
      },
      {
           imageName: "christmas-puzzle.webp",
           gameName: "puzzle-christmas",
-          title: "Փազլ «Ամանոր»",
           link: "/christmas/puzzle",
           type: "christmas-game"
      },
      {
           imageName: "christmas-snowman.webp",
           gameName: "build-snowman",
-          title: "Պատրաստիր ձնեմարդ",
           link: "/christmas/build-snowman",
           type: "christmas-game"
      }
@@ -186,7 +175,6 @@ export const CHRISTMAS_GAMES_LIST: ICard<"game">[] = [
 export const CHRISTMAS_GAME: ICard<"game"> = {
      imageName: "christmas.webp",
      gameName: "christmas",
-     title: "Ամանորյա խաղեր",
      link: "/christmas",
      type: "entertainment"
 }

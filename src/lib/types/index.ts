@@ -33,11 +33,6 @@ export interface IGameDifficulty{
      name: GameDifficulty,
      title: string
 }
-export interface IGameTitles{
-     puzzles: Record<string,string>,
-     pairs: Record<string,string>,
-     christmas: Record<string,string>
-}
 export type GameMessageType = "" | "correct" | "wrong"
 export interface IGameMessage {
      messages: string[],
@@ -62,7 +57,6 @@ export type ICard<T extends CardType> = T extends "service" ? {
      imageName: string
      downloadName: string,
 } : {
-     title: string,
      imageName: string,
      gameName: string,
      link: string,

@@ -1,8 +1,8 @@
 import PuzzleGame from "@/components/games/puzzle"
 import { PUZZLE_LINKS } from "@/lib/constants/links"
-import { getGameTitle } from "@/lib/helpers";
 import { absoluteURL } from "@/lib/utils";
 import { Metadata } from "next"
+import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 interface PageProps{
@@ -13,9 +13,9 @@ export const generateMetadata = async({params}: PageProps): Promise<Metadata> =>
      const {shape} = await params;
      const allPages = PUZZLE_LINKS.map(val=>val.name);
      if(!allPages.find(val=>val===shape)) notFound();
-     const title = getGameTitle("puzzles",shape);
+     const t = await getTranslations("puzzle")
      return {
-          title: `Փազլ «${title}»`,
+          title: t("gameTitle",{title: t(`games.${shape}`)}),
           alternates: {
                canonical: absoluteURL(`/games/puzzle/${shape}`)
           }
@@ -26,10 +26,10 @@ export default async function Puzzle({params}: PageProps){
      const {shape} = await params;
      const allPages = PUZZLE_LINKS.map(val=>val.name);
      if(!allPages.find(val=>val===shape)) notFound();
-     const title = getGameTitle("puzzles",shape);
+     const t = await getTranslations("puzzle")
      return (
           <PuzzleGame
-               title={title}
+               title={t(`games.${shape}`)}
                shape={shape}
           />
      )

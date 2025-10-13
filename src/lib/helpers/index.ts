@@ -1,6 +1,6 @@
-import { BG_IMAGE_MAP, GAME_TITLES } from "../constants/maps";
+import { BG_IMAGE_MAP } from "../constants/maps";
 import { snowmanItems } from "../constants/snowman.game";
-import { BgImageVariant, IGameTitles, SnowmanType } from "../types";
+import { BgImageVariant, SnowmanType } from "../types";
 
 export function isChristmas(){
      const today = new Date();
@@ -25,5 +25,4 @@ export function getBackgroundImage(variant: BgImageVariant): React.CSSProperties
           } : null)
      }
 }
-export const getGameTitle = (category: keyof IGameTitles,key:string): string => GAME_TITLES[category]?.[key] || ""
 export const getSnowmanItems = (type: SnowmanType) => snowmanItems.filter(val=>val.type===type);

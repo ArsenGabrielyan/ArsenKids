@@ -1,5 +1,5 @@
 import { isChristmas } from "../helpers";
-import { IGameTitles, IMusicData } from "../types";
+import { IMusicData } from "../types";
 import { absoluteCDN } from "../utils";
 
 export const BG_IMAGE_MAP = {
@@ -16,45 +16,6 @@ export enum OPERATORS {
 }
 
 // Constants
-export const GAME_TITLES: IGameTitles = {
-     puzzles: {
-          circle: "Շրջան",
-          diamond: "Շեղանկյուն",
-          heart: "Սիրտ",
-          hexagon: "Վեցանկյուն",
-          oval: "Օվալ (Ձվաձև)",
-          parallelogram: "Զուգահեռագիծ",
-          pentagon: "Հնգանկյուն",
-          rectangle: "Ուղղանկյուն",
-          square: "Քառակուսի",
-          star: "Աստղ",
-          trapezoid: "Սեղան",
-          triangle: "Եռանկյուն"
-     },
-     pairs: {
-          birds: "Թռչուններ",
-          domesticAnimals: "Ընտանի Կենդանիներ",
-          wildAnimals: "Վայրի Կենդանիներ",
-          fruit: "Մրգեր",
-          vegetables: "Բանջարեղեն",
-          colors: "Գույներ",
-          transportation: "Տրանսպորտային միջոցներ",
-          insects: "Միջատներ",
-          forestAnimals: "Անտառային Կենդանիներ",
-          solarSystem: "Արեգակնային համակարգ"
-     },
-     christmas: {
-          bell: "Զանգակներ",
-          "christmas-tree": "Տոնածառ",
-          gift: "Նվեր",
-          ornament: "Զարդարանք",
-          reindeer: "Եղջերու",
-          santa: "Ձմեռ պապիկ",
-          sleigh: "Սահնակ",
-          snowman: "Ձնեմարդ",
-          stocking: "Գուլպա"
-     }
-}
 export const WORDS_BY_DIFFICULTY = {
      easy: ["օդ", "օձ", "սև", "աղ", "մեծ", "ծառ", "նավ", "տաք", "կով", "մեխ", "բակ", "տղա", "ամպ", "հաց", "քար", "թիվ", "ծով", "արև", "հին", "նոր", "ղեկ", "բու", "ջուր","կրիա", "տուփ", "ուղի", "շենք", "տուն", "տետր", "գդալ", "լճակ", "կրակ", "մարդ", "այգի", "լամպ", "գիրք", "ձեռք", "մայթ", "շուն", "ձուկ", "նկար", "ափսե", "դուռ", "փոքր", "թավա", "աթոռ", "կտոր", "մաշկ", "ելակ","դեղձ","տանձ"],
      medium: ["շաքար", "գնդակ", "փողոց", "կոճակ", "գլուխ", "սուրճ", "քաղցր", "բանակ", "դպրոց", "ցուրտ", "կատու", "արծիվ", "մատիտ", "լույս", "սփռոց", "աղջիկ", "տաբատ", "քաղաք", "գյուղ", "ռադիո", "պղպեղ", "սեղան", "կանաչ", "գնացք", "երեխա", "դեղին", "լեզու", "ծաղիկ", "խնձոր", "բանան", "ծիրան"],

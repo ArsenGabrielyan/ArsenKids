@@ -71,7 +71,7 @@
           },
           "search": "Որոնում․․․",
           "downloadTitle": "Ուսուցողական թերթ «{itemName}»",
-          "downloads": {
+          "downloads-list": {
                "colors": "Գույներ",
                "shapes": "Երկրաչափական Մարմիններ",
                "fruit": "Մրգեր",
@@ -150,6 +150,115 @@
                "required": "Խնդրում ենք լրացնել պատասխանը",
                "requiredNum": "Խնդրում ենք գրել ցանկացած թիվ որպես պատասխան",
                "requiredOperator": "Խնդրում ենք գրել ցանկացած օպերատոր որպես պատասխան"
+          }
+     },
+     "games": {
+          "metaTitle": "Խաղեր",
+          "metaDesc": "Ինտելեկտուալ և հետաքրքիր խաղեր ArsenKids-ից",
+          "title": "Խաղեր ArsenKids-ից",
+          "desc": "Այստեղ դուք կխաղաք հետաքրքիր և ինտելեկտուալ խաղեր",
+          "startPlaying": "Սկսել Խաղալ",
+          "filters": {
+               "all": "Բոլորը",
+               "puzzle": "Տրամաբանական",
+               "math": "Մաթեմատիկական",
+               "entertainment": "Ժամանցային"
+          },
+          "allGames": "Բոլոր խաղերը",
+          "search": "Որոնում․․․",
+          "playBtn": "Խաղալ",
+          "notFound": {
+               "original": "Որոնման արդյունքներ չեն գտնվել:",
+               "christmas": "Ամանորյա խաղերը հասանելի են միայն Նոր Տարվա և Սուրբ Ծննդյան սեզոնին։"
+          },
+          "games-list": {
+               "memory": "Զույգեր",
+               "tic-tac-toe": "Իքսիկ Նոլիկ",
+               "words": "Գուշակիր բառը",
+               "math": "Մաթեմատիկա",
+               "number": "Հիշիր թվանշանները",
+               "puzzle": "Փազլ «Պատկերներ»",
+               "interactive-math": "Հրաշագործ Մաթեմատիկա",
+               "bubbles": "Պղպջակներ",
+               "christmas": "Ամանորյա խաղեր"
+          }
+     },
+     "christmas-games": {
+          "title": "Ամանորյա խաղեր",
+          "desc": "Ընտրեք ցանկացած խաղ",
+          "games-list": {
+               "memory-christmas": "Զույգեր",
+               "puzzle-christmas": "Փազլ «Ամանոր»",
+               "build-snowman": "Պատրաստիր ձնեմարդ"
+          },
+          "playBtn": "Խաղալ"
+     },
+     "bubbles": {
+          "title": "Պղպջակներ"
+     },
+     "build-snowman": {
+          "title": "Պատրաստիր ձնեմարդ"
+     },
+     "guess-number": {
+          "title": "Հիշիր թվանշանները"
+     },
+     "guess-word": {
+          "title": "Գուշակիր բառը"
+     },
+     "interactive-math": {
+          "title": "Հրաշագործ Մաթեմատիկա"
+     },
+     "math": {
+          "title": "Մաթեմատիկա"
+     },
+     "tic-tac-toe": {
+          "title": "Իքսիկ Նոլիկ"
+     },
+     "memory": {
+          "title": "Զույգեր",
+          "gameTitle": "{title} - Զույգեր",
+          "pairs": {
+               "birds": "Թռչուններ",
+               "domesticAnimals": "Ընտանի Կենդանիներ",
+               "wildAnimals": "Վայրի Կենդանիներ",
+               "fruit": "Մրգեր",
+               "vegetables": "Բանջարեղեն",
+               "colors": "Գույներ",
+               "transportation": "Տրանսպորտային միջոցներ",
+               "insects": "Միջատներ",
+               "forestAnimals": "Անտառային Կենդանիներ",
+               "solarSystem": "Արեգակնային համակարգ",
+               "christmas": "Ամանոր"
+          }
+     },
+     "puzzle": {
+          "title": "Փազլ «Պատկերներ»",
+          "gameTitle": "Փազլ «{title}»",
+          "christmasTitle": "Փազլ «Ամանոր»",
+          "games": {
+               "circle": "Շրջան",
+               "diamond": "Շեղանկյուն",
+               "heart": "Սիրտ",
+               "hexagon": "Վեցանկյուն",
+               "oval": "Օվալ (Ձվաձև)",
+               "parallelogram": "Զուգահեռագիծ",
+               "pentagon": "Հնգանկյուն",
+               "rectangle": "Ուղղանկյուն",
+               "square": "Քառակուսի",
+               "star": "Աստղ",
+               "trapezoid": "Սեղան",
+               "triangle": "Եռանկյուն"
+          },
+          "christmas-games": {
+               "bell": "Զանգակներ",
+               "christmas-tree": "Տոնածառ",
+               "gift": "Նվեր",
+               "ornament": "Զարդարանք",
+               "reindeer": "Եղջերու",
+               "santa": "Ձմեռ պապիկ",
+               "sleigh": "Սահնակ",
+               "snowman": "Ձնեմարդ",
+               "stocking": "Գուլպա"
           }
      }
 }

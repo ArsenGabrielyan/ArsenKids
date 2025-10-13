@@ -71,7 +71,7 @@
           },
           "search": "Поиск...",
           "downloadTitle": "Учебный лист «{itemName}» (Армянский)",
-          "downloads": {
+          "downloads-list": {
                "colors": "Цвета",
                "shapes": "Фигуры",
                "fruit": "Фрукты",
@@ -150,6 +150,115 @@
                "required": "Пожалуйста, заполните ответ",
                "requiredNum": "Пожалуйста, напишите любое число в качестве ответа",
                "requiredOperator": "Пожалуйста, напишите любой оператор в качестве ответа"
+          }
+     },
+     "games": {
+          "metaTitle": "Игры",
+          "metaDesc": "Интеллектуальные и интересные игры от ArsenKids",
+          "title": "Игры от ArsenKids",
+          "desc": "Здесь вы сможете поиграть в интересные и интеллектуальные игры.",
+          "startPlaying": "Давайте играть",
+          "filters": {
+               "all": "Все",
+               "puzzle": "Логический",
+               "math": "Математический",
+               "entertainment": "Развлечение"
+          },
+          "allGames": "Все игры",
+          "search": "Поиск...",
+          "playBtn": "Играть",
+          "notFound": {
+               "original": "Результаты поиска не найдены.",
+               "christmas": "Новогодние игры доступны только в период Нового года и Рождества."
+          },
+          "games-list": {
+               "memory": "Сопоставление пар",
+               "tic-tac-toe": "Крестики-нолики",
+               "words": "Угадай слово",
+               "math": "Математика",
+               "number": "Запомните числа",
+               "puzzle": "Пазл «Фигуры»",
+               "interactive-math": "Интерактивная математика",
+               "bubbles": "Пузырки",
+               "christmas": "Новогодние игры"
+          }
+     },
+     "christmas-games": {
+          "title": "Новогодние игры",
+          "desc": "Выберите любую игру",
+          "games-list": {
+               "memory-christmas": "Сопоставление пар",
+               "puzzle-christmas": "Пазл «Новый год»",
+               "build-snowman": "Построить снеговика"
+          },
+          "playBtn": "Играть"
+     },
+     "bubbles": {
+          "title": "Пузырки"
+     },
+     "build-snowman": {
+          "title": "Построить снеговика"
+     },
+     "guess-number": {
+          "title": "Запомните числа"
+     },
+     "guess-word": {
+          "title": "Угадай слово"
+     },
+     "interactive-math": {
+          "title": "Интерактивная математика"
+     },
+     "math": {
+          "title": "Математика"
+     },
+     "tic-tac-toe": {
+          "title": "Крестики-нолики"
+     },
+     "memory": {
+          "title": "Сопоставление пар",
+          "gameTitle": "{title} - Сопоставление пар",
+          "pairs": {
+               "birds": "Птицы",
+               "domesticAnimals": "Домашние животные",
+               "wildAnimals": "Дикие животные",
+               "fruit": "Фрукты",
+               "vegetables": "Овощи",
+               "colors": "Цвета",
+               "transportation": "Транспортные средства",
+               "insects": "Насекомые",
+               "forestAnimals": "Лесные животные",
+               "solarSystem": "Солнечная система",
+               "christmas": "Новый год"
+          }
+     },
+     "puzzle": {
+          "title": "Пазл «Фигуры»",
+          "gameTitle": "Пазл «{title}»",
+          "christmasTitle": "Пазл «Новый год»",
+          "games": {
+               "circle": "Круг",
+               "diamond": "Диагональ",
+               "heart": "Сердце",
+               "hexagon": "Шестиугольник",
+               "oval": "Овал",
+               "parallelogram": "Параллелограмм",
+               "pentagon": "Пятиугольник",
+               "rectangle": "Прямоугольник",
+               "square": "Квадрат",
+               "star": "Звезда",
+               "trapezoid": "Трапеция",
+               "triangle": "Триугольник"
+          },
+          "christmas-games": {
+               "bell": "Колокольчики",
+               "christmas-tree": "Ёлка",
+               "gift": "Подарок",
+               "ornament": "Украшение",
+               "reindeer": "Олень",
+               "santa": "Дед мороз",
+               "sleigh": "Санки",
+               "snowman": "Снеговик",
+               "stocking": "Рождественский чулок"
           }
      }
 }

@@ -71,7 +71,7 @@
           },
           "search": "Search...",
           "downloadTitle": "Learning sheet \"{itemName}\" (Armenian)",
-          "downloads": {
+          "downloads-list": {
                "colors": "Colors",
                "shapes": "Shapes",
                "fruit": "Fruit",
@@ -147,6 +147,115 @@
                "required": "Please fill in the answer",
                "requiredNum": "Please write any number as the answer",
                "requiredOperator": "Please write any operator as the answer"
+          }
+     },
+     "games": {
+          "metaTitle": "Games",
+          "metaDesc": "Intellectual and interesting games from ArsenKids",
+          "title": "Games from ArsenKids",
+          "desc": "Here you'll play interesting and intellectual games.",
+          "startPlaying": "Start Playing",
+          "filters": {
+               "all": "All",
+               "puzzle": "Logical",
+               "math": "Mathematical",
+               "entertainment": "Entertainment"
+          },
+          "allGames": "All Games",
+          "search": "Search...",
+          "playBtn": "Play",
+          "notFound": {
+               "original": "No search results found.",
+               "christmas": "Christmas games are only available during the New Year and Christmas season."
+          },
+          "games-list": {
+               "memory": "Match the Pairs",
+               "tic-tac-toe": "Tic Tac Toe",
+               "words": "Guess the word",
+               "math": "Mathematics",
+               "number": "Memorize the numbers",
+               "puzzle": "Puzzle \"Shapes\"",
+               "interactive-math": "Interactive Maths",
+               "bubbles": "Bubbles",
+               "christmas": "Christmas Games"
+          }
+     },
+     "christmas-games": {
+          "title": "Christmas Games",
+          "desc": "Choose any game",
+          "games-list": {
+               "memory-christmas": "Match the Pairs",
+               "puzzle-christmas": "Puzzle \"Christmas\"",
+               "build-snowman": "Build the Snowman"
+          },
+          "playBtn": "Play"
+     },
+     "bubbles": {
+          "title": "Bubbles"
+     },
+     "build-snowman": {
+          "title": "Build the Snowman"
+     },
+     "guess-number": {
+          "title": "Memorize the numbers"
+     },
+     "guess-word": {
+          "title": "Guess the word"
+     },
+     "interactive-math": {
+          "title": "Interactive Maths"
+     },
+     "math": {
+          "title": "Mathematics"
+     },
+     "tic-tac-toe": {
+          "title": "Tic Tac Toe"
+     },
+     "memory": {
+          "title": "Match the Pairs",
+          "gameTitle": "{title} - Match the Pairs",
+          "pairs": {
+               "birds": "Birds",
+               "domesticAnimals": "Domestic Animals",
+               "wildAnimals": "Wild Animals",
+               "fruit": "Fruit",
+               "vegetables": "Vegetables",
+               "colors": "Colors",
+               "transportation": "Vehicles",
+               "insects": "Insects",
+               "forestAnimals": "Forest Animals",
+               "solarSystem": "Solar System",
+               "christmas": "Christmas"
+          }
+     },
+     "puzzle": {
+          "title": "Puzzle «Shapes»",
+          "gameTitle": "Puzzle «{title}»",
+          "christmasTitle": "Puzzle «Christmas»",
+          "games": {
+               "circle": "Circle",
+               "diamond": "Diamond",
+               "heart": "Heart",
+               "hexagon": "Hexagon",
+               "oval": "Oval",
+               "parallelogram": "Parallelogram",
+               "pentagon": "Pentagon",
+               "rectangle": "Rectangle",
+               "square": "Square",
+               "star": "Star",
+               "trapezoid": "Trapezoid",
+               "triangle": "Triangle"
+          },
+          "christmas-games": {
+               "bell": "Bells",
+               "christmas-tree": "Christmas Tree",
+               "gift": "Presents",
+               "ornament": "Ornament",
+               "reindeer": "Reindeer",
+               "santa": "Santa Claus",
+               "sleigh": "Sleigh",
+               "snowman": "Snowman",
+               "stocking": "Stockings"
           }
      }
 }
