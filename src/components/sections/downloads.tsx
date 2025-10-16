@@ -18,7 +18,8 @@ export default function DownloadsSection(){
      const [currSelection, setCurrSelection] = useState<DownloadFilters>("all")
      const [search, setSearch] = useState("");
      const t = useTranslations("downloads");
-     const buttonText = useTranslations("buttons")
+     const buttonText = useTranslations("buttons");
+     const searchTxt = useTranslations("search")
      const getDownloadsTranslation = useCallback((downloadName: string) =>
           t("downloadTitle",{itemName: t(`downloads-list.${downloadName}`)}),[t])
      const allDownloads = useMemo(()=>
@@ -35,7 +36,7 @@ export default function DownloadsSection(){
                               value={search}
                               onChange={e=>setSearch(e.target.value)}
                               className="w-full max-w-lg"
-                              placeholder={t("search")}
+                              placeholder={searchTxt("placeholder")}
                               aria-label="search"
                          />
                          {search!=="" && (
@@ -62,12 +63,12 @@ export default function DownloadsSection(){
                                    title={getDownloadsTranslation(item.downloadName)}
                                    imageSrc={`/downloads/${item.imageName}`}
                                    imageAlt={item.downloadName}
-                                   buttonText={buttonText("download")}
+                                   buttonText={buttonText("download.original")}
                                    buttonLink={absoluteCDN("pdf",`/${item.fileName}`)}
                                    variant="download"
                               />
                          )) : (
-                              <p className="text-xl text-muted-foreground font-heading">{t("notFound")}</p>
+                              <p className="text-xl text-muted-foreground font-heading">{searchTxt("noResults")}</p>
                          )}
                     </div>
                </div>

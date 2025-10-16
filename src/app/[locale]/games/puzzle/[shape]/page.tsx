@@ -11,8 +11,7 @@ interface PageProps{
 
 export const generateMetadata = async({params}: PageProps): Promise<Metadata> => {
      const {shape} = await params;
-     const allPages = PUZZLE_LINKS.map(val=>val.name);
-     if(!allPages.find(val=>val===shape)) notFound();
+     if(!PUZZLE_LINKS.find(val=>val===shape)) notFound();
      const t = await getTranslations("puzzle")
      return {
           title: t("gameTitle",{title: t(`games.${shape}`)}),
@@ -24,8 +23,7 @@ export const generateMetadata = async({params}: PageProps): Promise<Metadata> =>
 
 export default async function Puzzle({params}: PageProps){
      const {shape} = await params;
-     const allPages = PUZZLE_LINKS.map(val=>val.name);
-     if(!allPages.find(val=>val===shape)) notFound();
+     if(!PUZZLE_LINKS.find(val=>val===shape)) notFound();
      const t = await getTranslations("puzzle")
      return (
           <PuzzleGame

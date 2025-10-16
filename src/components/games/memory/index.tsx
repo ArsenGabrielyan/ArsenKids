@@ -12,6 +12,8 @@ import { useCallback, useEffect, useState } from "react";
 import { absoluteURL, cn } from "@/lib/utils";
 import { RotateCcw, Share2 } from "lucide-react";
 import {Link} from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
+import { toast } from "sonner";
 
 interface MemoryGameProps{
      type: MemoryCardParams;
@@ -19,6 +21,9 @@ interface MemoryGameProps{
 }
 export default function MemoryGame({type, title}: MemoryGameProps){
      const [gameState, setGameState] = useState(INITIAL_PAIRS_STATE);
+     const t = useTranslations("memory");
+     const buttonTxt = useTranslations("buttons");
+     const validationMessages = useTranslations("validation");
      const updateState = (overrides: Partial<IMemoryGameState>) =>
           setGameState(prev=>({...prev,...overrides}))
      const [cards,setCards] = useState<IMemoryCard[]>([]);
@@ -43,6 +48,10 @@ export default function MemoryGame({type, title}: MemoryGameProps){
           secondChoice: null,
           disabled: false
      }),[])
+     const soundError = useCallback((err: unknown) => {
+          console.error("Audio Error:",err);
+          toast.error(validationMessages("soundError"))
+     },[validationMessages])
      useEffect(() => {
           const audio = new Audio();
           if(gameState.firstChoice && gameState.secondChoice){
@@ -54,10 +63,10 @@ export default function MemoryGame({type, title}: MemoryGameProps){
                          turns: prev.turns+1,
                          score: prev.score+1
                     }))
-                    playSound(audio, AUDIO.correct);
+                    playSound(audio, AUDIO.correct).catch(soundError);
                     reset();
                } else {
-                    playSound(audio, AUDIO.wrong);
+                    playSound(audio, AUDIO.wrong).catch(soundError)
                     setTimeout(()=>{
                          setGameState(prev=>({
                               ...prev,
@@ -67,41 +76,41 @@ export default function MemoryGame({type, title}: MemoryGameProps){
                     },1000)
                }
           }
-     },[gameState.firstChoice, gameState.secondChoice, reset]);
+     },[gameState.firstChoice, gameState.secondChoice, reset, soundError]);
      useEffect(()=>{
           Object.values(AUDIO).forEach(src => new Audio(src).load());
      },[])
      const {score,turns,isStarted,disabled,firstChoice,secondChoice} = gameState
      return (
           <div className={cn("grid place-items-center relative p-4 md:p-5 gap-2 min-h-screen bg-linear-to-tr from-rainbow-green",isStarted ? "grid-cols-1 md:grid-cols-[1fr_2fr]" : "grid-cols-1",type==="christmas" ? "to-destructive/70" : "to-rainbow-blue")}>
-               <GameWrapper title="Զույգեր" className="w-full max-w-lg">
-                    <h2 className="text-lg font-semibold text-blue-800 text-center">Թեմա՝ {title}</h2>
+               <GameWrapper title={t("title")} className="w-full max-w-lg">
+                    <h2 className="text-lg font-semibold text-blue-800 text-center">{t("topic",{title})}</h2>
                     {!isStarted ? (
                          <div className="flex items-center gap-2">
                               <Button onClick={shuffle}>
-                                   Սկսել
+                                   {buttonTxt("start")}
                               </Button>
                               <Button variant="tertiary" asChild>
-                                   <Link href={type==="christmas" ? "/games/christmas" : "/games/memory"}>Վերադառնալ</Link>
+                                   <Link href={type==="christmas" ? "/games/christmas" : "/games/memory"}>{buttonTxt("goBack")}</Link>
                               </Button>
                          </div>
                     ) : (
                          <>
                          <div className="flex flex-col md:flex-row justify-between items-center text-2xl w-full gap-2">
-                              <span>Միավոր՝ {score}</span>
-                              <span>Պտույտներ՝ {turns}</span>
+                              <span>{t("score",{score})}</span>
+                              <span>{t("turns",{turns})}</span>
                          </div>
                          <span className="flex flex-col md:flex-row justify-between items-center w-full gap-2">
                               <div className="flex items-center gap-2">
-                                   <Button title="Վերսկսել" variant="outline" size="iconMd" onClick={shuffle}>
+                                   <Button title={buttonTxt("restart")} variant="outline" size="iconMd" onClick={shuffle}>
                                         <RotateCcw className="size-6"/>
                                    </Button>
-                                   <Button title="Կիսվել" variant="outline" size="iconMd" shareUrl={absoluteURL(`/games/memory/${type}`)}>
+                                   <Button title={buttonTxt("share")} variant="outline" size="iconMd" shareUrl={absoluteURL(`/games/memory/${type}`)}>
                                         <Share2 className="size-6"/>
                                    </Button>
                               </div>
                               <Button variant="tertiary" asChild>
-                                   <Link href={type==="christmas" ? "/games/christmas" : "/games/memory"}>Վերադառնալ</Link>
+                                   <Link href={type==="christmas" ? "/games/christmas" : "/games/memory"}>{buttonTxt("goBack")}</Link>
                               </Button>
                          </span>
                         </> 

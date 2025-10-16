@@ -9,10 +9,10 @@ export const BG_IMAGE_MAP = {
 }
 // Enums
 export enum OPERATORS {
-     "Գումարում" = "+",
-     "Հանում" = "-",
-     "Բազմապատկում" = "×",
-     "Բաժանում" = "÷",
+     "addition" = "+",
+     "subtraction" = "-",
+     "multiplication" = "×",
+     "division" = "÷",
 }
 
 // Constants

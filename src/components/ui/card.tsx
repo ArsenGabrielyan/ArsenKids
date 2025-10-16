@@ -6,6 +6,7 @@ import { CardType } from "@/lib/types";
 import { Download, Share2 } from "lucide-react";
 import { IMAGE_SIZES } from "@/lib/constants/card-data";
 import { absoluteURL, cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface CardProps {
      title: string;
@@ -26,6 +27,7 @@ export default function Card({
      description,
      variant = "service",
 }: CardProps) {
+     const buttonTxt = useTranslations("buttons")
      return (
           <div className="min-w-66 w-full max-w-80 border rounded-md shadow-lg bg-card text-card-foreground p-2 flex flex-col justify-between">
                <div className={cn("relative",variant==="game" ? "w-full" : variant==="download" ? "min-h-[440px]" : "h-[250px]")}>
@@ -53,7 +55,7 @@ export default function Card({
                          <Button variant="primary" asChild className="text-base flex-1">
                               <Link href={buttonLink}>{buttonText}</Link>
                          </Button>
-                         <Button variant="primary" title={`Կիսվել «${title}» խաղը`} size="icon" shareUrl={absoluteURL(buttonLink)}>
+                         <Button variant="primary" title={buttonTxt("shareGame",{title})} size="icon" shareUrl={absoluteURL(buttonLink)}>
                               <Share2/>
                          </Button>
                          </>

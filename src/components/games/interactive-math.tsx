@@ -14,10 +14,14 @@ import { INITIAL_MATH_STATE } from "@/lib/constants/states";
 import { InteractiveMathType } from "@/schemas/types";
 import { AUDIO } from "@/lib/constants/maps";
 import { RotateCcw, Share2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function InteractiveMathGame(){
      const [gameState, setGameState] = useState<IInteractiveMathState>(INITIAL_MATH_STATE);
-     const inputRef = useRef<HTMLInputElement>(null)
+     const inputRef = useRef<HTMLInputElement>(null);
+     const validationMessages = useTranslations("validation");
+     const t = useTranslations("interactive-math");
+     const buttonText = useTranslations("buttons");
      const updateState = (overrides: Partial<IInteractiveMathState>) =>
           setGameState(prev=>({...prev,...overrides}))
      const [msgType, setMsgType] = useState<GameMessageType>("");
@@ -50,7 +54,7 @@ export default function InteractiveMathGame(){
                setMsgType("correct")
                audio.play()
           } else if(gameState.operatorQuestion && !MATH_OPERATORS.includes(values.answer as AmazingMathOperator)) {
-               toast.error("Խնդրում եմ տեղադրել ճիշտ օպերատոր")
+               toast.error(validationMessages("correctOperator"))
           } else {
                setMsgType("wrong")
                audio.play()
@@ -71,7 +75,7 @@ export default function InteractiveMathGame(){
      const {num1,num2,operator,solution, elemIdx} = gameState
      return (
           <div className="flex justify-center items-center flex-col min-h-screen relative bg-linear-to-tl from-rainbow-blue to-rainbow-purple p-4 md:p-5">
-               <GameWrapper title="Հրաշագործ Մաթեմատիկա">
+               <GameWrapper title={t("title")}>
                     {isStarted ? (
                          <>
                               <InteractiveMathForm
@@ -84,15 +88,15 @@ export default function InteractiveMathGame(){
                                    inputRef={inputRef}
                               />
                               <div className="flex items-center justify-center gap-2 flex-wrap w-full">
-                                   <Button type="button" className="flex-1" variant="outline" onClick={startGame} title="Վերսկսել">
+                                   <Button type="button" className="flex-1" variant="outline" onClick={startGame} title={buttonText("restart")}>
                                         <RotateCcw className="size-6"/>
                                    </Button>
-                                   <Button type="button" className="flex-1" variant="outline" shareUrl={absoluteURL("/games/amazing-math")} title="Կիսվել">
+                                   <Button type="button" className="flex-1" variant="outline" shareUrl={absoluteURL("/games/amazing-math")} title={buttonText("share")}>
                                         <Share2 className="size-6"/>
                                    </Button>
                               </div>
                          </>
-                    ) : <Button onClick={startGame}>Սկսել</Button>}
+                    ) : <Button onClick={startGame}>{buttonText("start")}</Button>}
                </GameWrapper>
                <MessageBox type={msgType} />
           </div>

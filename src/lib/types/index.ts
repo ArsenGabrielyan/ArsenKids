@@ -30,8 +30,7 @@ export interface IGameType{
 }
 export interface IGameDifficulty{
      id: number,
-     name: GameDifficulty,
-     title: string
+     name: GameDifficulty
 }
 export type GameMessageType = "" | "correct" | "wrong"
 export interface IGameMessage {
@@ -41,10 +40,6 @@ export interface IGameMessage {
 export interface IPuzzleType{
      txt: string,
      img: string
-}
-export interface IGameParamLink{
-     name: string,
-     title: string
 }
 
 // Card
@@ -71,10 +66,6 @@ export enum TicTacToeState{
 }
 export type TicTacToeMode = "" | "2-players" | "player-vs-pc"
 export type TicTacToeDifficulty = Exclude<GameDifficulty,"mixed">
-export interface ITicTacToeDifficulty{
-     name: string,
-     difficulty: TicTacToeDifficulty
-}
 export interface IMinimaxReturnType{
      index: number,
      score: number
@@ -114,10 +105,6 @@ export interface ISnowman{
      hat: number,
      hand: number,
      button: number
-}
-export interface ISnowmanSidebar{
-     title: string,
-     type: SnowmanType
 }
 export type SnowmanType = keyof ISnowman
 export type SnowmanItemsType = `${SnowmanType}s`

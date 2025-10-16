@@ -1,24 +1,25 @@
 import { AmazingMathOperator, GameMessageType, IGameDifficulty, IGameMessage, OperatorType } from "../types";
+import { generateMessagesForTranslation } from "../utils";
 
 export const DIFFICULTIES: IGameDifficulty[] = [
-     {id: 1, name: "easy", title: "Հեշտ"},
-     {id: 2, name: "medium", title: "Միջին"},
-     {id: 3, name: "hard", title: "Բարդ"},
-     {id: 4, name: "mixed", title: "Խառը"}
+     {id: 1, name: "easy",},
+     {id: 2, name: "medium"},
+     {id: 3, name: "hard",},
+     {id: 4, name: "mixed",}
 ];
 export const BASE_ARR: string[] = new Array(9).fill("");
-export const SUCCESS_WORDS = ["Ապրե՛ս", "Կեցցե՛ս", "Սու՛պեր", "Բրա՛վո", "Ընտիր է", "Գերազանց", "Կատարյալ է","Հիանալի է","Տպավորիչ է", "Շատ լավ է", "Ֆանտաստիկ է", "Դու հրաշալի ես"];
-export const MATH_LINKS: OperatorType[] = ["Գումարում", "Հանում", "Բազմապատկում", "Բաժանում" ];
+export const SUCCESS_WORDS = generateMessagesForTranslation(12)
+export const MATH_LINKS: OperatorType[] = ["addition", "subtraction", "multiplication", "division"];
 export const MATH_OPERATORS: AmazingMathOperator[] = ["+","-","*"];
 export const TILE_COUNT = 9, GRID_SIZE = 3, BOARD_SIZE = 320;
 export const BUBBLE_CREATION_INTERVAL = 1200;
 export const GAME_MESSAGES: Record<Exclude<GameMessageType,"">,IGameMessage> = {
      correct: {
-          messages: [...SUCCESS_WORDS, "Ճիշտ է", "Այո", "Ըհըն", "Իհարկե","Դու հանճար ես"],
+          messages: generateMessagesForTranslation(17),
           className: "bg-rainbow-green/95 text-black"
      },
      wrong: {
-          messages: ["Սխալ է", "Ոչ", "Չէ", "Չէ չէ չէ", "Հը ըն", "Նորից փորձիր", "Կրկին փորձիր", "Իհարկե ոչ","Ոչ ոչ ոչ","Ճիշտ չէ","Սխալ պատասխան","Պետք է մտածել","Այն սովորելու մաս է"],
+          messages: generateMessagesForTranslation(12),
           className: "bg-destructive/95 text-white"
      }
 }

@@ -22,7 +22,10 @@ import { useTranslations } from "next-intl";
 
 export default function GuessNumber(){
      const [gameState, setGameState] = useState<IGuessNumberState>(INITIAL_GUESS_NUMBER_STATE)
-     const validationMessages = useTranslations("validation")
+     const validationMessages = useTranslations("validation");
+     const t = useTranslations("guess-number");
+     const buttonText = useTranslations("buttons");
+     const diffTxt = useTranslations("difficulties")
      const updateState = (overrides: Partial<IGuessNumberState>) => 
           setGameState(prev=>({...prev,...overrides}));
      const form = useForm<NumberGuesserType>({
@@ -42,7 +45,7 @@ export default function GuessNumber(){
      const handleEnter = (values: NumberGuesserType) =>{
           const validatedFields = getNumberGuesserSchema(validationMessages).safeParse(values);
           if(!validatedFields.success){
-               toast.error("Դաշտը վավերացված չէ");
+               toast.error(validationMessages("invalidField"));
                return;
           }
           if(!validatedFields.data || Number.isNaN(validatedFields.data.guess)) return;
@@ -51,13 +54,17 @@ export default function GuessNumber(){
           updateState({msgType: isCorrect ? "correct" : "wrong"})
           new Audio(isCorrect ? AUDIO.correct : AUDIO.wrong).play();
      }
-     const goBackToMenu = () => updateState({...INITIAL_GUESS_NUMBER_STATE, isStarted: true})
+     const goBackToMenu = () => updateState({...INITIAL_GUESS_NUMBER_STATE, isStarted: true});
+     const soundError = useCallback((err: unknown) => {
+          console.error("Audio Error:",err);
+          toast.error(validationMessages("soundError"))
+     },[validationMessages])
      useEffect(()=>{
           if(!gameState.timeLeft) return;
           const audio = new Audio(), timer = setInterval(()=>{
                const prev = Object.assign({},gameState)
                if(gameState.timeLeft! > 1) {
-                    playSound(audio,AUDIO.tick)
+                    playSound(audio,AUDIO.tick).catch(soundError)
                     updateState({
                          timeLeft:prev.timeLeft && prev.timeLeft-1,
                          timerCount:prev.timerCount-1,
@@ -66,7 +73,7 @@ export default function GuessNumber(){
                     })
                } else {
                     clearInterval(timer);
-                    playSound(audio,AUDIO.start)
+                    playSound(audio,AUDIO.start).catch(soundError)
                     updateState({
                          timeLeft:null,
                          timerCount:0,
@@ -77,7 +84,7 @@ export default function GuessNumber(){
                }
           },1000);
           return ()=>clearInterval(timer);
-     },[gameState,form])
+     },[gameState,form,soundError])
      useEffect(()=>{
           if(gameState.msgType!==""){
                const timer = setTimeout(()=>startGame(gameState.difficulty),800);
@@ -91,9 +98,9 @@ export default function GuessNumber(){
      const {isStarted,difficulty,showNum,showSquare,timeLeft,timerCount,num,msgType} = gameState
      return (
           <div className="min-h-screen flex justify-center items-center bg-linear-to-tr from-rainbow-red via-rainbow-orange to-rainbow-yellow text-center p-4 md:p-5">
-               <GameWrapper title="Հիշիր թվանշանները">
-                    {!isStarted ? <Button onClick={()=>updateState({isStarted:true})}>Սկսել</Button> : difficulty==="" ? <>
-                         <p>Ընտրել բարդությունը</p>
+               <GameWrapper title={t("title")}>
+                    {!isStarted ? <Button onClick={()=>updateState({isStarted:true})}>{buttonText("start")}</Button> : difficulty==="" ? <>
+                         <p>{diffTxt("title")}</p>
                          <div className="flex justify-center items-center flex-col w-full gap-2">{DIFFICULTIES.map((btn,i)=>(
                               <Button
                                    key={i}
@@ -101,7 +108,7 @@ export default function GuessNumber(){
                                    onClick={()=>startGame(btn.name)}
                                    className="w-full"
                               >
-                                   {btn.title}
+                                   {diffTxt(btn.name)}
                               </Button>
                          ))}</div>
                     </>:<>
@@ -140,11 +147,11 @@ export default function GuessNumber(){
                                              )}
                                         />
                                         <div className="flex items-center justify-center flex-col gap-2 w-full">
-                                             <Button className="w-full" variant="tertiary" type="submit">Ստուգել</Button>
+                                             <Button className="w-full" variant="tertiary" type="submit">{buttonText("check")}</Button>
                                              <div className="flex justify-center items-center gap-2 flex-wrap w-full">
-                                                  <Button className="flex-1" variant="outline" title="Վերսկսել" type="button" onClick={()=>startGame(gameState.difficulty)}><RotateCcw className="size-6"/></Button>
-                                                  <Button className="flex-1" variant="outline" title="Վերադառնալ մենյու" type="button" onClick={goBackToMenu}><Menu className="size-6"/></Button>
-                                                  <Button className="flex-1" variant="outline" title="Կիսվել" type="button" shareUrl={absoluteURL("/games/guess-number")}><Share2/></Button>
+                                                  <Button className="flex-1" variant="outline" title={buttonText("restart")} type="button" onClick={()=>startGame(gameState.difficulty)}><RotateCcw className="size-6"/></Button>
+                                                  <Button className="flex-1" variant="outline" title={buttonText("backToMenu")} type="button" onClick={goBackToMenu}><Menu className="size-6"/></Button>
+                                                  <Button className="flex-1" variant="outline" title={buttonText("share")} type="button" shareUrl={absoluteURL("/games/guess-number")}><Share2/></Button>
                                              </div>
                                         </div>
                                    </form>

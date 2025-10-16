@@ -1,4 +1,4 @@
-import { AmazingMathOperator } from "../types";
+import { AmazingMathOperator, OperatorType } from "../types";
 
 export function mathShuffle<T>(arr: T[]){
      for(let i=arr.length-1;i>0;i--){
@@ -15,20 +15,20 @@ export const getSolution = (num1: number,num2: number,operator: AmazingMathOpera
           case "*": return num1*num2;
      }
 }
-export const generateEquation = (mode: string) => {
+export const generateEquation = (mode: OperatorType) => {
      const q1=Math.floor(Math.random()*17);
      const q2=Math.floor(Math.random()*17);
      const d1=Math.floor(Math.random()*17);
      const d2=Math.floor(Math.random()*17);
      let answer: number;
      switch(mode){
-          case "Հանում":
+          case "subtraction":
                answer = q1-q2;
                break;
-          case "Բազմապատկում":
+          case "multiplication":
                answer = q1*q2;
                break;
-          case "Բաժանում":
+          case "division":
                answer = q1>q2 ? q1/q2 : q2/q1;
                answer = !isFinite(answer) || isNaN(answer) ? NaN : answer;
                break;
@@ -38,16 +38,16 @@ export const generateEquation = (mode: string) => {
      const answers = mathShuffle([answer,d1,d2]);
      return {q1,q2,answers};
 }
-export const checkAnswer = (mode: string, q1: number, q2: number, selected: number) => {
+export const checkAnswer = (mode: OperatorType, q1: number, q2: number, selected: number) => {
      let correctAnswer: number;
      switch(mode){
-          case "Հանում":
+          case "subtraction":
                correctAnswer = q1-q2;
                break;
-          case "Բազմապատկում":
+          case "multiplication":
                correctAnswer = q1*q2;
                break;
-          case "Բաժանում":
+          case "division":
                correctAnswer = q1>q2 ? q1/q2 : q2/q1;
                correctAnswer = !isFinite(correctAnswer) || isNaN(correctAnswer) ? NaN : correctAnswer;
                break;

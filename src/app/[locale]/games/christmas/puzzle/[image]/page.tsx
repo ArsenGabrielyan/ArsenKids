@@ -11,8 +11,7 @@ interface PageProps{
 
 export const generateMetadata = async({params}: PageProps): Promise<Metadata> => {
      const {image} = await params;
-     const allPages = CHRISTMAS_PUZZLE_LINKS.map(val=>val.name);
-     if(!allPages.find(val=>val===image)) notFound();
+     if(!CHRISTMAS_PUZZLE_LINKS.find(val=>val===image)) notFound();
      const t = await getTranslations("puzzle")
      return {
           title: t("gameTitle",{title: t(`christmas-games.${image}`)}),
@@ -24,8 +23,7 @@ export const generateMetadata = async({params}: PageProps): Promise<Metadata> =>
 
 export default async function Puzzle({params}: PageProps){
      const {image} = await params;
-     const allPages = CHRISTMAS_PUZZLE_LINKS.map(val=>val.name);
-     if(!allPages.find(val=>val===image)) notFound();
+     if(!CHRISTMAS_PUZZLE_LINKS.find(val=>val===image)) notFound();
      const t = await getTranslations("puzzle")
      return (
           <PuzzleGame

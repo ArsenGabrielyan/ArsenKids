@@ -27,11 +27,12 @@ export default function GamesSection(){
                .filter(val=>currSelection==="all" || val.type===currSelection)
                .filter(game=>getGameTitle(game.gameName).toLowerCase().includes(search.toLowerCase()))
      },[currSelection, getGameTitle, search]);
+     const searchTxt = useTranslations("search")
      const renderNoGamesMessage = () => {
           const isSearchingChristmasGame = !isChristmas() && getGameTitle('christmas').toLowerCase().includes(search.toLowerCase())
-          return <p className="text-xl text-muted-foreground font-heading">{isSearchingChristmasGame ? t("notFound.christmas") : t("notFound.original")}</p> 
+          return <p className="text-xl text-muted-foreground font-heading">{searchTxt(isSearchingChristmasGame ? "noChristmasGames" : "noResults")}</p> 
      }
-     const buttonText = useTranslations("buttons")
+     const buttonText = useTranslations("buttons");
      return (
           <SiteSection id="main-games">
                <div className="relative w-full flex items-center justify-center flex-col">
@@ -41,7 +42,7 @@ export default function GamesSection(){
                               value={search}
                               onChange={e=>setSearch(e.target.value)}
                               className="w-full max-w-lg"
-                              placeholder={t("search")}
+                              placeholder={searchTxt("placeholder")}
                          />
                          {search!=="" && (
                               <Button variant="ghost" size="icon" onClick={()=>setSearch("")}>

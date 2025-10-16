@@ -1,4 +1,4 @@
-import { ITicTacToeDifficulty, TicTacToeDifficulty } from "../types";
+import { TicTacToeDifficulty } from "../types";
 
 export const PATTERNS: number[][] = [
      [0,1,2],
@@ -10,14 +10,4 @@ export const PATTERNS: number[][] = [
      [0,4,8],
      [2,4,6]
 ];
-export const DIFFICULTIES: ITicTacToeDifficulty[] = [
-     {name: "Հեշտ", difficulty: "easy"},
-     {name: "Միջին", difficulty: "medium"},
-     {name: "Բարդ", difficulty: "hard"}
-]
-export const DIFFICULTY: Record<TicTacToeDifficulty, string> = {
-     easy: "Հեշտ",
-     medium: "Միջին",
-     hard: "Բարդ",
-     "": ""
-}
+export const DIFFICULTIES: TicTacToeDifficulty[] = ["easy", "medium", "hard"]

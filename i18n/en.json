@@ -9,7 +9,10 @@
           "goBack": "Go Back",
           "learnMore": "Learn More",
           "watch": "Watch",
-          "download": "Download",
+          "download": {
+               "loading": "Downloading...",
+               "original": "Download"
+          },
           "playGame": "Play",
           "playGameAlt": "Let's Play",
           "send": {
@@ -18,7 +21,12 @@
           },
           "check": "Check",
           "close": "Close",
-          "start": "Start"
+          "start": "Start",
+          "restart": "Restart",
+          "backToMenu": "Back to menu",
+          "share": "Share",
+          "hint": "Hint",
+          "shareGame": "Share the game \"{title}\""
      },
      "nav-links": {
           "home": "Home",
@@ -77,7 +85,6 @@
                "fruit-veggies": "Fruit and Vegetables",
                "others": "Others"
           },
-          "search": "Search...",
           "downloadTitle": "Learning sheet \"{itemName}\" (Armenian)",
           "downloads-list": {
                "colors": "Colors",
@@ -92,8 +99,7 @@
                "insects": "Insects",
                "forest-animals": "Forest Animals",
                "solar-system": "Solar System"
-          },
-          "notFound": "No search results found."
+          }
      },
      "contact": {
           "title": "Contact us",
@@ -123,6 +129,7 @@
           "returnHome": "Return to Home Page"
      },
      "validation": {
+          "invalidField": "Field isn't validated.",
           "invalidFields": "All fields are invalid",
           "name": {
                "isShort": "Full Name is too short",
@@ -149,9 +156,11 @@
                "isInt": "The answer must be a whole number",
                "required": "Please fill in the answer",
                "requiredNum": "Please write any number as the answer",
-               "requiredOperator": "Please write any operator as the answer"
+               "requiredOperator": "Please write any operator as the answer",
+               "correctOperator": "Please insert the correct operator"
           },
-          "miscError": "Oops, something went wrong"
+          "miscError": "Oops, something went wrong",
+          "soundError": "Failed to play sound"
      },
      "games": {
           "metaTitle": "Games",
@@ -166,11 +175,6 @@
                "entertainment": "Entertainment"
           },
           "allGames": "All Games",
-          "search": "Search...",
-          "notFound": {
-               "original": "No search results found.",
-               "christmas": "Christmas games are only available during the New Year and Christmas season."
-          },
           "games-list": {
                "memory": "Match the Pairs",
                "tic-tac-toe": "Tic Tac Toe",
@@ -201,8 +205,21 @@
           "music": {
                "title": "Music",
                "desc": "Music from YouTube Audio Library",
-               "indicator": "Music: {musicDetails}"
-          }
+               "indicator": "Music: {musicDetails}",
+               "turnOn": "Play music",
+               "turnOff": "Pause music",
+               "switchMusic": "Switch the music"
+          },
+          "parts": {
+               "eye": "Eyes",
+               "nose": "Nose",
+               "mouth": "Mouth",
+               "hat": "Hat",
+               "hand": "Hands",
+               "button": "Buttons"
+          },
+          "snowmanSuccess": "The completed snowman has been downloaded. Merry Christmas and a Happy New Year.",
+          "snowmanError": "The snowman download failed. Please try again later."
      },
      "guess-number": {
           "title": "Memorize the numbers"
@@ -214,10 +231,22 @@
           "title": "Interactive Maths"
      },
      "math": {
-          "title": "Mathematics"
+          "title": "Mathematics",
+          "addition": "Addition",
+          "subtraction": "Subtraction",
+          "multiplication": "Multiplication",
+          "division": "Division"
      },
      "tic-tac-toe": {
-          "title": "Tic Tac Toe"
+          "title": "Tic Tac Toe",
+          "gameTitle": "<blue>Tic</blue> <red>Tac</red> <black>Toe</black>",
+          "draw": "It's a tie",
+          "xWinner": "X Won",
+          "oWinner": "O Won",
+          "upNext": "Up Next: {player}",
+          "difficulty": "Difficulty: {difficulty}",
+          "1Player": "1 Player",
+          "2Players": "2 Players"
      },
      "memory": {
           "title": "Match the Pairs",
@@ -234,7 +263,11 @@
                "forestAnimals": "Forest Animals",
                "solarSystem": "Solar System",
                "christmas": "Christmas"
-          }
+          },
+          "topic": "Topic: {title}",
+          "score": "Score: {score}",
+          "turns": "Turns: {turns}",
+          "chooseTopic": "Choose a topic"
      },
      "puzzle": {
           "title": "Puzzle «Shapes»",
@@ -264,6 +297,62 @@
                "sleigh": "Sleigh",
                "snowman": "Snowman",
                "stocking": "Stockings"
+          },
+          "showNum": "Show numbers",
+          "chooseImage": "Choose any picture",
+          "chooseShape": "Choose a shape"
+     },
+     "difficulties": {
+          "title": "Choose a difficulty",
+          "easy": "Easy",
+          "medium": "Medium",
+          "hard": "Hard",
+          "mixed": "Mixed"
+     },
+     "search": {
+          "placeholder": "Search...",
+          "noResults": "No search results found.",
+          "noChristmasGames": "Christmas games are only available during the New Year and Christmas season."
+     },
+     "shareData": {
+          "title": "ArsenKids Games",
+          "desc": "Let's play this game.",
+          "shareSuccess": "Link has been copied",
+          "shareError": "Sharing failed. Please try again later."
+     },
+     "game-messages": {
+          "correct": {
+               "msg1": "Good Job!",
+               "msg2": "Great Job!",
+               "msg3": "Nice Job!",
+               "msg4": "Bravo!",
+               "msg5": "Amazing!",
+               "msg6": "Excellent!",
+               "msg7": "Perfect!",
+               "msg8": "Awesome!",
+               "msg9": "Impressive!",
+               "msg10": "Very Good!",
+               "msg11": "Fantastic!",
+               "msg12": "Wonderful!",
+               "msg13": "Correct!",
+               "msg14": "Yes!",
+               "msg15": "Uh-huh!",
+               "msg16": "Exactly!",
+               "msg17": "You're a genius!"
+          },
+          "wrong": {
+               "msg1": "Wrong!",
+               "msg2": "No!",
+               "msg3": "Nope!",
+               "msg4": "No no no!",
+               "msg5": "Nuh-uh",
+               "msg6": "Try again!",
+               "msg7": "Think again!",
+               "msg8": "Of course not!",
+               "msg9": "Absolutely not!",
+               "msg10": "Incorrect!",
+               "msg11": "You should think!",
+               "msg12": "That's a part of learning!"
           }
      }
 }

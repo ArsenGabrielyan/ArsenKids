@@ -2,7 +2,7 @@
 import { BASE_ARR} from "@/lib/constants/games";
 import { AUDIO } from "@/lib/constants/maps";
 import { INITIAL_TIC_TAC_TOE_STATE } from "@/lib/constants/states";
-import { DIFFICULTY, DIFFICULTIES } from "@/lib/constants/tic-tac-toe.game";
+import { DIFFICULTIES } from "@/lib/constants/tic-tac-toe.game";
 import { getRandomMove, getMediumMove, getBestMove, checkWinner, isDraw } from "@/lib/helpers/tic-tac-toe.game";
 import { TicTacToeState, TicTacToeMode, TicTacToeDifficulty } from "@/lib/types";
 import { ITicTacToeState } from "@/lib/types/states";
@@ -13,12 +13,18 @@ import { Button } from "../ui/button";
 import { SquareXO } from "../ui/game";
 import { Menu, RotateCcw, Share2 } from "lucide-react";
 import GameWrapper from "../game-wrapper";
+import { useTranslations } from "next-intl";
+import { toast } from "sonner";
 
 export default function GameXO(){
      const [board,setBoard] = useState(BASE_ARR);
      const [player,setPlayer] = useState("O");
      const [isStarted, setIsStarted] = useState(false);
-     const [gameState, setGameState] = useState(INITIAL_TIC_TAC_TOE_STATE)
+     const [gameState, setGameState] = useState(INITIAL_TIC_TAC_TOE_STATE);
+     const validationMessages = useTranslations("validation");
+     const t = useTranslations("tic-tac-toe");
+     const buttonText = useTranslations("buttons");
+     const diffTxt = useTranslations("difficulties");
      const handleSquareClick = (index: number) =>{
           if(board[index]!=="" || gameState.state!==TicTacToeState.Ongoing) return;
           setBoard(prev=>prev.map((value,i)=>(i===index ? player : value)));
@@ -54,6 +60,10 @@ export default function GameXO(){
           setIsStarted(false);
      }
      const startGameInDifficulty = (difficulty: TicTacToeDifficulty) => resetGameState({difficulty})
+     const soundError = useCallback((err: unknown) => {
+          console.error("Audio Error:",err);
+          toast.error(validationMessages("soundError"))
+     },[validationMessages])
      useEffect(()=>{
           const audio = new Audio()
           let winningPattern: number[] = [];
@@ -65,9 +75,9 @@ export default function GameXO(){
                     pattern: winningPattern
                }))
                if(gameState.mode==="2-players"){
-                    playSound(audio, AUDIO.sparkle)
+                    playSound(audio, AUDIO.sparkle).catch(soundError)
                } else {
-                    playSound(audio, player==="O" ? AUDIO.correct : AUDIO.wrong)
+                    playSound(audio, player==="O" ? AUDIO.correct : AUDIO.wrong).catch(soundError)
                }
           }
           if(isDraw(board,winningPattern)){
@@ -75,9 +85,9 @@ export default function GameXO(){
                     ...prev,
                     state: TicTacToeState.Draw,
                }))
-               playSound(audio,AUDIO.wrong)
+               playSound(audio,AUDIO.wrong).catch(soundError)
           }
-     },[board,player,gameState.mode])
+     },[board,player,gameState.mode,soundError])
      useEffect(()=>{
           if(gameState.mode==="player-vs-pc" && player!=="X" && gameState.state===TicTacToeState.Ongoing){
                const timer = setTimeout(pcMove,500);
@@ -88,35 +98,38 @@ export default function GameXO(){
           Object.values(AUDIO).forEach(src => new Audio(src).load());
      }, []);
      const {state,pattern,winner,mode,difficulty} = gameState
-     const stateTxt = state===TicTacToeState.Draw ? "Ոչ ոքի": winner==="X" ? "Իքսիկը հաղթեց" : "Նոլիկը հաղթեց"
+     const stateTxt = state===TicTacToeState.Draw ? t("draw"): winner==="X" ? t("xWinner") : t("oWinner")
      return (
           <div className="w-full h-screen flex justify-center items-center relative flex-col bg-rainbow-blue z-20 p-4 md:p-5">
                <GameWrapper className="mb-3">
                     <h1 className="text-[36.5px] relative drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] font-bold">
-                         <span className="text-[#0da2b3]">Իքսիկ</span>{" "}
-                         <span className="text-[#FF5645]">Նոլիկ</span>
+                         {t.rich("gameTitle",{
+                              blue: (chunks) => <span className="text-[#0da2b3]">{chunks}</span>,
+                              red: (chunks) => <span className="text-[#FF5645]">{chunks}</span>,
+                              black: (chunks) => <span className="text-[#0f0f0f]">{chunks}</span>,
+                         })}
                     </h1>
                     {isStarted && (
                          <div className="flex justify-between items-center gap-4 text-center w-full">
                               {(mode==="2-players" || difficulty!=="") ? (
                                    <>
                                         <div className="space-y-0.5">
-                                             <h2 className="text-lg md:text-[21px]">Հաջորդը՝ {player}</h2>
+                                             <h2 className="text-lg md:text-[21px]">{t("upNext",{player})}</h2>
                                              {difficulty && (
-                                                  <h2 className="text-base">Բարդություն՝ {DIFFICULTY[difficulty]}</h2>
+                                                  <h2 className="text-base">{t("difficulty",{difficulty: diffTxt(difficulty)})}</h2>
                                              )}
                                         </div>
                                         <div className="flex flex-wrap justify-center items-center gap-2">
-                                             <Button variant="outline" className="flex-1" title="Կիսվել" shareUrl={absoluteURL("/games/tic-tac-toe")} size="iconMd">
+                                             <Button variant="outline" className="flex-1" title={buttonText("share")} shareUrl={absoluteURL("/games/tic-tac-toe")} size="iconMd">
                                                   <Share2 className="size-6"/>
                                              </Button>
-                                             <Button variant="outline" className="flex-1" title="Վերադառնալ մենյու" onClick={goBackToMenu} size="iconMd">
+                                             <Button variant="outline" className="flex-1" title={buttonText("backToMenu")} onClick={goBackToMenu} size="iconMd">
                                                   <Menu className="size-6"/>
                                              </Button>
                                         </div>
                                    </>
                               ) : (
-                                   <p className="font-heading text-lg">Ընտրել բարդությունը</p>
+                                   <p className="font-heading text-lg">{diffTxt("title")}</p>
                               )}
                          </div>
                     )}
@@ -146,11 +159,11 @@ export default function GameXO(){
                                              <h2 className={cn("py-2 rounded-md shadow-md px-4 text-[40px] text-black font-bold relative text-center",state===TicTacToeState.Draw ? "bg-white": winner==="X" ? "bg-[#1dc5d8]" : "bg-[#ff6759]")}>{stateTxt}</h2>
                                              <div className="flex flex-col gap-2">
                                                   <div className="flex justify-center items-center flex-wrap gap-2">
-                                                       <Button className="flex-1 shadow-md" variant="primary" onClick={restart} title="Վերսկսել"><RotateCcw className="size-6"/></Button>
-                                                       <Button className="flex-1 shadow-md" variant="primary" onClick={goBackToMenu} title="Վերադառնալ մենյու"><Menu className="size-6"/></Button>
+                                                       <Button className="flex-1 shadow-md" variant="primary" onClick={restart} title={buttonText("restart")}><RotateCcw className="size-6"/></Button>
+                                                       <Button className="flex-1 shadow-md" variant="primary" onClick={goBackToMenu} title={buttonText("backToMenu")}><Menu className="size-6"/></Button>
                                                   </div>
                                                   <Button variant="primary" className="shadow-md" asChild>
-                                                       <Link href="/games">Վերադառնալ</Link>
+                                                       <Link href="/games">{buttonText("goBack")}</Link>
                                                   </Button>
                                              </div>
                                         </div>
@@ -160,15 +173,15 @@ export default function GameXO(){
                     ) : (
                          <div className="flex justify-center items-center flex-col gap-2.5">
                               {DIFFICULTIES.map((val,i)=>(
-                                   <Button variant="primary" onClick={()=>startGameInDifficulty(val.difficulty)} key={i} className="w-full">{val.name}</Button>
+                                   <Button variant="primary" onClick={()=>startGameInDifficulty(val)} key={i} className="w-full">{diffTxt(val)}</Button>
                               ))}
-                              <Button variant="primary" onClick={goBackToMenu} className="w-full">Վերադառնալ մենյու</Button>
+                              <Button variant="primary" onClick={goBackToMenu} className="w-full">{buttonText("backToMenu")}</Button>
                          </div>
                     )
                ) : (
                     <div className="flex justify-center items-center flex-col gap-2.5">
-                         <Button variant="primary"onClick={()=>startGame("player-vs-pc")} className="w-full">1 Խաղացող</Button>
-                         <Button variant="primary" onClick={()=>startGame("2-players")} className="w-full">2 Խաղացող</Button>
+                         <Button variant="primary"onClick={()=>startGame("player-vs-pc")} className="w-full">{t("1Player")}</Button>
+                         <Button variant="primary" onClick={()=>startGame("2-players")} className="w-full">{t("2Players")}</Button>
                     </div>
                )}
           </div>

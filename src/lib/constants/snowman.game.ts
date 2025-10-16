@@ -1,4 +1,4 @@
-import { ISnowmanItem, ISnowmanSidebar } from "../types"
+import { ISnowmanItem, SnowmanType } from "../types"
 
 export const snowmanItems:ISnowmanItem[] = [
      {name: "",type: "eye"},
@@ -38,11 +38,4 @@ export const snowmanItems:ISnowmanItem[] = [
      {name: "buttons-6", type: "button"},
      {name: "buttons-7", type: "button"},
 ]
-export const snowmanSidebarItems: ISnowmanSidebar[] = [
-     { title: "Աչքեր", type: "eye" },
-     { title: "Քթեր", type: "nose" },
-     { title: "Բերան", type: "mouth" },
-     { title: "Գլխարկ", type: "hat" },
-     { title: "Ձեռքեր", type: "hand" },
-     { title: "Կոճակներ", type: "button" }
-]
+export const snowmanSidebarItems: SnowmanType[] = ["eye","nose","mouth","hat","hand","button"]

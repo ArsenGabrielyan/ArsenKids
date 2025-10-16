@@ -23,7 +23,10 @@ import { useTranslations } from "next-intl";
 
 export default function GuessWordGame(){
      const [gameState,setGameState] = useState<IGuessWordState>(INITIAL_GUESS_WORD_STATE);
-     const validationMessages = useTranslations("validation")
+     const validationMessages = useTranslations("validation");
+     const t = useTranslations("guess-word");
+     const buttonText = useTranslations("buttons");
+     const diffTxt = useTranslations("difficulties")
      const updateState = (overrides: Partial<IGuessWordState>) => 
           setGameState(prev=>({...prev,...overrides}));
      const form = useForm<WordGuesserType>({
@@ -33,7 +36,7 @@ export default function GuessWordGame(){
      const handleEnter = (values: WordGuesserType) => {
           const validatedFields = getWordGuesserSchema(validationMessages).safeParse(values);
           if(!validatedFields.success){
-               toast.error("Դաշտը վավերացված չէ");
+               toast.error(validationMessages("invalidField"));
                return;
           }
           if(!validatedFields.data || validatedFields.data.guess==="") return;
@@ -96,7 +99,7 @@ export default function GuessWordGame(){
      return (
           <>
           <div className="flex justify-center items-center flex-col min-h-screen bg-rainbow-yellow p-4 md:p-5">
-               <GameWrapper title="Գուշակիր բառը">
+               <GameWrapper title={t("title")}>
                     {isPlay && (
                          difficulty!=="" ? (
                               <>
@@ -136,12 +139,12 @@ export default function GuessWordGame(){
                                                        </FormItem>
                                                   )}
                                              />
-                                             <Button variant="primaryAlt" className="w-full md:w-fit" type="submit" size="sm">Ստուգել</Button>
+                                             <Button variant="primaryAlt" className="w-full md:w-fit" type="submit" size="sm">{buttonText("check")}</Button>
                                         </form>
                                    </Form>
                               </>
                          ) : <>
-                              <p>Ընտրել բարդությունը</p>
+                              <p>{diffTxt("title")}</p>
                               <div className="flex justify-center items-center flex-col w-full gap-2">
                                    {DIFFICULTIES.map(btn=>(
                                         <Button
@@ -150,7 +153,7 @@ export default function GuessWordGame(){
                                              className="w-full"
                                              onClick={()=>start(btn.name)}
                                         >
-                                             {btn.title}
+                                             {diffTxt(btn.name)}
                                         </Button>
                                    ))}
                               </div>
@@ -167,14 +170,14 @@ export default function GuessWordGame(){
                                                   onClick={()=>start(difficulty)}
                                              >
                                                   <RotateCcw className="size-6"/>
-                                                  Վերսկսել
+                                                  {buttonText("restart")}
                                              </Button>
                                         ) : (
                                              <>
                                                   <div className={cn("relative w-full",hintCount<=0 && "select-none pointer-events-none opacity-50")}>
                                                        <Badge className="absolute -top-3 -right-2 z-10" variant="defaultOutline">{hintCount}</Badge>
                                                        <Button
-                                                            title="Հուշում"
+                                                            title={buttonText("hint")}
                                                             variant="outline"
                                                             onClick={getHint}
                                                             size="iconLg"
@@ -184,7 +187,7 @@ export default function GuessWordGame(){
                                                   </div>
                                                   <Button
                                                        variant="tertiary"
-                                                       title="Վերսկսել"
+                                                       title={buttonText("restart")}
                                                        size="iconLg"
                                                        onClick={()=>start(difficulty)}
                                                   >
@@ -195,7 +198,7 @@ export default function GuessWordGame(){
                                    </div>
                                    <Button
                                         shareUrl={absoluteURL("/games/guess-word")}
-                                        title="Կիսվել"
+                                        title={buttonText("share")}
                                         variant="tertiary"
                                         size="iconMd"
                                    >
@@ -206,7 +209,9 @@ export default function GuessWordGame(){
                                    type="button"
                                    className="w-full"
                                    onClick={returnToMainMenu}
-                              >Վերադառնալ</Button>
+                              >
+                                   {buttonText("goBack")}
+                              </Button>
                          </>
                     )}
                     {!isPlay && (
@@ -214,7 +219,7 @@ export default function GuessWordGame(){
                               type="button"
                               className="w-full"
                               onClick={()=>updateState({isPlay: true})}
-                         >Սկսել</Button>
+                         >{buttonText("start")}</Button>
                     )}
                </GameWrapper>
           </div>

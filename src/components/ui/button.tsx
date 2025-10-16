@@ -1,8 +1,10 @@
+"use client"
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
+import { useTranslations } from "next-intl"
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2.5 whitespace-nowrap text-lg font-semibold transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive uppercase font-heading tracking-[2px] hover:cursor-pointer active:scale-[0.96]",
@@ -53,23 +55,24 @@ function Button({
   ...props
 }: ButtonProps) {
   const Comp = asChild ? Slot : "button"
+  const t = useTranslations("shareData")
   const handleShareLink = async() => {
     if(!shareUrl) return;
     const shareData = {
-      title: "ArsenKids Խաղեր",
-      text: 'Եկեք խաղացեք այս խաղը',
+      title: t("title"),
+      text: t("desc"),
       url: shareUrl
     }
     try{
       if(navigator.canShare && navigator.canShare(shareData)){
         await navigator.share(shareData)
       } else{
-        await navigator.clipboard.writeText(`Եկեք խաղացեք այս խաղը՝ ${shareUrl}`)
-        toast.success("Հղումը պատճենված է")
+        await navigator.clipboard.writeText(shareUrl)
+        toast.success(t("shareSuccess"))
       }
     } catch(error){
       console.error("Sharing Failed:",error);
-      toast.error("Չհաջողվեց կիսվել։ Խնդրում ենք փորձել ավելի ուշ։")
+      toast.error(t("shareError"))
     }
   }
   return (

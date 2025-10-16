@@ -12,8 +12,7 @@ interface PageProps{
 
 export const generateMetadata = async({params}: PageProps): Promise<Metadata> => {
      const {game} = await params;
-     const allPages = PAIRS_LINKS.map(val=>val.name);
-     if(!allPages.find(val=>val===game)) notFound();
+     if(!PAIRS_LINKS.find(val=>val===game)) notFound();
      const t = await getTranslations("memory")
      return {
           title: t("gameTitle",{title: t(`pairs.${game}`)}),
@@ -25,8 +24,7 @@ export const generateMetadata = async({params}: PageProps): Promise<Metadata> =>
 
 export default async function Memory({params}: PageProps){
      const {game} = await params;
-     const allPages = PAIRS_LINKS.map(val=>val.name);
-     if(!allPages.find(val=>val===game)) notFound();
+     if(!PAIRS_LINKS.find(val=>val===game)) notFound();
      const t = await getTranslations("memory")
      return (
           <MemoryGame

@@ -1,19 +1,13 @@
 import { clsx, type ClassValue } from "clsx"
-import { toast } from "sonner";
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
-export const playSound = (audio: HTMLAudioElement, src: string) => {
-  try{
-    if(!audio || !src) throw new Error("Invalid Audio or Audio Src");
-    audio.src = src;
-    audio.play();
-  } catch(err){
-    console.error("Audio Error:",err)
-    toast.error("Չստացվեց նվագել ձայնը")
-  }
+export const playSound = async(audio: HTMLAudioElement, src: string) => {
+  if(!audio || !src) throw new Error("Invalid Audio Src");
+  audio.src = src;
+  await audio.play();
 }
 export function absoluteURL(path?: string){
   const baseURL = process.env.NODE_ENV === "production" ? "https://arsenkids.vercel.app" : "http://localhost:3000"
@@ -24,3 +18,4 @@ export function absoluteCDN(type: "sounds" | "pdf" | "images" | "music", path: `
   const baseURL = `https://arsengabrielyan.github.io/ArsenKids/${type}`;
   return `${baseURL}${path}`
 }
+export const generateMessagesForTranslation = (length: number): (`msg${number}`)[] => Array(length).fill("").map((_,i)=>`msg${i+1}` as `msg${number}`)

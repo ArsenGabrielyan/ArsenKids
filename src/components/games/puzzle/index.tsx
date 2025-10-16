@@ -14,6 +14,7 @@ import { INITIAL_PUZZLE_STATE } from "@/lib/constants/states"
 import { isSolved, shuffle, canSwap, swap } from "@/lib/helpers/puzzle.game"
 import { IPuzzleState } from "@/lib/types/states"
 import { useState, useEffect } from "react"
+import { useTranslations } from "next-intl"
 
 interface PuzzleGameProps{
      title: string,
@@ -23,6 +24,9 @@ interface PuzzleGameProps{
 export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
      const isMobile = useIsMobile("mobile");
      const [gameState, setGameState] = useState(INITIAL_PUZZLE_STATE);
+     const t = useTranslations("puzzle");
+     const buttonTxt = useTranslations("buttons");
+     const gameMsg = useTranslations("game-messages");
      const updateState = (overrides: Partial<IPuzzleState>) =>
           setGameState(prev=>({...prev,...overrides}))
      const pieceSize = Math.round(gameState.boardSize/GRID_SIZE);
@@ -31,7 +35,7 @@ export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
           const prev = Object.assign({},gameState)
           updateState({
                tiles: shuffle(prev.tiles),
-               randomWinText: SUCCESS_WORDS[Math.floor(Math.random()*SUCCESS_WORDS.length)]
+               randomWinText: gameMsg(`correct.${SUCCESS_WORDS[Math.floor(Math.random()*SUCCESS_WORDS.length)]}`)
           })
      }
      const swapTiles= (tileI: number) => {
@@ -73,7 +77,7 @@ export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
      const {isStarted, showNum, randomWinText, boardSize, tiles} = gameState
      return wrapper(
           <>
-               <GameWrapper title={`Փազլ «${christmas ? "Ամանոր" : "Պատկերներ"}»`}>
+               <GameWrapper title={t(christmas ? "christmasTitle" : "title")}>
                     <h2 className="text-lg md:text-xl font-semibold text-blue-800 text-center">{title}</h2>
                     {isSolvedPuzzle && isStarted ? (
                          <h2 className="text-emerald-700 text-[27px] font-semibold">{randomWinText}</h2>
@@ -84,18 +88,18 @@ export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
                                    onCheckedChange={handleCheckChange}
                                    isChristmas={christmas}
                               />
-                              <p>Ցույց տալ թվերը</p>
+                              <p>{t("showNum")}</p>
                          </div>
                     )}
                     <div className="w-full flex justify-center items-center gap-2 flex-wrap">
                          {!isStarted || (isSolvedPuzzle && isStarted) ? (
-                              <Button className="flex-1" variant="tertiary" onClick={handleStart}>Սկսել</Button>
+                              <Button className="flex-1" variant="tertiary" onClick={handleStart}>{buttonTxt("start")}</Button>
                          ) : (
                               <Button className="flex-1" variant="tertiary" onClick={shuffleTiles}>
-                                   <RotateCcw/> Վերսկսել
+                                   <RotateCcw/> {buttonTxt("restart")}
                               </Button>
                          )}
-                         <Button variant="tertiary" title="Կիսվել" size="iconMd" shareUrl={absoluteURL(`/games/puzzle/${shape}`)}>
+                         <Button variant="tertiary" title={buttonTxt("share")} size="iconMd" shareUrl={absoluteURL(`/games/puzzle/${shape}`)}>
                               <Share2 className="size-6"/>
                          </Button>
                     </div>
@@ -116,7 +120,7 @@ export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
                     ))}
                </ul>
                <Button variant={christmas ? "tertiary" : "primary"} asChild>
-                    <Link href={`/games/${christmas ? "christmas/" : ""}puzzle`}>Վերադառնալ</Link>
+                    <Link href={`/games/${christmas ? "christmas/" : ""}puzzle`}>{buttonTxt("goBack")}</Link>
                </Button>
           </>
      )

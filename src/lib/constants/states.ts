@@ -1,6 +1,6 @@
 import { TicTacToeState } from "../types"
 import { IGuessNumberState, IGuessWordState, IInteractiveMathState, IMemoryGameState, IPuzzleState, ITicTacToeState } from "../types/states"
-import { BOARD_SIZE, SUCCESS_WORDS, TILE_COUNT } from "./games"
+import { BOARD_SIZE, TILE_COUNT } from "./games"
 
 export const INITIAL_GUESS_WORD_STATE: IGuessWordState = {
      correct:"",
@@ -50,7 +50,7 @@ export const INITIAL_PAIRS_STATE: IMemoryGameState = {
 export const INITIAL_PUZZLE_STATE: IPuzzleState = {
      isStarted: false,
      showNum: false,
-     randomWinText: SUCCESS_WORDS[Math.floor(Math.random()*SUCCESS_WORDS.length)],
+     randomWinText: "",
      tiles: Array.from({length: TILE_COUNT},(_,i)=>i),
      boardSize: BOARD_SIZE
 }
