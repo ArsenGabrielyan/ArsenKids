@@ -4,7 +4,7 @@ import { AUDIO, MATH_OPTIONS, OPERATORS } from "@/lib/constants/maps";
 import { generateEquation, checkAnswer } from "@/lib/helpers/math.game";
 import Link from "next/link"
 import { useState, useEffect } from "react";
-import { absoluteURL, cn } from "@/lib/utils"
+import { absoluteURL, cn, playSound, preloadAudio } from "@/lib/utils"
 import { MessageBox } from "../ui/game-msg";
 import { Button } from "../ui/button";
 import { GameMessageType, OperatorType } from "@/lib/types";
@@ -14,7 +14,8 @@ import { useTranslations } from "next-intl";
 
 export default function MathGame(){
      const t = useTranslations("math");
-     const buttonText = useTranslations("buttons")
+     const buttonText = useTranslations("buttons");
+     const validationMessages = useTranslations("validation")
      const [mode,setMode] = useState<OperatorType>("addition");
      const [state,setState] = useState({q1:0,q2:0,answers:[0,0,0]});
      const [msgType, setMsgType] = useState<GameMessageType>("");
@@ -27,7 +28,7 @@ export default function MathGame(){
           const {q1,q2} = state;
           const isCorrect = checkAnswer(mode,q1,q2,selected);
           setMsgType(isCorrect ? "correct" : "wrong");
-          new Audio(isCorrect ? AUDIO.correct : AUDIO.wrong).play();
+          playSound(isCorrect ? AUDIO.correct : AUDIO.wrong,validationMessages("soundError"))
           setTimeout(()=>{
                if(isCorrect) setState(generateEquation(mode));
                setMsgType("");
@@ -35,7 +36,7 @@ export default function MathGame(){
      }
      useEffect(()=>{
           setState(generateEquation("addition"))
-          Object.values(AUDIO).forEach(src => new Audio(src).load());
+          preloadAudio(AUDIO)
      },[])
      const {q1,q2,answers} = state;
      const operator = OPERATORS[mode];

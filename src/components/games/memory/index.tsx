@@ -7,13 +7,12 @@ import { pairsCards } from "@/lib/constants/pairs.game";
 import { INITIAL_PAIRS_STATE } from "@/lib/constants/states";
 import { IMemoryCard, MemoryCardParams } from "@/lib/types";
 import { IMemoryGameState } from "@/lib/types/states";
-import { playSound } from "@/lib/utils";
+import { playSound, preloadAudio } from "@/lib/utils";
 import { useCallback, useEffect, useState } from "react";
 import { absoluteURL, cn } from "@/lib/utils";
 import { RotateCcw, Share2 } from "lucide-react";
 import {Link} from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { toast } from "sonner";
 
 interface MemoryGameProps{
      type: MemoryCardParams;
@@ -48,12 +47,7 @@ export default function MemoryGame({type, title}: MemoryGameProps){
           secondChoice: null,
           disabled: false
      }),[])
-     const soundError = useCallback((err: unknown) => {
-          console.error("Audio Error:",err);
-          toast.error(validationMessages("soundError"))
-     },[validationMessages])
      useEffect(() => {
-          const audio = new Audio();
           if(gameState.firstChoice && gameState.secondChoice){
                updateState({disabled: true});
                if(gameState.firstChoice.img === gameState.secondChoice.img){
@@ -63,10 +57,10 @@ export default function MemoryGame({type, title}: MemoryGameProps){
                          turns: prev.turns+1,
                          score: prev.score+1
                     }))
-                    playSound(audio, AUDIO.correct).catch(soundError);
+                    playSound(AUDIO.correct,validationMessages("soundError"))
                     reset();
                } else {
-                    playSound(audio, AUDIO.wrong).catch(soundError)
+                    playSound(AUDIO.wrong,validationMessages("soundError"))
                     setTimeout(()=>{
                          setGameState(prev=>({
                               ...prev,
@@ -76,9 +70,9 @@ export default function MemoryGame({type, title}: MemoryGameProps){
                     },1000)
                }
           }
-     },[gameState.firstChoice, gameState.secondChoice, reset, soundError]);
+     },[gameState.firstChoice, gameState.secondChoice, reset, validationMessages]);
      useEffect(()=>{
-          Object.values(AUDIO).forEach(src => new Audio(src).load());
+          preloadAudio(AUDIO)
      },[])
      const {score,turns,isStarted,disabled,firstChoice,secondChoice} = gameState
      return (

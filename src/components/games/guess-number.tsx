@@ -4,7 +4,7 @@ import { AUDIO } from "@/lib/constants/maps";
 import { INITIAL_GUESS_NUMBER_STATE } from "@/lib/constants/states";
 import { GameDifficulty } from "@/lib/types";
 import { IGuessNumberState } from "@/lib/types/states";
-import { absoluteURL, cn, playSound } from "@/lib/utils";
+import { absoluteURL, cn, playSound, preloadAudio } from "@/lib/utils";
 import { useState, useCallback, useEffect } from "react";
 import { MessageBox } from "../ui/game-msg";
 import { Button } from "../ui/button";
@@ -52,19 +52,15 @@ export default function GuessNumber(){
           const {guess} = validatedFields.data
           const isCorrect = guess===gameState.num;
           updateState({msgType: isCorrect ? "correct" : "wrong"})
-          new Audio(isCorrect ? AUDIO.correct : AUDIO.wrong).play();
+          playSound(isCorrect ? AUDIO.correct : AUDIO.wrong,validationMessages("soundError"))
      }
      const goBackToMenu = () => updateState({...INITIAL_GUESS_NUMBER_STATE, isStarted: true});
-     const soundError = useCallback((err: unknown) => {
-          console.error("Audio Error:",err);
-          toast.error(validationMessages("soundError"))
-     },[validationMessages])
      useEffect(()=>{
           if(!gameState.timeLeft) return;
-          const audio = new Audio(), timer = setInterval(()=>{
+          const timer = setInterval(()=>{
                const prev = Object.assign({},gameState)
                if(gameState.timeLeft! > 1) {
-                    playSound(audio,AUDIO.tick).catch(soundError)
+                    playSound(AUDIO.tick,validationMessages("soundError"))
                     updateState({
                          timeLeft:prev.timeLeft && prev.timeLeft-1,
                          timerCount:prev.timerCount-1,
@@ -73,7 +69,7 @@ export default function GuessNumber(){
                     })
                } else {
                     clearInterval(timer);
-                    playSound(audio,AUDIO.start).catch(soundError)
+                    playSound(AUDIO.start,validationMessages("soundError"))
                     updateState({
                          timeLeft:null,
                          timerCount:0,
@@ -84,7 +80,7 @@ export default function GuessNumber(){
                }
           },1000);
           return ()=>clearInterval(timer);
-     },[gameState,form,soundError])
+     },[gameState,form,validationMessages])
      useEffect(()=>{
           if(gameState.msgType!==""){
                const timer = setTimeout(()=>startGame(gameState.difficulty),800);
@@ -92,7 +88,7 @@ export default function GuessNumber(){
           }
      },[gameState.difficulty, gameState.msgType, startGame]);
      useEffect(()=>{
-          Object.values(AUDIO).forEach(src => new Audio(src).load());
+          preloadAudio(AUDIO)
      },[])
      const numInput = form.watch("guess")
      const {isStarted,difficulty,showNum,showSquare,timeLeft,timerCount,num,msgType} = gameState

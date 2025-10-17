@@ -7,7 +7,7 @@ import { IGuessWordState } from "@/lib/types/states";
 import { useState, useEffect, useCallback } from "react";
 import { MessageBox } from "../ui/game-msg";
 import { Lightbulb, RotateCcw, Share2 } from "lucide-react";
-import { absoluteURL, cn } from "@/lib/utils";
+import { absoluteURL, cn, playSound, preloadAudio } from "@/lib/utils";
 import { Button } from "../ui/button";
 import GameWrapper from "../game-wrapper";
 import { Input } from "../ui/input";
@@ -42,7 +42,7 @@ export default function GuessWordGame(){
           if(!validatedFields.data || validatedFields.data.guess==="") return;
           const {guess} = validatedFields.data
           const isCorrect = gameState.correct.toLowerCase() === guess.toLowerCase();
-          new Audio(isCorrect ? AUDIO.correct : AUDIO.wrong).play();
+          playSound(isCorrect ? AUDIO.correct : AUDIO.wrong,validationMessages("soundError"))
           if(isCorrect) form.reset()
           const prev = Object.assign({},gameState)
           updateState({
@@ -53,7 +53,7 @@ export default function GuessWordGame(){
      const start = useCallback((difficulty: GameDifficulty)=>{
           const words = getWords(difficulty)
           const word = words[Math.floor(Math.random()*words.length)];
-          if(gameState.correctCount===10) new Audio(AUDIO.start).play();
+          if(gameState.correctCount===10) playSound(AUDIO.start,validationMessages("soundError"));
           const prev = Object.assign({}, gameState)
           updateState({
                msgType: "",
@@ -64,10 +64,10 @@ export default function GuessWordGame(){
                hintCount: prev.correctCount===10 ? prev.hintCount+1 : prev.hintCount
           })
           form.reset();
-     },[gameState,form])
+     },[gameState,form,validationMessages])
      const getHint = ()=>{
           if(gameState.hintCount<=0) return;
-          new Audio(AUDIO.sparkle).play();
+          playSound(AUDIO.sparkle,validationMessages("soundError"))
           const prev = Object.assign({}, gameState)
           updateState({
                showHint:true,
@@ -92,7 +92,7 @@ export default function GuessWordGame(){
           }
      },[gameState.difficulty, gameState.msgType, start])
      useEffect(()=>{
-          Object.values(AUDIO).forEach(src => new Audio(src).load());
+          preloadAudio(AUDIO)
      },[])
      const val = form.watch("guess")
      const {isPlay,difficulty,correct,hintCount,showHint,msgType,scrambled} = gameState

@@ -4,7 +4,7 @@ import { AUDIO } from "@/lib/constants/maps";
 import {Link} from "@/i18n/navigation";
 import { useState, useRef, useCallback, useEffect } from "react";
 import GameWrapper from "../game-wrapper";
-import { absoluteURL, cn } from "@/lib/utils";
+import { absoluteURL, cn, playSound, preloadAudio } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { Share2 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -26,7 +26,7 @@ export default function BubblesGame(){
      const popBubble = useCallback((elem: HTMLElement) => {
           elem.remove();
           setBubblesPopped(prev=>prev+1);
-          new Audio(AUDIO.bubblePop).play()
+          playSound(AUDIO.bubblePop)
      },[])
      const animateBubble = useCallback((bubble: HTMLElement) => {
           let pos = 0;
@@ -59,7 +59,7 @@ export default function BubblesGame(){
           }
      },[isStarted,createBubble])
      useEffect(()=>{
-          Object.values(AUDIO).forEach(src => new Audio(src).load());
+          preloadAudio(AUDIO)
      },[])
      const t = useTranslations("bubbles");
      const buttonText = useTranslations("buttons")

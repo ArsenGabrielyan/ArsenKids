@@ -5,7 +5,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { MessageBox } from "../ui/game-msg";
 import { toast } from "sonner";
 import GameWrapper from "../game-wrapper";
-import { absoluteURL } from "@/lib/utils";
+import { absoluteURL, playSound, preloadAudio } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { MATH_OPERATORS } from "@/lib/constants/games";
 import InteractiveMathForm from "../interactive-math.form";
@@ -49,15 +49,14 @@ export default function InteractiveMathGame(){
      },[generateQuestion])
      const checkAnswer = (values: InteractiveMathType) => {
           const isCorrect = values.answer===gameState.answer;
-          const audio = new Audio(isCorrect ? AUDIO.correct : AUDIO.wrong)
           if(isCorrect) {
                setMsgType("correct")
-               audio.play()
+               playSound(AUDIO.correct,validationMessages("soundError"))
           } else if(gameState.operatorQuestion && !MATH_OPERATORS.includes(values.answer as AmazingMathOperator)) {
                toast.error(validationMessages("correctOperator"))
           } else {
                setMsgType("wrong")
-               audio.play()
+               playSound(AUDIO.wrong,validationMessages("soundError"))
           }
      }
      useEffect(()=>{
@@ -67,7 +66,7 @@ export default function InteractiveMathGame(){
           }
      },[msgType, startGame]);
      useEffect(() => {
-          Object.values(AUDIO).forEach(src => new Audio(src).load());
+          preloadAudio(AUDIO)
      }, []);
      useEffect(()=>{
           if(isStarted && inputRef.current) inputRef.current.focus();

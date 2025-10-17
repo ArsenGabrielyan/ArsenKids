@@ -3,7 +3,7 @@ import GameWrapper from "@/components/game-wrapper"
 import { Switch } from "@/components/ui/switch"
 import { Button } from "@/components/ui/button"
 import { PuzzleTile } from "@/components/ui/game"
-import { absoluteCDN, absoluteURL } from "@/lib/utils"
+import { absoluteCDN, absoluteURL, playSound, preloadAudio } from "@/lib/utils"
 import Link from "next/link"
 import { RotateCcw, Share2 } from "lucide-react"
 import { getBackgroundImage } from "@/lib/helpers"
@@ -27,6 +27,7 @@ export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
      const t = useTranslations("puzzle");
      const buttonTxt = useTranslations("buttons");
      const gameMsg = useTranslations("game-messages");
+     const validationMessages = useTranslations("validation");
      const updateState = (overrides: Partial<IPuzzleState>) =>
           setGameState(prev=>({...prev,...overrides}))
      const pieceSize = Math.round(gameState.boardSize/GRID_SIZE);
@@ -52,14 +53,13 @@ export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
      };
      const handleCheckChange = (checked: boolean) => updateState({showNum: checked})
      useEffect(()=>{
-          const sparkle = new Audio(AUDIO.sparkle);
-          if(isSolvedPuzzle && gameState.isStarted) sparkle.play();
-     },[gameState.isStarted,isSolvedPuzzle])
+          if(isSolvedPuzzle && gameState.isStarted) playSound(AUDIO.sparkle,validationMessages("soundError"))
+     },[gameState.isStarted,isSolvedPuzzle,validationMessages])
      useEffect(() => updateState({
           boardSize: isMobile ? 250 : BOARD_SIZE
      }),[shape, isMobile]);
      useEffect(()=>{
-          Object.values(AUDIO).forEach(src => new Audio(src).load());
+          preloadAudio(AUDIO)
      },[])
      const bgStyle = getBackgroundImage("christmas");
      const wrapper = (elem: React.JSX.Element) => christmas ? (

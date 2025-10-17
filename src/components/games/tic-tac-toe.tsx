@@ -6,7 +6,7 @@ import { DIFFICULTIES } from "@/lib/constants/tic-tac-toe.game";
 import { getRandomMove, getMediumMove, getBestMove, checkWinner, isDraw } from "@/lib/helpers/tic-tac-toe.game";
 import { TicTacToeState, TicTacToeMode, TicTacToeDifficulty } from "@/lib/types";
 import { ITicTacToeState } from "@/lib/types/states";
-import { absoluteURL, cn, playSound } from "@/lib/utils";
+import { absoluteURL, cn, playSound, preloadAudio } from "@/lib/utils";
 import {Link} from "@/i18n/navigation";
 import { useState, useEffect, useCallback } from "react";
 import { Button } from "../ui/button";
@@ -14,7 +14,6 @@ import { SquareXO } from "../ui/game";
 import { Menu, RotateCcw, Share2 } from "lucide-react";
 import GameWrapper from "../game-wrapper";
 import { useTranslations } from "next-intl";
-import { toast } from "sonner";
 
 export default function GameXO(){
      const [board,setBoard] = useState(BASE_ARR);
@@ -60,12 +59,7 @@ export default function GameXO(){
           setIsStarted(false);
      }
      const startGameInDifficulty = (difficulty: TicTacToeDifficulty) => resetGameState({difficulty})
-     const soundError = useCallback((err: unknown) => {
-          console.error("Audio Error:",err);
-          toast.error(validationMessages("soundError"))
-     },[validationMessages])
      useEffect(()=>{
-          const audio = new Audio()
           let winningPattern: number[] = [];
           if(checkWinner(board,pattern=>winningPattern=pattern)){
                setGameState(prev=>({
@@ -75,9 +69,9 @@ export default function GameXO(){
                     pattern: winningPattern
                }))
                if(gameState.mode==="2-players"){
-                    playSound(audio, AUDIO.sparkle).catch(soundError)
+                    playSound(AUDIO.sparkle,validationMessages("soundError"))
                } else {
-                    playSound(audio, player==="O" ? AUDIO.correct : AUDIO.wrong).catch(soundError)
+                    playSound(player==="O" ? AUDIO.correct : AUDIO.wrong,validationMessages("soundError"))
                }
           }
           if(isDraw(board,winningPattern)){
@@ -85,9 +79,9 @@ export default function GameXO(){
                     ...prev,
                     state: TicTacToeState.Draw,
                }))
-               playSound(audio,AUDIO.wrong).catch(soundError)
+               playSound(AUDIO.wrong,validationMessages("soundError"))
           }
-     },[board,player,gameState.mode,soundError])
+     },[board,player,gameState.mode,validationMessages])
      useEffect(()=>{
           if(gameState.mode==="player-vs-pc" && player!=="X" && gameState.state===TicTacToeState.Ongoing){
                const timer = setTimeout(pcMove,500);
@@ -95,7 +89,7 @@ export default function GameXO(){
           }
      },[gameState, pcMove, player])
      useEffect(() => {
-          Object.values(AUDIO).forEach(src => new Audio(src).load());
+          preloadAudio(AUDIO)
      }, []);
      const {state,pattern,winner,mode,difficulty} = gameState
      const stateTxt = state===TicTacToeState.Draw ? t("draw"): winner==="X" ? t("xWinner") : t("oWinner")
