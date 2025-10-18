@@ -1,11 +1,16 @@
-import { WORDS_BY_DIFFICULTY } from "../constants/maps";
 import { GameDifficulty } from "../types";
 
-export const getWords = (difficulty: GameDifficulty) =>
-     difficulty === "" ? [] :
-     difficulty==="mixed"
-          ? WORDS_BY_DIFFICULTY.default
-          : WORDS_BY_DIFFICULTY[difficulty]
+const getWordList = (t: (key: string) => string, difficulty: GameDifficulty): string[] => 
+     t(`${difficulty}-words`).split(",").map(w => w.trim()).filter(Boolean);
+
+export const getWords = (difficulty: GameDifficulty, t: (key: string) => string) => {
+     if(!difficulty) return [];
+     if(difficulty==="mixed"){
+          const difficulties: GameDifficulty[] = ["easy", "medium", "hard"]
+          return difficulties.flatMap(diff => getWordList(t, diff))
+     }
+     return getWordList(t, difficulty)
+}
 
 export const makeScrambled = (word: string) => word.split("").sort(()=>0.5-Math.random()).join("")
 

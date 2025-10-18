@@ -51,7 +51,7 @@ export default function GuessWordGame(){
           })
      }
      const start = useCallback((difficulty: GameDifficulty)=>{
-          const words = getWords(difficulty)
+          const words = getWords(difficulty,t)
           const word = words[Math.floor(Math.random()*words.length)];
           if(gameState.correctCount===10) playSound(AUDIO.start,validationMessages("soundError"));
           const prev = Object.assign({}, gameState)
@@ -64,7 +64,7 @@ export default function GuessWordGame(){
                hintCount: prev.correctCount===10 ? prev.hintCount+1 : prev.hintCount
           })
           form.reset();
-     },[gameState,form,validationMessages])
+     },[gameState,form,validationMessages,t])
      const getHint = ()=>{
           if(gameState.hintCount<=0) return;
           playSound(AUDIO.sparkle,validationMessages("soundError"))
@@ -127,11 +127,6 @@ export default function GuessWordGame(){
                                                                       {...field}
                                                                       autoFocus
                                                                       className="w-full md:w-fit"
-                                                                      onChange={e=>{
-                                                                           const regex = /[\u0561-\u0587\u0531-\u0556]+/;
-                                                                           if(e.target.value==="" || regex.test(e.target.value))
-                                                                                field.onChange(e)
-                                                                      }}
                                                                       maxLength={correct.split("").length}
                                                                  />
                                                             </FormControl>
