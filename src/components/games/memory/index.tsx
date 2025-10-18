@@ -12,7 +12,7 @@ import { useCallback, useEffect, useState } from "react";
 import { absoluteURL, cn } from "@/lib/utils";
 import { RotateCcw, Share2 } from "lucide-react";
 import {Link} from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 interface MemoryGameProps{
      type: MemoryCardParams;
@@ -23,11 +23,15 @@ export default function MemoryGame({type, title}: MemoryGameProps){
      const t = useTranslations("memory");
      const buttonTxt = useTranslations("buttons");
      const validationMessages = useTranslations("validation");
+     const locale = useLocale();
      const updateState = (overrides: Partial<IMemoryGameState>) =>
           setGameState(prev=>({...prev,...overrides}))
      const [cards,setCards] = useState<IMemoryCard[]>([]);
      const shuffle = ()=>{
-          const pairCard = pairsCards[type];
+          const pairCard = type==="colors" ? pairsCards[type].map(val=>({
+               ...val,
+               img: val.img.replaceAll("/colors/",`/colors/${locale}/`)
+          })) : pairsCards[type];
           const shuffled: IMemoryCard[] = [...pairCard, ...pairCard].sort(()=>Math.random()-0.5).map(card=>({...card,id: Math.random()}))
           updateState({
                firstChoice: null,

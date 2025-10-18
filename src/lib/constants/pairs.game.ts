@@ -20,7 +20,7 @@ const IMAGE_FILES = {
      wildAnimals: ["cheetah.webp", "elephant.webp", "giraffe.webp", "lion.webp", "monkey.webp","rhino.webp", "tiger.webp", "zebra.webp"],
      fruit: ["apricot.webp", "apple.webp", "bananas.webp", "cherry.webp", "grapes.webp","orange.webp", "pear.webp", "pomegranate.webp", "strawberry.webp", "watermelon.webp"],
      vegetables: ["eggplant.webp", "pepper.webp", "cabbage.webp", "carrot.webp", "corn.webp","cucumber.webp", "potato.webp", "tomato.webp"],
-     colors: ["red.webp", "orange.webp", "yellow.webp", "green.webp", "blue.webp","purple.webp", "pink.webp", "brown.webp"],
+     colors: ["red.webp", "orange.webp", "yellow.webp", "green.webp", "blue.webp","purple.webp", "pink.webp", "brown.webp","black.webp","white.webp"],
      transportation: ["ambulance.webp", "bike.webp", "bus.webp", "car.webp", "fire-engine.webp","plane.webp", "police-car.webp", "ship.webp", "tractor.webp", "train.webp"],
      insects: ["ant.webp", "bee.webp", "bug.webp", "butterfly.webp", "dragonfly.webp","fly.webp", "grasshopper.webp", "ladybug.webp", "mantis.webp", "mosquito.webp"],
      forestAnimals: ["bear.webp", "deer.webp", "fox.webp", "hedgehog.webp", "rabbit.webp","raccoon.webp", "squirrel.webp", "wolf.webp"],
