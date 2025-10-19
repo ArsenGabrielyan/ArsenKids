@@ -1,0 +1,139 @@
+{
+     "games": {
+          "metaTitle": "Games",
+          "metaDesc": "Intellectual and interesting games from ArsenKids",
+          "title": "Games from ArsenKids",
+          "desc": "Here you'll play interesting and intellectual games.",
+          "startPlaying": "Start Playing",
+          "filters": {
+               "all": "All",
+               "puzzle": "Logical",
+               "math": "Mathematical",
+               "entertainment": "Entertainment"
+          },
+          "allGames": "All Games",
+          "games-list": {
+               "memory": "Match the Pairs",
+               "tic-tac-toe": "Tic Tac Toe",
+               "words": "Guess the word",
+               "math": "Mathematics",
+               "number": "Memorize the numbers",
+               "puzzle": "Puzzle \"Shapes\"",
+               "interactive-math": "Interactive Maths",
+               "bubbles": "Bubbles",
+               "christmas": "Christmas Games"
+          }
+     },
+     "christmas-games": {
+          "title": "Christmas Games",
+          "desc": "Choose any game",
+          "games-list": {
+               "memory-christmas": "Match the Pairs",
+               "puzzle-christmas": "Puzzle \"Christmas\"",
+               "build-snowman": "Build the Snowman"
+          }
+     },
+     "bubbles": {
+          "title": "Bubbles",
+          "bubblesPopped": "You have popped {popCount} bubbles"
+     },
+     "build-snowman": {
+          "title": "Build the Snowman",
+          "music": {
+               "title": "Music",
+               "desc": "Music from YouTube Audio Library",
+               "indicator": "Music: {musicDetails}",
+               "turnOn": "Play music",
+               "turnOff": "Pause music",
+               "switchMusic": "Switch the music"
+          },
+          "parts": {
+               "eye": "Eyes",
+               "nose": "Nose",
+               "mouth": "Mouth",
+               "hat": "Hat",
+               "hand": "Hands",
+               "button": "Buttons"
+          },
+          "snowmanSuccess": "The completed snowman has been downloaded. Merry Christmas and a Happy New Year.",
+          "snowmanError": "The snowman download failed. Please try again later."
+     },
+     "guess-number": {
+          "title": "Memorize the numbers"
+     },
+     "interactive-math": {
+          "title": "Interactive Maths"
+     },
+     "math": {
+          "title": "Mathematics",
+          "addition": "Addition",
+          "subtraction": "Subtraction",
+          "multiplication": "Multiplication",
+          "division": "Division"
+     },
+     "tic-tac-toe": {
+          "title": "Tic Tac Toe",
+          "gameTitle": "<blue>Tic</blue> <red>Tac</red> <black>Toe</black>",
+          "draw": "It's a tie",
+          "xWinner": "X Won",
+          "oWinner": "O Won",
+          "upNext": "Up Next: {player}",
+          "difficulty": "Difficulty: {difficulty}",
+          "1Player": "1 Player",
+          "2Players": "2 Players"
+     },
+     "memory": {
+          "title": "Match the Pairs",
+          "gameTitle": "{title} - Match the Pairs",
+          "pairs": {
+               "birds": "Birds",
+               "domesticAnimals": "Domestic Animals",
+               "wildAnimals": "Wild Animals",
+               "fruit": "Fruit",
+               "vegetables": "Vegetables",
+               "colors": "Colors",
+               "transportation": "Vehicles",
+               "insects": "Insects",
+               "forestAnimals": "Forest Animals",
+               "solarSystem": "Solar System",
+               "christmas": "Christmas"
+          },
+          "topic": "Topic: {title}",
+          "score": "Score: {score}",
+          "turns": "Turns: {turns}",
+          "chooseTopic": "Choose a topic"
+     },
+     "puzzle": {
+          "title": "Puzzle «Shapes»",
+          "gameTitle": "Puzzle «{title}»",
+          "christmasTitle": "Puzzle «Christmas»",
+          "games": {
+               "circle": "Circle",
+               "diamond": "Diamond",
+               "heart": "Heart",
+               "hexagon": "Hexagon",
+               "oval": "Oval",
+               "parallelogram": "Parallelogram",
+               "pentagon": "Pentagon",
+               "rectangle": "Rectangle",
+               "square": "Square",
+               "star": "Star",
+               "trapezoid": "Trapezoid",
+               "triangle": "Triangle"
+          },
+          "christmas-games": {
+               "bell": "Bells",
+               "christmas-tree": "Christmas Tree",
+               "gift": "Presents",
+               "ornament": "Ornament",
+               "reindeer": "Reindeer",
+               "santa": "Santa Claus",
+               "sleigh": "Sleigh",
+               "snowman": "Snowman",
+               "stocking": "Stockings"
+          },
+          "showNum": "Show numbers",
+          "chooseImage": "Choose any picture",
+          "chooseShape": "Choose a shape"
+     }
+}

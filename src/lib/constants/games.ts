@@ -1,4 +1,4 @@
-import { AmazingMathOperator, GameMessageType, IGameDifficulty, IGameMessage, OperatorType } from "../types";
+import { AmazingMathOperator, GameMessageType, IGameDifficulty, OperatorType } from "../types";
 import { generateMessagesForTranslation } from "../utils";
 
 export const DIFFICULTIES: IGameDifficulty[] = [
@@ -13,13 +13,7 @@ export const MATH_LINKS: OperatorType[] = ["addition", "subtraction", "multiplic
 export const MATH_OPERATORS: AmazingMathOperator[] = ["+","-","*"];
 export const TILE_COUNT = 9, GRID_SIZE = 3, BOARD_SIZE = 320;
 export const BUBBLE_CREATION_INTERVAL = 1200;
-export const GAME_MESSAGES: Record<Exclude<GameMessageType,"">,IGameMessage> = {
-     correct: {
-          messages: generateMessagesForTranslation(17),
-          className: "bg-rainbow-green/95 text-black"
-     },
-     wrong: {
-          messages: generateMessagesForTranslation(12),
-          className: "bg-destructive/95 text-white"
-     }
+export const GAME_MESSAGE_STYLE: Record<Exclude<GameMessageType,"">,string> = {
+     correct: "bg-rainbow-green/95 text-black",
+     wrong: "bg-destructive/95 text-white"
 }

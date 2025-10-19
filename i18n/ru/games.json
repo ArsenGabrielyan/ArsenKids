@@ -1,0 +1,139 @@
+{
+     "games": {
+          "metaTitle": "Игры",
+          "metaDesc": "Интеллектуальные и интересные игры от ArsenKids",
+          "title": "Игры от ArsenKids",
+          "desc": "Здесь вы сможете поиграть в интересные и интеллектуальные игры.",
+          "startPlaying": "Давайте играть",
+          "filters": {
+               "all": "Все",
+               "puzzle": "Логический",
+               "math": "Математический",
+               "entertainment": "Развлечение"
+          },
+          "allGames": "Все игры",
+          "games-list": {
+               "memory": "Сопоставление пар",
+               "tic-tac-toe": "Крестики-нолики",
+               "words": "Угадай слово",
+               "math": "Математика",
+               "number": "Запомните числа",
+               "puzzle": "Пазл «Фигуры»",
+               "interactive-math": "Интерактивная математика",
+               "bubbles": "Пузырки",
+               "christmas": "Новогодние игры"
+          }
+     },
+     "christmas-games": {
+          "title": "Новогодние игры",
+          "desc": "Выберите любую игру",
+          "games-list": {
+               "memory-christmas": "Сопоставление пар",
+               "puzzle-christmas": "Пазл «Новый год»",
+               "build-snowman": "Построить снеговика"
+          }
+     },
+     "bubbles": {
+          "title": "Пузырки",
+          "bubblesPopped": "Вы лопнули {popCount} пузырей"
+     },
+     "build-snowman": {
+          "title": "Построить снеговика",
+          "music": {
+               "title": "Музыка",
+               "desc": "Музыка из аудиобиблиотеки YouTube",
+               "indicator": "Музыка: {musicDetails}",
+               "turnOn": "Воспроизвести",
+               "turnOff": "Пауза",
+               "switchMusic": "Переключать музыку"
+          },
+          "parts": {
+               "eye": "Глаза",
+               "nose": "Нос",
+               "mouth": "Рот",
+               "hat": "Шляпа",
+               "hand": "Руки",
+               "button": "Пуговицы"
+          },
+          "snowmanSuccess": "Готовый снеговик скачан. Счастливого Рождества и Нового года!",
+          "snowmanError": "Снеговик не скачался. Повторите попытку позже."
+     },
+     "guess-number": {
+          "title": "Запомните числа"
+     },
+     "interactive-math": {
+          "title": "Интерактивная математика"
+     },
+     "math": {
+          "title": "Математика",
+          "addition": "Сложение",
+          "subtraction": "Вычитание",
+          "multiplication": "Умножение",
+          "division": "Деление"
+     },
+     "tic-tac-toe": {
+          "title": "Крестики-нолики",
+          "gameTitle": "<blue>Крестики</blue> <red>Нолики</red>",
+          "draw": "Ничья",
+          "xWinner": "Крестики выиграл",
+          "oWinner": "Нолики выиграл",
+          "upNext": "Далее: {player}",
+          "difficulty": "Сложность: {difficulty}",
+          "1Player": "1 игрок",
+          "2Players": "2 игрока"
+     },
+     "memory": {
+          "title": "Сопоставление пар",
+          "gameTitle": "{title} - Сопоставление пар",
+          "pairs": {
+               "birds": "Птицы",
+               "domesticAnimals": "Домашние животные",
+               "wildAnimals": "Дикие животные",
+               "fruit": "Фрукты",
+               "vegetables": "Овощи",
+               "colors": "Цвета",
+               "transportation": "Транспортные средства",
+               "insects": "Насекомые",
+               "forestAnimals": "Лесные животные",
+               "solarSystem": "Солнечная система",
+               "christmas": "Новый год"
+          },
+          "topic": "Тема: {title}",
+          "score": "Очки: {score}",
+          "turns": "Обороты: {turns}",
+          "chooseTopic": "Выберите тему"
+     },
+     "puzzle": {
+          "title": "Пазл «Фигуры»",
+          "gameTitle": "Пазл «{title}»",
+          "christmasTitle": "Пазл «Новый год»",
+          "games": {
+               "circle": "Круг",
+               "diamond": "Диагональ",
+               "heart": "Сердце",
+               "hexagon": "Шестиугольник",
+               "oval": "Овал",
+               "parallelogram": "Параллелограмм",
+               "pentagon": "Пятиугольник",
+               "rectangle": "Прямоугольник",
+               "square": "Квадрат",
+               "star": "Звезда",
+               "trapezoid": "Трапеция",
+               "triangle": "Триугольник"
+          },
+          "christmas-games": {
+               "bell": "Колокольчики",
+               "christmas-tree": "Ёлка",
+               "gift": "Подарок",
+               "ornament": "Украшение",
+               "reindeer": "Олень",
+               "santa": "Дед мороз",
+               "sleigh": "Санки",
+               "snowman": "Снеговик",
+               "stocking": "Рождественский чулок"
+          },
+          "showNum": "Показать цифры",
+          "chooseImage": "Выберите любую картинку",
+          "chooseShape": "Выберите фигуру"
+     }
+}

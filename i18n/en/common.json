@@ -1,0 +1,89 @@
+{
+     "buttons": {
+          "goBack": "Go Back",
+          "learnMore": "Learn More",
+          "watch": "Watch",
+          "download": {
+               "loading": "Downloading...",
+               "original": "Download"
+          },
+          "playGame": "Play",
+          "playGameAlt": "Let's Play",
+          "send": {
+               "loading": "Sending...",
+               "original": "Send"
+          },
+          "check": "Check",
+          "close": "Close",
+          "start": "Start",
+          "restart": "Restart",
+          "backToMenu": "Back to menu",
+          "share": "Share",
+          "hint": "Hint",
+          "shareGame": "Share the game \"{title}\""
+     },
+     "nav-links": {
+          "home": "Home",
+          "about": "About us",
+          "services": "Services",
+          "downloads": "Downloads",
+          "contact": "Contact us",
+          "games": "Games"
+     },
+     "validation": {
+          "invalidField": "Field isn't validated.",
+          "invalidFields": "All fields are invalid",
+          "name": {
+               "isShort": "Full Name is too short",
+               "isLong": "Full Name is too long"
+          },
+          "email": {
+               "isInvalid": "Please enter a valid email",
+               "isLong": "Email address is too long"
+          },
+          "subject": {
+               "required": "Enter the subject name",
+               "isLong": "Subject name is too long"
+          },
+          "message": {
+               "atLeast5Chars": "Message must be at least 5 characters long",
+               "isLong": "Message is too long",
+               "success": "The message was sent successfully!",
+               "sendError": "Failed to send message"
+          },
+          "answer": {
+               "isShort": "The answer is too short",
+               "isLong": "The answer is too long",
+               "onlyNumbers": "Must contain only numbers",
+               "isInt": "The answer must be a whole number",
+               "required": "Please fill in the answer",
+               "requiredNum": "Please write any number as the answer",
+               "requiredOperator": "Please write any operator as the answer",
+               "correctOperator": "Please insert the correct operator"
+          },
+          "miscError": "Oops, something went wrong",
+          "soundError": "Failed to play sound"
+     },
+     "search": {
+          "placeholder": "Search...",
+          "noResults": "No search results found.",
+          "noChristmasGames": "Christmas games are only available during the New Year and Christmas season."
+     },
+     "shareData": {
+          "title": "ArsenKids Games",
+          "desc": "Let's play this game.",
+          "shareSuccess": "Link has been copied",
+          "shareError": "Sharing failed. Please try again later."
+     },
+     "difficulties": {
+          "title": "Choose a difficulty",
+          "easy": "Easy",
+          "medium": "Medium",
+          "hard": "Hard",
+          "mixed": "Mixed"
+     },
+     "game-messages": {
+          "correct": "Good Job!; Great Job!; Nice Job!; Bravo!; Amazing!; Excellent!; Perfect!; Awesome!; Impressive!; Very Good!; Fantastic!; Wonderful!; Correct!; Yes!; Uh-huh!; Exactly!; You're a genius!",
+          "wrong": "Wrong!; No!; Nope!; No no no!; Nuh-uh; Try again!; Think again!; Of course not!; Absolutely not!; Incorrect!; You should think!; That's a part of learning!"
+     }
+}

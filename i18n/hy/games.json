@@ -1,0 +1,139 @@
+{
+     "games": {
+          "metaTitle": "Խաղեր",
+          "metaDesc": "Ինտելեկտուալ և հետաքրքիր խաղեր ArsenKids-ից",
+          "title": "Խաղեր ArsenKids-ից",
+          "desc": "Այստեղ դուք կխաղաք հետաքրքիր և ինտելեկտուալ խաղեր",
+          "startPlaying": "Սկսել Խաղալ",
+          "filters": {
+               "all": "Բոլորը",
+               "puzzle": "Տրամաբանական",
+               "math": "Մաթեմատիկական",
+               "entertainment": "Ժամանցային"
+          },
+          "allGames": "Բոլոր խաղերը",
+          "games-list": {
+               "memory": "Զույգեր",
+               "tic-tac-toe": "Իքսիկ Նոլիկ",
+               "words": "Գուշակիր բառը",
+               "math": "Մաթեմատիկա",
+               "number": "Հիշիր թվանշանները",
+               "puzzle": "Փազլ «Պատկերներ»",
+               "interactive-math": "Հրաշագործ Մաթեմատիկա",
+               "bubbles": "Պղպջակներ",
+               "christmas": "Ամանորյա խաղեր"
+          }
+     },
+     "christmas-games": {
+          "title": "Ամանորյա խաղեր",
+          "desc": "Ընտրեք ցանկացած խաղ",
+          "games-list": {
+               "memory-christmas": "Զույգեր",
+               "puzzle-christmas": "Փազլ «Ամանոր»",
+               "build-snowman": "Պատրաստիր ձնեմարդ"
+          }
+     },
+     "bubbles": {
+          "title": "Պղպջակներ",
+          "bubblesPopped": "Դուք պայթեցրել եք {popCount} պղպջակ"
+     },
+     "build-snowman": {
+          "title": "Պատրաստիր ձնեմարդ",
+          "music": {
+               "title": "Երաժշտություն",
+               "desc": "Երաժշտությունը YouTube Audio Library-ից",
+               "indicator": "Երաժշտություն՝ {musicDetails}",
+               "turnOn": "Միացնել երաժշտությունը",
+               "turnOff": "Անջատել երաժշտությունը",
+               "switchMusic": "Փոխել երաժշտությունը"
+          },
+          "parts": {
+               "eye": "Աչքեր",
+               "nose": "Քիթ",
+               "mouth": "Բերան",
+               "hat": "Գլխարկ",
+               "hand": "Ձեռքեր",
+               "button": "Կոճակներ"
+          },
+          "snowmanSuccess": "Պատրաստած ձնեմարդը ներբեռնվեց։ Շնորհավոր Ամանոր և Սուրբ Ծնունդ։",
+          "snowmanError": "Ձնեմարդի ներբեռնումը չստացվեց: Խնդրում ենք փորձել ավելի ուշ:"
+     },
+     "guess-number": {
+          "title": "Հիշիր թվանշանները"
+     },
+     "interactive-math": {
+          "title": "Հրաշագործ Մաթեմատիկա"
+     },
+     "math": {
+          "title": "Մաթեմատիկա",
+          "addition": "Գումարում",
+          "subtraction": "Հանում",
+          "multiplication": "Բազմապատկում",
+          "division": "Բաժանում"
+     },
+     "tic-tac-toe": {
+          "title": "Իքսիկ Նոլիկ",
+          "gameTitle": "<blue>Իքսիկ</blue> <red>Նոլիկ</red>",
+          "draw": "Ոչ ոքի",
+          "xWinner": "Իքսիկը հաղթեց",
+          "oWinner": "Նոլիկը հաղթեց",
+          "upNext": "Հաջորդը՝ {player}",
+          "difficulty": "Բարդություն՝ {difficulty}",
+          "1Player": "1 Խաղացող",
+          "2Players": "2 Խաղացող"
+     },
+     "memory": {
+          "title": "Զույգեր",
+          "gameTitle": "{title} - Զույգեր",
+          "pairs": {
+               "birds": "Թռչուններ",
+               "domesticAnimals": "Ընտանի Կենդանիներ",
+               "wildAnimals": "Վայրի Կենդանիներ",
+               "fruit": "Մրգեր",
+               "vegetables": "Բանջարեղեն",
+               "colors": "Գույներ",
+               "transportation": "Տրանսպորտային միջոցներ",
+               "insects": "Միջատներ",
+               "forestAnimals": "Անտառային Կենդանիներ",
+               "solarSystem": "Արեգակնային համակարգ",
+               "christmas": "Ամանոր"
+          },
+          "topic": "Թեմա՝ {title}",
+          "score": "Միավոր՝ {score}",
+          "turns": "Պտույտներ՝ {turns}",
+          "chooseTopic": "Ընտրեք թեմա"
+     },
+     "puzzle": {
+          "title": "Փազլ «Պատկերներ»",
+          "gameTitle": "Փազլ «{title}»",
+          "christmasTitle": "Փազլ «Ամանոր»",
+          "games": {
+               "circle": "Շրջան",
+               "diamond": "Շեղանկյուն",
+               "heart": "Սիրտ",
+               "hexagon": "Վեցանկյուն",
+               "oval": "Օվալ (Ձվաձև)",
+               "parallelogram": "Զուգահեռագիծ",
+               "pentagon": "Հնգանկյուն",
+               "rectangle": "Ուղղանկյուն",
+               "square": "Քառակուսի",
+               "star": "Աստղ",
+               "trapezoid": "Սեղան",
+               "triangle": "Եռանկյուն"
+          },
+          "christmas-games": {
+               "bell": "Զանգակներ",
+               "christmas-tree": "Տոնածառ",
+               "gift": "Նվեր",
+               "ornament": "Զարդարանք",
+               "reindeer": "Եղջերու",
+               "santa": "Ձմեռ պապիկ",
+               "sleigh": "Սահնակ",
+               "snowman": "Ձնեմարդ",
+               "stocking": "Գուլպա"
+          },
+          "showNum": "Ցույց տալ թվերը",
+          "chooseImage": "Ընտրեք ցանկացած նկար",
+          "chooseShape": "Ընտրեք երկրաչափական մարմին"
+     }
+}

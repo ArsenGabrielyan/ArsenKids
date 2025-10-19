@@ -6,9 +6,9 @@ import { PuzzleTile } from "@/components/ui/game"
 import { absoluteCDN, absoluteURL, playSound, preloadAudio } from "@/lib/utils"
 import Link from "next/link"
 import { RotateCcw, Share2 } from "lucide-react"
-import { getBackgroundImage } from "@/lib/helpers"
+import { getBackgroundImage, getRandomMessage } from "@/lib/helpers"
 import { useIsMobile } from "@/hooks/use-mobile"
-import { GRID_SIZE, SUCCESS_WORDS, BOARD_SIZE } from "@/lib/constants/games"
+import { GRID_SIZE, BOARD_SIZE } from "@/lib/constants/games"
 import { AUDIO } from "@/lib/constants/maps"
 import { INITIAL_PUZZLE_STATE } from "@/lib/constants/states"
 import { isSolved, shuffle, canSwap, swap } from "@/lib/helpers/puzzle.game"
@@ -36,7 +36,7 @@ export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
           const prev = Object.assign({},gameState)
           updateState({
                tiles: shuffle(prev.tiles),
-               randomWinText: gameMsg(`correct.${SUCCESS_WORDS[Math.floor(Math.random()*SUCCESS_WORDS.length)]}`)
+               randomWinText: getRandomMessage("correct",gameMsg)
           })
      }
      const swapTiles= (tileI: number) => {

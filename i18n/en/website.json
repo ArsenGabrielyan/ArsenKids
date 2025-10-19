@@ -1,0 +1,100 @@
+{
+     "index": {
+          "mainTitle": "Welcome to ArsenKids!",
+          "mainDesc": "The best education leads to the best future!",
+          "mainDescChristmas": "Merry Christmas and Happy New Year",
+          "langSwitcherLabel": "Change Language"
+     },
+     "about": {
+          "title": "About us",
+          "description": {
+               "line1": "<bold>ArsenKids</bold> is designed to engage Children, Toddlers, and families through <bold>educational videos</bold> (Such as Learn Numbers, Learn Alphabet, Learn Colors) and <bold>stop-motion educational animations</bold>. It is developed for Kids, but also loved by parents alike.",
+               "line2": "<bold>ArsenKids</bold> teaches <bold>social skills</bold>, strengthens the <bold>bond with parents</bold> through educational videos, and stimulates <bold>vocabulary and memory</bold>. Our Videos teach children <bold>moral values</bold>, and these videos are both entertaining and educational. We hope these videos will bring your children, toddlers, and family <bold>much joy</bold>.",
+               "line3": "Our stop-motion animated videos are perfectly adapted for <bold>their development</bold>, and kids enjoy <bold>learning new things</bold> while watching the videos and our carefully selected playlists. <bold>ArsenKids</bold> is available in Armenian."
+          }
+     },
+     "services": {
+          "title": "Our Services",
+          "about": {
+               "title": "About us",
+               "desc": "What's ArsenKids? Learn more by clicking this button"
+          },
+          "downloads": {
+               "title": "Downloads",
+               "desc": "Download ArsenKids' learning and activity sheets. Educational and fun activities for kids."
+          },
+          "learn": {
+               "title": "Let's Learn",
+               "desc": "Let's Learn to Count Numbers, Alphabet, Shapes, Animals and Others"
+          },
+          "alphabet": {
+               "title": "Learn the alphabet",
+               "desc": "Let's Learn the Alphabet (Eastern & Western Armenian)"
+          },
+          "colors": {
+               "title": "Learn Colors",
+               "desc": "Learn Colors with ArsenKids together!"
+          },
+          "games": {
+               "title": "Games from ArsenKids",
+               "desc": "Intellectual, Entertaining and Interesting Games From ArsenKids For Children"
+          }
+     },
+     "downloads": {
+          "title": "Downloads",
+          "filters": {
+               "all": "All",
+               "animals": "Animals",
+               "fruit-veggies": "Fruit and Vegetables",
+               "others": "Others"
+          },
+          "downloadTitle": "Learning sheet \"{itemName}\" (Armenian)",
+          "downloads-list": {
+               "colors": "Colors",
+               "shapes": "Shapes",
+               "fruit": "Fruit",
+               "vegetables": "Vegetables",
+               "domestic-animals": "Domestic Animals",
+               "transportation": "Vehicles",
+               "wild-animals": "Wild Animals",
+               "numbers": "Numbers",
+               "birds": "Birds",
+               "insects": "Insects",
+               "forest-animals": "Forest Animals",
+               "solar-system": "Solar System"
+          }
+     },
+     "contact": {
+          "title": "Contact us",
+          "form": {
+               "title": "Send a message",
+               "nameInput": {
+                    "title": "Full Name",
+                    "placeholder": "e.g.: Poghos Petrosyan"
+               },
+               "emailInput": {
+                    "title": "Email address",
+                    "placeholder": "e.g.: name@example.com"
+               },
+               "subjectInput": {
+                    "title": "Subject",
+                    "placeholder": "Specify the subject name"
+               },
+               "messageInput": {
+                    "title": "Message",
+                    "placeholder": "Write your message here"
+               }
+          }
+     },
+     "footer": {
+          "allRightsReserved": "All Rights Reserved",
+          "yt-link": "Subscribe on YouTube",
+          "github-link": "View on Github",
+          "toTop": "Scroll to top"
+     },
+     "notFound": {
+          "title": "Oops, page not found",
+          "description": "The page you are looking for wasn't found. You may have entered the address incorrectly, the page has moved, or it doesn't exist.",
+          "returnHome": "Return to Home Page"
+     }
+}

@@ -33,10 +33,6 @@ export interface IGameDifficulty{
      name: GameDifficulty
 }
 export type GameMessageType = "" | "correct" | "wrong"
-export interface IGameMessage {
-     messages: string[],
-     className: string
-}
 export interface IPuzzleType{
      txt: string,
      img: string

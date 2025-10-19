@@ -1,6 +1,6 @@
 import { BG_IMAGE_MAP } from "../constants/maps";
 import { snowmanItems } from "../constants/snowman.game";
-import { BgImageVariant, SnowmanType } from "../types";
+import { BgImageVariant, GameMessageType, SnowmanType } from "../types";
 
 export function isChristmas(){
      const today = new Date();
@@ -26,3 +26,7 @@ export function getBackgroundImage(variant: BgImageVariant): React.CSSProperties
      }
 }
 export const getSnowmanItems = (type: SnowmanType) => snowmanItems.filter(val=>val.type===type);
+export function getRandomMessage(type: GameMessageType, t: (key: string)=> string): string{
+     const messages = t(type).split("; ");
+     return messages[Math.floor(Math.random()*messages.length)];
+}
