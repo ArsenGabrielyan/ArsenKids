@@ -1,13 +1,14 @@
 import MemoryGame from "@/components/games/memory"
-import { PAIRS_LINKS } from "@/lib/constants/links";
+import { PAIRS_LINKS } from "@/lib/constants";
 import { MemoryCardParams } from "@/lib/types";
+import { MemoryGameLinks } from "@/lib/types/enums";
 import { absoluteURL } from "@/lib/utils";
 import { Metadata } from "next"
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 interface PageProps{
-     params: Promise<{game: string}>,
+     params: Promise<{game: MemoryGameLinks}>,
 }
 
 export const generateMetadata = async({params}: PageProps): Promise<Metadata> => {

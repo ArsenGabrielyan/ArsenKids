@@ -1,12 +1,13 @@
 import PuzzleGame from "@/components/games/puzzle"
-import { CHRISTMAS_PUZZLE_LINKS } from "@/lib/constants/links"
+import { CHRISTMAS_PUZZLE_LINKS } from "@/lib/constants"
+import { ChristmasPuzzleLinks } from "@/lib/types/enums";
 import { absoluteURL } from "@/lib/utils";
 import { Metadata } from "next"
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 interface PageProps{
-     params: Promise<{image: string}>,
+     params: Promise<{image: ChristmasPuzzleLinks}>,
 }
 
 export const generateMetadata = async({params}: PageProps): Promise<Metadata> => {

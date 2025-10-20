@@ -1,4 +1,5 @@
-import { BG_IMAGE_MAP, OPERATORS } from "../constants/maps";
+import { BG_IMAGE_MAP } from "../constants/maps";
+import { MemoryGameLinks, Operators, SnowmanItems } from "./enums";
 
 // General Types
 export type ServiceType = 'about' | "downloads" | "learn" | "alphabet" | "colors" | "games"
@@ -6,7 +7,7 @@ export type CardType = "service" | "download" | "game"
 export type DownloadItemType = "others" | "fruit-veggies" | "animals"
 export type SearchFilterType<T> = T | "all"
 export type BgImageVariant = keyof typeof BG_IMAGE_MAP;
-export type OperatorType = keyof typeof OPERATORS
+export type OperatorType = keyof typeof Operators
 export interface IPosition{ 
      x: number;
      y: number;
@@ -61,27 +62,16 @@ export enum TicTacToeState{
      Draw = "draw"
 }
 export type TicTacToeMode = "" | "2-players" | "player-vs-pc"
-export type TicTacToeDifficulty = Exclude<GameDifficulty,"mixed">
 export interface IMinimaxReturnType{
      index: number,
      score: number
 }
+export type TicTacToePlayer = "X" | "O"
+export type TicTacToeBoard = TicTacToePlayer | ""
 
 // Memory Game Types
-export interface IMemoryGameCards{
-     birds: IMemoryGameCard[]
-     domesticAnimals: IMemoryGameCard[]
-     wildAnimals: IMemoryGameCard[]
-     fruit: IMemoryGameCard[]
-     vegetables: IMemoryGameCard[]
-     colors: IMemoryGameCard[]
-     transportation: IMemoryGameCard[]
-     insects: IMemoryGameCard[]
-     forestAnimals: IMemoryGameCard[]
-     solarSystem: IMemoryGameCard[]
-     christmas: IMemoryGameCard[]
-}
-export type MemoryCardParams = keyof IMemoryGameCards
+export type MemoryCardParams = MemoryGameLinks | "christmas"
+export type MemoryCardType<T> = Record<MemoryCardParams,T>
 export interface IMemoryGameCard{
      img: string,
      matched: false
@@ -90,26 +80,10 @@ export interface IMemoryCard extends IMemoryGameCard{
      id: number
 }
 
+// Snowman Game Types
 export interface ISnowmanItem{
      name: string,
-     type: SnowmanType
+     type: SnowmanItems
 }
-export interface ISnowman{
-     eye: number,
-     nose: number,
-     mouth: number,
-     hat: number,
-     hand: number,
-     button: number
-}
-export type SnowmanType = keyof ISnowman
-export type SnowmanItemsType = `${SnowmanType}s`
-
-// I18N Types
-export type LangCodeType = 'en' | 'hy' | 'ru';
-export type CountryCodeType = 'us' | 'am' | 'ru';
-export interface ILanguage{
-     code: LangCodeType,
-     countryCode: CountryCodeType,
-     label: string
-}
+export type SnowmanType = Record<SnowmanItems,number>
+export type SnowmanItemsType = `${SnowmanItems}s`

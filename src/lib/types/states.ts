@@ -1,4 +1,5 @@
-import { AmazingMathOperator, GameDifficulty, GameMessageType, IMemoryCard, TicTacToeDifficulty, TicTacToeMode, TicTacToeState } from ".";
+import { AmazingMathOperator, GameDifficulty, GameMessageType, IMemoryCard, TicTacToeMode, TicTacToeState } from ".";
+import { TicTacToeDifficulties } from "./enums";
 
 export interface IGuessWordState{
      correct: string;
@@ -34,7 +35,7 @@ export interface ITicTacToeState{
      state: TicTacToeState,
      mode: TicTacToeMode,
      pattern: number[],
-     difficulty: TicTacToeDifficulty
+     difficulty: TicTacToeDifficulties | ""
 }
 export interface IInteractiveMathState{
      num1: number,

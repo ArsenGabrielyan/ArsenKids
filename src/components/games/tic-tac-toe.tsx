@@ -2,9 +2,9 @@
 import { BASE_ARR} from "@/lib/constants/games";
 import { AUDIO } from "@/lib/constants/maps";
 import { INITIAL_TIC_TAC_TOE_STATE } from "@/lib/constants/states";
-import { DIFFICULTIES } from "@/lib/constants/tic-tac-toe.game";
+import { TIC_TAC_TOE_DIFFICULTIES } from "@/lib/constants/games";
 import { getRandomMove, getMediumMove, getBestMove, checkWinner, isDraw } from "@/lib/helpers/tic-tac-toe.game";
-import { TicTacToeState, TicTacToeMode, TicTacToeDifficulty } from "@/lib/types";
+import { TicTacToeState, TicTacToeMode, TicTacToePlayer} from "@/lib/types";
 import { ITicTacToeState } from "@/lib/types/states";
 import { absoluteURL, cn, playSound, preloadAudio } from "@/lib/utils";
 import {Link} from "@/i18n/navigation";
@@ -14,10 +14,11 @@ import { SquareXO } from "../ui/game";
 import { Menu, RotateCcw, Share2 } from "lucide-react";
 import GameWrapper from "../game-wrapper";
 import { useTranslations } from "next-intl";
+import { TicTacToeDifficulties } from "@/lib/types/enums";
 
 export default function GameXO(){
      const [board,setBoard] = useState(BASE_ARR);
-     const [player,setPlayer] = useState("O");
+     const [player,setPlayer] = useState<TicTacToePlayer>("O");
      const [isStarted, setIsStarted] = useState(false);
      const [gameState, setGameState] = useState(INITIAL_TIC_TAC_TOE_STATE);
      const validationMessages = useTranslations("validation");
@@ -58,7 +59,7 @@ export default function GameXO(){
           resetGameState(INITIAL_TIC_TAC_TOE_STATE);
           setIsStarted(false);
      }
-     const startGameInDifficulty = (difficulty: TicTacToeDifficulty) => resetGameState({difficulty})
+     const startGameInDifficulty = (difficulty: TicTacToeDifficulties) => resetGameState({difficulty})
      useEffect(()=>{
           let winningPattern: number[] = [];
           if(checkWinner(board,pattern=>winningPattern=pattern)){
@@ -166,7 +167,7 @@ export default function GameXO(){
                          </>
                     ) : (
                          <div className="flex justify-center items-center flex-col gap-2.5">
-                              {DIFFICULTIES.map((val,i)=>(
+                              {TIC_TAC_TOE_DIFFICULTIES.map((val,i)=>(
                                    <Button variant="primary" onClick={()=>startGameInDifficulty(val)} key={i} className="w-full">{diffTxt(val)}</Button>
                               ))}
                               <Button variant="primary" onClick={goBackToMenu} className="w-full">{buttonText("backToMenu")}</Button>

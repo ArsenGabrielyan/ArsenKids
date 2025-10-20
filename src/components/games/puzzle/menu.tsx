@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import {Link} from "@/i18n/navigation";
 import Image from "next/image";
 import { X } from "lucide-react";
-import { CHRISTMAS_PUZZLE_LINKS, PUZZLE_LINKS } from "@/lib/constants/links";
+import { CHRISTMAS_PUZZLE_LINKS, PUZZLE_LINKS } from "@/lib/constants";
 import { absoluteCDN, cn } from "@/lib/utils";
 import Logo from "@/components/logo";
 import { Input } from "@/components/ui/input";

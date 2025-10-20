@@ -15,10 +15,11 @@ import { isSolved, shuffle, canSwap, swap } from "@/lib/helpers/puzzle.game"
 import { IPuzzleState } from "@/lib/types/states"
 import { useState, useEffect } from "react"
 import { useTranslations } from "next-intl"
+import { ChristmasPuzzleLinks, PuzzleLinks } from "@/lib/types/enums"
 
 interface PuzzleGameProps{
      title: string,
-     shape: string,
+     shape: PuzzleLinks | ChristmasPuzzleLinks,
      christmas?: boolean
 }
 export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){

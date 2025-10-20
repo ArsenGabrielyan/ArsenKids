@@ -1,14 +1,8 @@
-import { CardType, ICard } from "../types"
+import { ICard } from "../types"
 
 export const SERVICES: ICard<"service">[] = [
-     {
-          link: "/#about",
-          type: "about"
-     },
-     {
-          link: "/#downloads",
-          type: "downloads"
-     },
+     { link: "/#about", type: "about" },
+     { link: "/#downloads", type: "downloads" },
      {
           link: "https://youtube.com/playlist?list=PLL4l-dEWVYAubvK3veTw5YXlEtw3empLU",
           type: "learn"
@@ -21,10 +15,7 @@ export const SERVICES: ICard<"service">[] = [
           link: "https://youtube.com/playlist?list=PLL4l-dEWVYAuLeJ_FQIfTA_NzGHOgaG8q",
           type: "colors"
      },
-     {
-          link: "/games#main-games",
-          type: "games"
-     },
+     { link: "/games#main-games", type: "games" },
 ]
 
 export const DOWNLOADS: ICard<"download">[] = [
@@ -177,18 +168,4 @@ export const CHRISTMAS_GAME: ICard<"game"> = {
      gameName: "christmas",
      link: "/christmas",
      type: "entertainment"
-}
-export const IMAGE_SIZES: Record<CardType,{width: number, height: number}> = {
-     game: {
-          width: 300,
-          height: 300
-     },
-     service: {
-          width: 495,
-          height: 385
-     },
-     download: {
-          width: 720,
-          height: 1020
-     }
 }

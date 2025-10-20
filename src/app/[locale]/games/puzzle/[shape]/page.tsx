@@ -1,12 +1,13 @@
 import PuzzleGame from "@/components/games/puzzle"
-import { PUZZLE_LINKS } from "@/lib/constants/links"
+import { PUZZLE_LINKS } from "@/lib/constants"
+import { PuzzleLinks } from "@/lib/types/enums";
 import { absoluteURL } from "@/lib/utils";
 import { Metadata } from "next"
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 interface PageProps{
-     params: Promise<{shape: string}>,
+     params: Promise<{shape: PuzzleLinks}>,
 }
 
 export const generateMetadata = async({params}: PageProps): Promise<Metadata> => {

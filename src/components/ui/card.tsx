@@ -4,7 +4,7 @@ import {Link} from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { CardType } from "@/lib/types";
 import { Download, Share2 } from "lucide-react";
-import { IMAGE_SIZES } from "@/lib/constants/card-data";
+import { IMAGE_SIZES } from "@/lib/constants/maps";
 import { absoluteURL, cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 

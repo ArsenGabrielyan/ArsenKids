@@ -1,24 +1,24 @@
 import { GRID_SIZE, TILE_COUNT } from "@/lib/constants/games";
 import { BACK_FACE_IMAGES } from "@/lib/constants/pairs.game";
 import { getMatrixPosition, getVisualPosition } from "@/lib/helpers/puzzle.game";
-import { IMemoryCard } from "@/lib/types";
+import { IMemoryCard, TicTacToePlayer, TicTacToeBoard } from "@/lib/types";
 import { absoluteCDN, cn } from "@/lib/utils";
 import Image from "next/image";
 
 interface SquareXOProps{
-     val: string,
+     val: TicTacToeBoard,
      handleSquareClick: () => void,
      disabled: boolean,
      isPatternEqual: boolean
 }
 
-const ticTacToeIcons: Record<"x" | "o",string> = {
+const ticTacToeIcons: Record<Lowercase<TicTacToePlayer>,string> = {
      x: absoluteCDN("images","/tic-tac-toe/x.svg"),
      o: absoluteCDN("images","/tic-tac-toe/o.svg"),
 }
 
 export function SquareXO({val,handleSquareClick,disabled,isPatternEqual}: SquareXOProps){
-     const iconSrc = val ? ticTacToeIcons[val.toLowerCase() as "x" | "o"] : "";
+     const iconSrc = val ? ticTacToeIcons[val.toLowerCase() as Lowercase<TicTacToePlayer>] : "";
      return <div className={cn(
           "border border-blue-800 cursor-pointer flex justify-center items-center active:bg-rainbow-yellow",
           disabled && "select-none pointer-events-none",

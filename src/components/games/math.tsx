@@ -1,6 +1,6 @@
 "use client"
 import { MATH_LINKS } from "@/lib/constants/games";
-import { AUDIO, MATH_OPTIONS, OPERATORS } from "@/lib/constants/maps";
+import { AUDIO, MATH_OPTIONS } from "@/lib/constants/maps";
 import { generateEquation, checkAnswer } from "@/lib/helpers/math.game";
 import Link from "next/link"
 import { useState, useEffect } from "react";
@@ -11,6 +11,7 @@ import { GameMessageType, OperatorType } from "@/lib/types";
 import Logo from "../logo";
 import { Share2 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Operators } from "@/lib/types/enums";
 
 export default function MathGame(){
      const t = useTranslations("math");
@@ -39,7 +40,7 @@ export default function MathGame(){
           preloadAudio(AUDIO)
      },[])
      const {q1,q2,answers} = state;
-     const operator = OPERATORS[mode];
+     const operator = Operators[mode];
      return <>
      <header>
           <div className="p-5 overflow-hidden bg-blue-800 w-full flex justify-between items-center flex-col lg:flex-row">

@@ -4,9 +4,8 @@ import { Spinner } from "@/components/shadcn-ui/spinner";
 import { SnowmanMusicList, SnowmanSidebarItem, Snowman } from "@/components/snowman.game";
 import { Button } from "@/components/ui/button";
 import useAudio from "@/hooks/use-audio";
-import { snowmanSidebarItems } from "@/lib/constants/snowman.game";
 import { getBackgroundImage } from "@/lib/helpers";
-import { ISnowman, ISnowmanItem, SnowmanType } from "@/lib/types";
+import { SnowmanType, ISnowmanItem } from "@/lib/types";
 import { absoluteURL, cn } from "@/lib/utils";
 import { Download, MoreHorizontalIcon, Pause, Play, Share2 } from "lucide-react";
 import {Link} from "@/i18n/navigation";
@@ -17,23 +16,25 @@ import download from "downloadjs";
 import { ScrollArea, ScrollBar } from "@/components/shadcn-ui/scroll-area";
 import { ButtonGroup } from "@/components/shadcn-ui/button-group";
 import { useTranslations } from "next-intl";
+import { SnowmanItems } from "@/lib/types/enums";
+import { snowmanSidebarItems } from "@/lib/constants/games";
 
 export default function GameBuildSnowman(){
      const [isStarted, setIsStarted] = useState(false);
      const [isChangingMusic, setIsChangingMusic] = useState(false);
      const [isPending, startTransition] = useTransition();
-     const [snowMan, setSnowman] = useState<ISnowman>({eye: 0,nose: 0,mouth: 0,hat: 0,hand: 0,button: 0});
+     const [snowMan, setSnowman] = useState<SnowmanType>({eye: 0,nose: 0,mouth: 0,hat: 0,hand: 0,button: 0});
      const t = useTranslations("build-snowman");
      const buttonText = useTranslations("buttons")
-     const updateSnowman = (overrides: Partial<ISnowman>) =>
+     const updateSnowman = (overrides: Partial<SnowmanType>) =>
           setSnowman(prev=>({...prev,...overrides}))
      const {togglePlayPause,isMusicOn,setMusic: changeMusic} = useAudio(isStarted);
      const snowmanRef = useRef<HTMLDivElement>(null)
-     const handleNextItem = (arr: ISnowmanItem[], type: SnowmanType) => {
+     const handleNextItem = (arr: ISnowmanItem[], type: SnowmanItems) => {
           const index = snowMan[type];
           updateSnowman({ [type]: (index+1) % arr.length })
      }
-     const handlePrevItem = (arr: ISnowmanItem[], type: SnowmanType) => {
+     const handlePrevItem = (arr: ISnowmanItem[], type: SnowmanItems) => {
           const index = snowMan[type];
           updateSnowman({[type]: (index-1+arr.length) % arr.length})
      }

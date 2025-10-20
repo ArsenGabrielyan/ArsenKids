@@ -1,6 +1,8 @@
+import { useTranslations } from "next-intl";
 import { BG_IMAGE_MAP } from "../constants/maps";
-import { snowmanItems } from "../constants/snowman.game";
-import { BgImageVariant, GameMessageType, SnowmanType } from "../types";
+import { snowmanItems } from "../constants/games";
+import { BgImageVariant, GameMessageType } from "../types";
+import { SnowmanItems } from "../types/enums";
 
 export function isChristmas(){
      const today = new Date();
@@ -25,8 +27,8 @@ export function getBackgroundImage(variant: BgImageVariant): React.CSSProperties
           } : null)
      }
 }
-export const getSnowmanItems = (type: SnowmanType) => snowmanItems.filter(val=>val.type===type);
-export function getRandomMessage(type: GameMessageType, t: (key: string)=> string): string{
+export const getSnowmanItems = (type: SnowmanItems) => snowmanItems.filter(val=>val.type===type);
+export function getRandomMessage(type: GameMessageType, t: ReturnType<typeof useTranslations>): string{
      const messages = t(type).split("; ");
      return messages[Math.floor(Math.random()*messages.length)];
 }

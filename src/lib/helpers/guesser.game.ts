@@ -1,9 +1,10 @@
+import { useTranslations } from "next-intl";
 import { GameDifficulty } from "../types";
 
-const getWordList = (t: (key: string) => string, difficulty: GameDifficulty): string[] => 
+const getWordList = (t: ReturnType<typeof useTranslations>, difficulty: GameDifficulty): string[] => 
      t(`${difficulty}-words`).split(",").map(w => w.trim()).filter(Boolean);
 
-export const getWords = (difficulty: GameDifficulty, t: (key: string) => string) => {
+export const getWords = (difficulty: GameDifficulty, t: ReturnType<typeof useTranslations>) => {
      if(!difficulty) return [];
      if(difficulty==="mixed"){
           const difficulties: GameDifficulty[] = ["easy", "medium", "hard"]

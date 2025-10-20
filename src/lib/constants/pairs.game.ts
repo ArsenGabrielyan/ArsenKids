@@ -1,7 +1,7 @@
-import { IMemoryGameCard, IMemoryGameCards } from "../types";
+import { IMemoryGameCard, MemoryCardParams, MemoryCardType } from "../types";
 import { absoluteCDN } from "../utils";
 
-const BASE_PATHS = {
+const BASE_PATHS: MemoryCardType<string> = {
      birds: absoluteCDN("images","/pairs/birds/"),
      domesticAnimals: absoluteCDN("images","/pairs/domestic-animals/"),
      wildAnimals: absoluteCDN("images","/pairs/wild-animals/"),
@@ -14,7 +14,7 @@ const BASE_PATHS = {
      solarSystem: absoluteCDN("images","/pairs/solar-system/"),
      christmas: absoluteCDN("images","/pairs/christmas/"),
 }
-const IMAGE_FILES = {
+const IMAGE_FILES: MemoryCardType<string[]> = {
      birds: ["chicken.webp", "dove.webp", "eagle.webp", "flamingo.webp", "duck.webp","owl.webp", "parrot.webp", "peacock.webp", "penguin.webp", "rooster.webp","sparrow.webp", "stork.webp"],
      domesticAnimals: ["cat.webp", "cow.webp", "dog.webp", "donkey.webp", "goat.webp","horse.webp", "pig.webp", "sheep.webp"],
      wildAnimals: ["cheetah.webp", "elephant.webp", "giraffe.webp", "lion.webp", "monkey.webp","rhino.webp", "tiger.webp", "zebra.webp"],
@@ -27,21 +27,22 @@ const IMAGE_FILES = {
      solarSystem: ["earth.webp", "jupiter.webp", "mars.webp", "mercury.webp", "neptune.webp","pluto.webp", "saturn.webp", "uranus.webp", "venus.webp", "sun.webp"],
      christmas: ["bell.webp", "christmas-tree.webp", "gift.webp", "ornament-1.webp","ornament-2.webp", "reindeer.webp", "santa.webp", "sleigh.webp","snowman.webp", "stocking-1.webp", "stocking-2.webp", "wreath.webp"],
 }
-const generateCards = (category: keyof typeof BASE_PATHS): IMemoryGameCard[] => IMAGE_FILES[category].map(filename=>({
-     img: `${BASE_PATHS[category]}${filename}`,
-     matched: false
-}))
-export const pairsCards: IMemoryGameCards = {
-     birds: generateCards("birds"),
-     domesticAnimals: generateCards("domesticAnimals"),
-     wildAnimals: generateCards("wildAnimals"),
-     fruit: generateCards("fruit"),
-     vegetables: generateCards("vegetables"),
-     colors: generateCards("colors"),
-     transportation: generateCards("transportation"),
-     insects: generateCards("insects"),
-     forestAnimals:generateCards("forestAnimals"),
-     solarSystem:generateCards("solarSystem"),
+const generateCards = (category: MemoryCardParams): IMemoryGameCard[] =>
+     IMAGE_FILES[category].map(filename=>({
+          img: `${BASE_PATHS[category]}${filename}`,
+          matched: false
+     }))
+export const pairsCards: MemoryCardType<IMemoryGameCard[]> = {
+     birds: generateCards("birds" as MemoryCardParams),
+     domesticAnimals: generateCards("domesticAnimals" as MemoryCardParams),
+     wildAnimals: generateCards("wildAnimals" as MemoryCardParams),
+     fruit: generateCards("fruit" as MemoryCardParams),
+     vegetables: generateCards("vegetables" as MemoryCardParams),
+     colors: generateCards("colors" as MemoryCardParams),
+     transportation: generateCards("transportation" as MemoryCardParams),
+     insects: generateCards("insects" as MemoryCardParams),
+     forestAnimals:generateCards("forestAnimals" as MemoryCardParams),
+     solarSystem:generateCards("solarSystem" as MemoryCardParams),
      christmas: generateCards("christmas")
 }
 export const BACK_FACE_IMAGES = {

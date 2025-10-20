@@ -1,5 +1,5 @@
-import { PATTERNS } from "../constants/tic-tac-toe.game";
-import { IMinimaxReturnType } from "../types";
+import { PATTERNS } from "../constants/games";
+import { IMinimaxReturnType, TicTacToePlayer } from "../types";
 
 export const checkWinner = (board: string[],callback: (pattern: number[]) => void)=>{
      for(const pattern of PATTERNS){
@@ -30,7 +30,7 @@ const findBlockingMove = (board: string[]) => {
      return null;
 }
 export const getMediumMove = (board: string[]) => findBlockingMove(board) ?? getRandomMove(board)
-const minimax = (board: string[], player: string): IMinimaxReturnType => {
+const minimax = (board: string[], player: TicTacToePlayer): IMinimaxReturnType => {
      const emptySquares = getEmptySquares(board);
      let winningPattern: number[] = [];
      if(checkWinner(board,pattern=>winningPattern=pattern))
@@ -52,4 +52,4 @@ const minimax = (board: string[], player: string): IMinimaxReturnType => {
           return bestMove
      }
 }
-export const getBestMove = (board: string[], player: string) => minimax(board,player).index
+export const getBestMove = (board: string[], player: TicTacToePlayer) => minimax(board,player).index

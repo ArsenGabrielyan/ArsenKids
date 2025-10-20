@@ -1,6 +1,6 @@
 import { CHRISTMAS_MUSIC } from "@/lib/constants/maps";
 import { getSnowmanItems } from "@/lib/helpers";
-import { ISnowmanItem, SnowmanType, ISnowman, SnowmanItemsType } from "@/lib/types";
+import { ISnowmanItem, SnowmanType, SnowmanItemsType } from "@/lib/types";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -9,12 +9,13 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "./shadcn-ui/drawer";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "./shadcn-ui/dialog";
 import { useTranslations } from "next-intl";
+import { SnowmanItems } from "@/lib/types/enums";
 
 interface SnowmanSidebarItemProps{
-     handlePrev: (arr: ISnowmanItem[],type:SnowmanType) => void;
-     handleNext: (arr: ISnowmanItem[],type:SnowmanType) => void;
-     snowman: ISnowman,
-     type: SnowmanType,
+     handlePrev: (arr: ISnowmanItem[],type:SnowmanItems) => void;
+     handleNext: (arr: ISnowmanItem[],type:SnowmanItems) => void;
+     snowman: SnowmanType,
+     type: SnowmanItems,
      title: string
 }
    
@@ -51,17 +52,17 @@ export function SnowmanSidebarItem({handlePrev,handleNext,snowman,type,title}: S
 }
 
 interface SnowmanProps{
-     data: ISnowman,
+     data: SnowmanType,
      snowmanRef?: React.Ref<HTMLDivElement>
 }
 export function Snowman({data, snowmanRef}: SnowmanProps){
      const snowman: Record<SnowmanItemsType,ISnowmanItem[]> = {
-          eyes: getSnowmanItems("eye"),
-          noses: getSnowmanItems("nose"),
-          mouths: getSnowmanItems("mouth"),
-          hats: getSnowmanItems("hat"),
-          hands: getSnowmanItems("hand"),
-          buttons: getSnowmanItems("button"),
+          eyes: getSnowmanItems("eye" as SnowmanItems),
+          noses: getSnowmanItems("nose" as SnowmanItems),
+          mouths: getSnowmanItems("mouth" as SnowmanItems),
+          hats: getSnowmanItems("hat" as SnowmanItems),
+          hands: getSnowmanItems("hand" as SnowmanItems),
+          buttons: getSnowmanItems("button" as SnowmanItems),
      }
      const renderItem = (type: SnowmanItemsType, index: number, className: string, height: number, width: number, style?: React.CSSProperties) => {
           if (index === 0) return null;

@@ -2,7 +2,7 @@
 
 import Logo from "@/components/logo"
 import { Button } from "@/components/ui/button"
-import { PAIRS_LINKS } from "@/lib/constants/links"
+import { PAIRS_LINKS } from "@/lib/constants"
 import { useTranslations } from "next-intl"
 import Link from "next/link"
 
