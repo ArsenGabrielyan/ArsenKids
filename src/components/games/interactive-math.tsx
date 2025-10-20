@@ -53,7 +53,7 @@ export default function InteractiveMathGame(){
                setMsgType("correct")
                playSound(AUDIO.correct,validationMessages("soundError"))
           } else if(gameState.operatorQuestion && !MATH_OPERATORS.includes(values.answer as AmazingMathOperator)) {
-               toast.error(validationMessages("correctOperator"))
+               toast.error(validationMessages("answer.correctOperator"))
           } else {
                setMsgType("wrong")
                playSound(AUDIO.wrong,validationMessages("soundError"))

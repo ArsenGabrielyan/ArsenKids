@@ -29,6 +29,6 @@ export function getBackgroundImage(variant: BgImageVariant): React.CSSProperties
 }
 export const getSnowmanItems = (type: SnowmanItems) => snowmanItems.filter(val=>val.type===type);
 export function getRandomMessage(type: GameMessageType, t: ReturnType<typeof useTranslations>): string{
-     const messages = t(type).split("; ");
+     const messages: string[] = type!=="" ? t(type).split("; ") : [];
      return messages[Math.floor(Math.random()*messages.length)];
 }

@@ -1,4 +1,5 @@
 import { ICard } from "../types"
+import { ChristmasGame, Downloads, Games } from "../types/enums";
 
 export const SERVICES: ICard<"service">[] = [
      { link: "/#about", type: "about" },
@@ -23,122 +24,122 @@ export const DOWNLOADS: ICard<"download">[] = [
           fileName: "colors.pdf",
           imageName: "colors.webp",
           itemType: "others",
-          downloadName: "colors"
+          downloadName: Downloads.Colors
      },
      {
           fileName: "shapes.pdf",
           imageName: "shapes.webp",
           itemType: "others",
-          downloadName: "shapes"
+          downloadName: Downloads.Shapes
      },
      {
           fileName: "fruit.pdf",
           imageName: "fruit.webp",
           itemType: "fruit-veggies",
-          downloadName: "fruit"
+          downloadName: Downloads.Fruit
      },
      {
           fileName: "vegetables.pdf",
           imageName: "vegies.webp",
           itemType: "fruit-veggies",
-          downloadName: "vegetables"
+          downloadName: Downloads.Vegetables
      },
      {
           fileName: "domestic-animals.pdf",
           imageName: "domestic.webp",
           itemType: "animals",
-          downloadName: "domestic-animals"
+          downloadName: Downloads.DomesticAnimals
      },
      {
           fileName: "transportation.pdf",
           imageName: "transportation.webp",
           itemType: "others",
-          downloadName: "transportation"
+          downloadName: Downloads.Transportation
      },
      {
           fileName: "wild-animals.pdf",
           imageName: "wild.webp",
           itemType: "animals",
-          downloadName: "wild-animals"
+          downloadName: Downloads.WildAnimals
      },
      {
           fileName: "numbers.pdf",
           imageName: "numbers.webp",
           itemType: "others",
-          downloadName: "numbers"
+          downloadName: Downloads.Numbers
      },
      {
           fileName: "birds.pdf",
           imageName: "birds.webp",
           itemType: "animals",
-          downloadName: "birds"
+          downloadName: Downloads.Birds
      },
      {
           fileName: "insects.pdf",
           imageName: "insects.webp",
           itemType: "animals",
-          downloadName: "insects"
+          downloadName: Downloads.Insects
      },
      {
           fileName: "forest.pdf",
           imageName: "forest.webp",
           itemType: "animals",
-          downloadName: "forest-animals"
+          downloadName: Downloads.ForestAnimals
      },
      {
           fileName: "solar-system.pdf",
           imageName: "solar.webp",
           itemType: "others",
-          downloadName: "solar-system"
+          downloadName: Downloads.SolarSystem
      },
 ]
 
 export const GAMES_LIST: ICard<"game">[] = [
      {
           imageName: "pairs.webp",
-          gameName: "memory",
+          gameName: Games.Memory,
           link: "/memory",
           type: "puzzle"
      },
      {
           imageName: "xo.webp",
-          gameName: "tic-tac-toe",
+          gameName: Games.TicTacToe,
           link: "/tic-tac-toe",
           type: "entertainment"
      },
      {
           imageName: "words.webp",
-          gameName: "words",
+          gameName: Games.GuessWord,
           link: "/guess-word",
           type: "puzzle"
      },
      {
           imageName: "math.webp",
-          gameName: "math",
+          gameName: Games.Maths,
           link: "/math",
           type: "math"
      },
      {
           imageName: "numbers.webp",
-          gameName: "number",
+          gameName: Games.MemorizeNum,
           link: "/guess-number",
           type: "math"
      },
      {
           imageName: "puzzle.webp",
-          gameName: "puzzle",
+          gameName: Games.Puzzle,
           link: "/puzzle",
           type: "puzzle"
      },
      {
           imageName: "interactive-math.webp",
-          gameName: "interactive-math",
+          gameName: Games.InteractiveMath,
           link: "/interactive-math",
           type: "math"
      },
      {
           imageName: "bubbles.webp",
-          gameName: "bubbles",
+          gameName: Games.Bubbles,
           link: "/bubbles",
           type: "entertainment"
      },
@@ -146,26 +147,26 @@ export const GAMES_LIST: ICard<"game">[] = [
 export const CHRISTMAS_GAMES_LIST: ICard<"game">[] = [
      {
           imageName: "christmas-pairs.webp",
-          gameName: "memory-christmas",
+          gameName: ChristmasGame.Memory,
           link: "/christmas/memory-game",
           type: "christmas-game"
      },
      {
           imageName: "christmas-puzzle.webp",
-          gameName: "puzzle-christmas",
+          gameName: ChristmasGame.Puzzle,
           link: "/christmas/puzzle",
           type: "christmas-game"
      },
      {
           imageName: "christmas-snowman.webp",
-          gameName: "build-snowman",
+          gameName: ChristmasGame.Snowman,
           link: "/christmas/build-snowman",
           type: "christmas-game"
      }
 ]
 export const CHRISTMAS_GAME: ICard<"game"> = {
      imageName: "christmas.webp",
-     gameName: "christmas",
+     gameName: Games.Christmas,
      link: "/christmas",
      type: "entertainment"
 }

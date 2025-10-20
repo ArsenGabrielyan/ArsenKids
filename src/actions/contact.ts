@@ -3,8 +3,8 @@ import { ContactType } from "@/schemas/types";
 import { ZodSafeParseResult } from "zod";
 
 export async function sendMessage(validatedFields: ZodSafeParseResult<ContactType>): Promise<{
-     success?: string,
-     error?: string
+     success?: "message.success",
+     error?: "invalidFields" | "message.sendError"
 }>{
      if(!validatedFields.success)
           return { error: "invalidFields" }

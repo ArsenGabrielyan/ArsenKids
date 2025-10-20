@@ -1,13 +1,13 @@
 import { useTranslations } from "next-intl";
 import { GameDifficulty } from "../types";
 
-const getWordList = (t: ReturnType<typeof useTranslations>, difficulty: GameDifficulty): string[] => 
-     t(`${difficulty}-words`).split(",").map(w => w.trim()).filter(Boolean);
+const getWordList = (t: ReturnType<typeof useTranslations>, difficulty: Exclude<GameDifficulty,"" | "mixed">): string[] => 
+     t(`${difficulty}-words`).split(",").map(w => w.trim()).filter(Boolean)
 
 export const getWords = (difficulty: GameDifficulty, t: ReturnType<typeof useTranslations>) => {
      if(!difficulty) return [];
      if(difficulty==="mixed"){
-          const difficulties: GameDifficulty[] = ["easy", "medium", "hard"]
+          const difficulties: Exclude<GameDifficulty,"" | "mixed">[] = ["easy", "medium", "hard"]
           return difficulties.flatMap(diff => getWordList(t, diff))
      }
      return getWordList(t, difficulty)

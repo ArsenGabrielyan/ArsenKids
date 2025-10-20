@@ -8,14 +8,15 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import Logo from "../logo";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "../language-switcher";
+import { NavLinks } from "@/lib/types/enums";
 
 const links = [
-     {url: "/#banner", name: "home"},
-     {url: "/#about", name: "about"},
-     {url: "/#services", name: "services"},
-     {url: "/#downloads", name: "downloads"},
-     {url: "/#contact", name: "contact"},
-     {url: "/games", name: "games"},
+     {url: "/#banner", name: NavLinks.Homepage},
+     {url: "/#about", name: NavLinks.About},
+     {url: "/#services", name: NavLinks.Services},
+     {url: "/#downloads", name: NavLinks.Downloads},
+     {url: "/#contact", name: NavLinks.Contact},
+     {url: "/games", name: NavLinks.Games},
 ]
 
 export default function Header(){

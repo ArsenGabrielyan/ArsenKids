@@ -1,3 +1,4 @@
+// Game Links
 export enum PuzzleLinks{
      Circle = "circle",
      Diamond = "diamond",
@@ -35,6 +36,8 @@ export enum MemoryGameLinks{
      ForestAnimals = "forestAnimals",
      SolarSystem = "solarSystem"
 }
+
+// Game Enums
 export enum Operators {
      "addition" = "+",
      "subtraction" = "-",
@@ -53,4 +56,44 @@ export enum TicTacToeDifficulties{
      Easy = "easy",
      Medium = "medium",
      Hard = "hard"
+}
+
+// Website Links
+export enum ChristmasGame{
+     Memory = "memory-christmas",
+     Puzzle = "puzzle-christmas",
+     Snowman = "build-snowman",
+}
+export enum Games{
+     Memory = "memory",
+     TicTacToe = "tic-tac-toe",
+     GuessWord = "words",
+     Maths = "math",
+     MemorizeNum = "number",
+     Puzzle = "puzzle",
+     InteractiveMath = "interactive-math",
+     Bubbles = "bubbles",
+     Christmas = "christmas",
+}
+export enum Downloads{
+     Colors = "colors",
+     Shapes = "shapes",
+     Fruit = "fruit",
+     Vegetables = "vegetables",
+     DomesticAnimals = "domestic-animals",
+     Transportation = "transportation",
+     WildAnimals = "wild-animals",
+     Numbers = "numbers",
+     Birds = "birds",
+     Insects = "insects",
+     ForestAnimals = "forest-animals",
+     SolarSystem = "solar-system",
+}
+export enum NavLinks{
+     Homepage = "home",
+     About = "about",
+     Services = "services",
+     Downloads = "downloads",
+     Contact = "contact",
+     Games = "games",
 }

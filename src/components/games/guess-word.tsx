@@ -141,7 +141,7 @@ export default function GuessWordGame(){
                          ) : <>
                               <p>{diffTxt("title")}</p>
                               <div className="flex justify-center items-center flex-col w-full gap-2">
-                                   {DIFFICULTIES.map(btn=>(
+                                   {DIFFICULTIES.map(btn=>btn.name!=="" && (
                                         <Button
                                              key={btn.id}
                                              variant="tertiary"

@@ -4,11 +4,12 @@ import Card from "@/components/ui/card";
 import { getBackgroundImage } from "@/lib/helpers";
 import { useTranslations } from "next-intl";
 import { useCallback } from "react";
+import { ChristmasGame } from "@/lib/types/enums";
 
 export default function ChristmasGamesHub(){
      const bgStyle = getBackgroundImage("christmas");
      const t = useTranslations("christmas-games")
-     const getGameTitle = useCallback((gameName: string) => t(`games-list.${gameName}`),[t]);
+     const getGameTitle = useCallback((gameName: ChristmasGame) => t(`games-list.${gameName}`),[t]);
      const buttonText = useTranslations("buttons")
      return (
           <div className="min-h-screen p-4 relative flex justify-center items-center flex-col w-full" style={bgStyle}>
@@ -21,7 +22,7 @@ export default function ChristmasGamesHub(){
                          {CHRISTMAS_GAMES_LIST.map(game=>(
                               <Card
                                    key={game.gameName}
-                                   title={getGameTitle(game.gameName)}
+                                   title={getGameTitle(game.gameName as ChristmasGame)}
                                    imageSrc={`/games/${game.imageName}`}
                                    imageAlt={game.gameName}
                                    buttonLink={`/games${game.link}`}

@@ -9,6 +9,7 @@ import { Input } from "../ui/input"
 import { X } from "lucide-react"
 import Card from "../ui/card"
 import { useTranslations } from "next-intl"
+import { Downloads } from "@/lib/types/enums"
 
 type DownloadFilters = SearchFilterType<DownloadItemType>
 
@@ -20,7 +21,7 @@ export default function DownloadsSection(){
      const t = useTranslations("downloads");
      const buttonText = useTranslations("buttons");
      const searchTxt = useTranslations("search")
-     const getDownloadsTranslation = useCallback((downloadName: string) =>
+     const getDownloadsTranslation = useCallback((downloadName: Downloads) =>
           t("downloadTitle",{itemName: t(`downloads-list.${downloadName}`)}),[t])
      const allDownloads = useMemo(()=>
           DOWNLOADS

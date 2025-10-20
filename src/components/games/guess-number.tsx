@@ -97,7 +97,7 @@ export default function GuessNumber(){
                <GameWrapper title={t("title")}>
                     {!isStarted ? <Button onClick={()=>updateState({isStarted:true})}>{buttonText("start")}</Button> : difficulty==="" ? <>
                          <p>{diffTxt("title")}</p>
-                         <div className="flex justify-center items-center flex-col w-full gap-2">{DIFFICULTIES.map((btn,i)=>(
+                         <div className="flex justify-center items-center flex-col w-full gap-2">{DIFFICULTIES.map((btn,i)=>btn.name!=="" && (
                               <Button
                                    key={i}
                                    variant="tertiary"

@@ -10,6 +10,7 @@ import { CHRISTMAS_GAME, GAMES_LIST } from "@/lib/constants/card-data";
 import { isChristmas } from "@/lib/helpers";
 import Card from "../ui/card";
 import { useTranslations } from "next-intl";
+import { Games } from "@/lib/types/enums";
 
 type GameFilters = Exclude<SearchFilterType<GameType>,"christmas-game">
 
@@ -19,18 +20,18 @@ export default function GamesSection(){
      const [currSelection, setCurrSelection] = useState<GameFilters>("all")
      const [search, setSearch] = useState("");
      const t = useTranslations("games")
-     const getGameTitle = useCallback((gameName: string) => t(`games-list.${gameName}`),[t])
+     const getGameTitle = useCallback((gameName: Games) => t(`games-list.${gameName}`),[t])
      const allGames = useMemo(()=>{
           const gamesList = isChristmas() ? [CHRISTMAS_GAME,...GAMES_LIST] : GAMES_LIST;
           return gamesList
                .map((game,i)=>({id: i+1,...game}))
                .filter(val=>currSelection==="all" || val.type===currSelection)
-               .filter(game=>getGameTitle(game.gameName).toLowerCase().includes(search.toLowerCase()))
+               .filter(game=>getGameTitle(game.gameName as Games).toLowerCase().includes(search.toLowerCase()))
      },[currSelection, getGameTitle, search]);
      const searchTxt = useTranslations("search")
      const renderNoGamesMessage = () => {
-          const isSearchingChristmasGame = !isChristmas() && getGameTitle('christmas').toLowerCase().includes(search.toLowerCase())
-          return <p className="text-xl text-muted-foreground font-heading">{searchTxt(isSearchingChristmasGame ? "noChristmasGames" : "noResults")}</p> 
+          const isSearchingChristmasGame = !isChristmas() && getGameTitle(Games.Christmas).toLowerCase().includes(search.toLowerCase())
+          return <p className="text-xl text-muted-foreground font-heading">{searchTxt(isSearchingChristmasGame ? "christmasGames" : "noResults")}</p> 
      }
      const buttonText = useTranslations("buttons");
      return (
@@ -65,7 +66,7 @@ export default function GamesSection(){
                          {allGames.length>0 ? allGames.map(game=>(
                               <Card
                                    key={game.gameName}
-                                   title={getGameTitle(game.gameName)}
+                                   title={getGameTitle(game.gameName as Games)}
                                    imageSrc={`/games/${game.imageName}`}
                                    imageAlt={game.gameName}
                                    buttonLink={`/games${game.link}`}

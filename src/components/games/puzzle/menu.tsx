@@ -9,6 +9,7 @@ import Logo from "@/components/logo";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
+import { ChristmasPuzzleLinks, PuzzleLinks } from "@/lib/types/enums";
 
 interface PuzzleGameMenuProps{
      christmas?: boolean
@@ -55,7 +56,8 @@ export default function PuzzleGameMenu({christmas = false}: PuzzleGameMenuProps)
                                    className="w-full h-full rounded-[10px_10px_0_0]"
                               />
                               <Button variant={christmas ? "tertiary" : "primary"} asChild className="w-full rounded-[0_0_10px_10px] text-base">
-                                   <Link href={`/games${christmas ? "/christmas" : ""}/puzzle/${link}`}>{t(`${christmas ? "christmas-games" : "games"}.${link}`)}</Link>
+                                   <Link href={`/games${christmas ? "/christmas" : ""}/puzzle/${link}`}>
+                                        {t(christmas ? `christmas-games.${link as ChristmasPuzzleLinks}` : `games.${link as PuzzleLinks}`)}</Link>
                               </Button>
                          </div>) : <p className="text-xl text-gray-600 font-heading">{searchTxt("noResults")}</p> }
                     </div>
