@@ -58,7 +58,7 @@ export enum TicTacToeDifficulties{
      Hard = "hard"
 }
 
-// Website Links
+// Website Enums
 export enum ChristmasGame{
      Memory = "memory-christmas",
      Puzzle = "puzzle-christmas",
@@ -96,4 +96,12 @@ export enum NavLinks{
      Downloads = "downloads",
      Contact = "contact",
      Games = "games",
+}
+export enum Services{
+     About = 'about',
+     Downloads = "downloads",
+     Learn = "learn",
+     Alphabet = "alphabet",
+     Colors = "colors",
+     Games = "games"
 }

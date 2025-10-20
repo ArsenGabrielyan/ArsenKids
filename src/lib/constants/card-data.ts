@@ -1,22 +1,22 @@
 import { ICard } from "../types"
-import { ChristmasGame, Downloads, Games } from "../types/enums";
+import { ChristmasGame, Downloads, Games, Services } from "../types/enums";
 
 export const SERVICES: ICard<"service">[] = [
-     { link: "/#about", type: "about" },
-     { link: "/#downloads", type: "downloads" },
+     { link: "/#about", type: Services.About },
+     { link: "/#downloads", type: Services.Downloads },
      {
           link: "https://youtube.com/playlist?list=PLL4l-dEWVYAubvK3veTw5YXlEtw3empLU",
-          type: "learn"
+          type: Services.Learn
      },
      {
           link: "https://youtube.com/playlist?list=PLL4l-dEWVYAs0xR-TEy6NACHCn17-r5S-",
-          type: "alphabet"
+          type: Services.Alphabet
      },
      {
           link: "https://youtube.com/playlist?list=PLL4l-dEWVYAuLeJ_FQIfTA_NzGHOgaG8q",
-          type: "colors"
+          type: Services.Colors
      },
-     { link: "/games#main-games", type: "games" },
+     { link: "/games#main-games", type: Services.Games },
 ]
 
 export const DOWNLOADS: ICard<"download">[] = [

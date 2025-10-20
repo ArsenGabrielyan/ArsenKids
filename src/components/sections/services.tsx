@@ -4,12 +4,12 @@ import { SERVICES } from "@/lib/constants/card-data"
 import Card from "../ui/card"
 import { useTranslations } from "next-intl"
 import { useCallback } from "react"
-import { ServiceType } from "@/lib/types"
+import { Services } from "@/lib/types/enums"
 
 export default function ServicesSection(){
      const t = useTranslations("services");
      const buttonText = useTranslations("buttons")
-     const cardButtonText = useCallback((serviceType: ServiceType)=>
+     const cardButtonText = useCallback((serviceType: Services)=>
           serviceType==="about" ? buttonText("learnMore") :
           serviceType==="downloads" ? t("downloads.title"):
           serviceType==="games" ? buttonText("playGameAlt") : buttonText("watch")

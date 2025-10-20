@@ -1,8 +1,7 @@
 import { BG_IMAGE_MAP } from "../constants/maps";
-import { ChristmasGame, Downloads, Games, MemoryGameLinks, Operators, SnowmanItems } from "./enums";
+import { ChristmasGame, Downloads, Games, MemoryGameLinks, Operators, Services, SnowmanItems } from "./enums";
 
 // General Types
-export type ServiceType = 'about' | "downloads" | "learn" | "alphabet" | "colors" | "games"
 export type CardType = "service" | "download" | "game"
 export type DownloadItemType = "others" | "fruit-veggies" | "animals"
 export type SearchFilterType<T> = T | "all"
@@ -43,7 +42,7 @@ export interface IPuzzleType{
 export type GamesType = Games | ChristmasGame;
 export type ICard<T extends CardType> = T extends "service" ? {
      link: string,
-     type: ServiceType
+     type: Services
 } : T extends "download" ? {
      itemType: DownloadItemType
      fileName: string,
