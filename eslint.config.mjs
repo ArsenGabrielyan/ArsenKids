@@ -20,6 +20,22 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
+  {
+    files: ["**/*.ts"],
+    ...(process.env.CI && {
+      languageOptions: {
+        parserOptions: {
+          project: "./tsconfig.json",
+          tsconfigRootDir: __dirname
+        }
+      }
+    }),
+    rules: {
+      "@typescript-eslint/no-misused-promises": process.env.CI
+        ? "error"
+        : "off"
+    }
+  }
 ];
 
 export default eslintConfig;

@@ -101,7 +101,6 @@ export default function GameXO(){
                          {t.rich("gameTitle",{
                               blue: (chunks) => <span className="text-[#0da2b3]">{chunks}</span>,
                               red: (chunks) => <span className="text-[#FF5645]">{chunks}</span>,
-                              black: (chunks) => <span className="text-[#0f0f0f]">{chunks}</span>,
                          })}
                     </h1>
                     {isStarted && (

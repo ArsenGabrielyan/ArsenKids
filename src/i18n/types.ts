@@ -2,6 +2,7 @@ import hyCommon from "../../i18n/hy/common.json";
 import hyGames from "../../i18n/hy/games.json"
 import hyWebsite from "../../i18n/hy/website.json"
 import hyWords from "../../i18n/hy/words.json"
+import { messages } from "./config";
 
 export type MessageSchema = (
      typeof hyCommon &
@@ -9,6 +10,7 @@ export type MessageSchema = (
      typeof hyWebsite &
      typeof hyWords
 )
+export type Messages = typeof messages[number]
 
 export type LangCodeType = 'en' | 'hy' | 'ru';
 export type CountryCodeType = 'us' | 'am' | 'ru';

@@ -73,7 +73,7 @@
      },
      "tic-tac-toe": {
           "title": "Tic Tac Toe",
-          "gameTitle": "<blue>Tic</blue> <red>Tac</red> <black>Toe</black>",
+          "gameTitle": "<blue>Tic</blue> <red>Tac</red> Toe",
           "draw": "It's a tie",
           "xWinner": "X Won",
           "oWinner": "O Won",

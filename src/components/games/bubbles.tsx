@@ -68,7 +68,7 @@ export default function BubblesGame(){
                {!isStarted ? <GameWrapper title={t("title")}>
                     <Button variant="tertiary" onClick={startGame}>{buttonText("start")}</Button>
                </GameWrapper> : <div className="fixed bottom-0 left-0 text-2xl p-3.5 z-20 w-full bg-card/90 text-card-foreground text-center flex justify-center items-center flex-col gap-2.5 font-heading">
-                    <p>{t("bubblesPopped",{popCount: bubblesPopped})}</p>
+                    <p>{t("bubblesPopped",{popCount: String(bubblesPopped)})}</p>
                     <div className="flex text-lg justify-center items-center gap-2 flex-wrap">
                          <Button variant="tertiary" className="flex-1" asChild>
                               <Link href="/games">{buttonText("goBack")}</Link>

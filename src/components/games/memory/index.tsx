@@ -95,8 +95,8 @@ export default function MemoryGame({type, title}: MemoryGameProps){
                     ) : (
                          <>
                          <div className="flex flex-col md:flex-row justify-between items-center text-2xl w-full gap-2">
-                              <span>{t("score",{score})}</span>
-                              <span>{t("turns",{turns})}</span>
+                              <span>{t("score",{score: String(score)})}</span>
+                              <span>{t("turns",{turns: String(turns)})}</span>
                          </div>
                          <span className="flex flex-col md:flex-row justify-between items-center w-full gap-2">
                               <div className="flex items-center gap-2">
