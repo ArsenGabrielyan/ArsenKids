@@ -37,24 +37,30 @@ export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
           const prev = Object.assign({},gameState)
           updateState({
                tiles: shuffle(prev.tiles),
-               randomWinText: getRandomMessage("correct",gameMsg)
+               randomWinText: getRandomMessage("correct",gameMsg,14)
           })
+          playSound(AUDIO.shuffle,validationMessages("soundError"))
      }
      const swapTiles= (tileI: number) => {
           if(canSwap(tileI,gameState.tiles.indexOf(gameState.tiles.length-1))){
                const prev = Object.assign({},gameState)
+               playSound(AUDIO.swish,validationMessages("soundError"),0.25)
                updateState({
                     tiles: swap(prev.tiles,tileI,prev.tiles.indexOf(prev.tiles.length-1))
-               })
+               });
           }
      }
      const handleStart=()=>{
           shuffleTiles();
           updateState({isStarted:true})
      };
-     const handleCheckChange = (checked: boolean) => updateState({showNum: checked})
+     const handleCheckChange = (checked: boolean) => {
+          updateState({showNum: checked})
+          playSound(checked ? AUDIO.hardPop : AUDIO.reversePop,validationMessages("soundError"))
+     }
      useEffect(()=>{
-          if(isSolvedPuzzle && gameState.isStarted) playSound(AUDIO.sparkle,validationMessages("soundError"))
+          if(isSolvedPuzzle && gameState.isStarted)
+               playSound(AUDIO.sparkle,validationMessages("soundError"))
      },[gameState.isStarted,isSolvedPuzzle,validationMessages])
      useEffect(() => updateState({
           boardSize: isMobile ? 250 : BOARD_SIZE

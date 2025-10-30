@@ -5,11 +5,11 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
-export async function playSound(src: string, errMsg?: string) {
+export async function playSound(src: string, errMsg?: string, volume?: number) {
   if (!src) return console.warn("Invalid audio src");
   try {
     const audio = new Audio(src);
-    audio.volume = 1;
+    audio.volume = volume || 1;
     await audio.play();
   } catch (err: unknown){
     console.error(err);

@@ -35,7 +35,8 @@ export interface ITicTacToeState{
      state: TicTacToeState,
      mode: TicTacToeMode,
      pattern: number[],
-     difficulty: TicTacToeDifficulties | ""
+     difficulty: TicTacToeDifficulties | "",
+     boardDisabled: boolean
 }
 export interface IInteractiveMathState{
      num1: number,
@@ -51,5 +52,5 @@ export interface IPuzzleState{
      showNum: boolean,
      randomWinText: string,
      tiles: number[],
-     boardSize: number
+     boardSize: number,
 }

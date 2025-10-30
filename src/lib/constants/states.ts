@@ -37,7 +37,8 @@ export const INITIAL_TIC_TAC_TOE_STATE: ITicTacToeState = {
      state: TicTacToeState.Ongoing,
      mode: "",
      pattern: [],
-     difficulty: ""
+     difficulty: "",
+     boardDisabled: false
 }
 export const INITIAL_PAIRS_STATE: IMemoryGameState = {
      turns: 0,
@@ -52,5 +53,5 @@ export const INITIAL_PUZZLE_STATE: IPuzzleState = {
      showNum: false,
      randomWinText: "",
      tiles: Array.from({length: TILE_COUNT},(_,i)=>i),
-     boardSize: BOARD_SIZE
+     boardSize: BOARD_SIZE,
 }

@@ -83,7 +83,7 @@
           "mixed": "Mixed"
      },
      "game-messages": {
-          "correct": "Good Job!; Great Job!; Nice Job!; Bravo!; Amazing!; Excellent!; Perfect!; Awesome!; Impressive!; Very Good!; Fantastic!; Wonderful!; Correct!; Yes!; Uh-huh!; Exactly!; You're a genius!",
+          "correct": "Good Job!; Great Job!; Nice Job!; Bravo!; Amazing!; Excellent!; Perfect!; Awesome!; Impressive!; Very Good!; Fantastic!; Wonderful!; Correct!; You're a genius!; Yes!; Uh-huh!; Exactly!",
           "wrong": "Wrong!; No!; Nope!; No no no!; Nuh-uh; Try again!; Think again!; Of course not!; Absolutely not!; Incorrect!; You should think!; That's a part of learning!"
      }
 }

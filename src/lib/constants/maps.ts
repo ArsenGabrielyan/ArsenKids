@@ -19,7 +19,11 @@ export const AUDIO = {
      sparkle: absoluteCDN("sounds","/winner.mp3"),
      tick: absoluteCDN("sounds","/tick.mp3"),
      start: absoluteCDN("sounds","/start.mp3"),
-     bubblePop: absoluteCDN("sounds","/bubbles.mp3")
+     bubblePop: absoluteCDN("sounds","/bubbles.mp3"),
+     hardPop: absoluteCDN("sounds","/pick-sound.mp3"),
+     reversePop: absoluteCDN("sounds","/reverse-pop.mp3"),
+     swish: absoluteCDN("sounds","/swish.mp3"),
+     shuffle: absoluteCDN("sounds","/shuffle.mp3")
 }
 export const CHRISTMAS_MUSIC: IMusicData[] = [
      {title: "12 Days Of Christmas", artist: "Jingle Punks"},

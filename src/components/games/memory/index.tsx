@@ -41,11 +41,16 @@ export default function MemoryGame({type, title}: MemoryGameProps){
                isStarted: true
           })
           setCards(shuffled);
+          playSound(AUDIO.shuffle,validationMessages("soundError"))
      }
-     const handleChoice = (card: IMemoryCard) =>
-          gameState.firstChoice ?
+     const handleChoice = (card: IMemoryCard) => {
+          if(!gameState.firstChoice && !gameState.secondChoice){
+               playSound(AUDIO.hardPop,validationMessages("soundError"))
+          }
+          return gameState.firstChoice ?
                updateState({secondChoice: card}) :
                updateState({firstChoice: card})
+     }
      const reset = useCallback(()=>updateState({
           firstChoice: null,
           secondChoice: null,

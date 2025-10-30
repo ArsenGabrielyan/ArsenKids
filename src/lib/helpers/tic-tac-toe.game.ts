@@ -1,5 +1,6 @@
 import { PATTERNS } from "../constants/games";
 import { IMinimaxReturnType, TicTacToePlayer } from "../types";
+import { playSound, absoluteCDN } from "../utils";
 
 export const checkWinner = (board: string[],callback: (pattern: number[]) => void)=>{
      for(const pattern of PATTERNS){
@@ -53,3 +54,16 @@ const minimax = (board: string[], player: TicTacToePlayer): IMinimaxReturnType =
      }
 }
 export const getBestMove = (board: string[], player: TicTacToePlayer) => minimax(board,player).index
+export const playTicTacToeSound = (player: TicTacToePlayer, errorMessage?: string) => {
+     const randomNum = Math.floor(Math.random() * 3) + 1;
+     playSound(absoluteCDN("sounds",`/tic-tac-toe/${player.toLowerCase()}-${randomNum}.mp3`),errorMessage)
+}
+export const preloadTicTacToeSounds = () => {
+     const sounds = 3, length = sounds*2;
+     for(let i=0;i<length;i++){
+          const path = `tic-tac-toe/${i<sounds ? "x" : "o"}-${(i%3)+1}.mp3`
+          const audio = new Audio(absoluteCDN("sounds",`/${path}`));
+          audio.load()
+          if(process.env.NODE_ENV==="development") console.info(`The Sound "${path}" loaded`)
+     }
+}
