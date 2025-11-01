@@ -59,7 +59,7 @@ export default function BubblesGame(){
           }
      },[isStarted,createBubble])
      useEffect(()=>{
-          preloadAudio(AUDIO)
+          preloadAudio(AUDIO,"bubblePop")
      },[])
      const t = useTranslations("bubbles");
      const buttonText = useTranslations("buttons")

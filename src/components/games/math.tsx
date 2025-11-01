@@ -37,7 +37,7 @@ export default function MathGame(){
      }
      useEffect(()=>{
           setState(generateEquation("addition"))
-          preloadAudio(AUDIO)
+          preloadAudio(AUDIO,"correct","wrong")
      },[])
      const {q1,q2,answers} = state;
      const operator = Operators[mode];

@@ -1,4 +1,4 @@
-import { BG_IMAGE_MAP } from "../constants/maps";
+import { AUDIO, BG_IMAGE_MAP } from "../constants/maps";
 import { ChristmasGame, Downloads, Games, MemoryGameLinks, Operators, Services, SnowmanItems } from "./enums";
 
 // General Types
@@ -87,3 +87,7 @@ export interface ISnowmanItem{
 }
 export type SnowmanType = Record<SnowmanItems,number>
 export type SnowmanItemsType = `${SnowmanItems}s`
+
+// Audio Types
+export type AudioType = typeof AUDIO;
+export type AudioKey = keyof AudioType

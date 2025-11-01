@@ -92,7 +92,7 @@ export default function GuessWordGame(){
           }
      },[gameState.difficulty, gameState.msgType, start])
      useEffect(()=>{
-          preloadAudio(AUDIO)
+          preloadAudio(AUDIO,"correct","wrong","start","sparkle")
      },[])
      const val = form.watch("guess")
      const {isPlay,difficulty,correct,hintCount,showHint,msgType,scrambled} = gameState

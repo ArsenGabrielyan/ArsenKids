@@ -17,7 +17,7 @@ export const MessageBox = ({type}: MessageBoxProps) => {
      return (
           <div className={cn("p-5 fixed top-0 left-0 z-20 w-full h-full flex justify-center items-center flex-col font-heading",msgClassName)}>
                {type==="correct" ? <Check className="size-32"/> : <X className="size-32"/>}
-               <p className="text-3xl md:text-4xl lg:text-[40px] text-center, font-medium">{message}</p>
+               <p className="text-3xl md:text-4xl lg:text-[40px] text-center, font-semibold">{message}</p>
           </div>
      )
 }

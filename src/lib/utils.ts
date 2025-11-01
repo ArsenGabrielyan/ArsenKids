@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { clsx, type ClassValue } from "clsx"
 import { toast } from "sonner";
 import { twMerge } from "tailwind-merge"
+import type {AudioType, AudioKey} from "./types"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -16,8 +18,14 @@ export async function playSound(src: string, errMsg?: string, volume?: number) {
     toast.error(errMsg || "Failed to load sound")
   }
 }
-export function preloadAudio(sources: Record<string, string>) {
-  Object.values(sources).forEach(src => {
+export function preloadAudio(sources: AudioType, ...audioFiles: AudioKey[]) {
+  const set: Set<AudioKey> = new Set(audioFiles);
+  const arr = audioFiles.length<=0
+    ? Object.values(sources)
+    : Object.entries(sources)
+      .filter(([key])=>set.has(key as AudioKey))
+      .map(([_,val])=>val);
+  arr.forEach(src => {
     const audio = new Audio(src);
     audio.load();
   });

@@ -106,7 +106,7 @@ export default function GameXO(){
           }
      },[gameState, pcMove, player])
      useEffect(() => {
-          preloadAudio(AUDIO);
+          preloadAudio(AUDIO,"correct","wrong","sparkle");
           preloadTicTacToeSounds();
      }, []);
      useEffect(()=>{

@@ -66,7 +66,7 @@ export default function InteractiveMathGame(){
           }
      },[msgType, startGame]);
      useEffect(() => {
-          preloadAudio(AUDIO)
+          preloadAudio(AUDIO,"correct","wrong")
      }, []);
      useEffect(()=>{
           if(isStarted && inputRef.current) inputRef.current.focus();

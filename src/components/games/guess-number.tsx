@@ -88,7 +88,7 @@ export default function GuessNumber(){
           }
      },[gameState.difficulty, gameState.msgType, startGame]);
      useEffect(()=>{
-          preloadAudio(AUDIO)
+          preloadAudio(AUDIO,"correct","wrong","tick","start")
      },[])
      const numInput = form.watch("guess")
      const {isStarted,difficulty,showNum,showSquare,timeLeft,timerCount,num,msgType} = gameState

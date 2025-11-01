@@ -66,7 +66,7 @@ export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
           boardSize: isMobile ? 250 : BOARD_SIZE
      }),[shape, isMobile]);
      useEffect(()=>{
-          preloadAudio(AUDIO)
+          preloadAudio(AUDIO,"shuffle","swish","hardPop","reversePop","sparkle")
      },[])
      const bgStyle = getBackgroundImage("christmas");
      const wrapper = (elem: React.JSX.Element) => christmas ? (

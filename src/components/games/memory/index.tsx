@@ -81,7 +81,7 @@ export default function MemoryGame({type, title}: MemoryGameProps){
           }
      },[gameState.firstChoice, gameState.secondChoice, reset, validationMessages]);
      useEffect(()=>{
-          preloadAudio(AUDIO)
+          preloadAudio(AUDIO,"shuffle","hardPop","correct","wrong")
      },[])
      const {score,turns,isStarted,disabled,firstChoice,secondChoice} = gameState
      return (
