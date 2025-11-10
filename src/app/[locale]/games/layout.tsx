@@ -21,7 +21,7 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
                description: t("metaDesc"),
                url: absoluteURL(`/${locale}/games`),
                locale,
-               siteName: "ArsenKids Games",
+               siteName: `ArsenKids ${t("metaTitle")}`,
                type: "website",
                images: {
                     url: getOgImage(),

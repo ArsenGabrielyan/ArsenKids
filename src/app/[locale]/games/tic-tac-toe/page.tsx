@@ -1,11 +1,36 @@
 import GameXO from "@/components/games/tic-tac-toe";
+import { absoluteURL, getOgImage } from "@/lib/utils";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { LocaleLayoutProps } from "../../layout";
 
-export const generateMetadata = async(): Promise<Metadata> => {
+export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Metadata> => {
+     const {locale} = await params;
      const t = await getTranslations("tic-tac-toe");
+     const gamesTxt = await getTranslations("games")
      return {
-          title: t("title")
+          title: t("title"),
+          openGraph: {
+               title: t("title"),
+               url: absoluteURL(`/${locale}/games/tic-tac-toe`),
+               locale,
+               siteName: `ArsenKids ${gamesTxt("metaTitle")}`,
+               type: "website",
+               images: {
+                    url: getOgImage(),
+                    width: 1200,
+                    height: 630
+               }
+          },
+          twitter: {
+               title: t("title"),
+               card: "summary_large_image",
+               images: [{
+                    url: getOgImage(),
+                    width: 1200,
+                    height: 630
+               }]
+          }
      }
 }
 
