@@ -9,9 +9,9 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
      const t = await getTranslations("memory");
      const gameTxt = await getTranslations("games")
      return {
-          title: t("title"),
+          title: t("pairs.christmas"),
           openGraph: {
-               title: t("title"),
+               title: t("pairs.christmas"),
                url: absoluteURL(`/${locale}/games/christmas/memory-game`),
                locale,
                siteName: `ArsenKids ${gameTxt("metaTitle")}`,
@@ -23,7 +23,7 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
                }
           },
           twitter: {
-               title: t("title"),
+               title: t("pairs.christmas"),
                card: "summary_large_image",
                images: [{
                     url: absoluteURL("/og/og-christmas.png"),
