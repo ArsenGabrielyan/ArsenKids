@@ -40,19 +40,42 @@ export const generateMetadata = async({params}: Props): Promise<Metadata> => {
       template: "%s | ArsenKids"
     },
     description: t("mainDesc"),
-    keywords: KEYWORDS,
+    alternates: {
+      languages: Object.fromEntries(languages.map(l => [l.code, `/${l.code}`])),
+      canonical: absoluteURL(`/${locale}`)
+    },
     authors: {
       name: "ArsenKids",
       url: "https://youtube.com/@ArsenKids"
     },
     applicationName: "ArsenKids",
-    alternates: {
-      languages: Object.fromEntries(languages.map(l => [l.code, `/${l.code}`])),
-      canonical: absoluteURL(`/${locale}`)
-    },
     icons: {
       icon: "/favicon.ico",
       apple: "/apple-icon.png"
+    },
+    keywords: KEYWORDS,
+    openGraph: {
+      title: t("mainTitle"),
+      description: t("mainDesc"),
+      url: absoluteURL(`/${locale}`),
+      locale,
+      siteName: "ArsenKids",
+      type: "website",
+      images: {
+        url: absoluteURL(`/og/${locale}.png`),
+        width: 1200,
+        height: 630
+      }
+    },
+    twitter: {
+      title: t("mainTitle"),
+      description: t("mainDesc"),
+      card: "summary_large_image",
+      images: [{
+        url: absoluteURL(`/og/${locale}.png`),
+        width: 1200,
+        height: 630
+      }]
     }
   }
 };
