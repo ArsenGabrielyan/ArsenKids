@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { clsx, type ClassValue } from "clsx"
 import { toast } from "sonner";
 import { twMerge } from "tailwind-merge"
 import type {AudioType, AudioKey} from "./types"
+import { isChristmas } from "./helpers";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -24,7 +24,7 @@ export function preloadAudio(sources: AudioType, ...audioFiles: AudioKey[]) {
     ? Object.values(sources)
     : Object.entries(sources)
       .filter(([key])=>set.has(key as AudioKey))
-      .map(([_,val])=>val);
+      .map((entries)=>entries[1]);
   arr.forEach(src => {
     const audio = new Audio(src);
     audio.load();
@@ -39,4 +39,12 @@ export function absoluteCDN(type: "sounds" | "pdf" | "images" | "music", path: `
   const baseURL = `https://arsengabrielyan.github.io/ArsenKids/${type}`;
   return `${baseURL}${path}`
 }
-export const generateMessagesForTranslation = (length: number): (`msg${number}`)[] => Array(length).fill("").map((_,i)=>`msg${i+1}` as `msg${number}`)
+/**
+ * Returns the Default OpenGraph Image of ArsenKids site
+ */
+export const getOgImage = () => {
+  if(isChristmas()) return absoluteURL("/og/og-christmas.png")
+  const date = new Date();
+  const isEarthDay = date.getMonth() === 3 && date.getDate() === 22;
+  return absoluteURL(`/og/${isEarthDay ? "og-earth-day" : "og-standard"}.png`)
+}

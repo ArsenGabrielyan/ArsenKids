@@ -3,7 +3,7 @@ import { Raleway } from "next/font/google";
 import localFont from "next/font/local"
 import "../globals.css";
 import { KEYWORDS } from "@/lib/constants";
-import { absoluteURL } from "@/lib/utils";
+import { absoluteURL, getOgImage } from "@/lib/utils";
 import { Toaster } from "@/components/shadcn-ui/sonner";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
@@ -24,13 +24,12 @@ const kamar = localFont({
   preload: true
 })
 
-type Props = {
+export type LocaleLayoutProps = {
   children: React.ReactNode;
   params: Promise<{locale: string}>;
 };
 
-// TODO: Add OG and Twitter metadata on here and on every page
-export const generateMetadata = async({params}: Props): Promise<Metadata> => {
+export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Metadata> => {
   const {locale} = await params;
   const t = await getTranslations("index");
   return {
@@ -62,7 +61,7 @@ export const generateMetadata = async({params}: Props): Promise<Metadata> => {
       siteName: "ArsenKids",
       type: "website",
       images: {
-        url: absoluteURL(`/og/${locale}.png`),
+        url: getOgImage(),
         width: 1200,
         height: 630
       }
@@ -72,7 +71,7 @@ export const generateMetadata = async({params}: Props): Promise<Metadata> => {
       description: t("mainDesc"),
       card: "summary_large_image",
       images: [{
-        url: absoluteURL(`/og/${locale}.png`),
+        url: getOgImage(),
         width: 1200,
         height: 630
       }]
@@ -84,7 +83,7 @@ export const viewport: Viewport = {
   themeColor: "#82b6ff"
 }
 
-export default async function RootLayout({children, params}: Props) {
+export default async function RootLayout({children, params}: LocaleLayoutProps) {
   const {locale} = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();

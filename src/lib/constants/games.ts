@@ -1,6 +1,5 @@
 import { AmazingMathOperator, GameMessageType, IGameDifficulty, ISnowmanItem, OperatorType, TicTacToeBoard } from "../types";
 import { SnowmanItems, TicTacToeDifficulties } from "../types/enums";
-import { generateMessagesForTranslation } from "../utils";
 import { SNOWMAN_MAP } from "./maps";
 
 export const DIFFICULTIES: IGameDifficulty[] = [
@@ -10,7 +9,6 @@ export const DIFFICULTIES: IGameDifficulty[] = [
      {id: 4, name: "mixed",}
 ];
 export const BASE_ARR: TicTacToeBoard[] = new Array(9).fill("");
-export const SUCCESS_WORDS = generateMessagesForTranslation(12)
 export const MATH_LINKS: OperatorType[] = ["addition", "subtraction", "multiplication", "division"];
 export const MATH_OPERATORS: AmazingMathOperator[] = ["+","-","*"];
 export const TILE_COUNT = 9, GRID_SIZE = 3, BOARD_SIZE = 320;
