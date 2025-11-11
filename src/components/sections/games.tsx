@@ -9,7 +9,7 @@ import { Input } from "../ui/input";
 import { CHRISTMAS_GAME, GAMES_LIST } from "@/lib/constants/card-data";
 import { isChristmas } from "@/lib/helpers";
 import Card from "../ui/card";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Games } from "@/lib/types/enums";
 
 type GameFilters = Exclude<SearchFilterType<GameType>,"christmas-game">
@@ -17,6 +17,7 @@ type GameFilters = Exclude<SearchFilterType<GameType>,"christmas-game">
 const filters: GameFilters[] = ["all", "puzzle", "math", "entertainment"]
 
 export default function GamesSection(){
+     const locale = useLocale();
      const [currSelection, setCurrSelection] = useState<GameFilters>("all")
      const [search, setSearch] = useState("");
      const t = useTranslations("games")
@@ -67,7 +68,7 @@ export default function GamesSection(){
                               <Card
                                    key={game.gameName}
                                    title={getGameTitle(game.gameName as Games)}
-                                   imageSrc={`/games/${game.imageName}`}
+                                   imageSrc={game.hasLocale ? `/games/${game.imageName}/${locale}.webp` : `/games/${game.imageName}.webp`}
                                    imageAlt={game.gameName}
                                    buttonLink={`/games${game.link}`}
                                    buttonText={buttonText("playGame")}

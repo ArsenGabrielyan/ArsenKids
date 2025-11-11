@@ -96,77 +96,89 @@ export const DOWNLOADS: ICard<"download">[] = [
 
 export const GAMES_LIST: ICard<"game">[] = [
      {
-          imageName: "pairs.webp",
+          imageName: "pairs",
           gameName: Games.Memory,
           link: "/memory",
-          type: "puzzle"
+          type: "puzzle",
+          hasLocale: false,
      },
      {
-          imageName: "xo.webp",
+          imageName: "xo",
           gameName: Games.TicTacToe,
           link: "/tic-tac-toe",
-          type: "entertainment"
+          type: "entertainment",
+          hasLocale: false,
      },
      {
-          imageName: "words.webp",
+          imageName: "words",
           gameName: Games.GuessWord,
           link: "/guess-word",
-          type: "puzzle"
+          type: "puzzle",
+          hasLocale: true
      },
      {
-          imageName: "math.webp",
+          imageName: "math",
           gameName: Games.Maths,
           link: "/math",
-          type: "math"
+          type: "math",
+          hasLocale: false
      },
      {
-          imageName: "numbers.webp",
+          imageName: "numbers",
           gameName: Games.MemorizeNum,
           link: "/guess-number",
-          type: "math"
+          type: "math",
+          hasLocale: true
      },
      {
-          imageName: "puzzle.webp",
+          imageName: "puzzle",
           gameName: Games.Puzzle,
           link: "/puzzle",
-          type: "puzzle"
+          type: "puzzle",
+          hasLocale: true
      },
      {
-          imageName: "interactive-math.webp",
+          imageName: "interactive-math",
           gameName: Games.InteractiveMath,
           link: "/interactive-math",
-          type: "math"
+          type: "math",
+          hasLocale: true
      },
      {
-          imageName: "bubbles.webp",
+          imageName: "bubbles",
           gameName: Games.Bubbles,
           link: "/bubbles",
-          type: "entertainment"
+          type: "entertainment",
+          hasLocale: false,
      },
 ];
 export const CHRISTMAS_GAMES_LIST: ICard<"game">[] = [
      {
-          imageName: "christmas-pairs.webp",
+          imageName: "christmas-pairs",
           gameName: ChristmasGame.Memory,
           link: "/christmas/memory-game",
-          type: "christmas-game"
+          type: "christmas-game",
+          hasLocale: false
      },
      {
-          imageName: "christmas-puzzle.webp",
+          imageName: "christmas-puzzle",
           gameName: ChristmasGame.Puzzle,
           link: "/christmas/puzzle",
-          type: "christmas-game"
+          type: "christmas-game",
+          hasLocale: true
      },
      {
-          imageName: "christmas-snowman.webp",
+          imageName: "christmas-snowman",
           gameName: ChristmasGame.Snowman,
           link: "/christmas/build-snowman",
-          type: "christmas-game"
+          type: "christmas-game",
+          hasLocale: false
      }
 ]
 export const CHRISTMAS_GAME: ICard<"game"> = {
-     imageName: "christmas.webp",
+     imageName: "christmas",
      gameName: Games.Christmas,
      link: "/christmas",
-     type: "entertainment"
+     type: "entertainment",
+     hasLocale: false
 }

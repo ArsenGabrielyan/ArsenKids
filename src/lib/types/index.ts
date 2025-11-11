@@ -52,7 +52,8 @@ export type ICard<T extends CardType> = T extends "service" ? {
      imageName: string,
      gameName: GamesType
      link: string,
-     type: GameType
+     type: GameType,
+     hasLocale: boolean
 }
 
 // Tic Tac Toe
