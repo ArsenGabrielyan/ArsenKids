@@ -3,6 +3,7 @@ import { absoluteURL } from "@/lib/utils";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { LocaleLayoutProps } from "../../layout";
+import { languages } from "@/i18n/config";
 
 export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Metadata> => {
      const {locale} = await params
@@ -30,6 +31,10 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
                     width: 1200,
                     height: 630
                }]
+          },
+          alternates: {
+               languages: Object.fromEntries(languages.map(l => [l.code, `/${l.code}/games/christmas`])),
+               canonical: absoluteURL(`/${locale}/games/christmas`),
           }
      }
 }

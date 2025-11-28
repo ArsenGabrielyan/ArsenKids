@@ -1,5 +1,6 @@
 import { LocaleLayoutProps } from "@/app/[locale]/layout";
 import GameBuildSnowman from "@/components/games/christmas/build-snowman";
+import { languages } from "@/i18n/config";
 import { absoluteURL } from "@/lib/utils";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -30,6 +31,10 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
                     width: 1200,
                     height: 630
                }]
+          },
+          alternates: {
+               languages: Object.fromEntries(languages.map(l => [l.code, `/${l.code}/games/christmas/build-snowman`])),
+               canonical: absoluteURL(`/${locale}/games/christmas/build-snowman`),
           }
      }
 }
