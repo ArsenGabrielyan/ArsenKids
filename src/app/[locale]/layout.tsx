@@ -75,6 +75,9 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
         width: 1200,
         height: 630
       }]
+    },
+    verification: {
+      google: "bVrBx7_N7HVVVrC3gk9CwfbykFwxjjIUSM_Je6SEfkE" 
     }
   }
 };
