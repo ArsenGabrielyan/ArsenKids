@@ -49,7 +49,10 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
     },
     applicationName: "ArsenKids",
     icons: {
-      icon: "/favicon.ico",
+      icon: [
+        { url: "/favicon.ico", type: "image/x-icon"},
+        { url: "/apple-icon.png", sizes: "192x192", type: "image/png" },
+      ],
       apple: "/apple-icon.png"
     },
     keywords: KEYWORDS,
