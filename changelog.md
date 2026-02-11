@@ -10,7 +10,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 > 
 > This version is a breaking change, which means the older domain (`.web.app`) will no-longer work
 ### Added
-- English and Russian i18n support across the games page
+- i18n support across the games page
 - More sounds for the game
 - More messages for the game
 - More assets
@@ -85,7 +85,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 1.0.1 - 2022-09-15
 ### Added
-- I18n support of English and Russian on Main Page
+- I18n support on main page
+### Core Languages
+- 🇦🇲 Armenian (Հայերեն)
+- 🇺🇸 English
+- 🇷🇺 Russian (Русский)
 ### Improved
 - Slight optimization
 
