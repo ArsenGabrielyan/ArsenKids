@@ -30,7 +30,7 @@ export default function Sitemap(): MetadataRoute.Sitemap {
                ? 0.8 : 0.7;
           return [
                generateSitemapItem(`${route === "/" ? "" : route}`,priority),
-               ...locales.map(locale=>generateSitemapItem(`/${locale}${route === "/" ? "" : route}`,priority))
+               ...locales.filter(locale=>locale!=="hy").map(locale=>generateSitemapItem(`/${locale}${route === "/" ? "" : route}`,priority))
           ]
      })
 }
