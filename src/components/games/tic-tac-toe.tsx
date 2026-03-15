@@ -21,7 +21,7 @@ export default function GameXO(){
      const [player,setPlayer] = useState<TicTacToePlayer>("X");
      const [isStarted, setIsStarted] = useState(false);
      const [gameState, setGameState] = useState(INITIAL_TIC_TAC_TOE_STATE);
-     const validationMessages = useTranslations("validation");
+     const validationMsg = useTranslations("validation");
      const t = useTranslations("tic-tac-toe");
      const buttonText = useTranslations("buttons");
      const diffTxt = useTranslations("difficulties");
@@ -79,9 +79,9 @@ export default function GameXO(){
                          state: TicTacToeState.Win,
                     }))
                     if(gameState.mode==="2-players"){
-                         playSound(AUDIO.sparkle,validationMessages("soundError"))
+                         playSound(AUDIO.sparkle,validationMsg("soundError"))
                     } else {
-                         playSound(player==="O" ? AUDIO.correct : AUDIO.wrong,validationMessages("soundError"))
+                         playSound(player==="O" ? AUDIO.correct : AUDIO.wrong,validationMsg("soundError"))
                     }
                },800)
           }
@@ -95,10 +95,10 @@ export default function GameXO(){
                          ...prev,
                          state: TicTacToeState.Draw,
                     }))
-                    playSound(AUDIO.wrong,validationMessages("soundError"))
+                    playSound(AUDIO.wrong,validationMsg("soundError"))
                },800)
           }
-     },[board,player,gameState.mode,validationMessages])
+     },[board,player,gameState.mode,validationMsg])
      useEffect(()=>{
           if(gameState.mode==="player-vs-pc" && player!=="X" && gameState.state===TicTacToeState.Ongoing && !gameState.boardDisabled){
                const timer = setTimeout(pcMove,500);
@@ -116,8 +116,8 @@ export default function GameXO(){
                gameState.state===TicTacToeState.Ongoing &&
                board.some(val=>val!=="")
           )
-               playTicTacToeSound(player==="X" ? "O" : "X",validationMessages("soundError"))
-     },[isStarted,gameState.mode,gameState.difficulty,gameState.state,player,validationMessages, board])
+               playTicTacToeSound(player==="X" ? "O" : "X",validationMsg("soundError"))
+     },[isStarted,gameState.mode,gameState.difficulty,gameState.state,player,validationMsg, board])
      const {state,pattern,winner,mode,difficulty,boardDisabled} = gameState
      const stateTxt = state===TicTacToeState.Draw ? t("draw"): winner==="X" ? t("xWinner") : t("oWinner")
      return (

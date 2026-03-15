@@ -22,14 +22,14 @@ import { useTranslations } from "next-intl";
 
 export default function GuessNumber(){
      const [gameState, setGameState] = useState<IGuessNumberState>(INITIAL_GUESS_NUMBER_STATE)
-     const validationMessages = useTranslations("validation");
+     const validationMsg = useTranslations("validation");
      const t = useTranslations("guess-number");
      const buttonText = useTranslations("buttons");
      const diffTxt = useTranslations("difficulties")
      const updateState = (overrides: Partial<IGuessNumberState>) => 
           setGameState(prev=>({...prev,...overrides}));
      const form = useForm<NumberGuesserType>({
-          resolver: zodResolver(getNumberGuesserSchema(validationMessages)),
+          resolver: zodResolver(getNumberGuesserSchema(validationMsg)),
           defaultValues: {guess: ""}
      })
      const startGame = useCallback((diff: GameDifficulty) =>{
@@ -43,16 +43,16 @@ export default function GuessNumber(){
           })
      },[])
      const handleEnter = (values: NumberGuesserType) =>{
-          const validatedFields = getNumberGuesserSchema(validationMessages).safeParse(values);
+          const validatedFields = getNumberGuesserSchema(validationMsg).safeParse(values);
           if(!validatedFields.success){
-               toast.error(validationMessages("invalidField"));
+               toast.error(validationMsg("invalidField"));
                return;
           }
           if(!validatedFields.data || Number.isNaN(validatedFields.data.guess)) return;
           const {guess} = validatedFields.data
           const isCorrect = guess===gameState.num;
           updateState({msgType: isCorrect ? "correct" : "wrong"})
-          playSound(isCorrect ? AUDIO.correct : AUDIO.wrong,validationMessages("soundError"))
+          playSound(isCorrect ? AUDIO.correct : AUDIO.wrong,validationMsg("soundError"))
      }
      const goBackToMenu = () => updateState({...INITIAL_GUESS_NUMBER_STATE, isStarted: true});
      useEffect(()=>{
@@ -60,7 +60,7 @@ export default function GuessNumber(){
           const timer = setInterval(()=>{
                const prev = Object.assign({},gameState)
                if(gameState.timeLeft! > 1) {
-                    playSound(AUDIO.tick,validationMessages("soundError"))
+                    playSound(AUDIO.tick,validationMsg("soundError"))
                     updateState({
                          timeLeft:prev.timeLeft && prev.timeLeft-1,
                          timerCount:prev.timerCount-1,
@@ -69,7 +69,7 @@ export default function GuessNumber(){
                     })
                } else {
                     clearInterval(timer);
-                    playSound(AUDIO.start,validationMessages("soundError"))
+                    playSound(AUDIO.start,validationMsg("soundError"))
                     updateState({
                          timeLeft:null,
                          timerCount:0,
@@ -80,7 +80,7 @@ export default function GuessNumber(){
                }
           },1000);
           return ()=>clearInterval(timer);
-     },[gameState,form,validationMessages])
+     },[gameState,form,validationMsg])
      useEffect(()=>{
           if(gameState.msgType!==""){
                const timer = setTimeout(()=>startGame(gameState.difficulty),800);

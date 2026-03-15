@@ -19,7 +19,7 @@ import { useTranslations } from "next-intl";
 export default function InteractiveMathGame(){
      const [gameState, setGameState] = useState<IInteractiveMathState>(INITIAL_MATH_STATE);
      const inputRef = useRef<HTMLInputElement>(null);
-     const validationMessages = useTranslations("validation");
+     const validationMsg = useTranslations("validation");
      const t = useTranslations("interactive-math");
      const buttonText = useTranslations("buttons");
      const updateState = (overrides: Partial<IInteractiveMathState>) =>
@@ -51,12 +51,12 @@ export default function InteractiveMathGame(){
           const isCorrect = values.answer===gameState.answer;
           if(isCorrect) {
                setMsgType("correct")
-               playSound(AUDIO.correct,validationMessages("soundError"))
+               playSound(AUDIO.correct,validationMsg("soundError"))
           } else if(gameState.operatorQuestion && !MATH_OPERATORS.includes(values.answer as AmazingMathOperator)) {
-               toast.error(validationMessages("answer.correctOperator"))
+               toast.error(validationMsg("answer.correctOperator"))
           } else {
                setMsgType("wrong")
-               playSound(AUDIO.wrong,validationMessages("soundError"))
+               playSound(AUDIO.wrong,validationMsg("soundError"))
           }
      }
      useEffect(()=>{

@@ -23,26 +23,26 @@ import { useTranslations } from "next-intl";
 
 export default function GuessWordGame(){
      const [gameState,setGameState] = useState<IGuessWordState>(INITIAL_GUESS_WORD_STATE);
-     const validationMessages = useTranslations("validation");
+     const validationMsg = useTranslations("validation");
      const t = useTranslations("guess-word");
      const buttonText = useTranslations("buttons");
      const diffTxt = useTranslations("difficulties")
      const updateState = (overrides: Partial<IGuessWordState>) => 
           setGameState(prev=>({...prev,...overrides}));
      const form = useForm<WordGuesserType>({
-          resolver: zodResolver(getWordGuesserSchema(validationMessages)),
+          resolver: zodResolver(getWordGuesserSchema(validationMsg)),
           defaultValues: {guess: ""}
      })
      const handleEnter = (values: WordGuesserType) => {
-          const validatedFields = getWordGuesserSchema(validationMessages).safeParse(values);
+          const validatedFields = getWordGuesserSchema(validationMsg).safeParse(values);
           if(!validatedFields.success){
-               toast.error(validationMessages("invalidField"));
+               toast.error(validationMsg("invalidField"));
                return;
           }
           if(!validatedFields.data || validatedFields.data.guess==="") return;
           const {guess} = validatedFields.data
           const isCorrect = gameState.correct.toLowerCase() === guess.toLowerCase();
-          playSound(isCorrect ? AUDIO.correct : AUDIO.wrong,validationMessages("soundError"))
+          playSound(isCorrect ? AUDIO.correct : AUDIO.wrong,validationMsg("soundError"))
           if(isCorrect) form.reset()
           const prev = Object.assign({},gameState)
           updateState({
@@ -53,7 +53,7 @@ export default function GuessWordGame(){
      const start = useCallback((difficulty: GameDifficulty)=>{
           const words = getWords(difficulty,t)
           const word = words[Math.floor(Math.random()*words.length)];
-          if(gameState.correctCount===10) playSound(AUDIO.start,validationMessages("soundError"));
+          if(gameState.correctCount===10) playSound(AUDIO.start,validationMsg("soundError"));
           const prev = Object.assign({}, gameState)
           updateState({
                msgType: "",
@@ -64,10 +64,10 @@ export default function GuessWordGame(){
                hintCount: prev.correctCount===10 ? prev.hintCount+1 : prev.hintCount
           })
           form.reset();
-     },[gameState,form,validationMessages,t])
+     },[gameState,form,validationMsg,t])
      const getHint = ()=>{
           if(gameState.hintCount<=0) return;
-          playSound(AUDIO.sparkle,validationMessages("soundError"))
+          playSound(AUDIO.sparkle,validationMsg("soundError"))
           const prev = Object.assign({}, gameState)
           updateState({
                showHint:true,

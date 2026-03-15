@@ -22,7 +22,7 @@ export default function MemoryGame({type, title}: MemoryGameProps){
      const [gameState, setGameState] = useState(INITIAL_PAIRS_STATE);
      const t = useTranslations("memory");
      const buttonTxt = useTranslations("buttons");
-     const validationMessages = useTranslations("validation");
+     const validationMsg = useTranslations("validation");
      const locale = useLocale();
      const updateState = (overrides: Partial<IMemoryGameState>) =>
           setGameState(prev=>({...prev,...overrides}))
@@ -41,11 +41,11 @@ export default function MemoryGame({type, title}: MemoryGameProps){
                isStarted: true
           })
           setCards(shuffled);
-          playSound(AUDIO.shuffle,validationMessages("soundError"))
+          playSound(AUDIO.shuffle,validationMsg("soundError"))
      }
      const handleChoice = (card: IMemoryCard) => {
           if(!gameState.firstChoice && !gameState.secondChoice){
-               playSound(AUDIO.hardPop,validationMessages("soundError"))
+               playSound(AUDIO.hardPop,validationMsg("soundError"))
           }
           return gameState.firstChoice ?
                updateState({secondChoice: card}) :
@@ -66,10 +66,10 @@ export default function MemoryGame({type, title}: MemoryGameProps){
                          turns: prev.turns+1,
                          score: prev.score+1
                     }))
-                    playSound(AUDIO.correct,validationMessages("soundError"))
+                    playSound(AUDIO.correct,validationMsg("soundError"))
                     reset();
                } else {
-                    playSound(AUDIO.wrong,validationMessages("soundError"))
+                    playSound(AUDIO.wrong,validationMsg("soundError"))
                     setTimeout(()=>{
                          setGameState(prev=>({
                               ...prev,
@@ -79,7 +79,7 @@ export default function MemoryGame({type, title}: MemoryGameProps){
                     },1000)
                }
           }
-     },[gameState.firstChoice, gameState.secondChoice, reset, validationMessages]);
+     },[gameState.firstChoice, gameState.secondChoice, reset, validationMsg]);
      useEffect(()=>{
           preloadAudio(AUDIO,"shuffle","hardPop","correct","wrong")
      },[])

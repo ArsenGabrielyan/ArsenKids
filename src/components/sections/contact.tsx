@@ -25,9 +25,9 @@ import { useTranslations } from "next-intl";
 export default function ContactSection(){
      const [isPending, startTransition] = useTransition();
      const t = useTranslations("contact");
-     const validationMessages = useTranslations("validation")
+     const validationMsg = useTranslations("validation")
      const form = useForm<ContactType>({
-          resolver: zodResolver(getContactSchema(validationMessages)),
+          resolver: zodResolver(getContactSchema(validationMsg)),
           defaultValues: {
                name: "",
                email: "",
@@ -38,15 +38,12 @@ export default function ContactSection(){
      const onSubmit = async(values: ContactType) => {
           startTransition(async()=>{
                try{
-                    const validatedFields = getContactSchema(t).safeParse(values);
-                    const response = await sendMessage(validatedFields);
-                    if(response.success)
-                         toast.success(validationMessages(response.success))
-                    if(response.error)
-                         toast.error(validationMessages(response.error))
+                    const response = await sendMessage(values);
+                    if(response.success) toast.success(response.success)
+                    if(response.error) toast.error(response.error)
                } catch (err: unknown) {
                     console.error(err);
-                    toast.error(validationMessages("miscError"))
+                    toast.error(validationMsg("miscError"))
                }
           })
      }

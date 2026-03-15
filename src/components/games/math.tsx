@@ -16,7 +16,7 @@ import { Operators } from "@/lib/types/enums";
 export default function MathGame(){
      const t = useTranslations("math");
      const buttonText = useTranslations("buttons");
-     const validationMessages = useTranslations("validation")
+     const validationMsg = useTranslations("validation")
      const [mode,setMode] = useState<OperatorType>("addition");
      const [state,setState] = useState({q1:0,q2:0,answers:[0,0,0]});
      const [msgType, setMsgType] = useState<GameMessageType>("");
@@ -29,7 +29,7 @@ export default function MathGame(){
           const {q1,q2} = state;
           const isCorrect = checkAnswer(mode,q1,q2,selected);
           setMsgType(isCorrect ? "correct" : "wrong");
-          playSound(isCorrect ? AUDIO.correct : AUDIO.wrong,validationMessages("soundError"))
+          playSound(isCorrect ? AUDIO.correct : AUDIO.wrong,validationMsg("soundError"))
           setTimeout(()=>{
                if(isCorrect) setState(generateEquation(mode));
                setMsgType("");

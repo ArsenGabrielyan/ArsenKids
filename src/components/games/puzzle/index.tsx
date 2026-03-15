@@ -28,7 +28,7 @@ export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
      const t = useTranslations("puzzle");
      const buttonTxt = useTranslations("buttons");
      const gameMsg = useTranslations("game-messages");
-     const validationMessages = useTranslations("validation");
+     const validationMsg = useTranslations("validation");
      const updateState = (overrides: Partial<IPuzzleState>) =>
           setGameState(prev=>({...prev,...overrides}))
      const pieceSize = Math.round(gameState.boardSize/GRID_SIZE);
@@ -39,12 +39,12 @@ export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
                tiles: shuffle(prev.tiles),
                randomWinText: getRandomMessage("correct",gameMsg,14)
           })
-          playSound(AUDIO.shuffle,validationMessages("soundError"))
+          playSound(AUDIO.shuffle,validationMsg("soundError"))
      }
      const swapTiles= (tileI: number) => {
           if(canSwap(tileI,gameState.tiles.indexOf(gameState.tiles.length-1))){
                const prev = Object.assign({},gameState)
-               playSound(AUDIO.swish,validationMessages("soundError"),0.25)
+               playSound(AUDIO.swish,validationMsg("soundError"),0.25)
                updateState({
                     tiles: swap(prev.tiles,tileI,prev.tiles.indexOf(prev.tiles.length-1))
                });
@@ -56,12 +56,12 @@ export default function PuzzleGame({title, shape, christmas}: PuzzleGameProps){
      };
      const handleCheckChange = (checked: boolean) => {
           updateState({showNum: checked})
-          playSound(checked ? AUDIO.hardPop : AUDIO.reversePop,validationMessages("soundError"))
+          playSound(checked ? AUDIO.hardPop : AUDIO.reversePop,validationMsg("soundError"))
      }
      useEffect(()=>{
           if(isSolvedPuzzle && gameState.isStarted)
-               playSound(AUDIO.sparkle,validationMessages("soundError"))
-     },[gameState.isStarted,isSolvedPuzzle,validationMessages])
+               playSound(AUDIO.sparkle,validationMsg("soundError"))
+     },[gameState.isStarted,isSolvedPuzzle,validationMsg])
      useEffect(() => updateState({
           boardSize: isMobile ? 250 : BOARD_SIZE
      }),[shape, isMobile]);

@@ -22,6 +22,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Audio Optimization
 - Game Demo Images
 - Converted the UI from SCSS to ShadCN UI
+- Validation Message Translation Optimization
 ### Removed
 - Leftovers and useless functions after rewrtiting
 

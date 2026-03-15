@@ -59,18 +59,18 @@ interface InteractiveMathFormProps{
      inputRef?: React.Ref<HTMLInputElement>
 }
 export default function InteractiveMathForm({index, num1, num2, operator, solution, onSubmit, inputRef}: InteractiveMathFormProps){
-     const validationMessages = useTranslations("validation")
+     const validationMsg = useTranslations("validation")
      const form = useForm<InteractiveMathType>({
-          resolver: zodResolver(getInteractiveMathSchema(validationMessages)),
+          resolver: zodResolver(getInteractiveMathSchema(validationMsg)),
           defaultValues: {
                answer: "",
                type: index===2 ? "text" : "number"
           }
      })
      const handleSubmit = (values: InteractiveMathType) => {
-          const validatedFields = getInteractiveMathSchema(validationMessages).safeParse(values);
+          const validatedFields = getInteractiveMathSchema(validationMsg).safeParse(values);
           if(!validatedFields.success){
-               toast.error(validationMessages("invalidFields"));
+               toast.error(validationMsg("invalidFields"));
                return;
           }
           if(!validatedFields.data) return;
