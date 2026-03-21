@@ -1,3 +1,4 @@
+import { NamespaceKeys, NestedKeyOf, useTranslations } from "next-intl";
 import hyCommon from "../../i18n/hy/common.json";
 import hyGames from "../../i18n/hy/games.json"
 import hyWebsite from "../../i18n/hy/website.json"
@@ -19,3 +20,6 @@ export interface ILanguage{
      countryCode: CountryCodeType,
      label: string
 }
+
+type TranslationNS = NamespaceKeys<MessageSchema,NestedKeyOf<MessageSchema>>
+export type TFunction<T extends TranslationNS> = ReturnType<typeof useTranslations<T>>

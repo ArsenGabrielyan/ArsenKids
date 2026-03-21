@@ -1,9 +1,9 @@
-import { useTranslations } from "next-intl";
 import { BG_IMAGE_MAP } from "../constants/maps";
 import { snowmanItems } from "../constants/games";
 import { BgImageVariant  } from "../types";
 import { SnowmanItems } from "../types/enums";
 import { GameMessageType } from "../types/games";
+import { TFunction } from "@/i18n/types";
 
 export function isChristmas(){
      const today = new Date();
@@ -29,7 +29,7 @@ export function getBackgroundImage(variant: BgImageVariant): React.CSSProperties
      }
 }
 export const getSnowmanItems = (type: SnowmanItems) => snowmanItems.filter(val=>val.type===type);
-export function getRandomMessage(type: GameMessageType, t: ReturnType<typeof useTranslations>, limit?: number): string{
+export function getRandomMessage(type: GameMessageType, t: TFunction<"game-messages">, limit?: number): string{
      const messages: string[] = type!=="" ? t(type).split("; ").slice(0,limit) : [];
      return messages[Math.floor(Math.random()*messages.length)];
 }

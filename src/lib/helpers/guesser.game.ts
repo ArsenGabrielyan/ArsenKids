@@ -1,10 +1,10 @@
-import { useTranslations } from "next-intl";
 import { GameDifficulty } from "../types/games";
+import { TFunction } from "@/i18n/types";
 
-const getWordList = (t: ReturnType<typeof useTranslations>, difficulty: Exclude<GameDifficulty,"" | "mixed">): string[] => 
+const getWordList = (t: TFunction<"guess-word">, difficulty: Exclude<GameDifficulty,"" | "mixed">): string[] => 
      t(`${difficulty}-words`).split(",").map(w => w.trim()).filter(Boolean)
 
-export const getWords = (difficulty: GameDifficulty, t: ReturnType<typeof useTranslations>) => {
+export const getWords = (difficulty: GameDifficulty, t: TFunction<"difficulties">) => {
      if(!difficulty) return [];
      if(difficulty==="mixed"){
           const difficulties: Exclude<GameDifficulty,"" | "mixed">[] = ["easy", "medium", "hard"]
