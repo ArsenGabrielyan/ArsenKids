@@ -2,7 +2,7 @@ import { LocaleLayoutProps } from "@/app/[locale]/layout";
 import MemoryGame from "@/components/games/memory"
 import { languages } from "@/i18n/config";
 import { PAIRS_LINKS } from "@/lib/constants";
-import { MemoryCardParams } from "@/lib/types";
+import { MemoryCardParams } from "@/lib/types/games";
 import { MemoryGameLinks } from "@/lib/types/enums";
 import { absoluteURL, getOgImage } from "@/lib/utils";
 import { Metadata } from "next"

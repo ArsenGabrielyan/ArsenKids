@@ -1,4 +1,4 @@
-import { AmazingMathOperator, GameMessageType, IGameDifficulty, ISnowmanItem, OperatorType, TicTacToeBoard } from "../types";
+import { AmazingMathOperator, GameMessageType, IGameDifficulty, ISnowmanItem, OperatorType, TicTacToeBoard } from "../types/games";
 import { SnowmanItems, TicTacToeDifficulties } from "../types/enums";
 import { SNOWMAN_MAP } from "./maps";
 

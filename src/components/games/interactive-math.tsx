@@ -1,6 +1,6 @@
 "use client"
 import { randomValue, getSolution } from "@/lib/helpers/math.game";
-import { AmazingMathOperator, GameMessageType } from "@/lib/types";
+import { AmazingMathOperator, GameMessageType } from "@/lib/types/games";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { MessageBox } from "../ui/game-msg";
 import { toast } from "sonner";
@@ -11,7 +11,7 @@ import { MATH_OPERATORS } from "@/lib/constants/games";
 import InteractiveMathForm from "../interactive-math.form";
 import { IInteractiveMathState } from "@/lib/types/states";
 import { INITIAL_MATH_STATE } from "@/lib/constants/states";
-import { InteractiveMathType } from "@/schemas/types";
+import { InteractiveMathType } from "@/lib/types/schemas";
 import { AUDIO } from "@/lib/constants/maps";
 import { RotateCcw, Share2 } from "lucide-react";
 import { useTranslations } from "next-intl";

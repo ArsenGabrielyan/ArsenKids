@@ -1,7 +1,7 @@
 "use client"
 import { GAME_MESSAGE_STYLE } from "@/lib/constants/games";
 import { getRandomMessage } from "@/lib/helpers";
-import { GameMessageType } from "@/lib/types";
+import { GameMessageType } from "@/lib/types/games";
 import { cn } from "@/lib/utils";
 import { Check, X } from "lucide-react";
 import { useTranslations } from "next-intl";

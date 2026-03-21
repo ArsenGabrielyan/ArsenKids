@@ -1,8 +1,9 @@
 import { useTranslations } from "next-intl";
 import { BG_IMAGE_MAP } from "../constants/maps";
 import { snowmanItems } from "../constants/games";
-import { BgImageVariant, GameMessageType } from "../types";
+import { BgImageVariant  } from "../types";
 import { SnowmanItems } from "../types/enums";
+import { GameMessageType } from "../types/games";
 
 export function isChristmas(){
      const today = new Date();

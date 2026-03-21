@@ -5,7 +5,7 @@ import { SnowmanMusicList, SnowmanSidebarItem, Snowman } from "@/components/snow
 import { Button } from "@/components/ui/button";
 import useAudio from "@/hooks/use-audio";
 import { getBackgroundImage } from "@/lib/helpers";
-import { SnowmanType, ISnowmanItem } from "@/lib/types";
+import { SnowmanType, ISnowmanItem } from "@/lib/types/games";
 import { absoluteURL, cn } from "@/lib/utils";
 import { Download, MoreHorizontalIcon, Pause, Play, Share2 } from "lucide-react";
 import {Link} from "@/i18n/navigation";

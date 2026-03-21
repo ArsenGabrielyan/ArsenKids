@@ -1,10 +1,10 @@
 "use client"
-import { AmazingMathOperator } from "@/lib/types";
+import { AmazingMathOperator } from "@/lib/types/games";
 import { Input } from "./ui/input";
 import { useForm } from "react-hook-form";
-import { InteractiveMathType } from "@/schemas/types";
+import { InteractiveMathType } from "@/lib/types/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { getInteractiveMathSchema } from "@/schemas";
+import { getInteractiveMathSchema } from "@/lib/schemas";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "./shadcn-ui/form";
 import { toast } from "sonner";
 import { Button } from "./ui/button";

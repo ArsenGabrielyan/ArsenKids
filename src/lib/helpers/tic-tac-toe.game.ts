@@ -1,5 +1,5 @@
 import { PATTERNS } from "../constants/games";
-import { IMinimaxReturnType, TicTacToePlayer } from "../types";
+import { IMinimaxReturnType, TicTacToePlayer } from "../types/games";
 import { playSound, absoluteCDN } from "../utils";
 
 export const checkWinner = (board: string[],callback: (pattern: number[]) => void)=>{

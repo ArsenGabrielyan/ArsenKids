@@ -1,5 +1,6 @@
 "use client"
-import { GameType, SearchFilterType } from "@/lib/types";
+import { SearchFilterType } from "@/lib/types";
+import { GameType } from "@/lib/types/games";
 import SiteSection from "../ui/site-section";
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react";

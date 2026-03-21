@@ -4,7 +4,7 @@ import { AUDIO } from "@/lib/constants/maps";
 import { INITIAL_TIC_TAC_TOE_STATE } from "@/lib/constants/states";
 import { TIC_TAC_TOE_DIFFICULTIES } from "@/lib/constants/games";
 import { getRandomMove, getMediumMove, getBestMove, checkWinner, isDraw, playTicTacToeSound, preloadTicTacToeSounds } from "@/lib/helpers/tic-tac-toe.game";
-import { TicTacToeState, TicTacToeMode, TicTacToePlayer} from "@/lib/types";
+import { TicTacToeState, TicTacToeMode, TicTacToePlayer} from "@/lib/types/games";
 import { ITicTacToeState } from "@/lib/types/states";
 import { absoluteURL, cn, playSound, preloadAudio } from "@/lib/utils";
 import {Link} from "@/i18n/navigation";

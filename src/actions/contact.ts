@@ -1,6 +1,6 @@
 "use server"
-import { getContactSchema } from "@/schemas";
-import { ContactType } from "@/schemas/types";
+import { getContactSchema } from "@/lib/schemas";
+import { ContactType } from "@/lib/types/schemas";
 import { getTranslations } from "next-intl/server";
 
 export async function sendMessage(values: ContactType): Promise<{

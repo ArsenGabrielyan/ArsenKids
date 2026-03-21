@@ -1,4 +1,4 @@
-import { TicTacToeState } from "../types"
+import { TicTacToeState } from "../types/games"
 import { IGuessNumberState, IGuessWordState, IInteractiveMathState, IMemoryGameState, IPuzzleState, ITicTacToeState } from "../types/states"
 import { BOARD_SIZE, TILE_COUNT } from "./games"
 

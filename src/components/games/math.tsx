@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { absoluteURL, cn, playSound, preloadAudio } from "@/lib/utils"
 import { MessageBox } from "../ui/game-msg";
 import { Button } from "../ui/button";
-import { GameMessageType, OperatorType } from "@/lib/types";
+import { GameMessageType, OperatorType } from "@/lib/types/games";
 import Logo from "../logo";
 import { Share2 } from "lucide-react";
 import { useTranslations } from "next-intl";

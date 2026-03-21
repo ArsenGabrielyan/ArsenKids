@@ -1,5 +1,5 @@
-import { AmazingMathOperator, GameDifficulty, GameMessageType, IMemoryCard, TicTacToeMode, TicTacToeState } from ".";
 import { TicTacToeDifficulties } from "./enums";
+import { GameDifficulty, GameMessageType, IMemoryCard, TicTacToeMode, TicTacToeState, AmazingMathOperator } from "./games"
 
 export interface IGuessWordState{
      correct: string;

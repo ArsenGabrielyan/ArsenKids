@@ -1,4 +1,4 @@
-import { IMemoryGameCard, MemoryCardParams, MemoryCardType } from "../types";
+import { IMemoryGameCard, MemoryCardParams, MemoryCardType } from "../types/games";
 import { absoluteCDN } from "../utils";
 
 const BASE_PATHS: MemoryCardType<string> = {

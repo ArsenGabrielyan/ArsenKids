@@ -1,7 +1,7 @@
 import { GRID_SIZE, TILE_COUNT } from "@/lib/constants/games";
 import { BACK_FACE_IMAGES } from "@/lib/constants/pairs.game";
 import { getMatrixPosition, getVisualPosition } from "@/lib/helpers/puzzle.game";
-import { IMemoryCard, TicTacToePlayer, TicTacToeBoard } from "@/lib/types";
+import { IMemoryCard, TicTacToePlayer, TicTacToeBoard } from "@/lib/types/games";
 import { absoluteCDN, cn } from "@/lib/utils";
 import Image from "next/image";
 

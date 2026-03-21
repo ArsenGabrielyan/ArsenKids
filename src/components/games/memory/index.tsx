@@ -5,7 +5,7 @@ import { MemoryCard } from "@/components/ui/game";
 import { AUDIO } from "@/lib/constants/maps";
 import { pairsCards } from "@/lib/constants/pairs.game";
 import { INITIAL_PAIRS_STATE } from "@/lib/constants/states";
-import { IMemoryCard, MemoryCardParams } from "@/lib/types";
+import { IMemoryCard, MemoryCardParams } from "@/lib/types/games";
 import { IMemoryGameState } from "@/lib/types/states";
 import { playSound, preloadAudio } from "@/lib/utils";
 import { useCallback, useEffect, useState } from "react";

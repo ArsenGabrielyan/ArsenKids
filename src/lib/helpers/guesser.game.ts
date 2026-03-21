@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { GameDifficulty } from "../types";
+import { GameDifficulty } from "../types/games";
 
 const getWordList = (t: ReturnType<typeof useTranslations>, difficulty: Exclude<GameDifficulty,"" | "mixed">): string[] => 
      t(`${difficulty}-words`).split(",").map(w => w.trim()).filter(Boolean)

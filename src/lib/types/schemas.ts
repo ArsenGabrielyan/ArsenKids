@@ -1,5 +1,5 @@
 import * as z from "zod"
-import { getContactSchema, getInteractiveMathSchema, getNumberGuesserSchema, getWordGuesserSchema } from "."
+import { getContactSchema, getInteractiveMathSchema, getNumberGuesserSchema, getWordGuesserSchema } from "../schemas"
 
 export type ContactType = z.infer<
      Awaited<ReturnType<typeof getContactSchema>>

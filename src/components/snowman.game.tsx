@@ -1,6 +1,6 @@
 import { CHRISTMAS_MUSIC } from "@/lib/constants/maps";
 import { getSnowmanItems } from "@/lib/helpers";
-import { ISnowmanItem, SnowmanType, SnowmanItemsType } from "@/lib/types";
+import { ISnowmanItem, SnowmanType, SnowmanItemsType } from "@/lib/types/games";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
