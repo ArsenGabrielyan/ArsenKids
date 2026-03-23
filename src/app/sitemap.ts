@@ -1,8 +1,8 @@
 import { MetadataRoute } from "next";
-import { generateLocalizedPages } from "@/lib/helpers";
 import { CHRISTMAS_GAMES_LIST, GAMES_LIST } from "@/lib/constants/card-data";
 import { CHRISTMAS_PUZZLE_LINKS, PAIRS_LINKS, PUZZLE_LINKS } from "@/lib/constants";
 import { absoluteURL } from "@/lib/utils";
+import { locales } from "@/i18n/config";
 
 export default function Sitemap(): MetadataRoute.Sitemap {
      const routes = [
@@ -25,7 +25,12 @@ export default function Sitemap(): MetadataRoute.Sitemap {
                changeFrequency: "weekly",
                priority,
                alternates: {
-                    languages: generateLocalizedPages(route)
+                    languages: Object.fromEntries(
+                         locales.map((locale) => [
+                              locale,
+                              absoluteURL(locale === "hy" ? route : `/${locale}${route}`)
+                         ])
+                    )
                }
           }
      })

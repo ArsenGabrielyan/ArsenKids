@@ -37,10 +37,3 @@ export function getRandomMessage(type: GameMessageType, t: TFunction<"game-messa
      const messages: string[] = type!=="" ? t(type).split("; ").slice(0,limit) : [];
      return messages[Math.floor(Math.random()*messages.length)];
 }
-export function generateLocalizedPages(path: string): Languages<LangCodeType>{
-     const localized = locales.map(val=>[
-          val,
-          absoluteURL(val==="hy" ? path : `/${val}${path}`)
-     ]);
-     return Object.fromEntries(localized)
-}
