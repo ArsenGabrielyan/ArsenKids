@@ -42,6 +42,5 @@ export function generateLocalizedPages(path: string): Languages<LangCodeType>{
           val,
           absoluteURL(val==="hy" ? path : `/${val}${path}`)
      ]);
-     console.log(localized)
      return Object.fromEntries(localized)
 }
