@@ -3,7 +3,11 @@ import { snowmanItems } from "../constants/games";
 import { BgImageVariant  } from "../types";
 import { SnowmanItems } from "../types/enums";
 import { GameMessageType } from "../types/games";
-import { TFunction } from "@/i18n/types";
+import { LangCodeType, TFunction } from "@/i18n/types";
+import { MetadataRoute } from "next";
+import { absoluteURL } from "@/lib/utils";
+import { locales } from "@/i18n/config";
+import { Languages } from "next/dist/lib/metadata/types/alternative-urls-types";
 
 export function isChristmas(){
      const today = new Date();
@@ -32,4 +36,12 @@ export const getSnowmanItems = (type: SnowmanItems) => snowmanItems.filter(val=>
 export function getRandomMessage(type: GameMessageType, t: TFunction<"game-messages">, limit?: number): string{
      const messages: string[] = type!=="" ? t(type).split("; ").slice(0,limit) : [];
      return messages[Math.floor(Math.random()*messages.length)];
+}
+export function generateLocalizedPages(path: string): Languages<LangCodeType>{
+     const localized = locales.map(val=>[
+          val,
+          absoluteURL(val==="hy" ? path : `/${val}${path}`)
+     ]);
+     console.log(localized)
+     return Object.fromEntries(localized)
 }
