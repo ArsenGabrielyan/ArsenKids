@@ -25,12 +25,13 @@ export default function Sitemap(): MetadataRoute.Sitemap {
                changeFrequency: "weekly",
                priority,
                alternates: {
-                    languages: Object.fromEntries(
-                         locales.map((locale) => [
+                    languages: {
+                        "x-default": absoluteURL(route),
+                         ...Object.fromEntries(locales.map((locale) => [
                               locale,
                               absoluteURL(locale === "hy" ? route : `/${locale}${route}`)
                          ])
-                    )
+                   )}
                }
           }
      })
