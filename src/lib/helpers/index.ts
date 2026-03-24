@@ -4,10 +4,9 @@ import { BgImageVariant  } from "../types";
 import { SnowmanItems } from "../types/enums";
 import { GameMessageType } from "../types/games";
 import { LangCodeType, TFunction } from "@/i18n/types";
-import { MetadataRoute } from "next";
+import { Metadata } from "next";
 import { absoluteURL } from "@/lib/utils";
-import { locales } from "@/i18n/config";
-import { Languages } from "next/dist/lib/metadata/types/alternative-urls-types";
+import { languages } from "@/i18n/config";
 
 export function isChristmas(){
      const today = new Date();
@@ -36,4 +35,10 @@ export const getSnowmanItems = (type: SnowmanItems) => snowmanItems.filter(val=>
 export function getRandomMessage(type: GameMessageType, t: TFunction<"game-messages">, limit?: number): string{
      const messages: string[] = type!=="" ? t(type).split("; ").slice(0,limit) : [];
      return messages[Math.floor(Math.random()*messages.length)];
+}
+export function createMetaAlternates(locale: LangCodeType, url: string = ""): Metadata["alternates"] {
+     return {
+          languages: Object.fromEntries(languages.map(l => [l.code, `/${l.code}${url}`])),
+          canonical: absoluteURL(`/${locale}${url}`)
+     }
 }

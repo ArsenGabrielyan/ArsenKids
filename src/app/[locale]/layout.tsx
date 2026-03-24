@@ -9,7 +9,7 @@ import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import { getTranslations } from "next-intl/server";
-import { languages } from "@/i18n/config";
+import { createMetaAlternates } from "@/lib/helpers";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -32,6 +32,7 @@ export type LocaleLayoutProps = {
 export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Metadata> => {
   const {locale} = await params;
   const t = await getTranslations("index");
+  if (!hasLocale(routing.locales, locale)) return notFound()
   return {
     metadataBase: new URL(absoluteURL()),
     title: {
@@ -39,10 +40,7 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
       template: "%s | ArsenKids"
     },
     description: t("mainDesc"),
-    alternates: {
-      languages: Object.fromEntries(languages.map(l => [l.code, `/${l.code}`])),
-      canonical: absoluteURL(`/${locale}`)
-    },
+    alternates: createMetaAlternates(locale),
     authors: {
       name: "ArsenKids",
       url: "https://youtube.com/@ArsenKids"

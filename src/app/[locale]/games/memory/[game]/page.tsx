@@ -1,6 +1,5 @@
 import { LocaleLayoutProps } from "@/app/[locale]/layout";
 import MemoryGame from "@/components/games/memory"
-import { languages } from "@/i18n/config";
 import { PAIRS_LINKS } from "@/lib/constants";
 import { MemoryCardParams } from "@/lib/types/games";
 import { MemoryGameLinks } from "@/lib/types/enums";
@@ -8,6 +7,9 @@ import { absoluteURL, getOgImage } from "@/lib/utils";
 import { Metadata } from "next"
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { hasLocale } from "next-intl";
+import { routing } from "@/i18n/routing";
+import { createMetaAlternates } from "@/lib/helpers";
 
 interface PageProps{
      params: LocaleLayoutProps["params"] & Promise<{game: MemoryGameLinks}>,
@@ -15,15 +17,12 @@ interface PageProps{
 
 export const generateMetadata = async({params}: PageProps): Promise<Metadata> => {
      const {game, locale} = await params;
-     if(!PAIRS_LINKS.find(val=>val===game)) notFound();
+     if(!PAIRS_LINKS.find(val=>val===game) || !hasLocale(routing.locales, locale)) return notFound();
      const t = await getTranslations("memory")
      const gamesTxt = await getTranslations("games")
      return {
           title: t("gameTitle",{title: t(`pairs.${game}`)}),
-          alternates: {
-               languages: Object.fromEntries(languages.map(l => [l.code, `/${l.code}/games/memory/${game}`])),
-               canonical: absoluteURL(`/games/memory/${game}`)
-          },
+          alternates: createMetaAlternates(locale,`/games/memory/${game}`),
           openGraph: {
                title: t("gameTitle",{title: t(`pairs.${game}`)}),
                url: absoluteURL(`/${locale}/games/memory/${game}`),

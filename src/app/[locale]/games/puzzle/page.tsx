@@ -3,18 +3,19 @@ import { getTranslations } from "next-intl/server"
 import { LocaleLayoutProps } from "../../layout";
 import { Metadata } from "next";
 import { absoluteURL, getOgImage } from "@/lib/utils";
-import { languages } from "@/i18n/config";
+import { hasLocale } from "next-intl";
+import { routing } from "@/i18n/routing";
+import { notFound } from "next/navigation";
+import { createMetaAlternates } from "@/lib/helpers";
 
 export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Metadata> => {
      const {locale} = await params
+     if (!hasLocale(routing.locales, locale)) return notFound()
      const t = await getTranslations("puzzle");
      const gamesTxt = await getTranslations("games")
      return {
           title: t("title"),
-          alternates: {
-               languages: Object.fromEntries(languages.map(l => [l.code, `/${l.code}/games/puzzle`])),
-               canonical: absoluteURL(`/games/puzzle`)
-          },
+          alternates: createMetaAlternates(locale,"/games/puzzle"),
           openGraph: {
                title: t("title"),
                url: absoluteURL(`/${locale}/games/puzzle`),

@@ -1,12 +1,16 @@
 import { LocaleLayoutProps } from "@/app/[locale]/layout";
 import MemoryGame from "@/components/games/memory";
-import { languages } from "@/i18n/config";
 import { absoluteURL } from "@/lib/utils";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { hasLocale } from "next-intl";
+import { routing } from "@/i18n/routing";
+import { notFound } from "next/navigation";
+import { createMetaAlternates } from "@/lib/helpers";
 
 export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Metadata> => {
      const {locale} = await params
+     if (!hasLocale(routing.locales, locale)) return notFound()
      const t = await getTranslations("memory");
      const gameTxt = await getTranslations("games")
      return {
@@ -32,10 +36,7 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
                     height: 630
                }]
           },
-          alternates: {
-               languages: Object.fromEntries(languages.map(l => [l.code, `/${l.code}/games/christmas/memory-game`])),
-               canonical: absoluteURL(`/${locale}/games/christmas/memory-game`),
-          }
+          alternates: createMetaAlternates(locale,"/games/christmas/memory-game"),
      }
 }
 

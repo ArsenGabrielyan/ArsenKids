@@ -1,12 +1,14 @@
 import { LocaleLayoutProps } from "@/app/[locale]/layout";
 import PuzzleGame from "@/components/games/puzzle"
-import { languages } from "@/i18n/config";
 import { CHRISTMAS_PUZZLE_LINKS } from "@/lib/constants"
 import { ChristmasPuzzleLinks } from "@/lib/types/enums";
 import { absoluteURL } from "@/lib/utils";
 import { Metadata } from "next"
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { hasLocale } from "next-intl";
+import { routing } from "@/i18n/routing";
+import { createMetaAlternates } from "@/lib/helpers";
 
 interface PageProps{
      params: LocaleLayoutProps["params"] & Promise<{image: ChristmasPuzzleLinks}>,
@@ -14,15 +16,12 @@ interface PageProps{
 
 export const generateMetadata = async({params}: PageProps): Promise<Metadata> => {
      const {image,locale} = await params;
-     if(!CHRISTMAS_PUZZLE_LINKS.find(val=>val===image)) notFound();
+     if(!CHRISTMAS_PUZZLE_LINKS.find(val=>val===image) || !hasLocale(routing.locales, locale)) return notFound();
      const t = await getTranslations("puzzle")
      const gameTxt = await getTranslations("games")
      return {
           title: t("gameTitle",{title: t(`christmas-games.${image}`)}),
-          alternates: {
-               languages: Object.fromEntries(languages.map(l => [l.code, `/${l.code}/games/christmas/puzzle/${image}`])),
-               canonical: absoluteURL(`/games/christmas/puzzle/${image}`)
-          },
+          alternates: createMetaAlternates(locale,`/games/christmas/puzzle/${image}`),
           openGraph: {
                title: t("gameTitle",{title: t(`christmas-games.${image}`)}),
                url: absoluteURL(`/${locale}/games/christmas/puzzle/${image}`),
@@ -44,8 +43,6 @@ export const generateMetadata = async({params}: PageProps): Promise<Metadata> =>
                     height: 630
                }]
           }
-     }
-     return {
      }
 }
 
