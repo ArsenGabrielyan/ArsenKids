@@ -38,7 +38,7 @@ export function getRandomMessage(type: GameMessageType, t: TFunction<"game-messa
 }
 export function createMetaAlternates(locale: LangCodeType, url: string = ""): Metadata["alternates"] {
      return {
-          languages: Object.fromEntries(languages.map(l => [l.code, `/${l.code}${url}`])),
+          languages: Object.fromEntries(languages.filter(l=>l.code!=="hy").map(l => [l.code, `/${l.code}${url}`])),
           canonical: absoluteURL(`/${locale}${url}`)
      }
 }
