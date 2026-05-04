@@ -35,7 +35,7 @@
      },
      "bubbles": {
           "title": "Bubbles",
-          "bubblesPopped": "You have popped {popCount} bubbles"
+          "bubblesPopped": "You have popped {popCount, number} bubbles"
      },
      "build-snowman": {
           "title": "Build the Snowman",
@@ -99,8 +99,8 @@
                "christmas": "Christmas"
           },
           "topic": "Topic: {title}",
-          "score": "Score: {score}",
-          "turns": "Turns: {turns}",
+          "score": "Score: {score, number}",
+          "turns": "Turns: {turns, number}",
           "chooseTopic": "Choose a topic"
      },
      "puzzle": {

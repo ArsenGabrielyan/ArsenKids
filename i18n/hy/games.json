@@ -35,7 +35,7 @@
      },
      "bubbles": {
           "title": "Պղպջակներ",
-          "bubblesPopped": "Դուք պայթեցրել եք {popCount} պղպջակ"
+          "bubblesPopped": "Դուք պայթեցրել եք {popCount, number} պղպջակ"
      },
      "build-snowman": {
           "title": "Պատրաստիր ձնեմարդ",
@@ -99,8 +99,8 @@
                "christmas": "Ամանոր"
           },
           "topic": "Թեմա՝ {title}",
-          "score": "Միավոր՝ {score}",
-          "turns": "Պտույտներ՝ {turns}",
+          "score": "Միավոր՝ {score, number}",
+          "turns": "Պտույտներ՝ {turns, number}",
           "chooseTopic": "Ընտրեք թեմա"
      },
      "puzzle": {

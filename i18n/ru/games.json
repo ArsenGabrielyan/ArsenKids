@@ -35,7 +35,7 @@
      },
      "bubbles": {
           "title": "Пузырки",
-          "bubblesPopped": "Вы лопнули {popCount} пузырей"
+          "bubblesPopped": "Вы лопнули {popCount, number} пузырей"
      },
      "build-snowman": {
           "title": "Построить снеговика",
@@ -99,8 +99,8 @@
                "christmas": "Новый год"
           },
           "topic": "Тема: {title}",
-          "score": "Очки: {score}",
-          "turns": "Обороты: {turns}",
+          "score": "Очки: {score, number}",
+          "turns": "Обороты: {turns, number}",
           "chooseTopic": "Выберите тему"
      },
      "puzzle": {
