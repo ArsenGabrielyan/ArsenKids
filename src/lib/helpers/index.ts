@@ -5,7 +5,7 @@ import { SnowmanItems } from "../types/enums";
 import { GameMessageType } from "../types/games";
 import { LangCodeType, TFunction } from "@/i18n/types";
 import { Metadata } from "next";
-import { absoluteURL } from "@/lib/utils";
+import { absoluteLink } from "@/lib/utils";
 import { languages } from "@/i18n/config";
 
 export function isChristmas(){
@@ -39,6 +39,6 @@ export function getRandomMessage(type: GameMessageType, t: TFunction<"game-messa
 export function createMetaAlternates(locale: LangCodeType, url: string = ""): Metadata["alternates"] {
      return {
           languages: Object.fromEntries(languages.filter(l=>l.code!=="hy").map(l => [l.code, `/${l.code}${url}`])),
-          canonical: absoluteURL(`/${locale}${url}`)
+          canonical: absoluteLink(locale,url)
      }
 }

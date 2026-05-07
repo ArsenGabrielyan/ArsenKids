@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { CHRISTMAS_GAMES_LIST, GAMES_LIST } from "@/lib/constants/card-data";
 import { CHRISTMAS_PUZZLE_LINKS, PAIRS_LINKS, PUZZLE_LINKS } from "@/lib/constants";
-import { absoluteURL } from "@/lib/utils";
+import { absoluteLink, absoluteURL } from "@/lib/utils";
 import { locales } from "@/i18n/config";
 
 export default function Sitemap(): MetadataRoute.Sitemap {
@@ -29,7 +29,7 @@ export default function Sitemap(): MetadataRoute.Sitemap {
                         "x-default": absoluteURL(route),
                          ...Object.fromEntries(locales.map((locale) => [
                               locale,
-                              absoluteURL(locale === "hy" ? route : `/${locale}${route}`)
+                              absoluteLink(locale,route)
                          ])
                    )}
                }

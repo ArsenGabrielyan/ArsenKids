@@ -2,7 +2,7 @@ import MathGame from "@/components/games/math";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { LocaleLayoutProps } from "../../layout";
-import { absoluteURL, getOgImage } from "@/lib/utils";
+import { absoluteLink, getOgImage } from "@/lib/utils";
 import { hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
@@ -18,7 +18,7 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
           alternates: createMetaAlternates(locale,"/games/math"),
           openGraph: {
                title: t("title"),
-               url: absoluteURL(`/${locale}/games/math`),
+               url: absoluteLink(locale,"/games/math"),
                locale,
                siteName: `ArsenKids ${gamesTxt("metaTitle")}`,
                type: "website",

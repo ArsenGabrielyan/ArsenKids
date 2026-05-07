@@ -2,7 +2,7 @@ import MemoryGameMenu from "@/components/games/memory/menu"
 import { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 import { LocaleLayoutProps } from "../../layout";
-import { absoluteURL, getOgImage } from "@/lib/utils";
+import { absoluteLink, getOgImage } from "@/lib/utils";
 import { hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
@@ -18,7 +18,7 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
           alternates: createMetaAlternates(locale,"/games/memory"),
           openGraph: {
                title: t("title"),
-               url: absoluteURL(`/${locale}/games/memory`),
+               url: absoluteLink(locale,"/games/memory"),
                locale,
                siteName: `ArsenKids ${gamesTxt("metaTitle")}`,
                type: "website",

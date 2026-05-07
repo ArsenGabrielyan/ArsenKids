@@ -3,6 +3,7 @@ import { toast } from "sonner";
 import { twMerge } from "tailwind-merge"
 import type {AudioType, AudioKey} from "./types"
 import { isChristmas } from "./helpers";
+import { LangCodeType } from "@/i18n/types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -33,6 +34,10 @@ export function preloadAudio(sources: AudioType, ...audioFiles: AudioKey[]) {
 export function absoluteURL(path?: string){
   const baseURL = process.env.NODE_ENV === "production" ? "https://arsenkids.vercel.app" : "http://localhost:3000"
   return !path ? baseURL : `${baseURL}${path}`
+}
+export const absoluteLink = (locale: LangCodeType, path?: string) => {
+  const redirectPath = !path ? "/" : path
+  return absoluteURL(locale==="hy" ? redirectPath : `/${locale}${redirectPath}`)
 }
 export function absoluteCDN(type: "sounds" | "pdf" | "images" | "music", path: `/${string}`){
   if(!type) throw new Error("Specify the resource type")

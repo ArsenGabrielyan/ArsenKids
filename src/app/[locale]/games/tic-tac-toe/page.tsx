@@ -1,5 +1,5 @@
 import GameXO from "@/components/games/tic-tac-toe";
-import { absoluteURL, getOgImage } from "@/lib/utils";
+import { absoluteLink, getOgImage } from "@/lib/utils";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { LocaleLayoutProps } from "../../layout";
@@ -18,7 +18,7 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
           alternates: createMetaAlternates(locale,"/games/tic-tac-toe"),
           openGraph: {
                title: t("title"),
-               url: absoluteURL(`/${locale}/games/tic-tac-toe`),
+               url: absoluteLink(locale,"/games/tic-tac-toe"),
                locale,
                siteName: `ArsenKids ${gamesTxt("metaTitle")}`,
                type: "website",

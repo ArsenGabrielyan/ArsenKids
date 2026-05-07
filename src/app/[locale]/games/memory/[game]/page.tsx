@@ -3,7 +3,7 @@ import MemoryGame from "@/components/games/memory"
 import { PAIRS_LINKS } from "@/lib/constants";
 import { MemoryCardParams } from "@/lib/types/games";
 import { MemoryGameLinks } from "@/lib/types/enums";
-import { absoluteURL, getOgImage } from "@/lib/utils";
+import { absoluteLink, getOgImage } from "@/lib/utils";
 import { Metadata } from "next"
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -25,7 +25,7 @@ export const generateMetadata = async({params}: PageProps): Promise<Metadata> =>
           alternates: createMetaAlternates(locale,`/games/memory/${game}`),
           openGraph: {
                title: t("gameTitle",{title: t(`pairs.${game}`)}),
-               url: absoluteURL(`/${locale}/games/memory/${game}`),
+               url: absoluteLink(locale,`/games/memory/${game}`),
                locale,
                siteName: `ArsenKids ${gamesTxt("metaTitle")}`,
                type: "website",

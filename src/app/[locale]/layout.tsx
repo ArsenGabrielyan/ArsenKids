@@ -3,7 +3,7 @@ import { Raleway } from "next/font/google";
 import localFont from "next/font/local"
 import "../globals.css";
 import { KEYWORDS } from "@/lib/constants";
-import { absoluteURL, getOgImage } from "@/lib/utils";
+import { absoluteLink, absoluteURL, getOgImage } from "@/lib/utils";
 import { Toaster } from "@/components/shadcn-ui/sonner";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
@@ -57,7 +57,7 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
     openGraph: {
       title: t("mainTitle"),
       description: t("mainDesc"),
-      url: absoluteURL(`/${locale}`),
+      url: absoluteLink(locale),
       locale,
       siteName: "ArsenKids",
       type: "website",

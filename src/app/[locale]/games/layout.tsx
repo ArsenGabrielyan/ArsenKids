@@ -1,7 +1,7 @@
 import { GAME_KEYWORDS, KEYWORDS } from "@/lib/constants";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { absoluteURL, getOgImage } from "@/lib/utils";
+import { absoluteLink, getOgImage } from "@/lib/utils";
 import { LocaleLayoutProps } from "../layout";
 import { hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
@@ -20,7 +20,7 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
           openGraph: {
                title: t("title"),
                description: t("metaDesc"),
-               url: absoluteURL(`/${locale}/games`),
+               url: absoluteLink(locale,"/games"),
                locale,
                siteName: `ArsenKids ${t("metaTitle")}`,
                type: "website",

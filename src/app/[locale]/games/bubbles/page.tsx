@@ -2,7 +2,7 @@ import BubblesGame from "@/components/games/bubbles";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { LocaleLayoutProps } from "../../layout";
-import { absoluteURL, getOgImage } from "@/lib/utils";
+import { absoluteLink, getOgImage } from "@/lib/utils";
 import { hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
@@ -17,7 +17,7 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
           title: t("title"),
           openGraph: {
                title: t("title"),
-               url: absoluteURL(`/${locale}/games/bubbles`),
+               url: absoluteLink(locale,"/games/bubbles"),
                locale,
                siteName: `ArsenKids ${gamesTxt("metaTitle")}`,
                type: "website",

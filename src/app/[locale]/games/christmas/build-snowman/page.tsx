@@ -1,6 +1,6 @@
 import { LocaleLayoutProps } from "@/app/[locale]/layout";
 import GameBuildSnowman from "@/components/games/christmas/build-snowman";
-import { absoluteURL } from "@/lib/utils";
+import { absoluteLink, absoluteURL } from "@/lib/utils";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { hasLocale } from "next-intl";
@@ -17,7 +17,7 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
           title: t("title"),
           openGraph: {
                title: t("title"),
-               url: absoluteURL(`/${locale}/games/christmas/build-snowman`),
+               url: absoluteLink(locale,"/games/christmas/build-snowman"),
                locale,
                siteName: `ArsenKids ${gameTxt("metaTitle")}`,
                type: "website",

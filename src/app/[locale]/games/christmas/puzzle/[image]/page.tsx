@@ -2,7 +2,7 @@ import { LocaleLayoutProps } from "@/app/[locale]/layout";
 import PuzzleGame from "@/components/games/puzzle"
 import { CHRISTMAS_PUZZLE_LINKS } from "@/lib/constants"
 import { ChristmasPuzzleLinks } from "@/lib/types/enums";
-import { absoluteURL } from "@/lib/utils";
+import { absoluteLink, absoluteURL } from "@/lib/utils";
 import { Metadata } from "next"
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -24,7 +24,7 @@ export const generateMetadata = async({params}: PageProps): Promise<Metadata> =>
           alternates: createMetaAlternates(locale,`/games/christmas/puzzle/${image}`),
           openGraph: {
                title: t("gameTitle",{title: t(`christmas-games.${image}`)}),
-               url: absoluteURL(`/${locale}/games/christmas/puzzle/${image}`),
+               url: absoluteLink(locale,`/games/christmas/puzzle/${image}`),
                locale,
                siteName: `ArsenKids ${gameTxt("metaTitle")}`,
                type: "website",

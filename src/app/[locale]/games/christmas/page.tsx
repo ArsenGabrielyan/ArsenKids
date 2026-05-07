@@ -1,5 +1,5 @@
 import ChristmasGamesHub from "@/components/pages/christmas-games-hub";
-import { absoluteURL } from "@/lib/utils";
+import { absoluteLink, absoluteURL } from "@/lib/utils";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { LocaleLayoutProps } from "../../layout";
@@ -17,7 +17,7 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
           title: t("title"),
           openGraph: {
                title: t("title"),
-               url: absoluteURL(`/${locale}/games/christmas`),
+               url: absoluteLink(locale,"/games/christmas"),
                locale,
                siteName: `ArsenKids ${gameTxt("metaTitle")}`,
                type: "website",
