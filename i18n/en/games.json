@@ -104,9 +104,9 @@
           "chooseTopic": "Choose a topic"
      },
      "puzzle": {
-          "title": "Puzzle «Shapes»",
-          "gameTitle": "Puzzle «{title}»",
-          "christmasTitle": "Puzzle «Christmas»",
+          "title": "Puzzle \"Shapes\"",
+          "gameTitle": "Puzzle \"{title}\"",
+          "christmasTitle": "Puzzle \"Christmas\"",
           "games": {
                "circle": "Circle",
                "diamond": "Diamond",
