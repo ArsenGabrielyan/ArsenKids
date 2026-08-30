@@ -48,7 +48,7 @@
                "fruit-veggies": "Фрукты и овощи",
                "others": "Другие"
           },
-          "downloadTitle": "Учебный лист «{itemName}» (Армянский)",
+          "downloadTitle": "Учебный лист «{itemName}»",
           "downloads-list": {
                "colors": "Цвета",
                "shapes": "Фигуры",

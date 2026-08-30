@@ -8,7 +8,7 @@ import { absoluteCDN, cn } from "@/lib/utils"
 import { Input } from "../ui/input"
 import { X } from "lucide-react"
 import Card from "../ui/card"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { Downloads } from "@/lib/types/enums"
 
 type DownloadFilters = SearchFilterType<DownloadItemType>
@@ -28,6 +28,7 @@ export default function DownloadsSection(){
                .filter(item=>currSelection==="all" || item.itemType===currSelection)
                .filter(item=>getDownloadsTranslation(item.downloadName).toLowerCase().includes(search.toLowerCase()))
      ,[currSelection, search, getDownloadsTranslation])
+     const locale = useLocale()
      return (
           <SiteSection id="downloads">
                <div className="relative w-full flex items-center justify-center flex-col">
@@ -62,10 +63,10 @@ export default function DownloadsSection(){
                               <Card
                                    key={item.downloadName}
                                    title={getDownloadsTranslation(item.downloadName)}
-                                   imageSrc={`/downloads/${item.imageName}`}
+                                   imageSrc={`/downloads/${locale}/${item.imageName}`}
                                    imageAlt={item.downloadName}
                                    buttonText={buttonText("download.original")}
-                                   buttonLink={absoluteCDN("pdf",`/${item.fileName}`)}
+                                   buttonLink={absoluteCDN("pdf",`/${locale}/${item.fileName}`)}
                                    variant="download"
                               />
                          )) : (

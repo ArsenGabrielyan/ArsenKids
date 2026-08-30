@@ -4,6 +4,12 @@ All notable changes to ArsenKids will be documented here.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## 2.0.1 - 2026-08-30
+### Added
+- Multilingual learning sheets
+  - English
+  - Russian
+
 ## 2.0.0 - 2025-11-12
 > [!NOTE]
 > The main page and the Games page has been merged into a single NextJS app.

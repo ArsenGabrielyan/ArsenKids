@@ -48,7 +48,7 @@
                "fruit-veggies": "Fruit and Vegetables",
                "others": "Others"
           },
-          "downloadTitle": "Learning sheet \"{itemName}\" (Armenian)",
+          "downloadTitle": "Learning sheet \"{itemName}\"",
           "downloads-list": {
                "colors": "Colors",
                "shapes": "Shapes",
