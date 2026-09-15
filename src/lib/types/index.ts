@@ -1,3 +1,4 @@
+import { LangCodeType } from "@/i18n/types";
 import { AUDIO, BG_IMAGE_MAP } from "../constants/maps";
 import { ChristmasGame, Downloads, Games, Services } from "./enums";
 import { GameType } from "./games";
@@ -30,6 +31,7 @@ export type ICard<T extends CardType> = T extends "service" ? {
      fileName: string,
      imageName: string
      downloadName: Downloads,
+     title: Record<LangCodeType,string>
 } : {
      imageName: string,
      gameName: GamesType

@@ -6,9 +6,13 @@ import DownloadsSection from "@/components/sections/downloads";
 import HeroSection from "@/components/sections/hero";
 import ServicesSection from "@/components/sections/services";
 import { isChristmas } from "@/lib/helpers";
+import { ICard } from "@/lib/types";
 import { useTranslations } from "next-intl";
 
-export default function HomePage(){
+interface HomePageProps{
+     downloads: ICard<"download">[]
+}
+export default function HomePage({downloads}: HomePageProps){
      const t = useTranslations("index");
      const buttonText = useTranslations("buttons")
      return (
@@ -19,7 +23,7 @@ export default function HomePage(){
                />
                <AboutSection/>
                <ServicesSection/>
-               <DownloadsSection/>
+               <DownloadsSection data={downloads}/>
                <ContactSection/>
           </PageLayout>
      )

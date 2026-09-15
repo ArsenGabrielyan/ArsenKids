@@ -1,13 +1,12 @@
 "use client"
 import SiteSection from "../ui/site-section"
-import { DOWNLOADS } from "@/lib/constants/card-data"
 import { Button } from "../ui/button"
-import { DownloadItemType, SearchFilterType } from "@/lib/types"
+import { DownloadItemType, ICard, SearchFilterType } from "@/lib/types"
 import { useCallback, useMemo, useState } from "react"
-import { absoluteCDN, cn } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 import { Input } from "../ui/input"
 import { X } from "lucide-react"
-import Card from "../ui/card"
+import { DownloadCard } from "../ui/card"
 import { useLocale, useTranslations } from "next-intl"
 import { Downloads } from "@/lib/types/enums"
 
@@ -15,20 +14,21 @@ type DownloadFilters = SearchFilterType<DownloadItemType>
 
 const filters: DownloadFilters[] = ["all", "animals", "fruit-veggies", "others"]
 
-export default function DownloadsSection(){
+interface DownloadsSectionProps{
+     data: ICard<"download">[]
+}
+export default function DownloadsSection({data}: DownloadsSectionProps){
      const [currSelection, setCurrSelection] = useState<DownloadFilters>("all")
      const [search, setSearch] = useState("");
      const t = useTranslations("downloads");
-     const buttonText = useTranslations("buttons");
      const searchTxt = useTranslations("search")
-     const getDownloadsTranslation = useCallback((downloadName: Downloads) =>
-          t("downloadTitle",{itemName: t(`downloads-list.${downloadName}`)}),[t])
-     const allDownloads = useMemo(()=>
-          DOWNLOADS
-               .filter(item=>currSelection==="all" || item.itemType===currSelection)
-               .filter(item=>getDownloadsTranslation(item.downloadName).toLowerCase().includes(search.toLowerCase()))
-     ,[currSelection, search, getDownloadsTranslation])
      const locale = useLocale()
+     const getTitle = useCallback((data: ICard<"download">)=>t(`downloadTitle`,{
+          itemName: data.title[locale]
+     }),[t])
+     const allDownloads = useMemo(()=>
+          data.filter(item=>currSelection==="all" || item.itemType===currSelection).filter(item=>getTitle(item).toLowerCase().includes(search.toLowerCase()))
+     ,[currSelection, search, getTitle])
      return (
           <SiteSection id="downloads">
                <div className="relative w-full flex items-center justify-center flex-col">
@@ -60,14 +60,9 @@ export default function DownloadsSection(){
                     </ul>
                     <div className="flex justify-center flex-row-reverse flex-wrap mt-10 gap-3 lg:gap-5 p-3">
                          {allDownloads.length>0 ? allDownloads.map(item=>(
-                              <Card
+                              <DownloadCard
                                    key={item.downloadName}
-                                   title={getDownloadsTranslation(item.downloadName)}
-                                   imageSrc={`/downloads/${locale}/${item.imageName}`}
-                                   imageAlt={item.downloadName}
-                                   buttonText={buttonText("download.original")}
-                                   buttonLink={absoluteCDN("pdf",`/${locale}/${item.fileName}`)}
-                                   variant="download"
+                                   data={item}
                               />
                          )) : (
                               <p className="text-xl text-muted-foreground font-heading">{searchTxt("noResults")}</p>

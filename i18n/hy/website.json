@@ -48,21 +48,7 @@
                "fruit-veggies": "Մրգեր և Բանջարեղեն",
                "others": "Ուրիշներ"
           },
-          "downloadTitle": "Ուսուցողական թերթ «{itemName}»",
-          "downloads-list": {
-               "colors": "Գույներ",
-               "shapes": "Երկրաչափական Մարմիններ",
-               "fruit": "Մրգեր",
-               "vegetables": "Բանջարեղեն",
-               "domestic-animals": "Ընտանի Կենդանիներ",
-               "transportation": "Տրանսպորտային Միջոցներ",
-               "wild-animals": "Վայրի Կենդանիներ",
-               "numbers": "Թվեր",
-               "birds": "Թռչուններ",
-               "insects": "Միջատներ",
-               "forest-animals": "Անտառային Կենդանիներ",
-               "solar-system": "Արեգակնային համակարգ"
-          }
+          "downloadTitle": "Ուսուցողական թերթ «{itemName}»"
      },
      "contact": {
           "title": "Կապ մեզ հետ",

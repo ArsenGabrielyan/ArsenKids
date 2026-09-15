@@ -48,21 +48,7 @@
                "fruit-veggies": "Фрукты и овощи",
                "others": "Другие"
           },
-          "downloadTitle": "Учебный лист «{itemName}»",
-          "downloads-list": {
-               "colors": "Цвета",
-               "shapes": "Фигуры",
-               "fruit": "Фрукты",
-               "vegetables": "Овощи",
-               "domestic-animals": "Домашние животные",
-               "transportation": "Транспортные средства",
-               "wild-animals": "Дикие животные",
-               "numbers": "Цифры и числа",
-               "birds": "Птицы",
-               "insects": "Насекомые",
-               "forest-animals": "Лесные животные",
-               "solar-system": "Солнечная система"
-          }
+          "downloadTitle": "Учебный лист «{itemName}»"
      },
      "contact": {
           "title": "Cвязаться с нами",

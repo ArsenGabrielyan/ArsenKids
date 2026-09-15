@@ -2,20 +2,53 @@
 import Image from "next/image";
 import {Link} from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
-import { CardType } from "@/lib/types";
+import { CardType, ICard } from "@/lib/types";
 import { Download, Share2 } from "lucide-react";
 import { IMAGE_SIZES } from "@/lib/constants/maps";
-import { absoluteURL, cn } from "@/lib/utils";
-import { useTranslations } from "next-intl";
+import { absoluteCDN, absoluteURL, cn } from "@/lib/utils";
+import { useLocale, useTranslations } from "next-intl";
 
-interface CardProps {
+interface CardProps<T extends CardType>{
+     data: ICard<T>
+}
+export function DownloadCard({data}: CardProps<"download">){
+     const buttonTxt = useTranslations("buttons")
+     const locale = useLocale()
+     const t = useTranslations("downloads")
+     return (
+          <div className="min-w-66 w-full max-w-80 border rounded-md shadow-lg bg-card text-card-foreground p-2 flex flex-col justify-between">
+               <div className="relative min-h-[440px]">
+                    <Image
+                         src={`/downloads/${locale}/${data.imageName}`}
+                         alt={data.downloadName}
+                         width={IMAGE_SIZES.download.width}
+                         height={IMAGE_SIZES.download.height}
+                         className="object-cover w-full h-full aspect-square"
+                    />
+               </div>
+               <div className="py-2 lg:py-4 space-y-4 w-full h-full">
+                    <h3 id="title" className="font-semibold text-lg">
+                         {t(`downloadTitle`,{
+                              itemName: data.title[locale]
+                         })}
+                    </h3>
+               </div>
+               <div className="pb-2 w-full">
+                    <Button variant="primary" asChild className="text-base w-full">
+                         <Link href={absoluteCDN("pdf",`/${locale}/${data.fileName}`)} download={data.downloadName}><Download/> {buttonTxt("download.original")}</Link>
+                    </Button>
+               </div>
+          </div>
+     );
+}
+interface UniversalCardProps {
      title: string;
      imageSrc: string;
      imageAlt: string;
      buttonText: string;
      buttonLink: string;
      description?: string;
-     variant: CardType;
+     variant: Exclude<CardType,"download">;
 }
 
 export default function Card({
@@ -26,11 +59,11 @@ export default function Card({
      buttonLink,
      description,
      variant = "service",
-}: CardProps) {
+}: UniversalCardProps) {
      const buttonTxt = useTranslations("buttons")
      return (
           <div className="min-w-66 w-full max-w-80 border rounded-md shadow-lg bg-card text-card-foreground p-2 flex flex-col justify-between">
-               <div className={cn("relative",variant==="game" ? "w-full" : variant==="download" ? "min-h-[440px]" : "h-[250px]")}>
+               <div className={cn("relative",variant==="game" ? "w-full" : "h-[250px]")}>
                     <Image
                          src={imageSrc}
                          alt={imageAlt}
@@ -40,17 +73,13 @@ export default function Card({
                     />
                </div>
                <div className="py-2 lg:py-4 space-y-4 w-full h-full">
-                    <h3 id="title" className={`font-semibold ${variant === "download" ? "text-lg" : variant==="game" ? "text-xl text-center" : "text-2xl text-center"}`}>
+                    <h3 id="title" className={`font-semibold ${variant==="game" ? "text-xl text-center" : "text-2xl text-center"}`}>
                          {title}
                     </h3>
                     {description && <p>{description}</p>}
                </div>
                <div className={cn("pb-2 w-full",variant==="game" && "flex items-center justify-center gap-2 flex-wrap")}>
-                    {variant==="download" ? (
-                         <Button variant="primary" asChild className="text-base w-full">
-                              <Link href={buttonLink} download={imageAlt}><Download/> {buttonText}</Link>
-                         </Button>
-                    ) : variant==="game" ? (
+                    {variant==="game" ? (
                          <>
                          <Button variant="primary" asChild className="text-base flex-1">
                               <Link href={buttonLink}>{buttonText}</Link>

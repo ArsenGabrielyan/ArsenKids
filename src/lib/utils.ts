@@ -2,8 +2,15 @@ import { clsx, type ClassValue } from "clsx"
 import { toast } from "sonner";
 import { twMerge } from "tailwind-merge"
 import type {AudioType, AudioKey} from "./types"
+import { CDN_BASE_URL } from "./constants";
 import { isChristmas } from "./helpers";
 import { LangCodeType } from "@/i18n/types";
+
+export function absoluteCDN(type: "sounds" | "pdf" | "images" | "music", path: `/${string}`){
+  if(!type) throw new Error("Specify the resource type")
+  const baseURL = `${CDN_BASE_URL}/${type}`;
+  return `${baseURL}${path}`
+}
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -38,11 +45,6 @@ export function absoluteURL(path?: string){
 export const absoluteLink = (locale: LangCodeType, path?: string) => {
   const redirectPath = !path ? "/" : path
   return absoluteURL(locale==="hy" ? redirectPath : `/${locale}${redirectPath}`)
-}
-export function absoluteCDN(type: "sounds" | "pdf" | "images" | "music", path: `/${string}`){
-  if(!type) throw new Error("Specify the resource type")
-  const baseURL = `https://arsengabrielyan.github.io/ArsenKids/${type}`;
-  return `${baseURL}${path}`
 }
 /**
  * Returns the Default OpenGraph Image of ArsenKids site

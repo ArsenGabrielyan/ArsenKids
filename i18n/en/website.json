@@ -48,21 +48,7 @@
                "fruit-veggies": "Fruit and Vegetables",
                "others": "Others"
           },
-          "downloadTitle": "Learning sheet \"{itemName}\"",
-          "downloads-list": {
-               "colors": "Colors",
-               "shapes": "Shapes",
-               "fruit": "Fruit",
-               "vegetables": "Vegetables",
-               "domestic-animals": "Domestic Animals",
-               "transportation": "Vehicles",
-               "wild-animals": "Wild Animals",
-               "numbers": "Numbers",
-               "birds": "Birds",
-               "insects": "Insects",
-               "forest-animals": "Forest Animals",
-               "solar-system": "Solar System"
-          }
+          "downloadTitle": "Learning sheet \"{itemName}\""
      },
      "contact": {
           "title": "Contact us",

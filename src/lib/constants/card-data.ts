@@ -1,5 +1,5 @@
 import { ICard } from "../types"
-import { ChristmasGame, Downloads, Games, Services } from "../types/enums";
+import { ChristmasGame, Games, Services } from "../types/enums";
 
 export const SERVICES: ICard<"service">[] = [
      { link: "/#about", type: Services.About },
@@ -17,81 +17,6 @@ export const SERVICES: ICard<"service">[] = [
           type: Services.Colors
      },
      { link: "/games#main-games", type: Services.Games },
-]
-
-export const DOWNLOADS: ICard<"download">[] = [
-     {
-          fileName: "colors.pdf",
-          imageName: "colors.webp",
-          itemType: "others",
-          downloadName: Downloads.Colors
-     },
-     {
-          fileName: "shapes.pdf",
-          imageName: "shapes.webp",
-          itemType: "others",
-          downloadName: Downloads.Shapes
-     },
-     {
-          fileName: "fruit.pdf",
-          imageName: "fruit.webp",
-          itemType: "fruit-veggies",
-          downloadName: Downloads.Fruit
-     },
-     {
-          fileName: "vegetables.pdf",
-          imageName: "vegies.webp",
-          itemType: "fruit-veggies",
-          downloadName: Downloads.Vegetables
-     },
-     {
-          fileName: "domestic-animals.pdf",
-          imageName: "domestic.webp",
-          itemType: "animals",
-          downloadName: Downloads.DomesticAnimals
-     },
-     {
-          fileName: "transportation.pdf",
-          imageName: "transportation.webp",
-          itemType: "others",
-          downloadName: Downloads.Transportation
-     },
-     {
-          fileName: "wild-animals.pdf",
-          imageName: "wild.webp",
-          itemType: "animals",
-          downloadName: Downloads.WildAnimals
-     },
-     {
-          fileName: "numbers.pdf",
-          imageName: "numbers.webp",
-          itemType: "others",
-          downloadName: Downloads.Numbers
-     },
-     {
-          fileName: "birds.pdf",
-          imageName: "birds.webp",
-          itemType: "animals",
-          downloadName: Downloads.Birds
-     },
-     {
-          fileName: "insects.pdf",
-          imageName: "insects.webp",
-          itemType: "animals",
-          downloadName: Downloads.Insects
-     },
-     {
-          fileName: "forest.pdf",
-          imageName: "forest.webp",
-          itemType: "animals",
-          downloadName: Downloads.ForestAnimals
-     },
-     {
-          fileName: "solar-system.pdf",
-          imageName: "solar.webp",
-          itemType: "others",
-          downloadName: Downloads.SolarSystem
-     },
 ]
 
 export const GAMES_LIST: ICard<"game">[] = [
