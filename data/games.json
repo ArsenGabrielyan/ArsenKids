@@ -1,0 +1,98 @@
+[
+     {
+          "title": {
+               "hy": "Զույգեր",
+               "en": "Match the Pairs",
+               "ru": "Сопоставление пар"
+          },
+          "imageName": "pairs",
+          "gameName": "memory",
+          "link": "/memory",
+          "type": "puzzle",
+          "hasLocale": false
+     },
+     {
+          "title": {
+               "hy": "Իքսիկ Նոլիկ",
+               "en": "Tic Tac Toe",
+               "ru": "Крестики-нолики"
+          },
+          "imageName": "xo",
+          "gameName": "tic-tac-toe",
+          "link": "/tic-tac-toe",
+          "type": "entertainment",
+          "hasLocale": false
+     },
+     {
+          "title": {
+               "hy": "Գուշակիր բառը",
+               "en": "Guess the word",
+               "ru": "Угадай слово"
+          },
+          "imageName": "words",
+          "gameName": "words",
+          "link": "/guess-word",
+          "type": "puzzle",
+          "hasLocale": true
+     },
+     {
+          "title": {
+               "hy": "Մաթեմատիկա",
+               "en": "Mathematics",
+               "ru": "Математика"
+          },
+          "imageName": "math",
+          "gameName": "math",
+          "link": "/math",
+          "type": "math",
+          "hasLocale": false
+     },
+     {
+          "title": {
+               "hy": "Հիշիր թվանշանները",
+               "en": "Memorize the numbers",
+               "ru": "Запомните числа"
+          },
+          "imageName": "numbers",
+          "gameName": "number",
+          "link": "/guess-number",
+          "type": "math",
+          "hasLocale": true
+     },
+     {
+          "title": {
+               "hy": "Փազլ «Պատկերներ»",
+               "en": "Puzzle \"Shapes\"",
+               "ru": "Пазл «Фигуры»"
+          },
+          "imageName": "puzzle",
+          "gameName": "puzzle",
+          "link": "/puzzle",
+          "type": "puzzle",
+          "hasLocale": true
+     },
+     {
+          "title": {
+               "hy": "Հրաշագործ Մաթեմատիկա",
+               "en": "Interactive Maths",
+               "ru": "Интерактивная математика"
+          },
+          "imageName": "interactive-math",
+          "gameName": "interactive-math",
+          "link": "/interactive-math",
+          "type": "math",
+          "hasLocale": true
+     },
+     {
+          "title": {
+               "hy": "Պղպջակներ",
+               "en": "Bubbles",
+               "ru": "Пузырки"
+          },
+          "imageName": "bubbles",
+          "gameName": "bubbles",
+          "link": "/bubbles",
+          "type": "entertainment",
+          "hasLocale": false
+     }
+]
