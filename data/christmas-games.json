@@ -1,0 +1,38 @@
+[
+     {
+          "imageName": "christmas-pairs",
+          "gameName": "memory-christmas",
+          "link": "/christmas/memory-game",
+          "type": "christmas-game",
+          "hasLocale": false,
+          "title": {
+               "hy": "Զույգեր",
+               "en": "Match the Pairs",
+               "ru": "Сопоставление пар"
+          }
+     },
+     {
+          "imageName": "christmas-puzzle",
+          "gameName": "puzzle-christmas",
+          "link": "/christmas/puzzle",
+          "type": "christmas-game",
+          "hasLocale": true,
+          "title": {
+               "hy": "Փազլ «Ամանոր»",
+               "en": "Puzzle \"Christmas\"",
+               "ru": "Пазл «Новый год»"
+          }
+     },
+     {
+          "imageName": "christmas-snowman",
+          "gameName": "build-snowman",
+          "link": "/christmas/build-snowman",
+          "type": "christmas-game",
+          "hasLocale": false,
+          "title": {
+               "hy": "Պատրաստիր ձնեմարդ",
+               "en": "Build the Snowman",
+               "ru": "Построить снеговика"
+          }
+     }
+]
