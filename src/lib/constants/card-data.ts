@@ -1,9 +1,15 @@
 import { ICard } from "../types"
-import { ChristmasGame, Games, Services } from "../types/enums";
+import { Games, Services } from "../types/enums";
 
 export const SERVICES: ICard<"service">[] = [
-     { link: "/#about", type: Services.About },
-     { link: "/#downloads", type: Services.Downloads },
+     {
+          link: "/#about",
+          type: Services.About
+     },
+     {
+          link: "/#downloads",
+          type: Services.Downloads
+     },
      {
           link: "https://youtube.com/playlist?list=PLL4l-dEWVYAubvK3veTw5YXlEtw3empLU",
           type: Services.Learn
@@ -16,91 +22,17 @@ export const SERVICES: ICard<"service">[] = [
           link: "https://youtube.com/playlist?list=PLL4l-dEWVYAuLeJ_FQIfTA_NzGHOgaG8q",
           type: Services.Colors
      },
-     { link: "/games#main-games", type: Services.Games },
-]
-
-export const GAMES_LIST: ICard<"game">[] = [
      {
-          imageName: "pairs",
-          gameName: Games.Memory,
-          link: "/memory",
-          type: "puzzle",
-          hasLocale: false,
+          link: "/games#main-games",
+          type: Services.Games
      },
-     {
-          imageName: "xo",
-          gameName: Games.TicTacToe,
-          link: "/tic-tac-toe",
-          type: "entertainment",
-          hasLocale: false,
-     },
-     {
-          imageName: "words",
-          gameName: Games.GuessWord,
-          link: "/guess-word",
-          type: "puzzle",
-          hasLocale: true
-     },
-     {
-          imageName: "math",
-          gameName: Games.Maths,
-          link: "/math",
-          type: "math",
-          hasLocale: false
-     },
-     {
-          imageName: "numbers",
-          gameName: Games.MemorizeNum,
-          link: "/guess-number",
-          type: "math",
-          hasLocale: true
-     },
-     {
-          imageName: "puzzle",
-          gameName: Games.Puzzle,
-          link: "/puzzle",
-          type: "puzzle",
-          hasLocale: true
-     },
-     {
-          imageName: "interactive-math",
-          gameName: Games.InteractiveMath,
-          link: "/interactive-math",
-          type: "math",
-          hasLocale: true
-     },
-     {
-          imageName: "bubbles",
-          gameName: Games.Bubbles,
-          link: "/bubbles",
-          type: "entertainment",
-          hasLocale: false,
-     },
-];
-export const CHRISTMAS_GAMES_LIST: ICard<"game">[] = [
-     {
-          imageName: "christmas-pairs",
-          gameName: ChristmasGame.Memory,
-          link: "/christmas/memory-game",
-          type: "christmas-game",
-          hasLocale: false
-     },
-     {
-          imageName: "christmas-puzzle",
-          gameName: ChristmasGame.Puzzle,
-          link: "/christmas/puzzle",
-          type: "christmas-game",
-          hasLocale: true
-     },
-     {
-          imageName: "christmas-snowman",
-          gameName: ChristmasGame.Snowman,
-          link: "/christmas/build-snowman",
-          type: "christmas-game",
-          hasLocale: false
-     }
 ]
 export const CHRISTMAS_GAME: ICard<"game"> = {
+     title: {
+          hy: "Ամանորյա խաղեր",
+          en: "Christmas Games",
+          ru: "Новогодние игры"
+     },
      imageName: "christmas",
      gameName: Games.Christmas,
      link: "/christmas",

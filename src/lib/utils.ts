@@ -2,13 +2,12 @@ import { clsx, type ClassValue } from "clsx"
 import { toast } from "sonner";
 import { twMerge } from "tailwind-merge"
 import type {AudioType, AudioKey} from "./types"
-import { CDN_BASE_URL } from "./constants";
 import { isChristmas } from "./helpers";
 import { LangCodeType } from "@/i18n/types";
 
-export function absoluteCDN(type: "sounds" | "pdf" | "images" | "music", path: `/${string}`){
+export function absoluteCDN(type: "sounds" | "pdf" | "images" | "music" | "data", path: `/${string}`){
   if(!type) throw new Error("Specify the resource type")
-  const baseURL = `${CDN_BASE_URL}/${type}`;
+  const baseURL = `https://arsengabrielyan.github.io/ArsenKids/${type}`;
   return `${baseURL}${path}`
 }
 

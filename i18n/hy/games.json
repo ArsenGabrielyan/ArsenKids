@@ -11,27 +11,11 @@
                "math": "Մաթեմատիկական",
                "entertainment": "Ժամանցային"
           },
-          "allGames": "Բոլոր խաղերը",
-          "games-list": {
-               "memory": "Զույգեր",
-               "tic-tac-toe": "Իքսիկ Նոլիկ",
-               "words": "Գուշակիր բառը",
-               "math": "Մաթեմատիկա",
-               "number": "Հիշիր թվանշանները",
-               "puzzle": "Փազլ «Պատկերներ»",
-               "interactive-math": "Հրաշագործ Մաթեմատիկա",
-               "bubbles": "Պղպջակներ",
-               "christmas": "Ամանորյա խաղեր"
-          }
+          "allGames": "Բոլոր խաղերը"
      },
      "christmas-games": {
           "title": "Ամանորյա խաղեր",
-          "desc": "Ընտրեք ցանկացած խաղ",
-          "games-list": {
-               "memory-christmas": "Զույգեր",
-               "puzzle-christmas": "Փազլ «Ամանոր»",
-               "build-snowman": "Պատրաստիր ձնեմարդ"
-          }
+          "desc": "Ընտրեք ցանկացած խաղ"
      },
      "bubbles": {
           "title": "Պղպջակներ",

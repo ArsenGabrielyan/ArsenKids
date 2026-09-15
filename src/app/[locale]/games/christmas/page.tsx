@@ -7,6 +7,7 @@ import { hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { createMetaAlternates } from "@/lib/helpers";
+import { getGames } from "@/lib/helpers/data";
 
 export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Metadata> => {
      const {locale} = await params
@@ -40,8 +41,9 @@ export const generateMetadata = async({params}: LocaleLayoutProps): Promise<Meta
      }
 }
 
-export default function ChristmasGames(){
+export default async function ChristmasGames(){
+     const games = await getGames("christmas")
      return (
-          <ChristmasGamesHub/>
+          <ChristmasGamesHub games={games}/>
      )
 }

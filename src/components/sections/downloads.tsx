@@ -8,7 +8,6 @@ import { Input } from "../ui/input"
 import { X } from "lucide-react"
 import { DownloadCard } from "../ui/card"
 import { useLocale, useTranslations } from "next-intl"
-import { Downloads } from "@/lib/types/enums"
 
 type DownloadFilters = SearchFilterType<DownloadItemType>
 

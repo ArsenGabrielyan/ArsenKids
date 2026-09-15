@@ -8,5 +8,3 @@ export const GAME_KEYWORDS = ["arsenkids games", "արսենքիդս խաղեր"
 export const PUZZLE_LINKS = Object.values(PuzzleLinks)
 export const CHRISTMAS_PUZZLE_LINKS = Object.values(ChristmasPuzzleLinks)
 export const PAIRS_LINKS = Object.values(MemoryGameLinks)
-
-export const CDN_BASE_URL = "https://arsengabrielyan.github.io/ArsenKids"

@@ -38,6 +38,7 @@ export type ICard<T extends CardType> = T extends "service" ? {
      link: string,
      type: GameType,
      hasLocale: boolean
+     title: Record<LangCodeType,string>
 }
 
 // Audio Types

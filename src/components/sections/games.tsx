@@ -1,41 +1,41 @@
 "use client"
-import { SearchFilterType } from "@/lib/types";
+import { ICard, SearchFilterType } from "@/lib/types";
 import { GameType } from "@/lib/types/games";
 import SiteSection from "../ui/site-section";
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { CHRISTMAS_GAME, GAMES_LIST } from "@/lib/constants/card-data";
+import { CHRISTMAS_GAME } from "@/lib/constants/card-data";
 import { isChristmas } from "@/lib/helpers";
-import Card from "../ui/card";
+import { GameCard } from "../ui/card";
 import { useLocale, useTranslations } from "next-intl";
-import { Games } from "@/lib/types/enums";
 
 type GameFilters = Exclude<SearchFilterType<GameType>,"christmas-game">
 
 const filters: GameFilters[] = ["all", "puzzle", "math", "entertainment"]
 
-export default function GamesSection(){
+interface GamesSectionProps{
+     games: ICard<"game">[]
+}
+export default function GamesSection({games}: GamesSectionProps){
      const locale = useLocale();
      const [currSelection, setCurrSelection] = useState<GameFilters>("all")
      const [search, setSearch] = useState("");
      const t = useTranslations("games")
-     const getGameTitle = useCallback((gameName: Games) => t(`games-list.${gameName}`),[t])
      const allGames = useMemo(()=>{
-          const gamesList = isChristmas() ? [CHRISTMAS_GAME,...GAMES_LIST] : GAMES_LIST;
+          const gamesList = isChristmas() ? [CHRISTMAS_GAME,...games] : games;
           return gamesList
                .map((game,i)=>({id: i+1,...game}))
                .filter(val=>currSelection==="all" || val.type===currSelection)
-               .filter(game=>getGameTitle(game.gameName as Games).toLowerCase().includes(search.toLowerCase()))
-     },[currSelection, getGameTitle, search]);
+               .filter(game=>game.title[locale].toLowerCase().includes(search.toLowerCase()))
+     },[currSelection, locale, search]);
      const searchTxt = useTranslations("search")
      const renderNoGamesMessage = () => {
-          const isSearchingChristmasGame = !isChristmas() && getGameTitle(Games.Christmas).toLowerCase().includes(search.toLowerCase())
+          const isSearchingChristmasGame = !isChristmas() && CHRISTMAS_GAME.title[locale].toLowerCase().includes(search.toLowerCase())
           return <p className="text-xl text-muted-foreground font-heading">{searchTxt(isSearchingChristmasGame ? "christmasGames" : "noResults")}</p> 
      }
-     const buttonText = useTranslations("buttons");
      return (
           <SiteSection id="main-games">
                <div className="relative w-full flex items-center justify-center flex-col">
@@ -66,14 +66,9 @@ export default function GamesSection(){
                     </ul>
                     <div className="flex justify-center items-center flex-row-reverse flex-wrap mt-10 gap-3 lg:gap-5 p-3">
                          {allGames.length>0 ? allGames.map(game=>(
-                              <Card
+                              <GameCard
                                    key={game.gameName}
-                                   title={getGameTitle(game.gameName as Games)}
-                                   imageSrc={game.hasLocale ? `/games/${game.imageName}/${locale}.webp` : `/games/${game.imageName}.webp`}
-                                   imageAlt={game.gameName}
-                                   buttonLink={`/games${game.link}`}
-                                   buttonText={buttonText("playGame")}
-                                   variant="game"
+                                   data={game}
                               />
                          )) : renderNoGamesMessage()}
                     </div>

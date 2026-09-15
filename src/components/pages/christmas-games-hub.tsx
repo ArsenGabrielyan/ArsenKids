@@ -1,18 +1,16 @@
 import GameWrapper from "@/components/game-wrapper";
-import { CHRISTMAS_GAMES_LIST } from "@/lib/constants/card-data";
-import Card from "@/components/ui/card";
+import { GameCard } from "@/components/ui/card";
 import { getBackgroundImage } from "@/lib/helpers";
-import { useLocale, useTranslations } from "next-intl";
-import { useCallback } from "react";
-import { ChristmasGame } from "@/lib/types/enums";
+import { useTranslations } from "next-intl";
 import LanguageSwitcher from "../language-switcher";
+import { ICard } from "@/lib/types";
 
-export default function ChristmasGamesHub(){
-     const locale = useLocale();
+interface ChristmasGamesHubProps{
+     games: ICard<"game">[]
+}
+export default function ChristmasGamesHub({games}: ChristmasGamesHubProps){
      const bgStyle = getBackgroundImage("christmas");
      const t = useTranslations("christmas-games")
-     const getGameTitle = useCallback((gameName: ChristmasGame) => t(`games-list.${gameName}`),[t]);
-     const buttonText = useTranslations("buttons")
      return (
           <div className="min-h-screen p-4 relative flex justify-center items-center flex-col w-full" style={bgStyle}>
                <div className="absolute inset-0 bg-linear-to-b from-transparent to-white to-70% opacity-70 -z-00"/>
@@ -22,15 +20,10 @@ export default function ChristmasGamesHub(){
                          <LanguageSwitcher/>
                     </GameWrapper>
                     <div className="flex justify-center items-center flex-row-reverse flex-wrap gap-3 lg:gap-5 p-4 w-full">
-                         {CHRISTMAS_GAMES_LIST.map(game=>(
-                              <Card
+                         {games.map(game=>(
+                              <GameCard
                                    key={game.gameName}
-                                   title={getGameTitle(game.gameName as ChristmasGame)}
-                                   imageSrc={game.hasLocale ? `/games/${game.imageName}/${locale}.webp` : `/games/${game.imageName}.webp`}
-                                   imageAlt={game.gameName}
-                                   buttonLink={`/games${game.link}`}
-                                   buttonText={buttonText("playGame")}
-                                   variant="game"
+                                   data={game}
                               />
                          ))}
                     </div>

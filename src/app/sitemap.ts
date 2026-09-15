@@ -1,18 +1,22 @@
 import { MetadataRoute } from "next";
-import { CHRISTMAS_GAMES_LIST, GAMES_LIST } from "@/lib/constants/card-data";
 import { CHRISTMAS_PUZZLE_LINKS, PAIRS_LINKS, PUZZLE_LINKS } from "@/lib/constants";
 import { absoluteLink, absoluteURL } from "@/lib/utils";
 import { locales } from "@/i18n/config";
+import { getGames } from "@/lib/helpers/data";
 
-export default function Sitemap(): MetadataRoute.Sitemap {
+export default async function Sitemap(): Promise<MetadataRoute.Sitemap> {
+     const [games, christmasGames] = await Promise.all([
+          getGames(),
+          getGames("christmas")
+     ])
      const routes = [
           "/",
           "/games",
           "/games/christmas",
-          ...GAMES_LIST.map(val=>`/games${val.link}`),
+          ...games.map(val=>`/games${val.link}`),
           ...PUZZLE_LINKS.map(link=>`/games/puzzle/${link}`),
           ...PAIRS_LINKS.map(item=>`/games/memory/${item}`),
-          ...CHRISTMAS_GAMES_LIST.map(val=>`/games${val.link}`),
+          ...christmasGames.map(val=>`/games${val.link}`),
           ...CHRISTMAS_PUZZLE_LINKS.map(link=>`/games/christmas/puzzle/${link}`)
      ]
      return routes.map(route=>{

@@ -11,27 +11,11 @@
                "math": "Mathematical",
                "entertainment": "Entertainment"
           },
-          "allGames": "All Games",
-          "games-list": {
-               "memory": "Match the Pairs",
-               "tic-tac-toe": "Tic Tac Toe",
-               "words": "Guess the word",
-               "math": "Mathematics",
-               "number": "Memorize the numbers",
-               "puzzle": "Puzzle \"Shapes\"",
-               "interactive-math": "Interactive Maths",
-               "bubbles": "Bubbles",
-               "christmas": "Christmas Games"
-          }
+          "allGames": "All Games"
      },
      "christmas-games": {
           "title": "Christmas Games",
-          "desc": "Choose any game",
-          "games-list": {
-               "memory-christmas": "Match the Pairs",
-               "puzzle-christmas": "Puzzle \"Christmas\"",
-               "build-snowman": "Build the Snowman"
-          }
+          "desc": "Choose any game"
      },
      "bubbles": {
           "title": "Bubbles",

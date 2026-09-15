@@ -11,27 +11,11 @@
                "math": "Математический",
                "entertainment": "Развлечение"
           },
-          "allGames": "Все игры",
-          "games-list": {
-               "memory": "Сопоставление пар",
-               "tic-tac-toe": "Крестики-нолики",
-               "words": "Угадай слово",
-               "math": "Математика",
-               "number": "Запомните числа",
-               "puzzle": "Пазл «Фигуры»",
-               "interactive-math": "Интерактивная математика",
-               "bubbles": "Пузырки",
-               "christmas": "Новогодние игры"
-          }
+          "allGames": "Все игры"
      },
      "christmas-games": {
           "title": "Новогодние игры",
-          "desc": "Выберите любую игру",
-          "games-list": {
-               "memory-christmas": "Сопоставление пар",
-               "puzzle-christmas": "Пазл «Новый год»",
-               "build-snowman": "Построить снеговика"
-          }
+          "desc": "Выберите любую игру"
      },
      "bubbles": {
           "title": "Пузырки",
