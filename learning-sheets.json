@@ -1,0 +1,134 @@
+[
+     {
+          "title": {
+               "hy": "Գույներ",
+               "en": "Colors",
+               "ru": "Цвета"
+          },
+          "fileName": "colors.pdf",
+          "imageName": "colors.webp",
+          "itemType": "others",
+          "downloadName": "colors"
+     },
+     {
+          "title": {
+               "hy": "Երկրաչափական Մարմիններ",
+               "en": "Shapes",
+               "ru": "Фигуры"
+          },
+          "fileName": "shapes.pdf",
+          "imageName": "shapes.webp",
+          "itemType": "others",
+          "downloadName": "shapes"
+     },
+     {
+          "title": {
+               "hy": "Մրգեր",
+               "en": "Fruit",
+               "ru": "Фрукты"
+          },
+          "fileName": "fruit.pdf",
+          "imageName": "fruit.webp",
+          "itemType": "fruit-veggies",
+          "downloadName": "fruit"
+     },
+     {
+          "title": {
+               "hy": "Բանջարեղեն",
+               "en": "Vegetables",
+               "ru": "Овощи"
+          },
+          "fileName": "vegetables.pdf",
+          "imageName": "vegies.webp",
+          "itemType": "fruit-veggies",
+          "downloadName": "vegetables"
+     },
+     {
+          "title": {
+               "hy": "Ընտանի Կենդանիներ",
+               "en": "Domestic Animals",
+               "ru": "Домашние животные"
+          },
+          "fileName": "domestic-animals.pdf",
+          "imageName": "domestic.webp",
+          "itemType": "animals",
+          "downloadName": "domestic-animals"
+     },
+     {
+          "title": {
+               "hy": "Տրանսպորտային Միջոցներ",
+               "en": "Vehicles",
+               "ru": "Транспортные средства"
+          },
+          "fileName": "transportation.pdf",
+          "imageName": "transportation.webp",
+          "itemType": "others",
+          "downloadName": "transportation"
+     },
+     {
+          "title": {
+               "hy": "Վայրի Կենդանիներ",
+               "en": "Wild Animals",
+               "ru": "Дикие животные"
+          },
+          "fileName": "wild-animals.pdf",
+          "imageName": "wild.webp",
+          "itemType": "animals",
+          "downloadName": "wild-animals"
+     },
+     {
+          "title": {
+               "hy": "Թվեր",
+               "en": "Numbers",
+               "ru": "Цифры и числа"
+          },
+          "fileName": "numbers.pdf",
+          "imageName": "numbers.webp",
+          "itemType": "others",
+          "downloadName": "numbers"
+     },
+     {
+          "title": {
+               "hy": "Թռչուններ",
+               "en": "Birds",
+               "ru": "Птицы"
+          },
+          "fileName": "birds.pdf",
+          "imageName": "birds.webp",
+          "itemType": "animals",
+          "downloadName": "birds"
+     },
+     {
+          "title": {
+               "hy": "Միջատներ",
+               "en": "Insects",
+               "ru": "Насекомые"
+          },
+          "fileName": "insects.pdf",
+          "imageName": "insects.webp",
+          "itemType": "animals",
+          "downloadName": "insects"
+     },
+     {
+          "title": {
+               "hy": "Անտառային Կենդանիներ",
+               "en": "Forest Animals",
+               "ru": "Лесные животные"
+          },
+          "fileName": "forest.pdf",
+          "imageName": "forest.webp",
+          "itemType": "animals",
+          "downloadName": "forest-animals"
+     },
+     {
+          "title": {
+               "hy": "Արեգակնային համակարգ",
+               "en": "Solar System",
+               "ru": "Солнечная система"
+          },
+          "fileName": "solar-system.pdf",
+          "imageName": "solar.webp",
+          "itemType": "others",
+          "downloadName": "solar-system"
+     }
+]
